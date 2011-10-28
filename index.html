@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Content Management Corp.</title>
+<meta name="description" content="Media Player">
+<meta name="author" content="B>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/default.css" rel="Stylesheet" type="text/css">
+<link href="skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.xml2json.pack.js"></script>
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+</head>
+<body>
+<div class="player">
+  <div class="playerFrame">
+  	<h1 class="title"></h1>
+    <div id="slides"></div>
+	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+	<div id="jp_container_1" class="jp-audio">
+		<div class="jp-type-single">
+			<div class="jp-gui jp-interface">
+				<ul class="jp-controls">
+					<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+					<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+					<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+					<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+					<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+					<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+				</ul>
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+				<div class="jp-time-holder">
+					<div class="jp-current-time"></div>
+					<div class="jp-duration"></div>
+					<ul class="jp-toggles">
+						<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+						<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="jp-title"></div>
+			<div class="jp-no-solution">
+				<span>Update Required</span>
+				To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+			</div>
+		</div>
+	</div>
+	<div id="toc">
+		<table border="0" cellpadding="5" cellspacing="0">
+			<tr></tr>
+		</table>
+	</div>
+	<div id="loading"></div>
+  </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[ 			  
+  
+var pres; // Global JSON object of presentation
+  
+$.get('presentation.xml', function(xml){ // On successful xml load
+      
+    // convert xml to object
+	pres = $.xml2json(xml);
+	pres.imgsLoaded=0;
+	pres.imgsCount=0;  
+	 
+	// Set title
+	$("h1.title").text(pres.title);
+	
+	// Setup Slides
+	$(pres.media.items.item).each(function(i){
+	  	
+	  	var t=this;
+	  	
+	  	// Add to TOC			Need to sent event handler, iPad requires 2 clicks... 
+	  	if (t.inTOC=="True") $('<td class="thumb">\
+						  	     <a id="thumb_'+t.id+'" href="#" onclick="javascript:$(\'#jquery_jplayer_1\').jPlayer(\'pauseOthers\').jPlayer(\'play\','+(t.startPoint/1000)+');">\
+						  		   <img src="'+(t.poster || t.file.text)+'" />\
+						  	     </a>\
+						  	   </td>').appendTo("#toc table tr");
+	  	
+	  	// Add to Slides
+	  	if (t.fileType == "jpg"){ // jpg slide
+	  		
+	  		// Add image to Slides and loader
+	  		$('<a id="'+t.id+'" class="slide" href="'+t.link+'"><img src="'+t.file.text+'" /></a>').appendTo("#slides");
+	  		$("#"+t.id+" img").load(function(){
+	  			pres.imgsLoaded++;
+	  		});
+	  		pres.imgsCount++;
+	  			  
+	  	} else if (t.fileType == "video") { // video slide
+	  		
+	  		// Add video markup to Slides
+	  		$('<div id="'+t.id+'" class="jp-video slide">\
+	  			<div class="jp-type-single">\
+	  				<div id="jquery_jplayer_'+t.id+'" class="jp-jplayer"></div>\
+	  				<div class="jp-gui">\
+	  					<div class="jp-video-play">\
+	  						<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>\
+	  					</div>\
+	  					<div class="jp-interface">\
+	  						<div class="jp-progress">\
+	  							<div class="jp-seek-bar">\
+	  								<div class="jp-play-bar"></div>\
+	  							</div>\
+	  						</div>\
+	  						<div class="jp-current-time"></div>\
+	  						<div class="jp-duration"></div>\
+	  						<div class="jp-controls-holder">\
+	  							<ul class="jp-controls">\
+	  								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>\
+	  								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>\
+	  								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>\
+	  								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>\
+	  								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>\
+	  								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>\
+	  							</ul>\
+	  							<div class="jp-volume-bar">\
+	  								<div class="jp-volume-bar-value"></div>\
+	  							</div>\
+	  							<ul class="jp-toggles">\
+	  								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>\
+	  								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>\
+	  								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>\
+	  								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>\
+	  							</ul>\
+	  						</div>\
+	  						<div class="jp-title">\
+	  						  '+t.title+'\
+	  						</div>\
+	  					</div>\
+	  				</div>\
+	  				<div class="jp-no-solution">\
+	  					<span>Update Required</span>\
+	  					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.\
+	  				</div>\
+	  			</div>\
+	  		</div>').appendTo("#slides");
+	  		
+			// Initialize jPlayer video instance
+			$("#jquery_jplayer_"+t.id).jPlayer({  
+				ready: function () {
+					$(this).jPlayer("setMedia", { // !!!Need to make video formats variable!!!
+						m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+						ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+						webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm", 
+						poster: t.poster
+					});
+				},
+				play: function() { // To avoid both jPlayers playing together
+					$(this).jPlayer("pauseOthers");
+				},
+				ended: function() { // Trigger master player to start again
+				    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
+				    $("#jp_container_1").slideDown(300, function(){
+				    	$("#jquery_jplayer_1").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
+				    });   
+				},
+				swfPath: "js",
+				supplied: "webmv, ogv, m4v", // Here too 
+				cssSelectorAncestor: "#"+t.id,
+				loop: false,
+				size: {
+					width: "640px",
+					height: "360px",
+					cssClass: "jp-video-360p"
+				}
+			}); 
+	  	}
+	});
+	
+	// Slide Loading Status
+	function loading() {
+		if (pres.imgsLoaded < pres.imgsCount) {
+			$("#loading").text("loading slide "+pres.imgsLoaded+" / "+pres.imgsCount);
+		} else {
+			window.clearInterval("loader");
+			$("#loading").remove();
+		}
+	}
+	var loader = window.setInterval(loading, 100);
+	window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 30000); // loader fail safe 30 sec
+	  	  
+	// Initialize Master jPlayer
+	$("#jquery_jplayer_1").jPlayer({
+		ready: function (event) {
+	    	$.jPlayer.timeFormat.showHour = true; // set show hours
+	    	$(this).jPlayer("setMedia", {
+	    		mp3:pres.media.master.item.file.text // Assumes one master file
+	    	});
+	    },
+	    play: function() { // To avoid both jPlayers playing together.
+	    	$(this).jPlayer("pauseOthers");
+	    },
+	    timeupdate: function (event) { // Set/Show Current time/Slide function
+	    	// Slide to show, initially first item
+	    	var timeNow = event.jPlayer.status.currentTime,
+	    		curEl = pres.curEl || pres.media.items.item[0];
+	    		pres.curEl = pres.curEl || null;
+	    	
+	    	// Determine Slide closest to play head	but not before current Time
+	    	for (i in pres.media.items.item) {
+	    		var startPoint = pres.media.items.item[i].startPoint/1000;
+	    		curEl = startPoint-timeNow <= 0 && Math.abs(startPoint-timeNow) >= Math.abs(startPoint-timeNow) ? pres.media.items.item[i] : curEl ;
+	    	}
+	    	
+	    	// Should we do anything?
+	    	if (pres.curEl != curEl ) {
+		    	
+		    	// Set global curEl
+		    	pres.curEl = curEl;
+		    	
+		    	// Show/Hide slides
+		    	$("#"+curEl.id).show();
+		    	$("#"+curEl.id+".jp-video").width('100%').height('100%')
+		    	$("#slides .jp-video").not("#"+curEl.id).width(0).height(0); // 0 out the jPlayer as hiding disables the flash instance
+		    	$("#slides .slide").not("#"+curEl.id+", .jp-video").hide();
+		    	
+		    	// Play/Pause video slide
+		    	if (curEl.fileType=="video") { 
+		    		$("#jquery_jplayer_1").jPlayer("pause");
+		    		$("#jp_container_1").slideUp(300);
+		    		$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+		    	} else if (curEl.fileType=="jpg") { 
+		    		$("#jp_container_1 div.jp-title").text(curEl.title);
+		    		$("#jp_container_1").slideDown(0);
+		    	}
+		    	
+		    	// Move TOC cur
+		    	$("#toc td.thumb a.active").removeClass('active');
+		    	$("#thumb_"+curEl.id).addClass('active');
+	    	}	    	
+	    },
+	    swfPath: "js",
+	    supplied: pres.media.master.item.fileType, // Assumes mp3 file type
+	    cssSelectorAncestor: "#jp_container_1",
+	    wmode: "window"
+	});
+	  
+});
+  
+//]]>
+</script>
+</body>
+</html>
