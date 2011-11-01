@@ -14,12 +14,116 @@ return a};typeof a=="string"&&(a=f.text2xml(a));if(a.nodeType){if(a.nodeType==3|
  * Authors: MultiView Team + B>
 */
 var llc = {
-	setSlides: function(slides) { /* Create slides --> set video or audio slides --> set markup & link */
+	setupSlides: function(slides) { /* Create slides --> set video or audio slides --> set markup & link */
 		console.log('setSlides');
 		// Add Slide to slideshow markup
 		// If Video
 			// Set Video Markup
 			// Initialize Video jPlayer Instance
+		
+		// Setup Slides
+		$(slides).each(function(i){
+		  	
+		  	var t=this;
+		  	
+		  	// Add to TOC			Need to sent event handler, iPad requires 2 clicks... 
+		  	if (t.inTOC=="True") $('<td class="thumb">\
+							  	     <a id="thumb_'+t.id+'" href="#" onclick="javascript:$(\'#jquery_jplayer_1\').jPlayer(\'pauseOthers\').jPlayer(\'play\','+(t.startPoint/1000)+');">\
+							  		   <img src="'+(t.poster || t.file.text)+'" />\
+							  	     </a>\
+							  	   </td>').appendTo("#toc table tr");
+		  	
+		  	// Add to Slides
+		  	if (t.fileType == "jpg"){ // jpg slide
+		  		
+		  		// Add image to Slides and loader
+		  		$('<a id="'+t.id+'" class="slide" href="'+t.link+'"><img src="'+t.file.text+'" /></a>').appendTo("#slides");
+		  		$("#"+t.id+" img").load(function(){
+		  			llc.pres.imgsLoaded++;
+		  		});
+		  		llc.pres.imgsCount++;
+		  			  
+		  	} else if (t.fileType != "jpg") { // video slide
+		  		
+		  		// Add video markup to Slides
+		  		$('<div id="'+t.id+'" class="jp-video slide">\
+		  			<div class="jp-type-single">\
+		  				<div id="jquery_jplayer_'+t.id+'" class="jp-jplayer"></div>\
+		  				<div class="jp-gui">\
+		  					<div class="jp-video-play">\
+		  						<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>\
+		  					</div>\
+		  					<div class="jp-interface">\
+		  						<div class="jp-progress">\
+		  							<div class="jp-seek-bar">\
+		  								<div class="jp-play-bar"></div>\
+		  							</div>\
+		  						</div>\
+		  						<div class="jp-current-time"></div>\
+		  						<div class="jp-duration"></div>\
+		  						<div class="jp-controls-holder">\
+		  							<ul class="jp-controls">\
+		  								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>\
+		  								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>\
+		  								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>\
+		  								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>\
+		  								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>\
+		  								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>\
+		  							</ul>\
+		  							<div class="jp-volume-bar">\
+		  								<div class="jp-volume-bar-value"></div>\
+		  							</div>\
+		  							<ul class="jp-toggles">\
+		  								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>\
+		  								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>\
+		  								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>\
+		  								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>\
+		  							</ul>\
+		  						</div>\
+		  						<div class="jp-title">\
+		  						  '+t.title+'\
+		  						</div>\
+		  					</div>\
+		  				</div>\
+		  				<div class="jp-no-solution">\
+		  					<span>Update Required</span>\
+		  					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.\
+		  				</div>\
+		  			</div>\
+		  		</div>').appendTo("#slides");
+		  		
+				// Initialize jPlayer video instance
+				$("#jquery_jplayer_"+t.id).jPlayer({  
+					ready: function () {
+						$(this).jPlayer("setMedia", { // !!!Need to make video formats variable!!!
+							m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+							ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+							webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm", 
+							poster: t.poster
+						});
+					},
+					play: function() { // To avoid both jPlayers playing together
+						$(this).jPlayer("pauseOthers");
+					},
+					ended: function() { // Trigger master player to start again
+					    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
+					    $("#jp_container_1").slideDown(300, function(){
+					    	$("#jquery_jplayer_1").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
+					    });   
+					},
+					swfPath: "js",
+					supplied: "webmv, ogv, m4v", // Here too 
+					cssSelectorAncestor: "#"+t.id,
+					loop: false,
+					size: {
+						width: "640px",
+						height: "360px",
+						cssClass: "jp-video-360p"
+					}
+				}); 
+		  	}
+		});
+		
 	},
 	addToTOC: function(el) { /* Add to Table of contents (needs to work for slide and bookmark) */
 		console.log('addToTOC');
@@ -27,17 +131,49 @@ var llc = {
 		// if Bookmark
 			// Set Bookmark CSS Class to Markup
 	},
-	setMaster: function(item) { /* Configure master jPlayer instance --> use pres.media.master.item.fileType to do different stuff for audio vs video */
-		console.log('setMaster');
-		// Initialize Master jPlayer
-		// Map timeUpdate to jPlayer method
-	},
-	timeUpdate: function() { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
+	timeUpdate: function(event) { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
 		console.log('timeUpdate');
 		// update slide
 		// updateTOC()
 		// updateTranscript()
 		// ?switchView()?
+		// Slide to show, initially first item
+		var timeNow = event.jPlayer.status.currentTime,
+			curEl = llc.pres.curEl || llc.pres.media.items.item[0];
+			llc.pres.curEl = llc.pres.curEl || null;
+		
+		// Determine Slide closest to play head	but not before current Time
+		for (i in llc.pres.media.items.item) {
+			var startPoint = llc.pres.media.items.item[i].startPoint/1000;
+			curEl = startPoint-timeNow <= 0 && Math.abs(startPoint-timeNow) >= Math.abs(startPoint-timeNow) ? llc.pres.media.items.item[i] : curEl ;
+		}
+		
+		// Should we do anything?
+		if (llc.pres.curEl != curEl ) {
+			
+			// Set global curEl
+			llc.pres.curEl = curEl;
+			
+			// Show/Hide slides
+			$("#"+curEl.id).show();
+			$("#"+curEl.id+".jp-video").width('100%').height('100%')
+			$("#slides .jp-video").not("#"+curEl.id).width(0).height(0); // 0 out the jPlayer as hiding disables the flash instance
+			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide();
+			
+			// Play/Pause video slide
+			if (curEl.fileType=="video") { 
+				$("#master_jplayer").jPlayer("pause");
+				$("#jp_container_1").slideUp(300);
+				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+			} else if (curEl.fileType=="jpg") { 
+				$("#jp_container_1 div.jp-title").text(curEl.title);
+				$("#jp_container_1").slideDown(0);
+			}
+			
+			// Move TOC cur
+			$("#toc td.thumb a.active").removeClass('active');
+			$("#thumb_"+curEl.id).addClass('active');
+		}
 	},
 	updateTOC: function() { /* Move to current TOC item  */
 		console.log('updateTOC');
@@ -63,7 +199,7 @@ var llc = {
 		// Update Markup
 		// postback to server
 	},
-	setNote: function() { /* Set Note and postback to server ?does the note correspond to the playhead and if so do we treat it like a bookmark? */
+	saveNote: function() { /* Set Note and postback to server ?does the note correspond to the playhead and if so do we treat it like a bookmark? */
 		console.log('setNote');
 		// postback to server
 	},
@@ -81,11 +217,6 @@ var llc = {
 		// else cookie
 			// return playhead que 
 	},
-	loadLegacy: function() { /* Inject flash HTML for legacy content */
-		console.log('loadLegacy');
-		// remove jPlayer <div>
-		// inject Flash HTML
-	},
 	int: (function() { /* auto serialize xml and call functions, assumes llc-player.js is called after markup */
 		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
 			console.log('xml loaded');
@@ -99,27 +230,57 @@ var llc = {
 				  
 				  NEEDED VARIABLES IN XML
 				  pres.version // Variable to determine new or old player
-				  pres.media.items.item.{poster} // link for default or fallback image of video
+				  pres.media.items.item[i].{poster} // link for default or fallback image of video
 				  
 				*/
 				
 			/* Set int functions here */
-			// if legacy 
-				// loadLegacy 
-			// else
-				// setSlides() for item in llc.pres.media.items.item
-				// addToTOC() for item in llc.pres.media.items.item
-				// addToTOC() for item in llc.pres.bookmarks
-				// setMaster() for llc.pres.media.master.item
-				// Set Notes from llc.pres.viewer.notes
-				// Set Transcript from llc.pres.transcript
-				// Set rating from llc.pres.[?]
-				// getCookie() & set playhead
-				// if Agreement ?Do we need to show agreement if cookie is found?
-					// Setup Agreement and trigger auto-play on confirm
-				// else
-					// Set default window mode
-					// Auto-play (works for desktop)
-		});
+			if (llc.pres.legacy) {
+				
+				// load legacy
+				
+			} else {
+				
+				// images loaded vars
+				llc.pres.imgsLoaded=0;
+				llc.pres.imgsCount=0;
+				
+				// Setup slides
+				llc.setupSlides(llc.pres.media.items.item);
+				
+				// Slide Loading Status
+				function loading() {
+					if (llc.pres.imgsLoaded < llc.pres.imgsCount) {
+						$("#loading").text("loading slide "+llc.pres.imgsLoaded+" / "+llc.pres.imgsCount);
+					} else {
+						window.clearInterval("loader");
+						$("#loading").remove();
+					}
+				}
+				
+				window.loader = window.setInterval(loading, 100);
+				window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 30000); // loader fail safe 30 sec
+				
+				// Initialize Master jPlayer
+				$("#master_jplayer").jPlayer({
+					ready: function (event) {
+				    	$.jPlayer.timeFormat.showHour = true; // set show hours
+				    	var media = new Object();
+				    		media[llc.pres.media.master.item.fileType] = llc.pres.media.master.item.file.text;
+				    	$(this).jPlayer("setMedia", media);
+				    },
+				    play: function() { // To avoid both jPlayers playing together.
+				    	$(this).jPlayer("pauseOthers");
+				    },
+				    timeupdate: function (event) { // Set/Show Current time/Slide function
+				    	llc.timeUpdate(event);   	
+				    },
+				    swfPath: "js",
+				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
+				    cssSelectorAncestor: "#master_jp_container",
+				    wmode: "window"
+				}); // end jPlayer intialize
+			}
+		}); // end ajax XML call
 	})()
 } 
