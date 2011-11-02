@@ -12,7 +12,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     
-	
+
 	
   });
 </script>
@@ -23,14 +23,11 @@
 <div data-role="page" data-theme="d" id="home">
 
 	<div data-role="navbar" data-position="fixed">
-		<a data-icon="back" data-role="button" href="#" data-theme="c" class="ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-c">
-			<span class="ui-btn-inner ui-btn-corner-all">
-			<span class="ui-icon ui-icon-back ui-icon-shadow"></span>
-			</span>
-		</a>
 		<ul>
-			<li><a href="#" class="ui-btn-active">One</a></li>
-			<li><a href="#">Two</a></li>
+			<li><a data-icon="back" data-role="button"></a></li>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#cpanel">Account</a></li>
+			<li><a href="#cart">Cart</a></li>
 		</ul>
 		
 	</div><!-- /navbar -->
@@ -38,7 +35,32 @@
 		<h1>Home Page</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">		
+	<div data-role="content">	
+		
+		<table><tr><td>
+		<div aria-hidden="true" class="ui-btn-inner ui-li ui-corner-top">
+		<div class="ui-btn-text">
+		<a href="#list_view?view=featured" class="ui-link-inherit">Featured</a>
+		</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div>
+		</td><td>
+		<div aria-hidden="true" class="ui-btn-inner ui-li ui-corner-top">
+		<div class="ui-btn-text">
+		<a href="#cpanel?view=library" class="ui-link-inherit">My Library</a>
+		</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div>
+		</td></tr>
+		<tr><td>
+		<div aria-hidden="true" class="ui-btn-inner ui-li ui-corner-top">
+		<div class="ui-btn-text">
+		<a href="#list_view?view=conferences" class="ui-link-inherit">Conferences</a>
+		</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div>
+		</td><td>
+		<div aria-hidden="true" class="ui-btn-inner ui-li ui-corner-top">
+		<div class="ui-btn-text">
+		<a href="#list_view?view=channels" class="ui-link-inherit">Channels</a>
+		</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div>
+		</td></tr>
+		</table>
+			
 	</div><!-- /content -->
 
 	<div data-role="footer-ad" data-position="fixed">
@@ -49,16 +71,15 @@
 <!-- ********************************************************************  -->
 <div data-role="page" data-theme="d" id="list_view">
 
+
 	<div data-role="navbar" data-position="fixed">
-		<a data-icon="back" data-role="button" href="#" data-theme="c" class="ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-c">
-			<span class="ui-btn-inner ui-btn-corner-all">
-			<span class="ui-icon ui-icon-back ui-icon-shadow"></span>
-			</span>
-		</a>
 		<ul>
-			<li><a href="#" class="ui-btn-active">One</a></li>
-			<li><a href="#">Two</a></li>
+			<li><a data-icon="back" data-role="button"></a></li>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#cpanel">Account</a></li>
+			<li><a href="#cart">Cart</a></li>
 		</ul>
+		
 	</div><!-- /navbar -->
 	<div data-role="header">
 		<h1>List Results</h1>
@@ -76,16 +97,15 @@
 <!-- ********************************************************************  -->
 <div data-role="page" data-theme="d" id="item_view">
 
+
 	<div data-role="navbar" data-position="fixed">
-		<a data-icon="back" data-role="button" href="#" data-theme="c" class="ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-c">
-			<span class="ui-btn-inner ui-btn-corner-all">
-			<span class="ui-icon ui-icon-back ui-icon-shadow"></span>
-			</span>
-		</a>
 		<ul>
-			<li><a href="#" class="ui-btn-active">One</a></li>
-			<li><a href="#">Two</a></li>
+			<li><a data-icon="back" data-role="button"></a></li>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#cpanel">Account</a></li>
+			<li><a href="#cart">Cart</a></li>
 		</ul>
+		
 	</div><!-- /navbar -->
 	<div data-role="header">
 		<h1>Media Item</h1>
@@ -119,16 +139,15 @@
 <!-- ********************************************************************  -->
 <div data-role="page" data-theme="d" id="cart">
 
+
 	<div data-role="navbar" data-position="fixed">
-		<a data-icon="back" data-role="button" href="#" data-theme="c" class="ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-c">
-			<span class="ui-btn-inner ui-btn-corner-all">
-			<span class="ui-icon ui-icon-back ui-icon-shadow"></span>
-			</span>
-		</a>
 		<ul>
-			<li><a href="#" class="ui-btn-active">One</a></li>
-			<li><a href="#">Two</a></li>
+			<li><a data-icon="back" data-role="button"></a></li>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#cpanel">Account</a></li>
+			<li><a href="#cart">Cart</a></li>
 		</ul>
+		
 	</div><!-- /navbar -->
 	<div data-role="header">
 		<h1>Shopping Cart</h1>
@@ -146,16 +165,15 @@
 <!-- ********************************************************************  -->
 <div data-role="page" data-theme="d" id="checkout">
 
+
 	<div data-role="navbar" data-position="fixed">
-		<a data-icon="back" data-role="button" href="#" data-theme="c" class="ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-c">
-			<span class="ui-btn-inner ui-btn-corner-all">
-			<span class="ui-icon ui-icon-back ui-icon-shadow"></span>
-			</span>
-		</a>
 		<ul>
-			<li><a href="#" class="ui-btn-active">One</a></li>
-			<li><a href="#">Two</a></li>
+			<li><a data-icon="back" data-role="button"></a></li>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#cpanel">Account</a></li>
+			<li><a href="#cart">Cart</a></li>
 		</ul>
+		
 	</div><!-- /navbar -->
 	<div data-role="header">
 		<h1>Checkout</h1>
@@ -173,16 +191,15 @@
 <!-- ********************************************************************  -->
 <div data-role="page" data-theme="d" id="cpanel">
 
+
 	<div data-role="navbar" data-position="fixed">
-		<a data-icon="back" data-role="button" href="#" data-theme="c" class="ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-c">
-			<span class="ui-btn-inner ui-btn-corner-all">
-			<span class="ui-icon ui-icon-back ui-icon-shadow"></span>
-			</span>
-		</a>
 		<ul>
-			<li><a href="#" class="ui-btn-active">One</a></li>
-			<li><a href="#">Two</a></li>
+			<li><a data-icon="back" data-role="button"></a></li>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#cpanel">Account</a></li>
+			<li><a href="#cart">Cart</a></li>
 		</ul>
+		
 	</div><!-- /navbar -->
 	<div data-role="header">
 		<h1>My Account</h1>
