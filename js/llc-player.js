@@ -24,14 +24,9 @@ var llc = {
 		  	
 		  	var t=this;
 		  	
-		  	// Add to TOC			Need to sent event handler, iPad requires 2 clicks... 
-		  	if (t.inTOC=="True") $('<td class="thumb">\
-							  	     <a id="thumb_'+t.id+'" href="#" onclick="javascript:$(\'#jquery_jplayer_1\').jPlayer(\'pauseOthers\').jPlayer(\'play\','+(t.startPoint/1000)+');">\
-							  		   <img src="'+(t.poster || t.file.text)+'" />\
-							  	     </a>\
-							  	   </td>').appendTo("#toc table tr");
+		  	// Add thumbnail to TOC			
+		  	if (t.inTOC=="True") llc.addToTOC((t.poster || t.file.text),t.id,t.startPoint);
 		  	
-
 			if (t.fileType == "jpg"){ 		
 			  		  		
 		  		/* ##########################################
@@ -47,7 +42,7 @@ var llc = {
 		  		});	llc.pres.imgsCount++;
 		  	
 		  			  
-		  	} else if (t.fileType != "jpg") { 
+		  	} else if (t.fileType != "jpg") { // Need standard video flag in xml?
 		  		
 		  		/* ##########################################
 		  		  ################# VIDEO SLIDE
@@ -140,11 +135,20 @@ var llc = {
 		});
 		
 	},
-	addToTOC: function(el) { /* Add to Table of contents (needs to work for slide and bookmark) */
+	addToTOC: function(img,id,startPoint) { /* Add to Table of contents (needs to work for slide and bookmark) */
 		console.log('addToTOC');
 		// Add Slide thumb to TOC markup
 		// if Bookmark
 			// Set Bookmark CSS Class to Markup
+			
+		/* ##########################################
+		  ################# Add thumbnail to TOC
+		 ########################################## */
+		$('<td class="thumb" id="thumb_'+id+'">\
+			<a href="#" onclick="javascript:$(\'#master_jplayer\').jPlayer(\'pauseOthers\').jPlayer(\'play\','+((startPoint/1000)+.3)+');">\
+			  <img src="'+img+'" />\
+			</a>\
+		</td>').appendTo("#toc table tr");
 	},
 	timeUpdate: function(event) { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
 		console.log('timeUpdate');
@@ -190,15 +194,14 @@ var llc = {
 				$("#jp_container_1").slideDown(0);
 			}
 			
-			// Move TOC cur
+			// update TOC and scroll to current thumb
 			$("#toc td.thumb a.active").removeClass('active');
-			$("#thumb_"+curEl.id).addClass('active');
+			$("#thumb_"+curEl.id+" a").addClass('active');			
+			var pos = document.getElementById("thumb_"+curEl.id).offsetLeft;
+				pos += ($("#toc td.thumb").eq(0).width()/2) - ($("#toc").width()/2);
+			$("#toc").animate({scrollLeft: pos}, 300);
+			
 		}
-	},
-	updateTOC: function() { /* Move to current TOC item  */
-		console.log('updateTOC');
-		// Highlight
-		// Scroll/Move to
 	},
 	updateTranscript: function() { /* Move to current Transcript blurb */
 		console.log('updateTranscript');
