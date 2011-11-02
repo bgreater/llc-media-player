@@ -40,7 +40,8 @@
       <!-- start Added video item -->
       <item id="777777" inTOC="True">
         <title><![CDATA[Big Buck Bunny Trailer]]></title>
-        <file id="787878"><![CDATA[http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v]]></file>
+        <file id="787878" type="m4v"><![CDATA[http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v]]></file>
+        <file id="797979" type="webmv"><![CDATA[http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm]]></file>
         <fileType>video</fileType>
         <poster><![CDATA[http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png]]></poster>
         <window id="2"><![CDATA[RightWindow]]></window>
