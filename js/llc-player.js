@@ -16,13 +16,11 @@ return a};typeof a=="string"&&(a=f.text2xml(a));if(a.nodeType){if(a.nodeType==3|
 var llc = {
 	setupSlides: function(slides) { /* Create slides --> set video or audio slides --> set markup & link */
 		console.log('setSlides');
-		// Add Slide to slideshow markup
-		// If Video
-			// Set Video Markup
-			// Initialize Video jPlayer Instance
 		
-		// Setup Slides
-		$(slides).each(function(i){
+		/* ##########################################
+		  ################# Create Slides
+		 ########################################## */
+		$(slides).each(function(i){ 
 		  	
 		  	var t=this;
 		  	
@@ -33,19 +31,28 @@ var llc = {
 							  	     </a>\
 							  	   </td>').appendTo("#toc table tr");
 		  	
-		  	// Add to Slides
-		  	if (t.fileType == "jpg"){ // jpg slide
+
+			if (t.fileType == "jpg"){ 		
+			  		  		
+		  		/* ##########################################
+		  		  ################# JPG SLIDE
+		  		 ########################################## */
 		  		
-		  		// Add image to Slides and loader
+		  		// Append Slide
 		  		$('<a id="'+t.id+'" class="slide" href="'+t.link+'"><img src="'+t.file.text+'" /></a>').appendTo("#slides");
+		  		
+		  		// Set Slide Load Interation
 		  		$("#"+t.id+" img").load(function(){
 		  			llc.pres.imgsLoaded++;
-		  		});
-		  		llc.pres.imgsCount++;
+		  		});	llc.pres.imgsCount++;
+		  	
 		  			  
-		  	} else if (t.fileType != "jpg") { // video slide
+		  	} else if (t.fileType != "jpg") { 
 		  		
-		  		// Add video markup to Slides
+		  		/* ##########################################
+		  		  ################# VIDEO SLIDE
+		  		 ########################################## */
+		  		
 		  		$('<div id="'+t.id+'" class="jp-video slide">\
 		  			<div class="jp-type-single">\
 		  				<div id="jquery_jplayer_'+t.id+'" class="jp-jplayer"></div>\
@@ -92,30 +99,38 @@ var llc = {
 		  			</div>\
 		  		</div>').appendTo("#slides");
 		  		
-				// Initialize jPlayer video instance
+				/* ##########################################
+				  ################# Initialize video instance
+				 ########################################## */
+				
+				// Video File Types
+				var videoTypes = { files: { poster:t.poster } }
+				for (i in t.file) { 
+					videoTypes.supplied = videoTypes.supplied ? videoTypes.supplied+','+t.file[i].type : t.file[i].type ;
+					videoTypes.files[t.file[i].type] = t.file[i].text;
+					console.log(t.file[i]);
+				}
+				console.log(videoTypes); 
+				
+				// Load Video Jplayer
 				$("#jquery_jplayer_"+t.id).jPlayer({  
 					ready: function () {
-						$(this).jPlayer("setMedia", { // !!!Need to make video formats variable!!!
-							m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
-							ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
-							webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm", 
-							poster: t.poster
-						});
+						$(this).jPlayer("setMedia", videoTypes.files);
 					},
 					play: function() { // To avoid both jPlayers playing together
 						$(this).jPlayer("pauseOthers");
 					},
 					ended: function() { // Trigger master player to start again
 					    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
-					    $("#jp_container_1").slideDown(300, function(){
-					    	$("#jquery_jplayer_1").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
+					    $("#master_jp_container").slideDown(300, function(){
+					    	$("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
 					    });   
 					},
 					swfPath: "js",
-					supplied: "webmv, ogv, m4v", // Here too 
+					supplied: videoTypes.supplied, 
 					cssSelectorAncestor: "#"+t.id,
 					loop: false,
-					size: {
+					size: {							// Need variable size~!
 						width: "640px",
 						height: "360px",
 						cssClass: "jp-video-360p"
@@ -138,6 +153,11 @@ var llc = {
 		// updateTranscript()
 		// ?switchView()?
 		// Slide to show, initially first item
+		
+		/* ##########################################
+		  ################# Time Update Functions
+		 ########################################## */
+		
 		var timeNow = event.jPlayer.status.currentTime,
 			curEl = llc.pres.curEl || llc.pres.media.items.item[0];
 			llc.pres.curEl = llc.pres.curEl || null;
@@ -235,13 +255,20 @@ var llc = {
 				*/
 				
 			/* Set int functions here */
-			if (llc.pres.legacy) {
+			
+			if (llc.pres.legacy) { // LEGACY
 				
-				// load legacy
+				/* ##########################################
+				  ################# load legacy player
+				 ########################################## */
 				
-			} else {
+			} else { 
+			
+				/* ##########################################
+				  ################# Load HTML5 Media
+				 ########################################## */	
 				
-				// images loaded vars
+				// slide loading progress vars
 				llc.pres.imgsLoaded=0;
 				llc.pres.imgsCount=0;
 				
@@ -257,7 +284,6 @@ var llc = {
 						$("#loading").remove();
 					}
 				}
-				
 				window.loader = window.setInterval(loading, 100);
 				window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 30000); // loader fail safe 30 sec
 				
