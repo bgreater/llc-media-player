@@ -8,207 +8,494 @@
 
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+<script src="http://clients.asketic.lv/asketicSwipe/jquery.asketicswipe-min.js"></script>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    
+$(document).ready(function() {
+initPromoSlideShow();
 
-	
-  });
+});
+  
+function initPromoSlideShow(){
+  if($('#promo_slideshow').length > 0){
+				g_imagesContainer = $('#promo_slideshow').asketicSwipe({
+                        cycle           : true,          //Cycle the gallery
+                        scale           : 1,              //To streach out low-res images on mobile web (for example same size x2 smaller images)
+                        tolerance       : 0.25,           //% of width for next image
+                        time            : 300,            //Transition time
+                        touchSensitivity: 10,            //Vertical sensitivity,
+                        fitContainer    : true,          //scale images to fit container
+                        fitContainerMargin: 0,          //px margin if images fitted to container
+                        fitContainerUpscale: false       //if upscaled when fitContainer is true
+				});
+                  $('#next').click(function(){
+                        g_imagesContainer.asketicSwipe.next();    
+                    });
+                
+                $('#prev').click(function(){
+                        g_imagesContainer.asketicSwipe.prev();    
+                    });
+  }
+}  
 </script>
+<style type="text/css">
+
+/*****************************************************/
+.page{
+text-align:center;
+}
+.navbar{
+
+}
+.header{
+
+}
+.content{
+text-align:center;
+}
+.footer{
+width:100%;
+height:135px;
+}
+ul{
+list-style-type:none;
+}
+.spacer-25px{
+clear:both;
+height:25px;
+}
+.spacer-10px{
+clear:both;
+height:10px;
+}
+/*****************************************************/
+.home_buttons_table{
+margin-left:auto;
+margin-right:auto;
+}
+.promoImages{
+width:355px;
+height:215px;
+}
+#search_input_home{
+width:100%;
+}
+.llc-submit-btn{
+}
+/*****************************************************/
+#slideshow_table{
+margin-left:auto;
+margin-right:auto;
+}
+#promo_slideshow{
+width:355px;
+height:215px;
+overflow:hidden;
+background-color: transparent;
+margin-left:auto;
+margin-right:auto;
+}            
+#promo_slideshow.disabled #asketic-swipe-handler{
+opacity: 0.5;
+background-color: #333;
+}
+/*****************************************************/
+div#list_subnav{
+width:490px;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+}
+img.list_thumb{
+width:80px;
+height:60px;
+margin:13px 0 0 8px;
+}
+div.list_info{
+font-size:.7em;
+}
+div.list_title{
+font-size:.9em;
+}
+/*****************************************************/
+div#account_subnav{
+width:610px;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+}
+/*****************************************************/
+div#item_subnav{
+width:480px;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+}
+</style>
 </head>
 
 <body>
 <!-- START HOME PAGE  -->
-<div data-role="page" data-theme="d" id="home">
+<div class="page" data-role="page" data-theme="d" id="home">
 
-	<div data-role="navbar" data-position="fixed">
+	<div id="" class="navbar" data-role="navbar" data-position="fixed">
 		<ul>
-			<li><a data-icon="back" data-role="button"></a></li>
-			<li><a href="#home">Home</a></li>
-			<li><a href="#cpanel">Account</a></li>
-			<li><a href="#cart">Cart</a></li>
+			<li><a data-icon="back" data-back="true" data-rel="back" data-role="button"><span class="ui-btn-text">Back</span></a></li>
+			<li><a data-icon="home" data-role="button"class="ui-btn-active" href="#home"><span class="ui-btn-text">Home</span></a></li>
+			<li><a data-icon="gear" data-role="button" href="#cpanel"><span class="ui-btn-text">Account</span></a></li>
+			<li><a data-icon="star" data-role="button" href="#cart"><span class="ui-btn-text">My Cart</span></a></li>
+			<li><a data-icon="search" data-role="button" href="#list_view?view=search"><span class="ui-btn-text">Search</span></a></li>
 		</ul>
 		
 	</div><!-- /navbar -->
-	<div data-role="header">
+	<div id="" class="header" data-role="header">
 		<h1>Home Page</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">	
-		
-		<table><tr><td>
-		<div aria-hidden="true" class="ui-btn-inner ui-li ui-corner-top">
-		<div class="ui-btn-text">
-		<a href="#list_view?view=featured" class="ui-link-inherit">Featured</a>
-		</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div>
-		</td><td>
-		<div aria-hidden="true" class="ui-btn-inner ui-li ui-corner-top">
-		<div class="ui-btn-text">
-		<a href="#cpanel?view=library" class="ui-link-inherit">My Library</a>
-		</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div>
-		</td></tr>
-		<tr><td>
-		<div aria-hidden="true" class="ui-btn-inner ui-li ui-corner-top">
-		<div class="ui-btn-text">
-		<a href="#list_view?view=conferences" class="ui-link-inherit">Conferences</a>
-		</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div>
-		</td><td>
-		<div aria-hidden="true" class="ui-btn-inner ui-li ui-corner-top">
-		<div class="ui-btn-text">
-		<a href="#list_view?view=channels" class="ui-link-inherit">Channels</a>
-		</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div>
-		</td></tr>
-		</table>
+	<div id="" class="content" data-role="content" role="main">	
+	
+	<table id="slideshow_table"><tr><td><input id="prev" type="button" value="Previous" /></td><td>
+	<div id="promo_slideshow">
+	<ul>
+	<li><img src="http://9.media.tumblr.com/tumblr_kv4399hWWz1qzdr4go1_500.jpg" width="355" height="215" class="" /></li>
+	<li><img src="http://www.desicomments.com/dc1/04/100391/1003911.jpg" width="355" height="215" class="" /></li>
+	<li><img src="http://flippies.com/adflipoff/wp-content/plugins/RSSPoster_PRO/cache/69b15_Awesomeness.img_assist_custom.jpg" width="355" height="215" class="" /></li>
+	</ul>
+	</div>
+	</td><td><input id="next" type="button" value="Next" /></td></tr></table>
+<div class="ui-grid-a">
+   <div class="ui-block-a">
+		<a data-role="button" href="#list_view?view=featured" class="ui-link-inherit">Featured</a>
+	</div>
+   <div class="ui-block-b"><a data-role="button" href="#cpanel?view=library" class="ui-link-inherit">My Library</a></div>
+</div>
+<div class="ui-grid-a">
+   <div class="ui-block-a"><a data-role="button" href="#list_view?view=conferences" class="ui-link-inherit">Conferences</a></div>
+   <div class="ui-block-b"><a data-role="button" href="#list_view?view=channels" class="ui-link-inherit">Channels</a></div>
+</div>
+
+<div class="spacer-25px"></div>
+
+<form class="ui-corner-all" method="get" action="search.aspx">
+					<table style="width:50%; margin-left:auto;margin-right:auto;">
+					<td style="width:95px;"></td>
+					<td style="text-align:center;border:0;">
+					<input type="true" data-type="search" value="" id="search" name="" class="ui-input-text">
+					</td>
+					<td style="width:5px;"></td>
+					<td style="text-align:left;border:0;">
+					<input type="submit" id="" value="Search" />
+					</td></tr>
+					</table>
+</form>
+
+<div class="spacer-10px"></div>
 			
 	</div><!-- /content -->
 
-	<div data-role="footer-ad" data-position="fixed">
+	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
 	</div><!-- /footer -->
 </div><!-- /page -->
 <!-- ********************************************************************  -->
 <!-- START LIST RESULTS PAGE -->
 <!-- ********************************************************************  -->
-<div data-role="page" data-theme="d" id="list_view">
+<div class="page" data-role="page" data-theme="d" id="list_view">
 
 
-	<div data-role="navbar" data-position="fixed">
+	<div id="" class="navbar" data-role="navbar" data-position="fixed">
 		<ul>
-			<li><a data-icon="back" data-role="button"></a></li>
-			<li><a href="#home">Home</a></li>
-			<li><a href="#cpanel">Account</a></li>
-			<li><a href="#cart">Cart</a></li>
+			<li><a data-icon="back" data-back="true" data-rel="back" data-role="button"><span class="ui-btn-text">Back</span></a></li>
+			<li><a data-icon="home" data-role="button" href="#home"><span class="ui-btn-text">Home</span></a></li>
+			<li><a data-icon="gear" data-role="button" href="#cpanel"><span class="ui-btn-text">Account</span></a></li>
+			<li><a data-icon="star" data-role="button" href="#cart"><span class="ui-btn-text">My Cart</span></a></li>
+			<li><a data-icon="search" data-role="button" class="ui-btn-active" href="#list_view?view=search"><span class="ui-btn-text">Search</span></a></li>
 		</ul>
 		
 	</div><!-- /navbar -->
-	<div data-role="header">
+	<div id="" class="header" data-role="header">
 		<h1>List Results</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">		
+	<div id="" class="content" data-role="content" role="main">
+
+	<div data-role="fieldcontain" id="list_subnav">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			         	<input type="radio" name="list-view" id="list_all" value="on" checked="checked" />
+			         	<label for="list_all">All</label>
+			         	<input type="radio" name="list-view" id="list_sale" value="off" />
+			         	<label for="list_sale">For Sale</label>
+			         	<input type="radio" name="list-view" id="list_rated" value="off" />
+			         	<label for="list_rated">Top Rated</label>
+			         	<input type="radio" name="list-view" id="list_viewed" value="off" />
+			         	<label for="list_viewed">Most Viewed</label>
+			    </fieldset>
+			</div>
+
+<div class="spacer-25px"></div>
+
+<ul data-role="listview">
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">ECHO Day- Planning To Win: A Discussion of Strategic Innovation Revealed in the 2010 ECHO Awards</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">Advanced SEO: How to Get Great Links At Little to No Cost</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">B2B Lead Generation: Reaching the Executive-Level Decision Maker</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">Applying the Midas Touch to CRM</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">Advanced SEO: How to Get Great Links At Little to No Cost</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			
+			
+		</ul>
+		
+<div class="spacer-10px"></div>			
+			
 	</div><!-- /content -->
 
-	<div data-role="footer-ad" data-position="fixed">
+	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
 	</div><!-- /footer -->
 </div><!-- /page -->
 
 <!-- ********************************************************************  -->
 <!-- START MEDIA ITEM PAGE -->
 <!-- ********************************************************************  -->
-<div data-role="page" data-theme="d" id="item_view">
+<div class="page" data-role="page" data-theme="d" id="item_view">
 
 
-	<div data-role="navbar" data-position="fixed">
+	<div id="" class="navbar" data-role="navbar" data-position="fixed">
 		<ul>
-			<li><a data-icon="back" data-role="button"></a></li>
-			<li><a href="#home">Home</a></li>
-			<li><a href="#cpanel">Account</a></li>
-			<li><a href="#cart">Cart</a></li>
+			<li><a data-icon="back" data-back="true" data-rel="back" data-role="button"><span class="ui-btn-text">Back</span></a></li>
+			<li><a data-icon="home" data-role="button" href="#home"><span class="ui-btn-text">Home</span></a></li>
+			<li><a data-icon="gear" data-role="button" href="#cpanel"><span class="ui-btn-text">Account</span></a></li>
+			<li><a data-icon="star" data-role="button" href="#cart"><span class="ui-btn-text">My Cart</span></a></li>
+			<li><a data-icon="search" data-role="button" href="#list_view?view=search"><span class="ui-btn-text">Search</span></a></li>
 		</ul>
 		
 	</div><!-- /navbar -->
-	<div data-role="header">
+	<div id="" class="header" data-role="header">
 		<h1>Media Item</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">		
+	<div id="" class="content" data-role="content" role="main">
+	
+	
+	<div data-role="fieldcontain" id="item_subnav">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			         	<input type="radio" name="item-view" id="item_summary" value="on" checked="checked" />
+			         	<label for="item_summary">Summary</label>
+			         	<input type="radio" name="item-view" id="item_speaker" value="off" />
+			         	<label for="item_speaker">About Speaker</label>
+			         	<input type="radio" name="item-view" id="item_purchase" value="off" />
+			         	<label for="item_purchase">Purchase Options</label>
+			    </fieldset>
+			</div>
+
+	<div class="item_details_section"><h1>details</h1></div>
+	<div class="item_sponsor_section"><h1>sponsor</h1></div>
+	<div class="item_summary_section"><h1>summary</h1></div>
+	
+	<div class="spacer-10px"></div>			
 	</div><!-- /content -->
 
-	<div data-role="footer-ad" data-position="fixed">
+	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
 	</div><!-- /footer -->
 </div><!-- /page -->
 
 <!-- ********************************************************************  -->
 <!-- START MEDIA PLAYER PAGE -->
 <!-- ********************************************************************  -->
-<div data-role="page" data-theme="d" id="media_player">
+<div class="page" data-role="page" data-theme="d" id="media_player">
 
-	<div data-role="header">
+	<div id="" class="header" data-role="header">
 		<h1>Media Player</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">		
+	<div id="" class="content" data-role="content" role="main">
+<div class="spacer-10px"></div>	
 	</div><!-- /content -->
 
-	<div data-role="footer-ad" data-position="fixed">
+	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
 	</div><!-- /footer -->
 </div><!-- /page -->
 
 <!-- ********************************************************************  -->
 <!-- START SHOPPING CART PAGE -->
 <!-- ********************************************************************  -->
-<div data-role="page" data-theme="d" id="cart">
+<div class="page" data-role="page" data-theme="d" id="cart">
 
 
-	<div data-role="navbar" data-position="fixed">
+	<div id="" class="navbar" data-role="navbar" data-position="fixed">
 		<ul>
-			<li><a data-icon="back" data-role="button"></a></li>
-			<li><a href="#home">Home</a></li>
-			<li><a href="#cpanel">Account</a></li>
-			<li><a href="#cart">Cart</a></li>
+			<li><a data-icon="back" data-back="true" data-rel="back" data-role="button"><span class="ui-btn-text">Back</span></a></li>
+			<li><a data-icon="home" data-role="button" href="#home"><span class="ui-btn-text">Home</span></a></li>
+			<li><a data-icon="gear" data-role="button" href="#cpanel"><span class="ui-btn-text">Account</span></a></li>
+			<li><a data-icon="star" data-role="button" class="ui-btn-active" href="#cart"><span class="ui-btn-text">My Cart</span></a></li>
+			<li><a data-icon="search" data-role="button" href="#list_view?view=search"><span class="ui-btn-text">Search</span></a></li>
 		</ul>
 		
 	</div><!-- /navbar -->
-	<div data-role="header">
+	<div id="" class="header" data-role="header">
 		<h1>Shopping Cart</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">		
+	<div id="" class="content" data-role="content" role="main">
+	<h1>Your cart is currently empty...</h1>
+<div class="spacer-10px"></div>			
+	
 	</div><!-- /content -->
 
-	<div data-role="footer-ad" data-position="fixed">
+	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
 	</div><!-- /footer -->
 </div><!-- /page -->
 
 <!-- ********************************************************************  -->
 <!-- START CHECKOUT PROCESS PAGE -->
 <!-- ********************************************************************  -->
-<div data-role="page" data-theme="d" id="checkout">
+<div class="page" data-role="page" data-theme="d" id="checkout">
 
 
-	<div data-role="navbar" data-position="fixed">
+	<div id="" class="navbar" data-role="navbar" data-position="fixed">
 		<ul>
-			<li><a data-icon="back" data-role="button"></a></li>
-			<li><a href="#home">Home</a></li>
-			<li><a href="#cpanel">Account</a></li>
-			<li><a href="#cart">Cart</a></li>
+			<li><a data-icon="back" data-back="true" data-rel="back" data-role="button"><span class="ui-btn-text">Back</span></a></li>
+			<li><a data-icon="home" data-role="button" href="#home"><span class="ui-btn-text">Home</span></a></li>
+			<li><a data-icon="gear" data-role="button" href="#cpanel"><span class="ui-btn-text">Account</span></a></li>
+			<li><a data-icon="star" data-role="button" href="#cart"><span class="ui-btn-text">My Cart</span></a></li>
+			<li><a data-icon="search" data-role="button" href="#list_view?view=search"><span class="ui-btn-text">Search</span></a></li>
 		</ul>
 		
 	</div><!-- /navbar -->
-	<div data-role="header">
+	<div id="" class="header" data-role="header">
 		<h1>Checkout</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">		
+	<div id="" class="content" data-role="content" role="main">
+	
+	<div class="spacer-10px"></div>			
+	
 	</div><!-- /content -->
 
-	<div data-role="footer-ad" data-position="fixed">
+	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
 	</div><!-- /footer -->
 </div><!-- /page -->
 
 <!-- ********************************************************************  -->
 <!-- START MY ACCOUNT PAGE -->
 <!-- ********************************************************************  -->
-<div data-role="page" data-theme="d" id="cpanel">
+<div class="page" data-role="page" data-theme="d" id="cpanel">
 
 
-	<div data-role="navbar" data-position="fixed">
+	<div id="" class="navbar" data-role="navbar" data-position="fixed">
 		<ul>
-			<li><a data-icon="back" data-role="button"></a></li>
-			<li><a href="#home">Home</a></li>
-			<li><a href="#cpanel">Account</a></li>
-			<li><a href="#cart">Cart</a></li>
+			<li><a data-icon="back" data-back="true" data-rel="back" data-role="button"><span class="ui-btn-text">Back</span></a></li>
+			<li><a data-icon="home" data-role="button" href="#home"><span class="ui-btn-text">Home</span></a></li>
+			<li><a data-icon="gear" data-role="button" class="ui-btn-active" href="#cpanel"><span class="ui-btn-text">Account</span></a></li>
+			<li><a data-icon="star" data-role="button" href="#cart"><span class="ui-btn-text">My Cart</span></a></li>
+			<li><a data-icon="search" data-role="button" href="#list_view?view=search"><span class="ui-btn-text">Search</span></a></li>
 		</ul>
 		
 	</div><!-- /navbar -->
-	<div data-role="header">
+	<div id="" class="header" data-role="header">
 		<h1>My Account</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">		
+	<div id="" class="content" data-role="content" role="main">
+	
+
+	<div data-role="fieldcontain" id="account_subnav">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			         	<input type="radio" name="account-view" id="account_content" value="on" checked="checked" />
+			         	<label for="account_content">My Content</label>
+			         	<input type="radio" name="account-view" id="account_downloads" value="off" />
+			         	<label for="account_downloads">Downloads</label>
+			         	<input type="radio" name="account-view" id="account_history" value="off" />
+			         	<label for="account_history">Order History</label>
+			         	<input type="radio" name="account-view" id="account_details" value="off" />
+			         	<label for="account_details">Personal Details</label>
+			    </fieldset>
+			</div>
+
+<div class="spacer-25px"></div>
+
+<ul data-role="listview">
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">ECHO Day- Planning To Win: A Discussion of Strategic Innovation Revealed in the 2010 ECHO Awards</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">Advanced SEO: How to Get Great Links At Little to No Cost</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">B2B Lead Generation: Reaching the Executive-Level Decision Maker</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">Applying the Midas Touch to CRM</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			<li><a href="#item_view?pid=12345">
+			<img class="list_thumb" src="http://dma.sclibraries.com/images/defaults/default_slidethumbnail.png" />
+		<div class="list_title list_info">Advanced SEO: How to Get Great Links At Little to No Cost</div>
+		<div class="list_location list_info"><b>Conference:</b> <span id="">DMA09 Conference & Exhibition</span></div>
+		<div class="list_date list_info"><b>Date:</b> <span id="">Tuesday, October 20, 2009 2:00 PM - 3:00 PM</span></div>
+		<div class="list_presenter list_info"><b>Speakers:</b> <span id=""></span></div>
+		<div class="list_rating list_info"><b>Rating:</b> <span id="" style="">*****</span></div>
+			</a></li>
+			
+			
+		</ul>
+		
+<div class="spacer-10px"></div>			
+			
 	</div><!-- /content -->
 
-	<div data-role="footer-ad" data-position="fixed">
+	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
 	</div><!-- /footer -->
 </div><!-- /page -->
 
