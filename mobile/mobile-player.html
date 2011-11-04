@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 initPromoSlideShow();
-
+initSubNavs();
 });
   
 function initPromoSlideShow(){
@@ -36,11 +36,32 @@ function initPromoSlideShow(){
                         g_imagesContainer.asketicSwipe.prev();    
                     });
   }
-}  
+}
+
+function initSubNavs(){
+
+	$('.subnav_item_btn').live('click', function(){
+		var thisid = $(this).attr('id');
+		var viewSection = '#'+thisid.replace('link', 'section');
+		$('div#item_view').find('.item_section').fadeOut();
+		$('div#item_view').find(viewSection).fadeIn();
+	});
+}
 </script>
 <style type="text/css">
 
 /*****************************************************/
+h1, h2{
+padding:0;
+margin:0;
+}
+h2{
+font-size:.9em;
+}
+p{
+padding:0;
+margin:0;
+}
 .page{
 text-align:center;
 }
@@ -56,6 +77,8 @@ text-align:center;
 .footer{
 width:100%;
 height:135px;
+position:fixed;
+bottom:0;
 }
 ul{
 list-style-type:none;
@@ -67,6 +90,9 @@ height:25px;
 .spacer-10px{
 clear:both;
 height:10px;
+}
+.clear{
+clear:both;
 }
 /*****************************************************/
 .home_buttons_table{
@@ -131,6 +157,66 @@ text-align:center;
 margin-left:auto;
 margin-right:auto;
 }
+/****************************************************/
+section.item_section{}
+section#item_summary_section{}
+section#item_speaker_section{
+display:none;
+}
+section#item_purchase_section{
+display:none;
+}
+div.item_section_box{
+position:relative;
+width:100%;
+text-align:left;
+vertical-align:top;
+}
+div.section_row{
+clear:both;
+width:100%;
+padding: 10px 0 10px 0;
+height:150px;
+vertical-align:top;
+}
+div.one_third_column{
+float:left;
+width:30%;
+text-align:right;
+}
+div.one_third_column img{
+width:150px;
+height:150px;
+}
+div.two_third_column{
+float:left;
+width:69%;
+text-align:left;
+padding-left:10px;
+}
+div#item_sponsor_box{
+text-align:center;
+}
+div#item_summary_box{
+width:69%;
+margin-left:30%;
+text-align:left;
+padding-left:10px;
+}
+p#item_summary_text{}
+/****************************************************/
+.localnav {
+	margin:0 0 20px 0;
+	overflow:hidden;
+}
+.localnav li {
+	float:left;
+}
+.localnav .ui-btn-inner { 
+	padding: .6em 10px; 
+	font-size:80%; 
+}
+
 </style>
 </head>
 
@@ -193,7 +279,7 @@ margin-right:auto;
 			
 	</div><!-- /content -->
 
-	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
+	<div id="" class="footer" data-role="footer" data-position="fixed" role="">
 	</div><!-- /footer -->
 </div><!-- /page -->
 <!-- ********************************************************************  -->
@@ -308,29 +394,105 @@ margin-right:auto;
 
 	<div id="" class="content" data-role="content" role="main">
 	
-	
 	<div data-role="fieldcontain" id="item_subnav">
 			    <fieldset data-role="controlgroup" data-type="horizontal">
-			         	<input type="radio" name="item-view" id="item_summary" value="on" checked="checked" />
-			         	<label for="item_summary">Summary</label>
-			         	<input type="radio" name="item-view" id="item_speaker" value="off" />
-			         	<label for="item_speaker">About Speaker</label>
-			         	<input type="radio" name="item-view" id="item_purchase" value="off" />
-			         	<label for="item_purchase">Purchase Options</label>
+				
+			         	<a href="" class="subnav_item_btn" id="item_summary_link">
+			         	<input class="" type="radio" name="item-view" id="item_summary" value="on" checked="checked" />
+			         	<label for="item_summary">Summary</label></a>
+						
+			         	<a href="" class="subnav_item_btn" id="item_speaker_link">
+			         	<input class="" type="radio" name="item-view" id="item_speaker" value="off" />
+			         	<label for="item_speaker">About Speaker</label></a>
+						
+			         	<a href="" class="subnav_item_btn" id="item_purchase_link">
+						<input class="" type="radio" name="item-view" id="item_purchase" value="off" />
+			         	<label for="item_purchase">Purchase Options</label></a>
 			    </fieldset>
 			</div>
 
-	<div class="item_details_section"><h1>details</h1></div>
-	<div class="item_sponsor_section"><h1>sponsor</h1></div>
-	<div class="item_summary_section"><h1>summary</h1></div>
+<section id="item_summary_section" class="item_section">
+	<div class="item_section_box">
+	<div class="one_third_column"><img src="http://a4.l3-images.myspacecdn.com/images01/22/04e494e2ecbe32c5cd551ae21409a1ab/l.jpg" /></div>
+		<div class="two_third_column">
+			<h1>Case Studies in Applying the Highway Safety Manual</h1>
+			<p><b>Conference:</b> ITE 2011 Technical Conference and Exhibit</p>
+			<p><b>Date:</b> Tuesday, April 05, 2011 5:00 PM - 5:30 PM</p>
+			<p><b>Program Code:</b> 024</p>
+			<p><b>Moderator:</b> John R. Freeman</p>
+			<p><b>Speakers:</b> John McFadden, Mohamadreza Banihashemi, Kimberly K. Silverman</p>
+			<p><b>Subject Area:</b>Temp</p>
+		</div>
+	</div>
+	<div class="spacer-25px"></div>
+	<div class="item_section_box" id="item_sponsor_box"><h1>sponsor</h1></div>
+	<div class="spacer-25px"></div>
 	
+	<div class="item_section_box" id="item_summary_box">
+	<h1>Summary: </h1>
+	<p id="item_summary_text">
+	Learning Objective:<br />
+	Review applications of techniques from the Highway Safety Manual.
+	</p>
+	</div>
+	
+	
+</section>	
+
+<section id="item_speaker_section" class="item_section">
+<ul data-role="listview">
+<li>
+	<div class="section_row">
+	<div class="one_third_column"><img src="http://ite.sclivelearningcenter.com/images/defaults/default_slidethumbnail.png" /></div>
+	<div class="two_third_column">
+		<h2>Kelly Morphy</h2>
+		<p>Senior Transportation Planner, Co-Chair Tennessee Obesity Taskforce</p>
+		<p>Walkable and Livable Communities Institute</p>
+		<div class="spacer-10px"></div>
+		<h2>Biography</h2>
+		<p>No biography is available at this time</p>
+</div>
+	</div>
+</li>
+<li>
+	<div class="section_row">
+	<div class="one_third_column"><img src="http://ite.sclivelearningcenter.com/images/defaults/default_slidethumbnail.png" /></div>
+	<div class="two_third_column">
+		<h2>Leslie A. Meehan</h2>
+		<p>Associate Professor, Director, Center for Health and the Built Environment</p>
+		<p>University of Florida</p>
+		<div class="spacer-10px"></div>
+		<h2>Biography</h2>
+		<p>No biography is available at this time</p>
+</div>
+	</div>
+</li>
+<li>
+	<div class="section_row">
+	<div class="one_third_column"><img src="http://ite.sclivelearningcenter.com/images/defaults/default_slidethumbnail.png" /></div>
+	<div class="two_third_column">
+		<h2>Steven D. Hofener</h2>
+		<p>Principal</p>
+		<p>Traffic Engineering Consultants Inc.</p>
+		<div class="spacer-10px"></div>
+		<h2>Biography</h2>
+		<p>No biography is available at this time</p>
+	</div>
+	</div>
+</li>
+</ul>	
+</section>	
+
+<section id="item_purchase_section" class="item_section">
+Purchase Info
+</section>
+
 	<div class="spacer-10px"></div>			
 	</div><!-- /content -->
 
 	<div id="" class="footer" data-role="footer" data-position="fixed" role="advertisement">
 	</div><!-- /footer -->
 </div><!-- /page -->
-
 <!-- ********************************************************************  -->
 <!-- START MEDIA PLAYER PAGE -->
 <!-- ********************************************************************  -->
