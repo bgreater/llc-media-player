@@ -7,12 +7,11 @@
 <meta name="author" content="B>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/default.css" rel="Stylesheet" type="text/css">
-<link href="skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<link href="skin/llc.skin/jplayer.llc.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="player">
   <div class="playerFrame">
-  	<h1 class="title"></h1>
     <div id="slides"></div>
 	<div id="master_jplayer" class="jp-jplayer"></div>
 	<div id="master_jp_container" class="jp-audio">
@@ -55,11 +54,26 @@
 			<tr></tr>
 		</table>
 	</div>
+	<div id="info_tabs">
+		<div id="tabs">
+			<a href="#bookmarks">Bookmarks</a>
+			<a href="#notes">Notes</a></dt>
+			<a href="#transcripts" class="active">Transcripts</a>
+		</div>
+		<div id="tabs_bookmarks" class="info">bookmarks</div>
+		<div id="tabs_notes" class="info">notes</div>
+		<div id="tabs_transcripts" class="info active"></div>
+	</div>
 	<div id="loading"></div>
   </div>
 </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="js/llc-player.js"></script>
+<script type="text/javascript">
+//<![CDATA[ 
+llc.init();
+//]]>
+</script>
 </body>
 </html>

@@ -14,7 +14,7 @@ return a};typeof a=="string"&&(a=f.text2xml(a));if(a.nodeType){if(a.nodeType==3|
  * Authors: MultiView Team + B>
 */
 var llc = {
-	setupSlides: function(slides) { /* Create slides --> set video or audio slides --> set markup & link */
+	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
 		console.log('setSlides');
 		
 		/* ##########################################
@@ -29,9 +29,7 @@ var llc = {
 		  	
 			if (t.fileType == "jpg"){ 		
 			  		  		
-		  		/* ##########################################
-		  		  ################# JPG SLIDE
-		  		 ########################################## */
+		  		/* ######## JPG SLIDE #################### */
 		  		
 		  		// Append Slide
 		  		$('<a id="'+t.id+'" class="slide" href="'+t.link+'"><img src="'+t.file.text+'" /></a>').appendTo("#slides");
@@ -44,9 +42,7 @@ var llc = {
 		  			  
 		  	} else if (t.fileType != "jpg") { // Need standard video flag in xml?
 		  		
-		  		/* ##########################################
-		  		  ################# VIDEO SLIDE
-		  		 ########################################## */
+		  		/* ######## VIDEO SLIDE ################## */
 		  		
 		  		$('<div id="'+t.id+'" class="jp-video slide">\
 		  			<div class="jp-type-single">\
@@ -94,9 +90,7 @@ var llc = {
 		  			</div>\
 		  		</div>').appendTo("#slides");
 		  		
-				/* ##########################################
-				  ################# Initialize video instance
-				 ########################################## */
+				/* ####### Initialize video instance ##### */
 				
 				// Video File Types
 				var videoTypes = { files: { poster:t.poster } }
@@ -134,16 +128,35 @@ var llc = {
 		  	}
 		});
 		
+		/* ##########################################
+		  ################# Create Bookmarks
+		 ########################################## */
+		 
+		$(bookmarks).each(function(i){ 
+			var t=this;
+		});
+		
+		/* ##########################################
+		  ################# Create Blurbs
+		 ########################################## */
+		 
+		$(blurbs).each(function(i){ 
+			$('<p id="s'+this.startPoint+'">'+this.text.toString()+'</p>').appendTo("#tabs_transcripts")
+		});
+		
+		/* ##########################################
+		  ################# Create Notes
+		 ########################################## */
+		 
+		$("#tab_notes").text(notes);
 	},
 	addToTOC: function(img,id,startPoint) { /* Add to Table of contents (needs to work for slide and bookmark) */
 		console.log('addToTOC');
-		// Add Slide thumb to TOC markup
-		// if Bookmark
-			// Set Bookmark CSS Class to Markup
 			
 		/* ##########################################
 		  ################# Add thumbnail to TOC
 		 ########################################## */
+		 
 		$('<td class="thumb" id="thumb_'+id+'">\
 			<a href="#" onclick="javascript:$(\'#master_jplayer\').jPlayer(\'pauseOthers\').jPlayer(\'play\','+((startPoint/1000)+.3)+');">\
 			  <img src="'+img+'" />\
@@ -152,27 +165,30 @@ var llc = {
 	},
 	timeUpdate: function(event) { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
 		console.log('timeUpdate');
-		// update slide
-		// updateTOC()
-		// updateTranscript()
-		// ?switchView()?
-		// Slide to show, initially first item
 		
 		/* ##########################################
 		  ################# Time Update Functions
 		 ########################################## */
 		
 		var timeNow = event.jPlayer.status.currentTime,
-			curEl = llc.pres.curEl || llc.pres.media.items.item[0];
+			curEl = llc.pres.curEl || llc.pres.media.items.item[0],
+			curBlurb = llc.pres.curBlurb || llc.pres.transcript.blurb[0];
 			llc.pres.curEl = llc.pres.curEl || null;
+			llc.pres.curBlurb = llc.pres.curBlurb || null;
 		
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
 			var startPoint = llc.pres.media.items.item[i].startPoint/1000;
-			curEl = startPoint-timeNow <= 0 && Math.abs(startPoint-timeNow) >= Math.abs(startPoint-timeNow) ? llc.pres.media.items.item[i] : curEl ;
+			curEl = startPoint-timeNow <= 0 ? llc.pres.media.items.item[i] : curEl ;
 		}
 		
-		// Should we do anything?
+		// Determine Blurb closest to play head	but not before current Time
+		for (i in llc.pres.transcript.blurb) {
+			var startPoint = llc.pres.transcript.blurb[i].startPoint/1000;
+			curBlurb = startPoint-timeNow <= 0 ? llc.pres.transcript.blurb[i] : curBlurb ;
+		}
+		
+		// Should we do anything with slides?
 		if (llc.pres.curEl != curEl ) {
 			
 			// Set global curEl
@@ -187,11 +203,11 @@ var llc = {
 			// Play/Pause video slide
 			if (curEl.fileType=="video") { 
 				$("#master_jplayer").jPlayer("pause");
-				$("#jp_container_1").slideUp(300);
+				$("#master_jp_container").slideUp(300);
 				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
 			} else if (curEl.fileType=="jpg") { 
-				$("#jp_container_1 div.jp-title").text(curEl.title);
-				$("#jp_container_1").slideDown(0);
+				$("#master_jp_container div.jp-title").text(curEl.title);
+				$("#master_jp_container").slideDown(0);
 			}
 			
 			// update TOC and scroll to current thumb
@@ -202,11 +218,20 @@ var llc = {
 			$("#toc").animate({scrollLeft: pos}, 300);
 			
 		}
-	},
-	updateTranscript: function() { /* Move to current Transcript blurb */
-		console.log('updateTranscript');
-		// Highlight
-		// Scroll/Move to 
+		
+		// Should we do anything with Blurbs?
+		if (llc.pres.curBlurb != curBlurb ) {
+			
+			// Set global curBlurb
+			llc.pres.curBlurb = curBlurb;
+			
+			// update Transcript to current blurb
+			$("#tabs_transcripts p").removeClass('active').filter('#s'+curBlurb.startPoint).addClass('active');
+			var pos = document.getElementById('s'+curBlurb.startPoint).offsetTop;
+				pos -= 32;
+			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
+		}
+		
 	},
 	switchView: function(view) { /* Change view (single, dual, full) for player presentation (mobile will include [notes, transcript, slides, video]) */
 		console.log('switchView');
@@ -226,21 +251,39 @@ var llc = {
 		console.log('setNote');
 		// postback to server
 	},
-	setCookie: function(data) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
+	setCookie: function(name,value) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
 		console.log('setCookie');
-		// if local storage (HTML5)
-			// Added Playhead progress
-		// else cookie 
-			// Added Playhead progress
+		
+		/* ##########################################
+		  ################# Set a Cookie
+		 ########################################## */
+		 
+		if (('localStorage' in window) && window.localStorage !== null) {
+			localStorage[name] = value;
+		} else {
+			var date = new Date();
+			date.setTime(date.getTime()+(365*24*60*60*1000));
+			var expires = date.toGMTString();
+			var cookiestr = name+'='+value+';'+' expires='+expires+'; path=/';
+			document.cookie = cookiestr;
+		}
 	},
-	getCookie: function() { /* Get playback cookie */
+	getCookie: function(name) { /* Get playback cookie */
 		console.log('getCookie');
-		// if local storage
-			// return playhead que 
-		// else cookie
-			// return playhead que 
+		
+		/* ##########################################
+		  ################# Retrieve a Cookie
+		 ########################################## */
+		 
+		var value;
+		if (('localStorage' in window) && window.localStorage !== null) {
+			value = localStorage[name];
+		} else {
+			value = document.cookie.split(name+'=')[1];
+			value = value == undefined ? value : value.split(';')[0];				
+		} return value
 	},
-	int: (function() { /* auto serialize xml and call functions, assumes llc-player.js is called after markup */
+	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
 			console.log('xml loaded');
 			llc.pres = $.xml2json(xml); // Serialize XML and set llc.pres object
@@ -275,8 +318,8 @@ var llc = {
 				llc.pres.imgsLoaded=0;
 				llc.pres.imgsCount=0;
 				
-				// Setup slides
-				llc.setupSlides(llc.pres.media.items.item);
+				// Setup slides (slides, bookmarks, blurbs, notes)
+				llc.setupItems(llc.pres.media.items.item, llc.pres.bookmarks, llc.pres.transcript.blurb, llc.pres.viewer.notes);
 				
 				// Slide Loading Status
 				function loading() {
@@ -297,6 +340,9 @@ var llc = {
 				    	var media = new Object();
 				    		media[llc.pres.media.master.item.fileType] = llc.pres.media.master.item.file.text;
 				    	$(this).jPlayer("setMedia", media);
+				    	// Set playback if cookied
+				    	var playhead = llc.getCookie('playhead') ? llc.getCookie('playhead') : 0;
+				    	$(this).jPlayer("pause", Math.abs(playhead));
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
 				    	$(this).jPlayer("pauseOthers");
@@ -307,9 +353,26 @@ var llc = {
 				    swfPath: "js",
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
+				    loop: false,
 				    wmode: "window"
 				}); // end jPlayer intialize
+				
+				// INFO tabs nav
+				$("#info_tabs #tabs a").each(function() {
+					$(this).click(function() {
+						var ref = this.href.split('#')[1];
+						$("#info_tabs .info").removeClass('active').filter("#tabs_"+ref).addClass('active');
+						$("#info_tabs #tabs a").removeClass('active').filter(this).addClass('active');
+						return false
+					});
+				});
+				
+				// Set playback value in Cookie on quit
+				$(window).bind('beforeunload', function() {
+					llc.setCookie('playhead',$("#master_jplayer").data("jPlayer").status.currentTime);
+				});
 			}
 		}); // end ajax XML call
-	})()
+	}
 } 
+

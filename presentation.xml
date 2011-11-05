@@ -39,11 +39,11 @@
       </item>
       <!-- start Added video item -->
       <item id="777777" inTOC="True">
-        <title><![CDATA[Big Buck Bunny Trailer]]></title>
-        <file id="787878" type="m4v"><![CDATA[http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v]]></file>
-        <file id="797979" type="webmv"><![CDATA[http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm]]></file>
+        <title><![CDATA[First American Equipment Finance]]></title>
+        <file id="787878" type="m4v"><![CDATA[Video-Samples/Video Sample (300-30fps).m4v]]></file>
+        <file id="797979" type="webmv"><![CDATA[Video-Samples/Video Sample (300-30fps).webm]]></file>
         <fileType>video</fileType>
-        <poster><![CDATA[http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png]]></poster>
+        <poster><![CDATA[Video-Samples/poster.jpg]]></poster>
         <window id="2"><![CDATA[RightWindow]]></window>
         <startPoint>60000</startPoint>
         <link type="-1"><![CDATA[]]></link>

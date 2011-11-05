@@ -15,3 +15,10 @@ h1.title{margin:0;padding:.6em .3em;text-align:center;font-size:22px;color:#fff;
 #toc .thumb a{display:block;padding:5px;line-height:1;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;}
 #toc .thumb a.active,#toc .thumb a:hover{background:#abcddd;}
 #toc .thumb img{width:100px;}
+#info_tabs{background:#eee;}
+#info_tabs #tabs{overflow:hidden;}
+#info_tabs #tabs a{float:left;padding:.5em 1em;background:#ccc;}
+#info_tabs #tabs a.active{background:#fff;}
+#info_tabs .info{height:150px;padding:1em;overflow:auto;display:none;background:#fff;position:relative;}
+#info_tabs .info.active{display:block;}
+#info_tabs #tabs_transcripts p.active{background:#eee;}
