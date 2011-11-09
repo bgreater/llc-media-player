@@ -239,8 +239,11 @@ var llc = {
 	},
 	addBookmark: function(item) { /* Set bookmark in TOC and postback to server */
 		console.log('addBookmark');
-		// AddToTOC()
-		// updateTOC()
+		// AddToTOC() for mobile
+		// updateTOC() for mobile
+		// get cur slide thumbnail
+		// get playhead time
+		// Set bookmark title based on other bookmarks?
 	},
 	setRating: function(num) { /* Set bookmark in TOC and postback to server */
 		console.log('setRating');
