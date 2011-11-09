@@ -8,15 +8,15 @@
   <allowNavigation>True</allowNavigation>
   <duration>5373400</duration>
   <forwardLink type="-1"><![CDATA[]]></forwardLink>
-  <viewer id="10197">
-    <firstName><![CDATA[Guest]]></firstName>
-    <middleName><![CDATA[]]></middleName>
-    <lastName><![CDATA[Account]]></lastName>
-    <title><![CDATA[]]></title>
-    <organization><![CDATA[]]></organization>
-    <email><![CDATA[]]></email>
-    <userName><![CDATA[GuestAccount]]></userName>
-    <notes><![CDATA[]]></notes>
+  <viewer id="1">
+    <firstName><![CDATA[Alexander]]></firstName>
+    <middleName><![CDATA[Micheal]]></middleName>
+    <lastName><![CDATA[Edwards]]></lastName>
+    <title><![CDATA[Senior Developer]]></title>
+    <organization><![CDATA[Content Management Corp.]]></organization>
+    <email><![CDATA[alexandere@cmcgc.com]]></email>
+    <userName><![CDATA[alexandere@cmcgc.com]]></userName>
+    <notes><![CDATA[This is a sample note]]></notes>
   </viewer>
   <media>
     <master>
@@ -1865,5 +1865,10 @@ Moderator:  Okay.  Thank you all very much.  We're going to wrap it up and go to
     </speaker>
   </speakers>
   <agreements />
-  <bookmarks />
+  <bookmarks>
+    <bookmark id="57">
+      <title><![CDATA[Bookmark #1]]></title>
+      <startPoint>293773</startPoint>
+    </bookmark>
+  </bookmarks>
 </presentation>

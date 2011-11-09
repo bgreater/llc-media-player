@@ -2,16 +2,6 @@
  * Skin for jPlayer Plugin (jQuery JavaScript Library)
  * http://www.happyworm.com/jquery/jplayer
  *
- * Skin Name: Blue Monday
- *
- * Copyright (c) 2010-2011 Happyworm Ltd
- * Dual licensed under the MIT and GPL licenses.
- *  - http://www.opensource.org/licenses/mit-license.php
- *  - http://www.gnu.org/copyleft/gpl.html
- *
- * Author: Silvia Benvenuti
- * Skin Version: 4.0 (jPlayer 2.1.0)
- * Date: 1st September 2011
  */
 
 div.jp-audio,
@@ -190,6 +180,17 @@ a.jp-next {
 }
 a.jp-next:hover {
 	background: url("jplayer.llc.png") -29px -141px no-repeat;
+}
+
+/* ADDED BOOKMARK STYLE */
+div.jp-interface ul.jp-controls a.llc-bookmark {
+	position: absolute; top: 10px; right: 25px; text-indent: 0; color: #666; font-size: .64em; text-decoration: none; line-height: 1.6; 
+}
+div.jp-interface ul.jp-controls a.llc-bookmark span {
+	display: inline-block; padding: 0 .3em; background: #444; margin-right: .3em; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; -moz-background-clip:padding; -webkit-background-clip: padding-box; background-clip: padding-box; color: #222; font-weight: bold; text-shadow: 0px 1px 0px #666;
+}
+div.jp-interface ul.jp-controls a.llc-bookmark:hover span {
+	background: #555;
 }
 
 /* @end */
