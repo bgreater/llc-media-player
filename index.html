@@ -58,16 +58,21 @@
 	<div id="info_tabs">
 		<div id="tabs">
 			<a href="#bookmarks">Bookmarks</a>
-			<a href="#notes">Notes</a></dt>
+			<a href="#notes">Notes</a>
 			<a href="#transcripts" class="active">Transcripts</a>
+			<div id="ratings_box" class="ratingsBox"><div class="cover"></div><div class="progress" style="width:25%;"></div></div>
+			
 		</div>
 		<div id="tabs_bookmarks" class="info">bookmarks</div>
-		<div id="tabs_notes" class="info">notes</div>
+		<div id="tabs_notes" class="info"><TEXTAREA id="note_pad" name="notePad" class="notesInput"></TEXTAREA><br /><a href="javascript:;" id="save_note_btn">SAVE</a></div>
 		<div id="tabs_transcripts" class="info active"></div>
 	</div>
 	<div id="loading"></div>
   </div>
 </div>
+<input type="hidden" name="sessionID" id="session_id" value="8080" />
+<input type="hidden" name="userID" id="user_id" value="007" />
+<input type="hidden" name="siteID" id="site_id" value="69" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="js/llc-player.js"></script>

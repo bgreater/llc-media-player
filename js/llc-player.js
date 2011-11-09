@@ -237,13 +237,29 @@ var llc = {
 		console.log('switchView');
 		// Use Switch case for differnt views for desktop and mobile
 	},
-	addBookmark: function(item) { /* Set bookmark in TOC and postback to server */
-		console.log('addBookmark');
-		// AddToTOC() for mobile
-		// updateTOC() for mobile
-		// get cur slide thumbnail
-		// get playhead time
-		// Set bookmark title based on other bookmarks?
+	saveBookmark: function(item) { /* Set bookmark in TOC and postback to server */
+		console.log('saveBookmark');
+		$('a.llc-bookmark').click(function(){
+		var title = llc.pres.curEl.title, 
+		netSessionID = $('input#session_id').val(), 
+		timePoint = $("#master_jplayer").data("jPlayer").status.currentTime, 
+		userID = $('input#user_id').val(), 
+		siteID = $('input#site_id').val(), 
+		presentationID = llc.pres.id, 
+		slideID = llc.pres.curEl.id;
+		var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+		/* start ajax */
+		$.ajax({
+  		url: 'ajax/addBookmark.php',
+		data: params,
+  		success: function(data) {
+		alert(data);
+		var slideCellElm = 'td#thumb_'+slideID;
+		$(slideCellElm).find('a').find('img').addClass('bookmarkedSlide');
+		}
+		});	
+		/* end ajax */
+		});
 	},
 	setRating: function(num) { /* Set bookmark in TOC and postback to server */
 		console.log('setRating');
@@ -251,7 +267,26 @@ var llc = {
 		// postback to server
 	},
 	saveNote: function() { /* Set Note and postback to server ?does the note correspond to the playhead and if so do we treat it like a bookmark? */
-		console.log('setNote');
+		console.log('setNote'); /* Set bookmark in TOC and postback to server */
+		$('a#save_note_btn').click(function(){
+		var note = $('textarea#note_pad').val(), 
+		netSessionID = $('input#session_id').val(), 
+		userID = $('input#user_id').val(), 
+		siteID = $('input#site_id').val(), 
+		presentationID = llc.pres.id;
+		var params = 'note='+note+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+		/* start ajax */
+		$.ajax({
+  		url: 'ajax/saveNotes.php',
+		data: params,
+  		success: function(data) {
+		alert(data);
+		}
+		});	
+		/* end ajax */
+		});
+		
+		
 		// postback to server
 	},
 	setCookie: function(name,value) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
@@ -376,6 +411,31 @@ var llc = {
 				});
 			}
 		}); // end ajax XML call
+/************************************* ATTACH CLICK HANDLERS */
+
+		llc.saveBookmark();
+		llc.saveNote();
 	}
 } 
 
+/* MISC FUNCTIONS - MOVE OUT OR DELETE LATER ************/
+
+ /******************* PRINT_R IS NEAT ***********/
+function print_r(theObj){
+  if(theObj.constructor == Array ||
+     theObj.constructor == Object){
+    document.write("<ul>")
+    for(var p in theObj){
+      if(theObj[p].constructor == Array||
+         theObj[p].constructor == Object){
+document.write("<li>["+p+"] => "+typeof(theObj)+"</li>");
+        document.write("<ul>")
+        print_r(theObj[p]);
+        document.write("</ul>")
+      } else {
+document.write("<li>["+p+"] => "+theObj[p]+"</li>");
+      }
+    }
+    document.write("</ul>")
+  }
+}
