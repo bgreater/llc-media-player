@@ -261,13 +261,44 @@ var llc = {
 		/* end ajax */
 		});
 	},
-	setRating: function(num) { /* Set bookmark in TOC and postback to server */
-		console.log('setRating');
-		// Update Markup
-		// postback to server
+	saveRating: function(num) { /* Set bookmark in TOC and postback to server */
+		console.log('saveRating');
+		/* ##########################################
+		  ################# Post rating to server, locks stars, notify user
+		 ########################################## */
+		 var hasRated = llc.getCookie('rated');
+		 if(!hasRated){
+		$('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
+			var newRating = data.rating, 
+			netSessionID = $('input#session_id').val(), 
+			userID = $('input#user_id').val(), 
+			siteID = $('input#site_id').val(), 
+			presentationID = llc.pres.id;
+			var params = 'rating='+newRating+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;		
+			$.ajax({
+			url: 'ajax/addRating.php',
+			data: params,
+			success: function(data) {
+			var confirmMessage = data + ' - rating this presentation: ' + newRating;
+			alert(confirmMessage);
+			llc.setCookie('rated', newRating);
+			}
+			});	
+			
+			});
+		 }else{
+		$('#ratings_box').ratings(5, hasRated);
+		$('div.jquery-ratings-star').unbind('click');
+		$('div.jquery-ratings-star').unbind('mouseenter');
+		$('div.jquery-ratings-star').unbind('mouseleave');
+		 
+		 }
 	},
-	saveNote: function() { /* Set Note and postback to server ?does the note correspond to the playhead and if so do we treat it like a bookmark? */
-		console.log('setNote'); /* Set bookmark in TOC and postback to server */
+	saveNote: function() { 
+		console.log('setNote'); 
+		/* ##########################################
+		  ################# Retrieve note - post it to server
+		 ########################################## */
 		$('a#save_note_btn').click(function(){
 		var note = $('textarea#note_pad').val(), 
 		netSessionID = $('input#session_id').val(), 
@@ -415,6 +446,7 @@ var llc = {
 
 		llc.saveBookmark();
 		llc.saveNote();
+		llc.saveRating();
 	}
 } 
 
