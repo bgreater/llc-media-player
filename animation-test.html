@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Animation Sandbox</title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.cssAnimate.min.js"></script>
+</head>
+
+<body>
+
+<div class="slide"><img src="http://www.prosperityparadigm.com/wp-content/uploads/2011/05/Public-Speaking.jpg" style="width:230px;" /></div>
+<button id="start_test">start</button>
+<script>
+$('button#start_test').click(function(){
+	$("div.slide").find('img').cssAnimate({ width:'640px' }, 2000);
+});
+
+</script>
+
+</body>
