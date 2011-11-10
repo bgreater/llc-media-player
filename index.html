@@ -6,15 +6,16 @@
 <meta name="description" content="Media Player">
 <meta name="author" content="B>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
 <link href="css/default.css" rel="Stylesheet" type="text/css">
 <link href="skin/llc.skin/jplayer.llc.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="player">
   <div class="playerFrame">
-    <div id="slides"></div>
-	<div id="master_jplayer" class="jp-jplayer"></div>
-	<div id="master_jp_container" class="jp-audio">
+    <div style="" id="slides"></div>
+	<div style="" id="master_jplayer" class="jp-jplayer"></div>
+	<div style="" id="master_jp_container" class="jp-audio">
 		<div class="jp-type-single">
 			<div class="jp-gui jp-interface">
 				<ul class="jp-controls">
@@ -51,22 +52,28 @@
 			</div>
 		</div>
 	</div>
+	<div id="info_tabs">
+		<div id="tabs">
+			<a href="#overview" class="firstTab">OVERVIEW</a>
+			<a href="#notes">NOTES</a>
+			<a href="#bookmarks">BOOKMARKS</a>
+			<a href="#transcripts" class="lastTab">TRANSCRIPT</a>
+			
+		</div>
+		<div id="tabs_overview" class="info">
+		
 	<div id="toc">
 		<table border="0" cellpadding="5" cellspacing="0">
 			<tr></tr>
 		</table>
 	</div>
-	<div id="info_tabs">
-		<div id="tabs">
-			<a href="#bookmarks">Bookmarks</a>
-			<a href="#notes">Notes</a>
-			<a href="#transcripts" class="active">Transcripts</a>
-			
+		
 		</div>
 		<div id="tabs_bookmarks" class="info">bookmarks</div>
 		<div id="tabs_notes" class="info"><TEXTAREA id="note_pad" name="notePad" class="notesInput"></TEXTAREA><br /><a href="javascript:;" id="save_note_btn">SAVE</a></div>
 		<div id="tabs_transcripts" class="info active"></div>
 	</div>
+	
 	<div id="loading"></div>
   </div>
 </div>

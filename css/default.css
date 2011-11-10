@@ -10,18 +10,53 @@ h1.title{margin:0;padding:.6em .3em;text-align:center;font-size:22px;color:#fff;
 #slides .slide{position:absolute;overflow:hidden;left:0;top:0;}
 #slides .slide.jp-video{display:block;width:0px;}
 #jp_container_1 .jp-title{padding:.3em 0;}
+
+/***************************************************/
+
 #toc{overflow:auto;background:#EEE;}
 #toc .thumb{padding:5px;}
-#toc .thumb a{display:block;padding:5px;line-height:1;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;}
-#toc .thumb a.active,#toc .thumb a:hover{background:#abcddd;}
+#toc .thumb a{}
+#toc .thumb a.active,#toc .thumb a:hover{background:#fce700;}
 #toc .thumb img{width:100px;}
-#info_tabs{background:#eee;}
-#info_tabs #tabs{overflow:hidden;}
-#info_tabs #tabs a{float:left;padding:.5em 1em;background:#ccc;}
-#info_tabs #tabs a.active{background:#fff;}
-#info_tabs .info{height:150px;padding:1em;overflow:auto;display:none;background:#fff;position:relative;}
+
+/***************************************************/
+#tabs_overview{
+
+}
+#info_tabs{background:#e55d2e;}
+#info_tabs #tabs{overflow:hidden;width:640px;}
+#info_tabs #tabs a{
+float:left;width:158px; 
+text-align:center; 
+vertical-align:middle; 
+background-image:url(../img/grayGradTabBG-sprite.jpg); 
+background-repeat:repeat-x;
+background-position:0 0;
+font-family:'Open Sans', sans-serif; 
+font-weight:600;
+font-size:11pt;
+text-decoration:none;
+color:#ffffff; 
+height:30px;
+padding-top:8px;
+border-right:1px solid #6c6d70;
+border-left:1px solid #656668;
+}
+#info_tabs #tabs a:hover{
+background-position:0 -38px;
+color:#f5f2f2; 
+}
+#info_tabs #tabs a.lastTab{
+border-right:none;width:159px; 
+}
+#info_tabs #tabs a.firstTab{
+border-left:none;width:159px; 
+}
+#info_tabs #tabs a.active{background:#f15a29;}
+#info_tabs .info{padding:1em;overflow:auto;display:none;background:#fff;position:relative;height:520px;}
 #info_tabs .info.active{display:block;}
 #info_tabs #tabs_transcripts p.active{background:#eee;}
+
 /**************************************************************/
 img.bookmarkedSlide{border:2px solid yellow;}
 textarea.notesInput{width:100%; height:100px;}
