@@ -455,6 +455,8 @@ var llc = {
 		
 		llc.saveBookmark();
 		
+		// And here
+		
 	}
 } 
 
