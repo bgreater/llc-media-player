@@ -443,10 +443,15 @@ var llc = {
 			}
 		}); // end ajax XML call
 /************************************* ATTACH CLICK HANDLERS */
-
-		llc.saveBookmark();
-		llc.saveNote();
+		
+		// BEN WAS HERE
+		
 		llc.saveRating();
+		
+		llc.saveNote();
+		
+		llc.saveBookmark();
+		
 	}
 } 
 
