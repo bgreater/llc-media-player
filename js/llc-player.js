@@ -422,6 +422,7 @@ var llc = {
 				    timeupdate: function (event) { // Set/Show Current time/Slide function
 				    	llc.timeUpdate(event);   	
 				    },
+				    verticalVolume: true,
 				    swfPath: "js",
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
@@ -447,15 +448,10 @@ var llc = {
 		}); // end ajax XML call
 /************************************* ATTACH CLICK HANDLERS */
 		
-		// BEN WAS HERE
-		
 		llc.saveRating();
-		
 		llc.saveNote();
-		
 		llc.saveBookmark();
 		
-		// And here
 		
 	}
 } 
@@ -463,6 +459,8 @@ var llc = {
 /* MISC FUNCTIONS - MOVE OUT OR DELETE LATER ************/
 
  /******************* PRINT_R IS NEAT ***********/
+ // You can access the js object in your browser console so you don't really need this ...
+ // Isn't this a PHP function name ? ;) 
 function print_r(theObj){
   if(theObj.constructor == Array ||
      theObj.constructor == Object){
