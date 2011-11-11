@@ -18,17 +18,16 @@ return a};typeof a=="string"&&(a=f.text2xml(a));if(a.nodeType){if(a.nodeType==3|
 */
 var llc = {
 	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
-		console.log('setSlides');
+		//console.log('setSlides');
 		
 		/* ##########################################
 		  ################# Create Slides
 		 ########################################## */
 		$(slides).each(function(i){ 
-		  	
 		  	var t=this;
 		  	
 		  	// Add thumbnail to TOC			
-		  	if (t.inTOC=="True") llc.addToTOC((t.poster || t.file.text),t.id,t.startPoint);
+		  	if (t.inTOC=="True") llc.addToTOC((t.poster || t.file.text),t.id,t.startPoint, t.title);
 		  	
 			if (t.fileType == "jpg"){ 		
 			  		  		
@@ -100,9 +99,9 @@ var llc = {
 				for (i in t.file) { 
 					videoTypes.supplied = videoTypes.supplied ? videoTypes.supplied+','+t.file[i].type : t.file[i].type ;
 					videoTypes.files[t.file[i].type] = t.file[i].text;
-					console.log(t.file[i]);
+					//console.log(t.file[i]);
 				}
-				console.log(videoTypes); 
+				//console.log(videoTypes); 
 				
 				// Load Video Jplayer
 				$("#jquery_jplayer_"+t.id).jPlayer({  
@@ -153,21 +152,62 @@ var llc = {
 		 
 		$("#tab_notes").text(notes);
 	},
-	addToTOC: function(img,id,startPoint) { /* Add to Table of contents (needs to work for slide and bookmark) */
-		console.log('addToTOC');
+	addToTOC: function(img,id,startPoint, title) { /* Add to Table of contents (needs to work for slide and bookmark) */
+		//console.log('addToTOC');
 			
 		/* ##########################################
 		  ################# Add thumbnail to TOC
 		 ########################################## */
 		 
-		$('<td class="thumb" id="thumb_'+id+'">\
+		var friendlyStartTime = milliConvert(startPoint);
+		var title = truncate(title, 38);
+		$('<div class="toc_thumb" id="toc_thumb_'+id+'">\
 			<a href="#" onclick="javascript:$(\'#master_jplayer\').jPlayer(\'pauseOthers\').jPlayer(\'play\','+((startPoint/1000)+.3)+');">\
-			  <img src="'+img+'" />\
+			  <img class="toc_thumb_img" src="'+img+'" />\
 			</a>\
-		</td>').appendTo("#toc table tr");
+			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
+			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
+			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark" title="'+title+'" rel="'+((startPoint/1000)+.3)+'">\
+			<img src="img/toc_add_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
+		</div>').appendTo("#toc");
+	},
+	setupSlideMagnify: function() {
+
+		//console.log('setupSlideMagnify'); 
+		/* ##########################################
+		  ################# adds zoom feature to toc slides
+		 ########################################## */
+		$('div.toc_magnify_img').live('click', function(e){
+		var zoomcheck = $(this).hasClass('zoom_selected');
+
+		if($('div.zoom_box').length > 0){
+		$('div.zoom_box').remove();
+			$('div.toc_magnify_img').each(function(){
+			$(this).removeClass('zoom_selected');
+			});
+		}
+		if(!zoomcheck){
+		var xpos = e.pageX - 244;
+		var ypos = e.pageY - 420;
+		//alert(ympos);
+		var imgSrc = $(this).parents('div.toc_thumb').find('img.toc_thumb_img').attr('src');
+		var zoomTag = '<div style="left:'+xpos+'px; top:'+ypos+'px;" class="zoom_box"><div class="zoom_box_control"><div class="close_button"></div></div><img src="'+imgSrc+'" class="zoom_img" /></div>';
+		$(this).parents('body').prepend(zoomTag);
+		$(this).addClass('zoom_selected');
+		}
+		});
+		
+		$('div.close_button').live('click', function(e){
+			$('div.zoom_box').remove();
+			$('div.toc_magnify_img').each(function(){
+			$(this).removeClass('zoom_selected');
+			});
+		});
+		
+		
 	},
 	timeUpdate: function(event) { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
-		console.log('timeUpdate');
+		//console.log('timeUpdate');
 		
 		/* ##########################################
 		  ################# Time Update Functions
@@ -214,12 +254,12 @@ var llc = {
 			}
 			
 			// update TOC and scroll to current thumb
-			$("#toc td.thumb a.active").removeClass('active');
-			$("#thumb_"+curEl.id+" a").addClass('active');			
-			var pos = document.getElementById("thumb_"+curEl.id).offsetLeft;
-				pos += ($("#toc td.thumb").eq(0).width()/2) - ($("#toc").width()/2);
-			$("#toc").animate({scrollLeft: pos}, 300);
-			
+
+			$("div.toc_thumb").each(function(){
+			$(this).removeClass('active_toc_thumb');
+			});
+			$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
+
 		}
 		
 		// Should we do anything with Blurbs?
@@ -237,35 +277,39 @@ var llc = {
 		
 	},
 	switchView: function(view) { /* Change view (single, dual, full) for player presentation (mobile will include [notes, transcript, slides, video]) */
-		console.log('switchView');
+		//console.log('switchView');
 		// Use Switch case for differnt views for desktop and mobile
 	},
 	saveBookmark: function(item) { /* Set bookmark in TOC and postback to server */
-		console.log('saveBookmark');
-		$('a.llc-bookmark').click(function(){
-		var title = llc.pres.curEl.title, 
-		netSessionID = $('input#session_id').val(), 
-		timePoint = $("#master_jplayer").data("jPlayer").status.currentTime, 
-		userID = $('input#user_id').val(), 
-		siteID = $('input#site_id').val(), 
+		//console.log('saveBookmark');
+		$('a.llc-bookmark, a.toc-bookmark').live('click', function(){
+		var classcheck = $(this).attr('class');
+		var timePoint = (classcheck=='llc-bookmark') ? $("#master_jplayer").data("jPlayer").status.currentTime : $(this).attr('rel');
+		var title = (classcheck=='llc-bookmark') ? llc.pres.curEl.title : $(this).attr('title');
+		var slideID = (classcheck=='llc-bookmark') ? llc.pres.curEl.id : $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);;
+		var netSessionID = $('input#session_id').val(), 
 		presentationID = llc.pres.id, 
-		slideID = llc.pres.curEl.id;
+		userID = $('input#user_id').val(), 
+		siteID = $('input#site_id').val();
 		var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 		/* start ajax */
 		$.ajax({
   		url: 'ajax/addBookmark.php',
 		data: params,
   		success: function(data) {
-		alert(data);
-		var slideCellElm = 'td#thumb_'+slideID;
-		$(slideCellElm).find('a').find('img').addClass('bookmarkedSlide');
+		//alert(data);
+		var slideCellElm = 'div#toc_thumb_'+slideID;
+		$(slideCellElm).prepend('<div class="bookmarkedSlide"></div>');
+		var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+		$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
+		$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
 		}
 		});	
 		/* end ajax */
 		});
 	},
 	saveRating: function(num) { /* Set bookmark in TOC and postback to server */
-		console.log('saveRating');
+		//console.log('saveRating');
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
@@ -298,7 +342,7 @@ var llc = {
 		 }
 	},
 	saveNote: function() { 
-		console.log('setNote'); 
+		//console.log('setNote'); 
 		/* ##########################################
 		  ################# Retrieve note - post it to server
 		 ########################################## */
@@ -321,10 +365,10 @@ var llc = {
 		});
 		
 		
-		// postback to server
+		// postback to server 
 	},
 	setCookie: function(name,value) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
-		console.log('setCookie');
+		//console.log('setCookie');
 		
 		/* ##########################################
 		  ################# Set a Cookie
@@ -341,7 +385,7 @@ var llc = {
 		}
 	},
 	getCookie: function(name) { /* Get playback cookie */
-		console.log('getCookie');
+		//console.log('getCookie');
 		
 		/* ##########################################
 		  ################# Retrieve a Cookie
@@ -357,9 +401,9 @@ var llc = {
 	},
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
-			console.log('xml loaded');
+			//console.log('xml loaded');
 			llc.pres = $.xml2json(xml); // Serialize XML and set llc.pres object
-			console.log(llc.pres);
+			//console.log(llc.pres);
 				/*
 				  CURRENT IMPORTANT VARIABLES:
 				  pres.media.master.item.fileType = "mp3, ?video?" // this will determine if video or audio sync 
@@ -403,7 +447,7 @@ var llc = {
 					}
 				}
 				window.loader = window.setInterval(loading, 100);
-				window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 30000); // loader fail safe 30 sec
+				window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 0); // loader fail safe 30 sec
 				
 				// Initialize Master jPlayer
 				$("#master_jplayer").jPlayer({
@@ -451,7 +495,7 @@ var llc = {
 		llc.saveRating();
 		llc.saveNote();
 		llc.saveBookmark();
-		
+		llc.setupSlideMagnify();
 		
 	}
 } 
@@ -478,4 +522,30 @@ document.write("<li>["+p+"] => "+theObj[p]+"</li>");
     }
     document.write("</ul>")
   }
+}
+
+function milliConvert(millis) {
+  var seconds = millis / 1000;
+  var m = Math.floor(seconds/60);
+  var s = Math.round(seconds - (m * 60));
+
+  // Add leading zeros to one-digit numbers.
+  if (m < 10) {
+    m = "0" + m;
+  }
+  if (s < 10) {
+    s = "0" + s;
+  }
+  return m + ":" + s;
+}
+function truncate(text, length, ellipsis) {
+if (typeof length == 'undefined') var length = 100;
+if (typeof ellipsis == 'undefined') var ellipsis = '...';
+if (text.length < length) return text;
+
+	for (var i = length-1; text.charAt(i) != ' '; i--) {
+	length--;
+	}
+	
+return text.substr(0, length) + ellipsis;
 }

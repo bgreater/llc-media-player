@@ -7,8 +7,8 @@
 <meta name="author" content="B>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
-<link href="css/default.css" rel="Stylesheet" type="text/css">
 <link href="css/llc.skin/jplayer.llc.css" rel="stylesheet" type="text/css" />
+<link href="css/default.css" rel="Stylesheet" type="text/css">
 </head>
 <body>
 <div class="player">
@@ -56,24 +56,21 @@
 	</div>
 	<div id="info_tabs">
 		<div id="tabs">
-			<a href="#overview" class="firstTab">OVERVIEW</a>
-			<a href="#notes">NOTES</a>
-			<a href="#bookmarks">BOOKMARKS</a>
-			<a href="#transcripts" class="lastTab">TRANSCRIPT</a>
+			<a href="#overview" class="firstTab" style="background-image:url(img/overview_3btn.png)"></a>
+			<a href="#notes" style="background-image:url(img/notes_3btn.png)"></a>
+			<a href="#bookmarks" style="background-image:url(img/bookmarks_3btn.png)"></a>
+			<a href="#transcripts" class="lastTab" style="background-image:url(img/transcript_3btn.png)"></a>
 			
 		</div>
+		<div id="content_area">
 		<div id="tabs_overview" class="info">
-		
-	<div id="toc">
-		<table border="0" cellpadding="5" cellspacing="0">
-			<tr></tr>
-		</table>
-	</div>
-		
+			<div id="toc">
+			</div>
 		</div>
 		<div id="tabs_bookmarks" class="info">bookmarks</div>
 		<div id="tabs_notes" class="info"><TEXTAREA id="note_pad" name="notePad" class="notesInput"></TEXTAREA><br /><a href="javascript:;" id="save_note_btn">SAVE</a></div>
 		<div id="tabs_transcripts" class="info active"></div>
+		</div>
 	</div>
 	
 	<div id="loading"></div>
@@ -83,6 +80,7 @@
 <input type="hidden" name="userID" id="user_id" value="007" />
 <input type="hidden" name="siteID" id="site_id" value="69" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://multiview.com/scripts/jquery.hoverIntent.minified.js"></script>
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="js/jquery.ratings.js"></script>
 <script type="text/javascript" src="js/llc-player.js"></script>
