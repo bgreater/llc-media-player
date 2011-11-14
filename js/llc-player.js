@@ -488,6 +488,32 @@ var llc = {
 				$(window).bind('beforeunload', function() {
 					llc.setCookie('playhead',$("#master_jplayer").data("jPlayer").status.currentTime);
 				});
+				
+				// Unbind curent time and duration click events so play bar can function
+				$("#master_jp_container .jp-current-time, #master_jp_container .jp-duration").unbind('click');
+				
+				// Assign next click handlers
+				$("#master_jp_container .llc-next").click(function() {
+					$("#toc a.active").parent().next().find("a").click();
+				});
+				
+				// Assign prev click handlers
+				$("#master_jp_container .llc-prev").click(function() {
+					$("#toc a.active").parent().prev().find("a").click();
+				});
+				
+				// Assign volume show/hide click handlers
+				$("#master_jp_container div.jp-volume").toggle(function() {
+					console.log('clicked')
+					$(this).addClass("active");
+				}, function() {
+					$(this).removeClass("active");
+				}).hover(function() {
+					$(this).click();
+				}, function() {
+					$(this).click();
+				});
+				
 			}
 		}); // end ajax XML call
 /************************************* ATTACH CLICK HANDLERS */
