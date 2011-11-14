@@ -224,6 +224,7 @@ var llc = {
 				$('div.toc_thumb').live({
 				mouseenter:function(){
 				if(!$(this).hasClass('active_toc_thumb')){
+					$(this).find('.playIcon').css('opacity', '.4');
 					$(this).find('.playIcon').fadeIn();
 				}
 
@@ -239,7 +240,6 @@ var llc = {
 		/* ##########################################
 		  ################# Add thumbnail to document
 		 ########################################## */
-		 
 		var friendlyStartTime = milliConvert(startPoint);
 		var title = truncate(title, 40);
 		var title = htmlEntities(title);
@@ -252,12 +252,12 @@ var llc = {
 		}
 		
 		$('<div class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
-			<a href="#" onclick="slideJump('+((startPoint/1000)+.3)+')">\
+			<a href="" onclick="slideJump('+((startPoint/1000)+.3)+')">\
 			  <img class="toc_thumb_img" src="'+img+'" />\
 			</a>\
 			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
 			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
-			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+((startPoint/1000)+.3)+'">\
+			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
 			<img src="img/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
 		</div>').appendTo(pageid);
 	},
@@ -695,6 +695,7 @@ return text.substr(0, length) + ellipsis;
 }
 function slideJump(startPoint){
 $('#master_jplayer').jPlayer('pauseOthers').jPlayer('play',startPoint);
+return false;
 
 }
 Array.prototype.findIndex = function(value){

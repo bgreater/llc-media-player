@@ -21,7 +21,7 @@ h1.title{margin:0;padding:.6em .3em;text-align:center;font-size:22px;color:#fff;
 	
 
 .player{background-color:#3d3b3c;text-align:center;width:650px;margin:50px auto 25px auto;text-align:left;}
-.playerFrame{background-color:#3d3b3c;width:640px;padding:5px;border:1px solid #3d3b3c;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-box-shadow:0 1px 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 1px 5px rgba(0, 0, 0, 0.5);box-shadow:0 1px 5px rgba(0, 0, 0, 0.5);position:relative;overflow:hidden;}
+.playerFrame{background-color:#3d3b3c;width:640px;padding:5px;border:1px solid #3d3b3c;position:relative;overflow:hidden;}
 #loading{position:absolute;top:5px;left:5px;bottom:5px;right:5px;color:#999;background:#ffffff url(../img/ajax-loader.gif) center 130px no-repeat;padding:100px 0;text-align:center;}
 #slides{height:480px;width:638px;position:relative;overflow:hidden;border:1px solid #abcddd;border-top:1px solid #0e4660;}
 #slides .slide{position:absolute;overflow:hidden;left:0;top:0;}
@@ -47,7 +47,7 @@ font-size:1.1em;
 .toc_thumb a{}
 .toc_thumb table td{vertical-align:top;}
 .toc_thumb img.toc_thumb_img{width:118px;margin-left:auto;margin-right:auto; border:1px solid #676565;}
-.toc_thumb img.toc_thumb_img:hover{border:1px solid #d5d6d6;}
+.toc_thumb img.toc_thumb_img:hover{border:1px solid #6d6c6c;}
 .toc_thumb div.toc_magnify_img{float:right;top:0; cursor:pointer; background-image:url(../img/magnify_icon.png); background-position:0 0; background-repeat:no-repeat; height:21px; width:21px;}
 .toc_thumb div.toc_magnify_img:hover{background-position:0 -21px;}
 .toc_thumb_info{font-size:8pt; color:#58595b; font-family:Arial; position:relative; text-align:left;}
@@ -193,8 +193,8 @@ text-align:right;
 font-family:Arial;
 font-size:10pt;
 vertical-align:top;
+color:#c5c6c6;
 
-color:#ffffff;
 text-align:left;
 cursor:pointer;
 width:244px;
@@ -203,12 +203,12 @@ float:right;
 margin-right:40px;
 margin-top:10px;
   background-repeat: no-repeat;
-  background-position:220px -13px;
+  background-position:220px 0px;
   background-image: url('../img/toggle_features_arrow_down.png');
 }
 #tabs_control_toggle_btn:hover{
-background-position:220px 0px;
-color:#c5c6c6;
+background-position:220px -13px;
+color:#ffffff;
 }
 .show_features{
 }
@@ -274,7 +274,7 @@ padding:7px 6px 5px 6px;
 }
 .playIcon{
   background-color:transparent;
-  background-image: url('../img/play_basic_blue.png');
+  background-image: url('../img/play_basic_blue.gif');
   background-repeat: no-repeat;
   background-position:center center;
   width:120px;
@@ -285,6 +285,7 @@ padding:7px 6px 5px 6px;
   z-index:11;
   cursor:pointer;
   opacity:.4;
+
 }
 /*******************************/
 .jquery-ratings-star {
