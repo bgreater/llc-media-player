@@ -183,10 +183,11 @@ var llc = {
 							$('div#tabs_overview').toggleClass('active');
 							$('div#tabs_overview').animate({ opacity: 1 }, 1000);
 							}
-							
+							$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
 						
 				}else{
 				   $('#tabs').find('a.active').toggleClass('active');
+					$('#tabs_control_toggle_btn').html('SHOW PRESENTATION FEATURES');
 				}
 	
 			}
@@ -208,6 +209,7 @@ var llc = {
 				if(curdisplay=='none'){
 				$("#content_area").slideToggle();
 				$('#tabs_control_toggle_btn').toggleClass('hide_features');
+				$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
 				}else{
 				}
 				
