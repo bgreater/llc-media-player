@@ -280,7 +280,7 @@ div.jp-video a.jp-mute,
 div.jp-video a.jp-unmute {
 	left: 50px;
 }
-
+
 div.jp-video a.jp-volume-max {
 	left: 134px;
 }
@@ -298,7 +298,7 @@ a.jp-unmute {
 a.jp-unmute:hover {
 	background: url("jplayer.llc.png") -79px -170px no-repeat;
 }
-a.jp-volume-max {
+a.jp-volume-max {
 	background: url("jplayer.llc.png") 0 -186px no-repeat;
 }
 a.jp-volume-max:hover {

@@ -56,21 +56,25 @@
 	</div>
 	<div id="info_tabs">
 		<div id="tabs">
-			<a href="#overview" class="firstTab" style="background-image:url(img/overview_3btn.png)"></a>
-			<a href="#notes" style="background-image:url(img/notes_3btn.png)"></a>
-			<a href="#bookmarks" style="background-image:url(img/bookmarks_3btn.png)"></a>
-			<a href="#transcripts" class="lastTab" style="background-image:url(img/transcript_3btn.png)"></a>
+			<a href="#overview" rel="tabs_overview" class="firstTab" style="background-image:url(img/overview_3btn.png)"></a>
+			<a href="#notes" rel="tabs_notes" class="" style="background-image:url(img/notes_3btn.png)"></a>
+			<a href="#bookmarks" rel="tabs_bookmarks" style="background-image:url(img/bookmarks_3btn.png)"></a>
+			<a href="#transcripts" rel="tabs_transcripts" class="lastTab" style="background-image:url(img/transcript_3btn.png)"></a>
 			
 		</div>
 		<div id="content_area">
-		<div id="tabs_overview" class="info">
-			<div id="toc">
+			<div id="tabs_overview" class="info"><div id="toc"></div></div>
+			<div id="tabs_bookmarks" class="info"><div id="noBookmarks"><p>Your bookmarks folder is currently empty.</p></div></div>
+			<div id="tabs_notes" class="info" style="border:1px solid #777777">
+				<TEXTAREA id="note_pad" name="notePad" class="notesInput"></TEXTAREA>
+				<div class="notesSubmitBox">
+				<table style="width:100%"><tr><td><p class="">Keep track of the presentation's key points here.</p></td>
+				<td><button class="llc-button-s" id="save_note_btn">SAVE</button></td></tr></table>
+				</div>
 			</div>
+			<div id="tabs_transcripts" class="info"></div>
 		</div>
-		<div id="tabs_bookmarks" class="info">bookmarks</div>
-		<div id="tabs_notes" class="info"><TEXTAREA id="note_pad" name="notePad" class="notesInput"></TEXTAREA><br /><a href="javascript:;" id="save_note_btn">SAVE</a></div>
-		<div id="tabs_transcripts" class="info active"></div>
-		</div>
+		<div id="tabs_control"><div class="show_features" id="tabs_control_toggle_btn"></div></div>
 	</div>
 	
 	<div id="loading"></div>
@@ -80,7 +84,6 @@
 <input type="hidden" name="userID" id="user_id" value="007" />
 <input type="hidden" name="siteID" id="site_id" value="69" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://multiview.com/scripts/jquery.hoverIntent.minified.js"></script>
 <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="js/jquery.ratings.js"></script>
 <script type="text/javascript" src="js/llc-player.js"></script>

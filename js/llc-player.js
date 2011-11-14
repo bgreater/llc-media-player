@@ -1,7 +1,4 @@
 /*
-
-NICK WAS HERE
-
  ### jQuery XML to JSON Plugin v1.0 - 2008-07-01 ###
  * minified with google closure compiler 
  * Website: http://www.fyneworks.com/jquery/xml-to-json/
@@ -15,6 +12,18 @@ return a};typeof a=="string"&&(a=f.text2xml(a));if(a.nodeType){if(a.nodeType==3|
  ### LLC Player v1.0
  * Dependancies: jQuery v1.6.4?, xml2json v1.0(included), jPlayer v2.1.0
  * Authors: MultiView Team + B>
+Functions:
+setupItems
+createThumbPanel
+setupSlideMagnify
+timeUpdate
+switchView
+saveBookmark
+saveRating
+saveNote
+setCookie
+getCookie
+init
 */
 var llc = {
 	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
@@ -23,11 +32,12 @@ var llc = {
 		/* ##########################################
 		  ################# Create Slides
 		 ########################################## */
+		 
 		$(slides).each(function(i){ 
 		  	var t=this;
 		  	
 		  	// Add thumbnail to TOC			
-		  	if (t.inTOC=="True") llc.addToTOC((t.poster || t.file.text),t.id,t.startPoint, t.title);
+		  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.file.text),t.id,t.startPoint, t.title, '#toc');
 		  	
 			if (t.fileType == "jpg"){ 		
 			  		  		
@@ -136,13 +146,14 @@ var llc = {
 		 
 		$(bookmarks).each(function(i){ 
 			var t=this;
+			//print_r(t);
 		});
 		
 		/* ##########################################
 		  ################# Create Blurbs
 		 ########################################## */
 		 
-		$(blurbs).each(function(i){ 
+		$(blurbs).each(function(i){
 			$('<p id="s'+this.startPoint+'">'+this.text.toString()+'</p>').appendTo("#tabs_transcripts")
 		});
 		
@@ -151,25 +162,102 @@ var llc = {
 		 ########################################## */
 		 
 		$("#tab_notes").text(notes);
+		
+		/* ##########################################
+		  ################# Setup overview toggle display
+		 ########################################## */
+		 
+		$('#tabs_control_toggle_btn').click(function(){
+			if($('div#content_area').is(':animated')){}else{
+				$("#content_area").slideToggle();
+				$(this).toggleClass('hide_features');
+				var classChk = $(this).hasClass('hide_features');
+				if(classChk){
+					var active = $('#content_area div.active');
+							var lastScreen = $(active).attr('id');
+							var navsel = 'a[rel="'+lastScreen+'"]';
+							$(navsel).toggleClass('active');
+							
+							if(!lastScreen){
+							$('a.firstTab').toggleClass('active');
+							$('div#tabs_overview').toggleClass('active');
+							$('div#tabs_overview').animate({ opacity: 1 }, 1000);
+							}
+							
+						
+				}else{
+				   $('#tabs').find('a.active').toggleClass('active');
+				}
+	
+			}
+		
+		return false;
+		});
+		
+		/* ##########################################
+		  ################# Setup INFO tabs nav
+		 ########################################## */
+				$("#info_tabs #tabs a").each(function() {
+					$(this).click(function() {
+						var ref = this.href.split('#')[1];
+						$("#info_tabs .info").removeClass('active').filter("#tabs_"+ref).addClass('active');
+						$("#info_tabs #tabs a").removeClass('active').filter(this).addClass('active');
+						$("#info_tabs .info").css('opacity', '.3')
+						$("#tabs_"+ref).animate({ opacity: 1 }, 1000);
+				var curdisplay = $("#content_area").css('display');
+				if(curdisplay=='none'){
+				$("#content_area").slideToggle();
+				$('#tabs_control_toggle_btn').toggleClass('hide_features');
+				}else{
+				}
+				
+						return false
+					});
+				});
+		
+		/* ##########################################
+		  ################# Add nifty play hover
+		 ########################################## */
+				
+				$('div.toc_thumb').live({
+				mouseenter:function(){
+				if(!$(this).hasClass('active_toc_thumb')){
+					$(this).find('.playIcon').fadeIn();
+				}
+
+				},
+				mouseleave:function(){
+					$(this).find('.playIcon').fadeOut();
+				}
+				});
 	},
-	addToTOC: function(img,id,startPoint, title) { /* Add to Table of contents (needs to work for slide and bookmark) */
-		//console.log('addToTOC');
+	createThumbPanel: function(img,id,startPoint, title, pageid) {
+		//console.log('createThumbPanel');
 			
 		/* ##########################################
-		  ################# Add thumbnail to TOC
+		  ################# Add thumbnail to document
 		 ########################################## */
 		 
 		var friendlyStartTime = milliConvert(startPoint);
-		var title = truncate(title, 38);
-		$('<div class="toc_thumb" id="toc_thumb_'+id+'">\
-			<a href="#" onclick="javascript:$(\'#master_jplayer\').jPlayer(\'pauseOthers\').jPlayer(\'play\','+((startPoint/1000)+.3)+');">\
+		var title = truncate(title, 40);
+		var title = htmlEntities(title);
+		var prefix = pageid.substr(1, pageid.length);
+		var bmaction = (prefix=='tabs_bookmarks') ? 'remove' : 'add';
+		var bmset = (prefix=='tabs_bookmarks') ? ' bookmark-set' : '';
+		if(prefix=='tabs_bookmarks'){
+		var numBMs = ($('#tabs_bookmarks .toc_thumb').length)+1;
+		$('div#noBookmarks p').html(numBMs + ' bookmarks saved');
+		}
+		
+		$('<div class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
+			<a href="#" onclick="slideJump('+((startPoint/1000)+.3)+')">\
 			  <img class="toc_thumb_img" src="'+img+'" />\
 			</a>\
 			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
 			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
-			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark" title="'+title+'" rel="'+((startPoint/1000)+.3)+'">\
-			<img src="img/toc_add_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
-		</div>').appendTo("#toc");
+			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+((startPoint/1000)+.3)+'">\
+			<img src="img/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
+		</div>').appendTo(pageid);
 	},
 	setupSlideMagnify: function() {
 
@@ -192,7 +280,10 @@ var llc = {
 		//alert(ympos);
 		var imgSrc = $(this).parents('div.toc_thumb').find('img.toc_thumb_img').attr('src');
 		var zoomTag = '<div style="left:'+xpos+'px; top:'+ypos+'px;" class="zoom_box"><div class="zoom_box_control"><div class="close_button"></div></div><img src="'+imgSrc+'" class="zoom_img" /></div>';
+		var zoomTitle = '<div class="zoom_box_title"></div>';
 		$(this).parents('body').prepend(zoomTag);
+		$('div.zoom_box_control').prepend('');
+		$
 		$(this).addClass('zoom_selected');
 		}
 		});
@@ -259,7 +350,11 @@ var llc = {
 			$(this).removeClass('active_toc_thumb');
 			});
 			$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
-
+			var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
+			if(pos > 800){
+			pos -= 120;
+			$("#tabs_overview").animate({scrollTop: pos}, 900);
+			}
 		}
 		
 		// Should we do anything with Blurbs?
@@ -271,7 +366,7 @@ var llc = {
 			// update Transcript to current blurb
 			$("#tabs_transcripts p").removeClass('active').filter('#s'+curBlurb.startPoint).addClass('active');
 			var pos = document.getElementById('s'+curBlurb.startPoint).offsetTop;
-				pos -= 32;
+				pos -= 140;
 			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
 		}
 		
@@ -282,27 +377,58 @@ var llc = {
 	},
 	saveBookmark: function(item) { /* Set bookmark in TOC and postback to server */
 		//console.log('saveBookmark');
+		
 		$('a.llc-bookmark, a.toc-bookmark').live('click', function(){
 		var classcheck = $(this).attr('class');
 		var timePoint = (classcheck=='llc-bookmark') ? $("#master_jplayer").data("jPlayer").status.currentTime : $(this).attr('rel');
 		var title = (classcheck=='llc-bookmark') ? llc.pres.curEl.title : $(this).attr('title');
 		var slideID = (classcheck=='llc-bookmark') ? llc.pres.curEl.id : $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);;
+
 		var netSessionID = $('input#session_id').val(), 
 		presentationID = llc.pres.id, 
 		userID = $('input#user_id').val(), 
 		siteID = $('input#site_id').val();
 		var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
-		/* start ajax */
-		$.ajax({
-  		url: 'ajax/addBookmark.php',
-		data: params,
-  		success: function(data) {
-		//alert(data);
+		
+if($(this).hasClass('bookmark-set')){
+		//remove bookmark
 		var slideCellElm = 'div#toc_thumb_'+slideID;
-		$(slideCellElm).prepend('<div class="bookmarkedSlide"></div>');
+		var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+		$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
+			$(slideCellElm).find('div.bmThumbFlag').remove();
+		});
+		
+		var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+		$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
+		$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
+		$('div#tabs_bookmarks_thumb_'+slideID).remove();
+		
+		var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
+		if(numBMs==0){
+		$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+		}else{
+		$('div#noBookmarks p').html(numBMs + ' bookmarks saved');
+		}
+		
+		var script_url = 'ajax/deleteBookmark.php';
+}else{
+		//add new bookmark
+		var slideCellElm = 'div#toc_thumb_'+slideID;
+		var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+		$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
 		var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
 		$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
 		$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
+		llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
+		
+		var script_url = 'ajax/addBookmark.php';
+}
+		/* start ajax */
+		$.ajax({
+  		url: script_url,
+		data: params,
+  		success: function(data) {
+		//alert(data);
 		}
 		});	
 		/* end ajax */
@@ -346,7 +472,7 @@ var llc = {
 		/* ##########################################
 		  ################# Retrieve note - post it to server
 		 ########################################## */
-		$('a#save_note_btn').click(function(){
+		$('button#save_note_btn').click(function(){
 		var note = $('textarea#note_pad').val(), 
 		netSessionID = $('input#session_id').val(), 
 		userID = $('input#user_id').val(), 
@@ -448,7 +574,7 @@ var llc = {
 				}
 				window.loader = window.setInterval(loading, 100);
 				window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 0); // loader fail safe 30 sec
-				
+
 				// Initialize Master jPlayer
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
@@ -473,17 +599,7 @@ var llc = {
 				    loop: false,
 				    wmode: "window"
 				}); // end jPlayer intialize
-				
-				// INFO tabs nav
-				$("#info_tabs #tabs a").each(function() {
-					$(this).click(function() {
-						var ref = this.href.split('#')[1];
-						$("#info_tabs .info").removeClass('active').filter("#tabs_"+ref).addClass('active');
-						$("#info_tabs #tabs a").removeClass('active').filter(this).addClass('active');
-						return false
-					});
-				});
-				
+
 				// Set playback value in Cookie on quit
 				$(window).bind('beforeunload', function() {
 					llc.setCookie('playhead',$("#master_jplayer").data("jPlayer").status.currentTime);
@@ -549,3 +665,39 @@ if (text.length < length) return text;
 	
 return text.substr(0, length) + ellipsis;
 }
+function slideJump(startPoint){
+$('#master_jplayer').jPlayer('pauseOthers').jPlayer('play',startPoint);
+
+}
+Array.prototype.findIndex = function(value){
+var ctr = "";
+for (var i=0; i < this.length; i++) {
+// use === to check for Matches. ie., identical (===), ;
+if (this[i] == value) {
+return i;
+}
+}
+return ctr;
+};
+function htmlEntities(str) {
+
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&quot;');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
