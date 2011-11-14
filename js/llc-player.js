@@ -342,20 +342,19 @@ var llc = {
 				$("#master_jp_container").slideUp(300);
 				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
 			} else if (curEl.fileType=="jpg") { 
-				$("#master_jp_container div.jp-title").text(curEl.title);
 				$("#master_jp_container").slideDown(0);
 			}
 			
-			// update TOC and scroll to current thumb
-
+			// update TOC, Title and scroll to current thumb
+			$("#master_jp_container div.jp-title").text("Now Playing... Slide "+(llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length+": "+curEl.title);
 			$("div.toc_thumb").each(function(){
-			$(this).removeClass('active_toc_thumb');
+				$(this).removeClass('active_toc_thumb');
 			});
 			$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
 			var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
 			if(pos > 800){
-			pos -= 120;
-			$("#tabs_overview").animate({scrollTop: pos}, 900);
+				pos -= 120;
+				$("#tabs_overview").animate({scrollTop: pos}, 900);
 			}
 		}
 		
@@ -384,7 +383,7 @@ var llc = {
 		var classcheck = $(this).attr('class');
 		var timePoint = (classcheck=='llc-bookmark') ? $("#master_jplayer").data("jPlayer").status.currentTime : $(this).attr('rel');
 		var title = (classcheck=='llc-bookmark') ? llc.pres.curEl.title : $(this).attr('title');
-		var slideID = (classcheck=='llc-bookmark') ? llc.pres.curEl.id : $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);;
+		var slideID = (classcheck=='llc-bookmark') ? llc.pres.curEl.id : $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
 
 		var netSessionID = $('input#session_id').val(), 
 		presentationID = llc.pres.id, 
@@ -392,39 +391,39 @@ var llc = {
 		siteID = $('input#site_id').val();
 		var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 		
-if($(this).hasClass('bookmark-set')){
-		//remove bookmark
-		var slideCellElm = 'div#toc_thumb_'+slideID;
-		var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-		$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
-			$(slideCellElm).find('div.bmThumbFlag').remove();
-		});
-		
-		var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-		$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
-		$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
-		$('div#tabs_bookmarks_thumb_'+slideID).remove();
-		
-		var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
-		if(numBMs==0){
-		$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+		if($(this).hasClass('bookmark-set')){
+				//remove bookmark
+				var slideCellElm = 'div#toc_thumb_'+slideID;
+				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+				$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
+					$(slideCellElm).find('div.bmThumbFlag').remove();
+				});
+				
+				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
+				$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
+				$('div#tabs_bookmarks_thumb_'+slideID).remove();
+				
+				var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
+				if(numBMs==0){
+				$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+				}else{
+				$('div#noBookmarks p').html(numBMs + ' bookmarks saved');
+				}
+				
+				var script_url = 'ajax/deleteBookmark.php';
 		}else{
-		$('div#noBookmarks p').html(numBMs + ' bookmarks saved');
+				//add new bookmark
+				var slideCellElm = 'div#toc_thumb_'+slideID;
+				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
+				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
+				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
+				llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
+				
+				var script_url = 'ajax/addBookmark.php';
 		}
-		
-		var script_url = 'ajax/deleteBookmark.php';
-}else{
-		//add new bookmark
-		var slideCellElm = 'div#toc_thumb_'+slideID;
-		var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-		$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
-		var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-		$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
-		$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-		llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
-		
-		var script_url = 'ajax/addBookmark.php';
-}
 		/* start ajax */
 		$.ajax({
   		url: script_url,
@@ -531,7 +530,7 @@ if($(this).hasClass('bookmark-set')){
 		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
 			//console.log('xml loaded');
 			llc.pres = $.xml2json(xml); // Serialize XML and set llc.pres object
-			//console.log(llc.pres);
+			console.log(llc.pres);
 				/*
 				  CURRENT IMPORTANT VARIABLES:
 				  pres.media.master.item.fileType = "mp3, ?video?" // this will determine if video or audio sync 
@@ -612,12 +611,12 @@ if($(this).hasClass('bookmark-set')){
 				
 				// Assign next click handlers
 				$("#master_jp_container .llc-next").click(function() {
-					$("#toc a.active").parent().next().find("a").click();
+					$("#toc .active_toc_thumb").next().find("a").click();
 				});
 				
 				// Assign prev click handlers
 				$("#master_jp_container .llc-prev").click(function() {
-					$("#toc a.active").parent().prev().find("a").click();
+					$("#toc .active_toc_thumb").prev().find("a").click();
 				});
 				
 				// Assign volume show/hide click handlers
@@ -631,6 +630,17 @@ if($(this).hasClass('bookmark-set')){
 				}, function() {
 					$(this).click();
 				});
+				
+				// Set presentation info
+				$("#pres_title span").text(llc.pres.title);
+				$("#pres_presenter span").text((function(){
+					var spks
+					for (i in llc.pres.speakers.speaker) {
+						var s = llc.pres.speakers.speaker[i];
+						if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', '+ s.firstName + " " + s.lastName :  s.firstName + " " + s.lastName ;
+					} return spks
+				})());
+				// $("#pres_date span").text(llc.pres.date?);
 				
 			}
 		}); // end ajax XML call
