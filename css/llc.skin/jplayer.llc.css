@@ -79,7 +79,6 @@ div.jp-interface {
 }
 
 div.jp-audio div.jp-type-single div.jp-interface {
-	height:80px;
 }
 div.jp-audio div.jp-type-playlist div.jp-interface {
 	height:80px;
@@ -103,12 +102,21 @@ div.jp-controls-holder {
 div.jp-interface ul.jp-controls {
 	list-style-type:none;
 	margin:0;
+<<<<<<< HEAD
 	padding: 0;
 	overflow:hidden;
 }
 
 div.jp-audio ul.jp-controls {
 	width: 380px;
+=======
+	padding: 0;
+	background: url("jplayer.llc.png") bottom repeat-x;
+}
+
+div.jp-audio ul.jp-controls {
+	width: 380px;
+>>>>>>> f39ae0d360c5d8ecdf59166f7deaf86833f59750
 	width: 100%; /*overide*/
 	padding:0;
 }
@@ -127,16 +135,27 @@ div.jp-interface ul.jp-controls li {
 	display:inline;
 	float: left;
 }
-
+div.jp-interface ul.jp-controls li {
+	border-left: 1px solid #aaa;
+}
 div.jp-interface ul.jp-controls a {
 	display:block;
 	overflow:hidden;
 	text-indent:-9999px;
 }
 a.jp-play,
+<<<<<<< HEAD
 a.jp-pause, 
 a.jp-previous, 
 a.jp-next {
+=======
+a.jp-pause, 
+a.llc-prev, 
+a.llc-next,
+a.llc-bookmark,
+a.llc-full,
+div.jp-volume {
+>>>>>>> f39ae0d360c5d8ecdf59166f7deaf86833f59750
 	width:35px;
 	height:25px;
 }
@@ -145,14 +164,14 @@ a.jp-play {
 	background: url("jplayer.llc.png") 0 0 no-repeat;
 }
 a.jp-play:hover {
-	background: url("jplayer.llc.png") -41px 0 no-repeat;
+	background: url("jplayer.llc.png") -40px 0 no-repeat;
 }
 a.jp-pause {
-	background: url("jplayer.llc.png") 0 -42px no-repeat;
+	background: url("jplayer.llc.png") 0 -30px no-repeat;
 	display: none;
 }
 a.jp-pause:hover {
-	background: url("jplayer.llc.png") -41px -42px no-repeat;
+	background: url("jplayer.llc.png") -40px -30px no-repeat;
 }
 
 /*a.jp-stop, a.jp-previous, a.jp-next {
@@ -170,9 +189,10 @@ a.jp-stop:hover {
 	background: url("jplayer.llc.png") -29px -83px no-repeat;
 }*/
 
-a.jp-previous {
-	background: url("jplayer.llc.png") 0 -112px no-repeat;
+a.llc-prev {
+	background: url("jplayer.llc.png") 0 -90px no-repeat;
 }
+<<<<<<< HEAD
 a.jp-previous:hover {
 	background: url("jplayer.llc.png") -29px -112px no-repeat;
 }
@@ -194,6 +214,30 @@ div.jp-interface ul.jp-controls a.llc-bookmark span {
 div.jp-interface ul.jp-controls a.llc-bookmark:hover span {
 	background: #555;
 }
+=======
+a.llc-prev:hover {
+	background: url("jplayer.llc.png") -40px -90px no-repeat;
+}
+
+a.llc-next {
+	background: url("jplayer.llc.png") 0 -120px no-repeat;
+}
+a.llc-next:hover {
+	background: url("jplayer.llc.png") -40px -120px no-repeat;
+}
+a.llc-bookmark {
+	background: url("jplayer.llc.png") 0 -60px no-repeat;
+}
+a.llc-bookmark:hover {
+	background: url("jplayer.llc.png") -40px -60px no-repeat;
+}
+a.llc-full {
+	background: url("jplayer.llc.png") 0 -180px no-repeat;
+}
+a.llc-full:hover {
+	background: url("jplayer.llc.png") -40px -180px no-repeat;
+}
+>>>>>>> f39ae0d360c5d8ecdf59166f7deaf86833f59750
 
 /* @end */
 
@@ -204,14 +248,20 @@ div.jp-progress {
 	background-color: #ddd;
 }
 div.jp-audio div.jp-progress {
-	position: absolute;
-	top:32px;
-	height:15px;
+	position: relative;
+/*	top:32px;*/
+	height:25px;
 }
 div.jp-audio div.jp-type-single div.jp-progress {
+<<<<<<< HEAD
 	left:110px;
 	width:186px;
 	width: 406px; /*overide*/
+=======
+/*	left:110px;*/
+/*	width:186px;*/
+	width: 423px; 
+>>>>>>> f39ae0d360c5d8ecdf59166f7deaf86833f59750
 }
 div.jp-audio div.jp-type-playlist div.jp-progress {
 	left:166px;
@@ -221,16 +271,17 @@ div.jp-video div.jp-progress {
 	top:0px;
 	left:0px;
 	width:100%;
-	height:10px;
+	height:25px;
 }
 div.jp-seek-bar {
-	background: url("jplayer.llc.png") 0 -202px repeat-x;
+	background: #fff /*url("jplayer.llc.png") 0 -202px repeat-x*/;
 	width:0px;
 	height:100%;
 	cursor: pointer;
+	position: relative;
 }
 div.jp-play-bar {
-	background: url("jplayer.llc.png") 0 -218px repeat-x ;
+	background: url("jplayer.llc.png") 0 -330px repeat-x ;
 	width:0px;
 	height:100%;
 }
@@ -304,6 +355,7 @@ a.jp-volume-max {
 a.jp-volume-max:hover {
 	background: url("jplayer.llc.png") -19px -186px no-repeat;
 }
+<<<<<<< HEAD
 
 div.jp-volume-bar {
 	position: absolute;
@@ -334,6 +386,67 @@ div.jp-volume-bar-value {
     width: 5px;
 }
 /* Horizontal volume style
+=======
+
+
+/* Vertical volume style */
+div.jp-volume {
+	background: url("jplayer.llc.png") 0px -150px no-repeat;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+div.jp-volume.active {
+	background: url("jplayer.llc.png") -40px -150px no-repeat;
+	overflow: visible;
+}
+div.jp-volume-bar {
+    position: relative;
+    height: 100%;	
+    border: 16px solid #a1a1a1;
+    border-top: none;
+    border-bottom: none;
+    width: 3px;
+    background: #999;
+    bottom: 0px;
+}
+div.jp-volume-bar-contain {
+	position: absolute;
+	width: 35px;
+	height: 90px;
+	background: #a1a1a1;
+	bottom: 25px;
+	padding: 10px 0;
+	overflow: hidden;
+}
+div.jp-volume-bar-value {
+    position:absolute;
+    bottom: 0px;
+    background: #333;
+    width: 3px;
+}
+div.jp-volume-bar-value span {
+	position: absolute;
+	top: -2px;
+	left: -6px;
+	width: 9px;
+	height: 4px;
+	background: #eee;
+}
+/* Horizontal volume style
+div.jp-volume-bar {
+	position: absolute;
+	overflow:hidden;
+	background: url("jplayer.llc.png") 0 -250px repeat-x;
+	width:46px;
+	height:5px;
+	cursor: pointer;
+}
+div.jp-audio div.jp-volume-bar {
+	top:37px;
+	left:330px;
+}
+>>>>>>> f39ae0d360c5d8ecdf59166f7deaf86833f59750
 div.jp-video div.jp-volume-bar {
 	top:17px;
 	left:72px;
@@ -349,6 +462,7 @@ div.jp-volume-bar-value {
 /* @group current time and duration */
 
 div.jp-audio div.jp-time-holder {
+<<<<<<< HEAD
 	position:absolute;
 	top:50px;
 }
@@ -360,6 +474,12 @@ div.jp-audio div.jp-type-single div.jp-time-holder {
 div.jp-audio div.jp-type-playlist div.jp-time-holder {
 	left:166px;
 	width:130px;
+=======
+	position:absolute;
+	width: 100%;
+	z-index: 10;
+	top: 0;
+>>>>>>> f39ae0d360c5d8ecdf59166f7deaf86833f59750
 }
 
 div.jp-current-time,
@@ -369,13 +489,15 @@ div.jp-duration {
 	font-style:oblique;
 }
 div.jp-current-time {
-	float: left;
-	display:inline;
+	position: absolute;
+	left: 10px;
+	color: #333;
 }
 div.jp-duration {
-	float: right;
-	display:inline;
+	position: absolute;
+	right: 10px;
 	text-align: right;
+	color: #333;
 }
 
 div.jp-video div.jp-current-time {
@@ -392,12 +514,13 @@ div.jp-video div.jp-duration {
 div.jp-title {
 	font-weight:bold;
 	text-align:center;
+	color: #eee;
+	font-size: 11px;
 }
 
 div.jp-title,
 div.jp-playlist {
 	width:100%;
-	background-color:#ccc;
 	border-top:1px solid #009be3;
 }
 div.jp-type-single div.jp-title,
@@ -625,6 +748,7 @@ a.jp-shuffle-off:hover {
 }
 
 /* @end */
+<<<<<<< HEAD
 
 
 /* Vertical volume style */
@@ -640,6 +764,9 @@ div.jp-volume-bar-value {
     width: 5px;
 }
 /* End Vertical volume style */
+=======
+
+>>>>>>> f39ae0d360c5d8ecdf59166f7deaf86833f59750
 
 /* @group NO SOLUTION error feedback */
 
