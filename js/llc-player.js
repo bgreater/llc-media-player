@@ -10,7 +10,7 @@ return a};typeof a=="string"&&(a=f.text2xml(a));if(a.nodeType){if(a.nodeType==3|
 
 /*
  ### LLC Player v1.0
- * Dependancies: jQuery v1.6.4?, xml2json v1.0(included), jPlayer v2.1.0
+ * Dependancies: jQuery v1.6.4?, jQuery UI 1.8.16, xml2json v1.0(included), jPlayer v2.1.0
  * Authors: MultiView Team + B>
 Functions:
 setupItems
@@ -131,6 +131,7 @@ var llc = {
 					supplied: videoTypes.supplied, 
 					cssSelectorAncestor: "#"+t.id,
 					loop: false,
+					//solution:"flash, html",
 					size: {							// Need variable size~!
 						width: "640px",
 						height: "360px",
@@ -526,6 +527,23 @@ var llc = {
 			value = value == undefined ? value : value.split(';')[0];				
 		} return value
 	},
+	switchfull: function(val) { /* Get playback cookie */
+		console.log('trigger full screen');
+		
+		/* ##########################################
+		  ################# Go Full
+		 ########################################## */
+		
+		if(val==true) {
+			
+			$("<div id='playerFrameFull'></div>").appendTo("body")
+			
+		} else if (val==false) {
+			
+			
+		}
+		 
+	},
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
 			//console.log('xml loaded');
@@ -583,9 +601,13 @@ var llc = {
 				    	var media = new Object();
 				    		media[llc.pres.media.master.item.fileType] = llc.pres.media.master.item.file.text;
 				    	$(this).jPlayer("setMedia", media);
+				    	
 				    	// Set playback if cookied
 				    	var playhead = llc.getCookie('playhead') ? llc.getCookie('playhead') : 0;
 				    	$(this).jPlayer("pause", Math.abs(playhead));
+				    	
+				    	// Capture volume level for draggable & additional instances  
+				    	llc.perVolume = $("#master_jplayer").data("jPlayer").status.volume;
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
 				    	$(this).jPlayer("pauseOthers");
@@ -593,20 +615,54 @@ var llc = {
 				    timeupdate: function (event) { // Set/Show Current time/Slide function
 				    	llc.timeUpdate(event);   	
 				    },
+				    volumechange: function(event) { // make sure volume dragable moves on click
+				    	var t = $("#master_jp_container div.jp-volume div.jp-volume-bar-value"),
+				    		bottom = t.height(),
+				    		height = t.parent().height(),
+				    		top = height-bottom;
+				    	t.prev().css("top",top);	
+				    	llc.perVolume = $("#master_jplayer").data("jPlayer").status.volume;
+				    },
 				    verticalVolume: true,
 				    swfPath: "js",
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,
-				    wmode: "window"
-				}); // end jPlayer intialize
-
-				// Set playback value in Cookie on quit
-				$(window).bind('beforeunload', function() {
-					llc.setCookie('playhead',$("#master_jplayer").data("jPlayer").status.currentTime);
+				    wmode: "window",
+				    solution:"flash, html"
+				}); // end jPlayer initialize
+				
+				// Assign volume show/hide click handlers
+				$("#master_jp_container div.jp-volume").toggle(function() {
+						if(!$(this).is('.hover.active')) $(this).addClass("active");
+					}, function() {
+						if(!$(this).is('.hover')) $(this).removeClass("active");
+				}).hover(function() {
+						$(this).addClass("hover");
+						$(this).click();
+					}, function() {
+						$(this).removeClass("hover");
+						$(this).click();
 				});
 				
-				// Unbind curent time and duration click events so play bar can function
+				// Assign volume dragable
+				$("#master_jp_container div.jp-volume span.jp-volume-bar-drag").draggable({
+					axis: 'y',
+					containment: 'parent',
+					drag: function(event, ui) {
+						var t = $(this),
+							top = t.css("top").replace('px',''),
+							height = t.parent().height(),
+							per = height-top > 5 ? (height-top)/height : 0;
+						t.next().height(per*100+'%');
+						llc.perVolume = per;
+					},
+					stop: function(event, ui) {
+						$("#master_jplayer").jPlayer("volume", llc.perVolume);
+					}
+				});
+
+				// Unbind current time and duration click events so play bar can function
 				$("#master_jp_container .jp-current-time, #master_jp_container .jp-duration").unbind('click');
 				
 				// Assign next click handlers
@@ -619,18 +675,6 @@ var llc = {
 					$("#toc .active_toc_thumb").prev().find("a").click();
 				});
 				
-				// Assign volume show/hide click handlers
-				$("#master_jp_container div.jp-volume").toggle(function() {
-					console.log('clicked')
-					$(this).addClass("active");
-				}, function() {
-					$(this).removeClass("active");
-				}).hover(function() {
-					$(this).click();
-				}, function() {
-					$(this).click();
-				});
-				
 				// Set presentation info
 				$("#pres_title span").text(llc.pres.title);
 				$("#pres_presenter span").text((function(){
@@ -641,6 +685,12 @@ var llc = {
 					} return spks
 				})());
 				// $("#pres_date span").text(llc.pres.date?);
+				
+				// Set playback value in Cookie on quit
+				$(window).bind('beforeunload', function() {
+					llc.setCookie('playhead',$("#master_jplayer").data("jPlayer").status.currentTime);
+				});
+				
 				
 			}
 		}); // end ajax XML call

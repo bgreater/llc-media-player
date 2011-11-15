@@ -5,6 +5,9 @@
 .playerFrame {
  background-color: #3d3b3c; width: 640px; padding: 5px; border: 1px solid #3d3b3c; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;
 }
+.playerFrameFull {
+ position: absolute; z-index: 1000; top: 0; bottom: 0; left: 0; right: 0;
+}
 #loading {
  position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
 }
@@ -448,8 +451,8 @@ div.jp-volume-bar-contain {
 div.jp-volume-bar-value {
  position: absolute; bottom: 0px; background: #333; width: 3px;
 }
-div.jp-volume-bar-value span {
- position: absolute; top: -2px; left: -6px; width: 9px; height: 4px; background: #eee;
+div.jp-volume span.jp-volume-bar-drag {
+ position: absolute; top: 20%; left: -6px; width: 15px; height: 4px; background: #eee; z-index: 5;
 }
 /* Horizontal volume style
 div.jp-volume-bar {
