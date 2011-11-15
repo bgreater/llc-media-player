@@ -28,7 +28,7 @@ init
 var llc = {
 	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
 		//console.log('setSlides');
-		
+
 		/* ##########################################
 		  ################# Create Slides
 		 ########################################## */
@@ -145,9 +145,17 @@ var llc = {
 		  ################# Create Bookmarks
 		 ########################################## */
 		 
-		$(bookmarks).each(function(i){ 
+		$(bookmarks).each(function(i){
 			var t=this;
-			//print_r(t);
+			var bmStart = parseInt(t.bookmark.startPoint);
+			var slideStart = 0;
+			var i = 0;
+			var xml = llc.pres.media.items.item;
+			while(slideStart < bmStart){
+			var slideStart = parseInt(xml[i].startPoint);
+			i++;
+			}
+			llc.createThumbPanel(xml[i-2].file, xml[i-2].id, bmStart, xml[i-2].title, '#tabs_bookmarks');
 		});
 		
 		/* ##########################################
@@ -225,6 +233,7 @@ var llc = {
 				$('div.toc_thumb').live({
 				mouseenter:function(){
 				if(!$(this).hasClass('active_toc_thumb')){
+					$(this).find('.playIcon').css('opacity', '.4');
 					$(this).find('.playIcon').fadeIn();
 				}
 
@@ -240,7 +249,6 @@ var llc = {
 		/* ##########################################
 		  ################# Add thumbnail to document
 		 ########################################## */
-		 
 		var friendlyStartTime = milliConvert(startPoint);
 		var title = truncate(title, 40);
 		var title = htmlEntities(title);
@@ -253,12 +261,12 @@ var llc = {
 		}
 		
 		$('<div class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
-			<a href="#" onclick="slideJump('+((startPoint/1000)+.3)+')">\
+			<a href="" onclick="slideJump('+((startPoint/1000)+.3)+')">\
 			  <img class="toc_thumb_img" src="'+img+'" />\
 			</a>\
 			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
 			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
-			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+((startPoint/1000)+.3)+'">\
+			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
 			<img src="img/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
 		</div>').appendTo(pageid);
 	},
@@ -377,14 +385,14 @@ var llc = {
 		//console.log('switchView');
 		// Use Switch case for differnt views for desktop and mobile
 	},
-	saveBookmark: function(item) { /* Set bookmark in TOC and postback to server */
+	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
-		
-		$('a.llc-bookmark, a.toc-bookmark').live('click', function(){
-		var classcheck = $(this).attr('class');
-		var timePoint = (classcheck=='llc-bookmark') ? $("#master_jplayer").data("jPlayer").status.currentTime : $(this).attr('rel');
-		var title = (classcheck=='llc-bookmark') ? llc.pres.curEl.title : $(this).attr('title');
-		var slideID = (classcheck=='llc-bookmark') ? llc.pres.curEl.id : $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
+if (typeof item === "undefined"){
+		//has been called on init
+		$('a.toc-bookmark').live('click', function(){
+		var timePoint = $(this).attr('rel');
+		var title = $(this).attr('title');
+		var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
 
 		var netSessionID = $('input#session_id').val(), 
 		presentationID = llc.pres.id, 
@@ -435,6 +443,65 @@ var llc = {
 		});	
 		/* end ajax */
 		});
+}else{
+		//has been called by anchor's onclick
+
+		var timePoint = $("#master_jplayer").data("jPlayer").status.currentTime;
+		var title = llc.pres.curEl.title;
+		var slideID = llc.pres.curEl.id;
+
+		var netSessionID = $('input#session_id').val(), 
+		presentationID = llc.pres.id, 
+		userID = $('input#user_id').val(), 
+		siteID = $('input#site_id').val();
+		var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+		
+		if($(item).hasClass('llc-bookmark-set')){
+				//remove bookmark
+				var slideCellElm = 'div#toc_thumb_'+slideID;
+				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+				$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
+					$(slideCellElm).find('div.bmThumbFlag').remove();
+				});
+				
+				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
+				$(slideCellElm).find('a.toc-bookmark').removeClass('llc-bookmark-set');
+				$('div#tabs_bookmarks_thumb_'+slideID).remove();
+				
+				var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
+				if(numBMs==0){
+				$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+				}else{
+				$('div#noBookmarks p').html(numBMs + ' bookmarks saved');
+				}
+				$(item).removeClass('llc-bookmark-set');
+				var script_url = 'ajax/deleteBookmark.php';
+		}else{
+				//add new bookmark
+				var slideCellElm = 'div#toc_thumb_'+slideID;
+				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
+				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
+				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
+				$(item).addClass('llc-bookmark-set');
+				llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
+				
+				var script_url = 'ajax/addBookmark.php';
+		}
+		/* start ajax */
+		$.ajax({
+  		url: script_url,
+		data: params,
+  		success: function(data) {
+		//alert(data);
+		}
+		});	
+		/* end ajax */
+}
+   
+
 	},
 	saveRating: function(num) { /* Set bookmark in TOC and postback to server */
 		//console.log('saveRating');
@@ -548,7 +615,7 @@ var llc = {
 		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
 			//console.log('xml loaded');
 			llc.pres = $.xml2json(xml); // Serialize XML and set llc.pres object
-			console.log(llc.pres);
+			//console.log(llc.pres);
 				/*
 				  CURRENT IMPORTANT VARIABLES:
 				  pres.media.master.item.fileType = "mp3, ?video?" // this will determine if video or audio sync 
@@ -675,6 +742,19 @@ var llc = {
 					$("#toc .active_toc_thumb").prev().find("a").click();
 				});
 				
+				// Assign volume show/hide click handlers
+				$("#master_jp_container div.jp-volume").toggle(function() {
+						if(!$(this).is('.hover.active')) $(this).addClass("active");
+					}, function() {
+						if(!$(this).is('.hover')) $(this).removeClass("active");
+				}).hover(function() {
+						$(this).addClass("hover");
+						$(this).click();
+					}, function() {
+						$(this).removeClass("hover");
+						$(this).click();
+				});
+				
 				// Set presentation info
 				$("#pres_title span").text(llc.pres.title);
 				$("#pres_presenter span").text((function(){
@@ -755,6 +835,7 @@ return text.substr(0, length) + ellipsis;
 }
 function slideJump(startPoint){
 $('#master_jplayer').jPlayer('pauseOthers').jPlayer('play',startPoint);
+return false;
 
 }
 Array.prototype.findIndex = function(value){
