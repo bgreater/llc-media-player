@@ -753,7 +753,7 @@ if (typeof item === "undefined"){
 					}, function() {
 						$(this).removeClass("hover");
 						$(this).click();
-				}); 
+				});
 				
 				// Set presentation info
 				$("#pres_title span").text(llc.pres.title);
