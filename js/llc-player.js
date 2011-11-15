@@ -144,9 +144,17 @@ var llc = {
 		  ################# Create Bookmarks
 		 ########################################## */
 		 
-		$(bookmarks).each(function(i){ 
+		$(bookmarks).each(function(i){
 			var t=this;
-			//print_r(t);
+			var bmStart = parseInt(t.bookmark.startPoint);
+			var slideStart = 0;
+			var i = 0;
+			var xml = llc.pres.media.items.item;
+			while(slideStart < bmStart){
+			var slideStart = parseInt(xml[i].startPoint);
+			i++;
+			}
+			llc.createThumbPanel(xml[i-2].file, xml[i-2].id, bmStart, xml[i-2].title, '#tabs_bookmarks');
 		});
 		
 		/* ##########################################
@@ -379,7 +387,7 @@ var llc = {
 	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
 if (typeof item === "undefined"){
-
+		//has been called on init
 		$('a.toc-bookmark').live('click', function(){
 		var timePoint = $(this).attr('rel');
 		var title = $(this).attr('title');
@@ -435,8 +443,8 @@ if (typeof item === "undefined"){
 		/* end ajax */
 		});
 }else{
+		//has been called by anchor's onclick
 
-		var classcheck = $(item).attr('class');
 		var timePoint = $("#master_jplayer").data("jPlayer").status.currentTime;
 		var title = llc.pres.curEl.title;
 		var slideID = llc.pres.curEl.id;
