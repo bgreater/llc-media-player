@@ -20,9 +20,9 @@
 			<div class="jp-gui jp-interface">
 				<ul class="jp-controls">
 					<li><a href="javascript:;" class="jp-play" tabindex="1" title="play">play</a></li>
-					<li><a href="javascript:;" class="jp-pause" tabindex="1" title="pause">pause</a></li>
-					<li><a href="javascript:;" class="llc-prev" tabindex="1" title="prev">prev</a></li>
-					<li><a href="javascript:;" class="llc-next" tabindex="1" title="next">next</a></li>
+					<li><a href="javascript:;" class="jp-pause" tabindex="2" title="pause">pause</a></li>
+					<li><a href="javascript:;" class="llc-prev" tabindex="3" title="prev">prev</a></li>
+					<li><a href="javascript:;" class="llc-next" tabindex="4" title="next">next</a></li>
 					<li>
 						<div class="jp-progress">
 							<div class="jp-seek-bar">
@@ -42,8 +42,8 @@
 							</div>
 						</div>
 					</li>
-					<li><a href="javascript:;" class="llc-bookmark" tabindex="1" title="bookmark">bookmark</a></li>
-					<li><a href="javascript:;" class="llc-full" tabindex="1" title="full">full</a></li>
+					<li><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>
+					<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>
 				</ul>
 				<div class="jp-title"></div>
 			</div>
@@ -62,10 +62,10 @@
 	</div>
 	<div id="info_tabs">
 		<div id="tabs">
-			<a href="#overview" rel="tabs_overview" class="firstTab" style="background-image:url(img/overview_3btn.png)"></a>
-			<a href="#notes" rel="tabs_notes" class="" style="background-image:url(img/notes_3btn.png)"></a>
-			<a href="#bookmarks" rel="tabs_bookmarks" style="background-image:url(img/bookmarks_3btn.png)"></a>
-			<a href="#transcripts" rel="tabs_transcripts" class="lastTab" style="background-image:url(img/transcript_3btn.png)"></a>
+			<a href="#overview" rel="tabs_overview" class="firstTab" style=""><table><tr><td><img src="img/overview_tab_icon.png" /></td><td> OVERVIEW</td></tr></table></a>
+			<a href="#notes" rel="tabs_notes" class="" style=""><table><tr><td><img src="img/notes_tab_icon.png" /></td><td> NOTES</td></tr></table></a>
+			<a href="#bookmarks" rel="tabs_bookmarks" style=""><table><tr><td><img src="img/bookmarks_tab_icon.png" /></td><td> BOOKMARKS</td></tr></table></a>
+			<a href="#transcripts" rel="tabs_transcripts" class="lastTab" style=""><table><tr><td><img src="img/transcript_tab_icon.png" /></td><td> TRANSCRIPT</td></tr></table></a>
 			
 		</div>
 		<div id="content_area">

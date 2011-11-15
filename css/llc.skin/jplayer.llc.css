@@ -349,6 +349,12 @@ a.llc-bookmark {
 a.llc-bookmark:hover {
  background: url("jplayer.llc.png") -40px -60px no-repeat
 }
+a.llc-bookmark-set {
+ background: url("jplayer.llc.png") -80px -60px no-repeat
+}
+a.llc-bookmark-set:hover {
+ background: url("jplayer.llc.png") -40px -60px no-repeat
+}
 a.llc-full {
  background: url("jplayer.llc.png") 0 -180px no-repeat
 }

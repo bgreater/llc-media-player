@@ -102,10 +102,12 @@ float:left;
 width:158px; 
 text-align:center; 
 vertical-align:middle; 
-background-repeat:no-repeat;
+background-image:url(../img/tab_bg_3row.png);
+background-repeat:repeat-x;
 background-position:0 0;
+font-family:Arial;
 font-weight:600;
-font-size:11pt;
+font-size:10pt;
 text-decoration:none;
 color:#ffffff; 
 height:34px;
@@ -126,6 +128,18 @@ background-repeat:repeat-x; background-color:#f15a29;
 /*-webkit-border-topleft-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px;*/
 }
 #info_tabs #tabs a.active{background-position:0 -34px;background-color:#f15a29;border-left:1px solid #f15a29;border-right:1px solid #f15a29; }
+#info_tabs #tabs a table{
+margin-top:5px;
+margin-left:auto;
+margin-right:auto;
+vertical-align:top;
+}
+#info_tabs #tabs a table td{
+vertical-align:top;
+}
+#info_tabs #tabs a table td img{
+margin:1px 3px 0 0;
+}
 #info_tabs .info{overflow:auto;display:none;background:#fff;position:relative;height:520px;}
 #info_tabs .info.active{display:block; opacity:.3}
 
