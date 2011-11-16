@@ -37,7 +37,7 @@
         <startPoint>0</startPoint>
         <link type="-1"><![CDATA[]]></link>
       </item>
-      <!-- start Added video item -->
+      <!-- start Added video item
       <item id="777777" inTOC="True">
         <title><![CDATA[First American Equipment Finance]]></title>
         <file id="787878" type="m4v"><![CDATA[Video-Samples/Video Sample (300-30fps).m4v]]></file>
@@ -48,7 +48,7 @@
         <startPoint>60000</startPoint>
         <link type="-1"><![CDATA[]]></link>
       </item>
-      <!-- end Added video item -->
+      end Added video item -->
       <item id="293469" inTOC="True">
         <title><![CDATA[ITS Strategic Research Plan 2010-2014 A Truly Multimodal and...]]></title>
         <file id="317913"><![CDATA[http://www.cmcgc.com/Media/Synch/310405/017/Slide2.jpg]]></file>
