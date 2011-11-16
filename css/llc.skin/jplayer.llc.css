@@ -22,7 +22,7 @@
 }
 /* @end */
 
-<<<<<<< HEAD
+
 /* @group Full Screen Style */
 .playerFrameFull {
  position: absolute; z-index: 1000; top: 0; bottom: 0; left: 0; right: 0; background-color: #3d3b3c;
@@ -216,8 +216,6 @@ button.llc-button-s:active {
 /* @end */
 /* @end */
 
-=======
->>>>>>> c015629c5994060aac20caca2baaa53bc9644fa8
 /* @group Presentation Info */
 #pres_info {
  overflow: hidden; position: relative; font-size: 11px; background: #f7f7f7; background: -moz-linear-gradient(top, #f7f7f7, #c3c3c3); background: -o-linear-gradient(top, #f7f7f7, #c3c3c3); background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#c3c3c3)); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#c3c3c3'); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f7f7, endColorstr=#c3c3c3)";
