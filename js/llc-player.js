@@ -154,6 +154,12 @@ var llc = {
 			var slideStart = parseInt(xml[i].startPoint);
 			i++;
 			}
+				var slideCellElm = 'div#toc_thumb_'+xml[i-2].id;
+				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
+				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
+				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
 			llc.createThumbPanel(xml[i-2].file, xml[i-2].id, bmStart, xml[i-2].title, '#tabs_bookmarks');
 		});
 		
@@ -445,7 +451,7 @@ if (typeof item === "undefined"){
 }else{
 		//has been called by anchor's onclick
 
-		var timePoint = $("#master_jplayer").data("jPlayer").status.currentTime;
+		var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
 		var title = llc.pres.curEl.title;
 		var slideID = llc.pres.curEl.id;
 
@@ -465,7 +471,7 @@ if (typeof item === "undefined"){
 				
 				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
 				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
-				$(slideCellElm).find('a.toc-bookmark').removeClass('llc-bookmark-set');
+				$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
 				$('div#tabs_bookmarks_thumb_'+slideID).remove();
 				
 				var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
@@ -484,7 +490,7 @@ if (typeof item === "undefined"){
 				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
 				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
 				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-				$(item).addClass('llc-bookmark-set');
+				//$(item).addClass('llc-bookmark-set');
 				llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
 				
 				var script_url = 'ajax/addBookmark.php';
