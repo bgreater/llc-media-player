@@ -601,38 +601,76 @@ if (typeof item === "undefined"){
 		} return value
 	},
 	switchFull: function(val) { /* Get playback cookie */
-		console.log('trigger full screen');
+		//console.log('trigger full screen');
+		
+		if (val==true) { 
 		
 		/* ##########################################
 		  ################# Go Full
 		 ########################################## */
-		
-		if(val==true) {
-			$("#master_jplayer").jPlayer("pause");
+		 
+			// set page content to window size
+			$("body").css({
+				'overflow':'hidden',
+				'position':'absolute',
+				'top':'0',
+				'left':'0',
+				'right':'0',
+				'bottom':'0',
+				'width':'100%',
+				'height':'100%'
+			});
+			
+			// Preserve player state
+			if (!$("#master_jplayer").data("jPlayer").status.paused) {
+				llc.switchFull.playing = true;
+				$("#master_jplayer").jPlayer("pause");
+			} else {
+				llc.switchFull.playing = false;
+			}
+			
+			// Move DOM elements around
 			$("<div class='playerFrameFull'></div>").appendTo("body");
 			$("#slides").appendTo(".playerFrameFull");
 			$("#master_jplayer").appendTo(".playerFrameFull");
 			$("#master_jp_container").appendTo(".playerFrameFull");
 			
+			// Probably don't need from here...
 			var w = $(document).width(),
 				ww = $(document).width(),
 				h = $(document).height(),
 				wh = $(window).height();
 			
-			console.log(w,ww,h,wh);
+			//console.log(w,ww,h,wh);
 			
 			$("#master_jp_container .jp-progress").width(w-217);
+			// ...to here as we can achive via CSS
 			
-			$("#master_jplayer").jPlayer("play");
+			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
 			
+		
 		} else if (val==false) {
-			$("#master_jplayer").jPlayer("pause");
+		
+		/* ##########################################
+		  ################# Back to Normal
+		 ########################################## */
+			
+			// set page content to normal
+			$("body").attr('style','');
+			
+			if (!$("#master_jplayer").data("jPlayer").status.paused) {
+				llc.switchFull.playing = true;
+				$("#master_jplayer").jPlayer("pause");
+			} else {
+				llc.switchFull.playing = false;
+			}
 			$("#master_jp_container").prependTo(".playerFrame");
 			$("#master_jplayer").prependTo(".playerFrame");
 			$("#slides").prependTo(".playerFrame");
 			$("#master_jp_container .jp-progress").attr("style",'');
 			$(".playerFrameFull").remove();
-			$("#master_jplayer").jPlayer("play");
+			
+			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
 		}
 		 
 	},
