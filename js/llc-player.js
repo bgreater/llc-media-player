@@ -594,7 +594,7 @@ if (typeof item === "undefined"){
 			value = value == undefined ? value : value.split(';')[0];				
 		} return value
 	},
-	switchfull: function(val) { /* Get playback cookie */
+	switchFull: function(val) { /* Get playback cookie */
 		console.log('trigger full screen');
 		
 		/* ##########################################
@@ -602,12 +602,31 @@ if (typeof item === "undefined"){
 		 ########################################## */
 		
 		if(val==true) {
+			$("#master_jplayer").jPlayer("pause");
+			$("<div class='playerFrameFull'></div>").appendTo("body");
+			$("#slides").appendTo(".playerFrameFull");
+			$("#master_jplayer").appendTo(".playerFrameFull");
+			$("#master_jp_container").appendTo(".playerFrameFull");
 			
-			$("<div id='playerFrameFull'></div>").appendTo("body")
+			var w = $(document).width(),
+				ww = $(document).width(),
+				h = $(document).height(),
+				wh = $(window).height();
+			
+			console.log(w,ww,h,wh);
+			
+			$("#master_jp_container .jp-progress").width(w-217);
+			
+			$("#master_jplayer").jPlayer("play");
 			
 		} else if (val==false) {
-			
-			
+			$("#master_jplayer").jPlayer("pause");
+			$("#master_jp_container").prependTo(".playerFrame");
+			$("#master_jplayer").prependTo(".playerFrame");
+			$("#slides").prependTo(".playerFrame");
+			$("#master_jp_container .jp-progress").attr("style",'');
+			$(".playerFrameFull").remove();
+			$("#master_jplayer").jPlayer("play");
 		}
 		 
 	},
@@ -695,8 +714,8 @@ if (typeof item === "undefined"){
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,
-				    wmode: "window",
-				    solution:"flash, html"
+				    // solution:"flash, html",
+				    wmode: "window"
 				}); // end jPlayer initialize
 				
 				// Assign volume show/hide click handlers
@@ -753,6 +772,13 @@ if (typeof item === "undefined"){
 					}, function() {
 						$(this).removeClass("hover");
 						$(this).click();
+				});
+				
+				// Assign Full screen & normal click handlers
+				$("#master_jp_container a.llc-full").toggle(function() {
+						llc.switchFull(true);
+					}, function() {
+						llc.switchFull(false);
 				});
 				
 				// Set presentation info
