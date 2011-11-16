@@ -722,7 +722,7 @@ if (typeof item === "undefined"){
 					}
 				}
 				window.loader = window.setInterval(loading, 100);
-				window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 0); // loader fail safe 30 sec
+				window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 30000); // loader fail safe 30 sec
 
 				// Initialize Master jPlayer
 				$("#master_jplayer").jPlayer({
