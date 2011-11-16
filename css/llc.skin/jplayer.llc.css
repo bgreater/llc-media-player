@@ -30,10 +30,10 @@
 .playerFrameFull #master_jp_container {
  position: absolute; bottom: 0; width: 100%; height: 50px;
 }
-body .playerFrameFull #slides {
- position: absolute; top: 0; bottom: 50px; width: 100%;
+.playerFrameFull #slides {
+ position: absolute; top: 0; bottom: 50px; width: 100%; height: auto; border: none;
 }
-body .playerFrameFull #slides .slide {
+.playerFrameFull #slides .slide {
  height: 100%; width: 100%; text-align: center;
 }
 .playerFrameFull #slides .slide img {
