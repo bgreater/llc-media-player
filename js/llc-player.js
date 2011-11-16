@@ -273,7 +273,7 @@ var llc = {
 			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
 			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
 			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
-			<img src="img/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
+			<img src="css/llc.skin/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
 		</div>').appendTo(pageid);
 	},
 	setupSlideMagnify: function() {
