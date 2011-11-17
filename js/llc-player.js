@@ -176,7 +176,7 @@ var llc = {
 		  ################# Create Notes
 		 ########################################## */
 		 
-		$("#tab_notes").text(notes);
+		$("#note_pad").prepend(notes);
 		
 		/* ##########################################
 		  ################# Setup overview toggle display
@@ -797,12 +797,12 @@ if (typeof item === "undefined"){
 				
 				// Assign next click handlers
 				$("#master_jp_container .llc-next").click(function() {
-					$("#toc .active_toc_thumb").next().find("a").click();
+					$("#toc .active_toc_thumb").next().find("div.playIcon").click();
 				});
 				
 				// Assign prev click handlers
 				$("#master_jp_container .llc-prev").click(function() {
-					$("#toc .active_toc_thumb").prev().find("a").click();
+					$("#toc .active_toc_thumb").prev().find("div.playIcon").click();
 				});
 				
 				// Assign volume show/hide click handlers
