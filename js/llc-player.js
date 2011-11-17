@@ -44,7 +44,8 @@ var llc = {
 		  		/* ######## JPG SLIDE #################### */
 		  		
 		  		// Append Slide
-		  		$('<a id="'+t.id+'" class="slide" href="'+t.link+'"><img src="'+t.file.text+'" /></a>').appendTo("#slides");
+				var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"';
+		  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><img src="'+t.file.text+'" /></a>').appendTo("#slides");
 		  		
 		  		// Set Slide Load Interation
 		  		$("#"+t.id+" img").load(function(){
@@ -299,7 +300,9 @@ var llc = {
 		var zoomTag = '<div style="left:'+xpos+'px; top:'+ypos+'px;" class="zoom_box"><div class="zoom_box_control"><div class="close_button"></div></div><img src="'+imgSrc+'" class="zoom_img" /></div>';
 		var zoomTitle = '<div class="zoom_box_title"></div>';
 		$(this).parents('body').prepend(zoomTag);
-		$('div.zoom_box_control').prepend('');
+		$('div.zoom_box').bind('contextmenu', function(e){
+		return false;
+		});
 		$
 		$(this).addClass('zoom_selected');
 		}
@@ -600,6 +603,11 @@ if (typeof item === "undefined"){
 			value = value == undefined ? value : value.split(';')[0];				
 		} return value
 	},
+	disableRightClick: function(){
+		$('div#slides, img.toc_thumb_img').bind('contextmenu', function(e){
+		return false;
+		});
+	},
 	switchFull: function(val) { /* Get playback cookie */
 		//console.log('trigger full screen');
 		
@@ -850,7 +858,7 @@ if (typeof item === "undefined"){
 		llc.saveNote();
 		llc.saveBookmark();
 		llc.setupSlideMagnify();
-		
+		llc.disableRightClick();
 	}
 } 
 
@@ -922,19 +930,6 @@ function htmlEntities(str) {
 
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&quot;');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
