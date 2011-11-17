@@ -517,7 +517,7 @@ if (typeof item === "undefined"){
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
-		 var hasRated = llc.getCookie('rated');
+		 var hasRated = llc.getCookie(llc.pres.id+'rated');
 		 if(!hasRated){
 		$('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
 			var newRating = data.rating, 
@@ -532,7 +532,7 @@ if (typeof item === "undefined"){
 			success: function(data) {
 			var confirmMessage = data + ' - rating this presentation: ' + newRating;
 			alert(confirmMessage);
-			llc.setCookie('rated', newRating);
+			llc.setCookie(llc.pres.id+'rated', newRating);
 			}
 			});	
 			
@@ -741,11 +741,13 @@ if (typeof item === "undefined"){
 				    	$(this).jPlayer("setMedia", media);
 				    	
 				    	// Set playback if cookied
-				    	var playhead = llc.getCookie('playhead') ? llc.getCookie('playhead') : 0;
+				    	var playhead = llc.getCookie(llc.pres.id+'playhead') ? llc.getCookie(llc.pres.id+'playhead') : 0;
 				    	$(this).jPlayer("pause", Math.abs(playhead));
 				    	
-				    	// Capture volume level for draggable & additional instances  
-				    	llc.perVolume = $("#master_jplayer").data("jPlayer").status.volume;
+				    	// Set volume if cookied
+				    	llc.perVolume = llc.getCookie(llc.pres.id+'volume') ? llc.getCookie(llc.pres.id+'volume') : 0.8;
+				    	$(this).jPlayer("volume", llc.perVolume);
+				    	
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
 				    	$(this).jPlayer("pauseOthers");
@@ -759,7 +761,7 @@ if (typeof item === "undefined"){
 				    		height = t.parent().height(),
 				    		top = height-bottom;
 				    	t.prev().css("top",top);	
-				    	llc.perVolume = $("#master_jplayer").data("jPlayer").status.volume;
+				    	llc.perVolume = t.attr('style').slice(8,-3) / 100;
 				    },
 				    verticalVolume: true,
 				    swfPath: "js",
@@ -846,7 +848,8 @@ if (typeof item === "undefined"){
 				
 				// Set playback value in Cookie on quit
 				$(window).bind('beforeunload', function() {
-					llc.setCookie('playhead',$("#master_jplayer").data("jPlayer").status.currentTime);
+					llc.setCookie(llc.pres.id+'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
+					llc.setCookie(llc.pres.id+'volume', llc.perVolume);
 				});
 				
 				
