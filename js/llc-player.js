@@ -517,8 +517,7 @@ if (typeof item === "undefined"){
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
-		 //console.log(llc.pres.id);
-		 var hasRated = llc.getCookie('rated');
+		 var hasRated = llc.getCookie(llc.pres.id+'rated');
 		 if(!hasRated){
 		$('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
 			var newRating = data.rating, 
@@ -533,7 +532,7 @@ if (typeof item === "undefined"){
 			success: function(data) {
 			var confirmMessage = data + ' - rating this presentation: ' + newRating;
 			alert(confirmMessage);
-			llc.setCookie('rated', newRating);
+			llc.setCookie(llc.pres.id+'rated', newRating);
 			}
 			});	
 			
@@ -853,16 +852,16 @@ if (typeof item === "undefined"){
 					llc.setCookie(llc.pres.id+'volume', llc.perVolume);
 				});
 				
+				/************************************* ATTACH CLICK HANDLERS */
+						
+				llc.saveRating();
+				llc.saveNote();
+				llc.saveBookmark();
+				llc.setupSlideMagnify();
+				llc.disableRightClick();
 				
 			}
 		}); // end ajax XML call
-/************************************* ATTACH CLICK HANDLERS */
-		
-		llc.saveRating();
-		llc.saveNote();
-		llc.saveBookmark();
-		llc.setupSlideMagnify();
-		llc.disableRightClick();
 	}
 } 
 
