@@ -517,7 +517,8 @@ if (typeof item === "undefined"){
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
-		 var hasRated = llc.getCookie(llc.pres.id+'rated');
+		 //console.log(llc.pres.id);
+		 var hasRated = llc.getCookie('rated');
 		 if(!hasRated){
 		$('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
 			var newRating = data.rating, 
@@ -532,7 +533,7 @@ if (typeof item === "undefined"){
 			success: function(data) {
 			var confirmMessage = data + ' - rating this presentation: ' + newRating;
 			alert(confirmMessage);
-			llc.setCookie(llc.pres.id+'rated', newRating);
+			llc.setCookie('rated', newRating);
 			}
 			});	
 			
