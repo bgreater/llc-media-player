@@ -211,6 +211,12 @@ a.llc-full {
 a.llc-full:hover {
  background: url("jplayer.llc.png") -40px -180px no-repeat
 }
+a.llc-full.active {
+ background: url("jplayer.llc.png") -80px -180px no-repeat
+}
+a.llc-full.active:hover {
+ background: url("jplayer.llc.png") -120px -180px no-repeat
+}
 /* @end */
 
 /* @group progress bar */
@@ -294,6 +300,12 @@ div.jp-volume {
 }
 div.jp-volume.active {
  background: url("jplayer.llc.png") -40px -150px no-repeat; overflow: visible;
+}
+div.jp-volume.mute {
+ background: url("jplayer.llc.png") -80px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer;
+}
+div.jp-volume.mute.active {
+ background: url("jplayer.llc.png") -120px -150px no-repeat; position: relative; overflow: visible; 
 }
 div.jp-volume-bar {
  position: relative; height: 100%; border: 16px solid #a1a1a1; border-top: none; border-bottom: none; width: 3px; background: #999; bottom: 0px;

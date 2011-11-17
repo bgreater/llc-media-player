@@ -644,17 +644,19 @@ if (typeof item === "undefined"){
 			$("#master_jp_container").appendTo(".playerFrameFull");
 			
 			// Probably don't need from here...
-			var w = $(document).width(),
-				ww = $(document).width(),
-				h = $(document).height(),
-				wh = $(window).height();
-			
-			//console.log(w,ww,h,wh);
-			
-			$("#master_jp_container .jp-progress").width(w-217);
-			// ...to here as we can achive via CSS
+			$(window).resize(function() {
+				var w = $(document).width();
+				$("#master_jp_container .jp-progress").width(w-217);
+				console.log('resized');
+			});
+			$(window).trigger('resize');
+			// ...to here as we can achieve via CSS
 			
 			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
+			
+			$("#master_jplayer").next().find('a.llc-full').addClass('active');
+			
+			console.log($("#master_jplayer"));
 			
 		
 		} else if (val==false) {
@@ -678,7 +680,11 @@ if (typeof item === "undefined"){
 			$("#master_jp_container .jp-progress").attr("style",'');
 			$(".playerFrameFull").remove();
 			
+			$(window).unbind('resize');
+			
 			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
+			
+			$("#master_jplayer").next().find('a.llc-full').removeClass('active');
 		}
 		 
 	},
@@ -756,12 +762,14 @@ if (typeof item === "undefined"){
 				    	llc.timeUpdate(event);   	
 				    },
 				    volumechange: function(event) { // make sure volume dragable moves on click
-				    	var t = $("#master_jp_container div.jp-volume div.jp-volume-bar-value"),
+				    	var t = $(this).next().find("div.jp-volume-bar-value"),
 				    		bottom = t.height(),
 				    		height = t.parent().height(),
 				    		top = height-bottom;
 				    	t.prev().css("top",top);	
 				    	llc.perVolume = t.attr('style').slice(8,-3) / 100;
+				    	if (llc.perVolume == 0) t.parents('div.jp-volume').addClass('mute');
+				    	else t.parents('div.jp-volume').removeClass('mute');
 				    },
 				    verticalVolume: true,
 				    swfPath: "js",
