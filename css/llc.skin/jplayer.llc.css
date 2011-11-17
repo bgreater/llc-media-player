@@ -230,7 +230,7 @@ div.jp-video div.jp-progress {
  top: 0px; left: 0px; width: 100%; height: 25px;
 }
 div.jp-seek-bar {
- background: #fff /*url("jplayer.llc.png") 0 -202px repeat-x*/; width:0px; height: 100%; cursor: pointer; position: relative;
+ background: #fff /*url("jplayer.llc.png") 0 -202px repeat-x*/; width:0px; height: 100%; cursor: pointer; /*position: relative;*/
 }
 div.jp-play-bar {
  background: url("jplayer.llc.png") 0 -330px repeat-x; width: 0px; height: 100%;
@@ -333,7 +333,7 @@ div.jp-volume-bar-value {
 
 /* @group current time and duration */
 div.jp-audio div.jp-time-holder {
- position: absolute; width: 100%; z-index: 10; top: 0;
+ /*position: absolute;*/ width: 100%; z-index: 10; top: 0;
 }
 div.jp-current-time,
 div.jp-duration {
