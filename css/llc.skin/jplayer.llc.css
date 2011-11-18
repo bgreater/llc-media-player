@@ -1,87 +1,6 @@
-/* @group Basic Style */
-.player {
- background-color: #3d3b3c; text-align: center; width: 650px; margin: 50px auto 25px auto; text-align: left;
-}
-.playerFrame {
- background-color: #3d3b3c; width: 640px; padding: 5px; border: 1px solid #3d3b3c; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;
-}
-#loading {
- position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
-}
-#slides {
- height: 480px; width: 638px; position: relative; overflow: hidden; border: 1px solid #abcddd; border-top: 1px solid #0e4660;
-}
-#slides .slide {
- position: absolute; overflow: hidden; left: 0; top: 0;
-}
-#slides .slide.jp-video {
- display: block; width: 0px;
-}
-#jp_container_1 .jp-title {
- padding: .3em 0
-}
-div.jp-jplayer{
- overflow: hidden;
-}
-#master_jp_container {
-  height: 50px;
-}
-/* @end */
-
-
-/* @group Full Screen Style */
-body.Full {
- overflow:hidden; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%
-}
-.playerFrame.Full {
- position: absolute; z-index: 1000; top: 0; bottom: 0; left: 0; width: 100%; background-color: #3d3b3c;
-}
-.playerFrame.Full #master_jp_container {
- position: absolute; bottom: 0; width: 100%;
-}
-.playerFrame.Full #slides {
- position: absolute; top: 0; bottom: 50px; width: 100%; height: auto; border: none;
-}
-.playerFrame.Full #slides .slide {
- height: 100%; width: 100%; text-align: center;
-}
-.playerFrame.Full #slides .slide img {
- height: 100%;
-}
-/* @end */
-
-/* @end */
-
-/* @group Presentation Info */
-#pres_info {
- overflow: hidden; position: relative; font-size: 11px; background: #f7f7f7; background: -moz-linear-gradient(top, #f7f7f7, #c3c3c3); background: -o-linear-gradient(top, #f7f7f7, #c3c3c3); background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#c3c3c3)); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#c3c3c3'); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f7f7, endColorstr=#c3c3c3)";
-}
-#pres_info p {
- margin: .8em; padding: 0;
-}
-#pres_info p strong {
- color: #7b7b7b;
-}
-#pres_info p span {
- 
-}
-#ad_sponsored {
- float: right; vertical-align: top; margin: .8em; color: #7b7b7b;
-}
-.jquery-ratings-star {
- cursor: pointer; width: 15px; height: 14px; background-image: url('empty-star.png'); background-repeat: no-repeat; position: relative; float: left; margin-right: 2px;
-}
-.jquery-ratings-full {
- background-image: url('full-star.png');
-}
-#ratings_box {
- position: absolute; right: 150px; bottom: 10px; width: 140px; height: 14px;
-}
-
-/* @end */
 
 /*
- * Skin for jPlayer Plugin (jQuery JavaScript Library)
+ * Skin for jPlayer Plugin (jQuery JavaScript Library) + LLC custom player & controls
  * http://www.happyworm.com/jquery/jplayer
  *
  */
@@ -529,6 +448,114 @@ a.jp-shuffle-off:hover {
 /* @end */
 /* @end */
 
+
+/* @group Basic Style */
+.player {
+ background-color: #3d3b3c; text-align: center; width: 650px; margin: 50px auto 25px auto; text-align: left;
+}
+.playerFrame {
+ background-color: #3d3b3c; width: 640px; padding: 5px; border: 1px solid #3d3b3c; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;
+}
+#loading {
+ position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
+}
+#slides {
+ height: 0px; width: 638px; position: relative; overflow: hidden; border: 1px solid #abcddd; border-top: 1px solid #0e4660;
+}
+#slides.single {
+ height: 480px;
+}
+#slides.dual {
+ height: 236px; width: 315px; float: right; border: none;
+} 
+#slides .slide {
+ position: absolute; overflow: hidden; left: 0; top: 0; bottom: 0; width: 100%;
+}
+#slides .slide img {
+ height: 100%;
+}
+span.switchView {
+ width: 33px; height: 21px; background: url(switchscreen.png) right no-repeat; position: absolute; bottom: 10px; left: 10px; cursor: pointer;
+}
+.dual span.switchView {
+ background: url(switchscreen.png) left no-repeat;
+}
+#slides .slide.jp-video {
+ display: block; width: 0px;
+}
+#jp_container_1 .jp-title {
+ padding: .3em 0
+}
+div.jp-jplayer{
+ overflow: hidden;
+}
+#master_jplayer {
+ height: 0px; background: #1b2329 url(defaultMediaBg.png) center; position: relative;
+}
+#master_jplayer.single {
+ height: 480px !important; width: 640px !important;
+}
+#master_jplayer.dual {
+ height: 236px !important; width: 315px !important; float: left;
+}
+#master_jp_container {
+  height: 50px; clear: both;
+}
+
+/* @end */
+
+
+/* @group Full Screen Style */
+body.Full {
+ overflow:hidden; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%
+}
+.playerFrame.Full {
+ position: absolute; z-index: 1000; top: 0; bottom: 0; left: 0; width: 100%; background-color: #3d3b3c;
+}
+.playerFrame.Full #master_jp_container {
+ position: absolute; bottom: 0; width: 100%;
+}
+.playerFrame.Full #slides {
+ position: absolute; top: 0; bottom: 50px; width: 100%; height: auto; border: none;
+}
+.playerFrame.Full #slides .slide {
+ height: 100%; width: 100%; text-align: center;
+}
+.playerFrame.Full #slides .slide img {
+ height: 100%;
+}
+/* @end */
+
+
+/* @group Presentation Info */
+#pres_info {
+ overflow: hidden; position: relative; font-size: 11px; background: #f7f7f7; background: -moz-linear-gradient(top, #f7f7f7, #c3c3c3); background: -o-linear-gradient(top, #f7f7f7, #c3c3c3); background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#c3c3c3)); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#c3c3c3'); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f7f7, endColorstr=#c3c3c3)";
+}
+#pres_info p {
+ margin: .8em; padding: 0;
+}
+#pres_info p strong {
+ color: #7b7b7b;
+}
+#pres_info p span {
+ 
+}
+#ad_sponsored {
+ float: right; vertical-align: top; margin: .8em; color: #7b7b7b;
+}
+.jquery-ratings-star {
+ cursor: pointer; width: 15px; height: 14px; background-image: url('empty-star.png'); background-repeat: no-repeat; position: relative; float: left; margin-right: 2px;
+}
+.jquery-ratings-full {
+ background-image: url('full-star.png');
+}
+#ratings_box {
+ position: absolute; right: 150px; bottom: 10px; width: 140px; height: 14px;
+}
+/* @end */
+
+
+/* @group Tabs */
 #content_area input[type=text], textarea {
 	padding: 9px;
 	outline: 0;
@@ -544,14 +571,6 @@ a.jp-shuffle-off:hover {
 	-moz-box-shadow: 1px 0px 8px #cccccc;
 	}
 	
-
-.player{background-color:#3d3b3c;text-align:center;width:650px;margin:50px auto 25px auto;text-align:left;}
-.playerFrame{background-color:#3d3b3c;width:640px;padding:5px;border:1px solid #3d3b3c;position:relative;overflow:hidden;}
-#loading{position:absolute;top:5px;left:5px;bottom:5px;right:5px;color:#999;background:#ffffff url(ajax-loader.gif) center 130px no-repeat;padding:100px 0;text-align:center;}
-#slides{height:480px;width:638px;position:relative;overflow:hidden;border:1px solid #abcddd;border-top:1px solid #0e4660;}
-#slides .slide{position:absolute;overflow:hidden;left:0;top:0;}
-#slides .slide.jp-video{display:block;width:0px;}
-#jp_container_1 .jp-title{padding:.3em 0;}
 #content_area p{
 font-family:Arial;
 color:#4a4a4a;
