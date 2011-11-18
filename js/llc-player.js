@@ -623,46 +623,43 @@ if (typeof item === "undefined"){
 		 ########################################## */
 		 
 			// set page content to window size
-			$("body").css({
-				'overflow':'hidden',
-				'position':'absolute',
-				'top':'0',
-				'left':'0',
-				'right':'0',
-				'bottom':'0',
-				'width':'100%',
-				'height':'100%'
-			});
+//			$("body").css({
+//				'overflow':'hidden',
+//				'position':'absolute',
+//				'top':'0',
+//				'left':'0',
+//				'right':'0',
+//				'bottom':'0',
+//				'width':'100%',
+//				'height':'100%'
+//			});
 			
 			// Preserve player state
-			if (!$("#master_jplayer").data("jPlayer").status.paused) {
-				llc.switchFull.playing = true;
-				$("#master_jplayer").jPlayer("pause");
-			} else {
-				llc.switchFull.playing = false;
-			}
+//			if (!$("#master_jplayer").data("jPlayer").status.paused) {
+//				llc.switchFull.playing = true;
+//				$("#master_jplayer").jPlayer("pause");
+//			} else {
+//				llc.switchFull.playing = false;
+//			}
 			
-			// Move DOM elements around
-			$("<div class='playerFrameFull'></div>").appendTo("body");
-			$("#slides").appendTo(".playerFrameFull");
-			$("#master_jplayer").appendTo(".playerFrameFull");
-			$("#master_jp_container").appendTo(".playerFrameFull");
+			// Update elements
+			$("body, div.playerFrame").addClass("Full");
+			$("#pres_info, info_tabs").hide();
 			
-			// Probably don't need from here...
+			// Resize Progress bar: Probably don't need from here...
 			$(window).resize(function() {
-				var w = $(document).width();
+				var w = $(document).width(),
+					h = $(document).height();
 				$("#master_jp_container .jp-progress").width(w-217);
 				console.log('resized');
 			});
 			$(window).trigger('resize');
 			// ...to here as we can achieve via CSS
 			
-			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
+//			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
 			
 			$("#master_jplayer").next().find('a.llc-full').addClass('active');
-			
-			console.log($("#master_jplayer"));
-			
+						
 		
 		} else if (val==false) {
 		
@@ -671,23 +668,23 @@ if (typeof item === "undefined"){
 		 ########################################## */
 			
 			// set page content to normal
-			$("body").attr('style','');
+//			$("body").attr('style','');
 			
-			if (!$("#master_jplayer").data("jPlayer").status.paused) {
-				llc.switchFull.playing = true;
-				$("#master_jplayer").jPlayer("pause");
-			} else {
-				llc.switchFull.playing = false;
-			}
-			$("#master_jp_container").prependTo(".playerFrame");
-			$("#master_jplayer").prependTo(".playerFrame");
-			$("#slides").prependTo(".playerFrame");
-			$("#master_jp_container .jp-progress").attr("style",'');
-			$(".playerFrameFull").remove();
+//			if (!$("#master_jplayer").data("jPlayer").status.paused) {
+//				llc.switchFull.playing = true;
+//				$("#master_jplayer").jPlayer("pause");
+//			} else {
+//				llc.switchFull.playing = false;
+//			}
+			
+			
+			$("body, div.playerFrame").removeClass("Full");
+			$("#master_jp_container div.jp-progress").attr('style','');
+			$("#pres_info, info_tabs").show();
 			
 			$(window).unbind('resize');
 			
-			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
+//			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
 			
 			$("#master_jplayer").next().find('a.llc-full').removeClass('active');
 		}
@@ -781,7 +778,7 @@ if (typeof item === "undefined"){
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,
-				    // solution:"flash, html",
+				    solution:"flash, html",
 				    wmode: "window"
 				}); // end jPlayer initialize
 				

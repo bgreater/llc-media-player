@@ -20,27 +20,32 @@
 #jp_container_1 .jp-title {
  padding: .3em 0
 }
+div.jp-jplayer{
+ overflow: hidden;
+}
 #master_jp_container {
   height: 50px;
 }
-
 /* @end */
 
 
 /* @group Full Screen Style */
-.playerFrameFull {
- position: absolute; z-index: 1000; top: 0; bottom: 0; left: 0; right: 0; background-color: #3d3b3c;
+body.Full {
+ overflow:hidden; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%
 }
-.playerFrameFull #master_jp_container {
+.playerFrame.Full {
+ position: absolute; z-index: 1000; top: 0; bottom: 0; left: 0; width: 100%; background-color: #3d3b3c;
+}
+.playerFrame.Full #master_jp_container {
  position: absolute; bottom: 0; width: 100%;
 }
-.playerFrameFull #slides {
+.playerFrame.Full #slides {
  position: absolute; top: 0; bottom: 50px; width: 100%; height: auto; border: none;
 }
-.playerFrameFull #slides .slide {
+.playerFrame.Full #slides .slide {
  height: 100%; width: 100%; text-align: center;
 }
-.playerFrameFull #slides .slide img {
+.playerFrame.Full #slides .slide img {
  height: 100%;
 }
 /* @end */
