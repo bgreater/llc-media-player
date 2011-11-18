@@ -460,16 +460,16 @@ a.jp-shuffle-off:hover {
  position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
 }
 #slides {
- height: 0px; width: 638px; position: relative; overflow: hidden; border: 1px solid #abcddd; border-top: 1px solid #0e4660;
+ height: 0px; position: relative; overflow: hidden;
 }
 #slides.single {
- height: 480px;
+ height: 480px; width: 640px; 
 }
 #slides.dual {
- height: 236px; width: 315px; float: right; border: none;
+ height: 236px; width: 315px; float: right; border: none; margin: 122px 0;
 } 
 #slides .slide {
- position: absolute; overflow: hidden; left: 0; top: 0; bottom: 0; width: 100%;
+ position: absolute; overflow: hidden; left: 0; top: 0; bottom: 0; width: 100%; height: 100%;
 }
 #slides .slide img {
  height: 100%;
@@ -490,13 +490,13 @@ div.jp-jplayer{
  overflow: hidden;
 }
 #master_jplayer {
- height: 0px; background: #1b2329 url(defaultMediaBg.png) center; position: relative;
+ height: 0px; background: #1b2329 url(defaultMediaBg.png) center no-repeat; position: relative; overflow: hidden;
 }
 #master_jplayer.single {
  height: 480px !important; width: 640px !important;
 }
 #master_jplayer.dual {
- height: 236px !important; width: 315px !important; float: left;
+ height: 236px !important; width: 315px !important; margin: 122px 0;
 }
 #master_jp_container {
   height: 50px; clear: both;
@@ -510,7 +510,7 @@ body.Full {
  overflow:hidden; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%
 }
 .playerFrame.Full {
- position: absolute; z-index: 1000; top: 0; bottom: 0; left: 0; width: 100%; background-color: #3d3b3c;
+ position: absolute; z-index: 1000; top: 0; bottom: 0; left: 0; width: 100%; background-color: #3d3b3c; padding: 0; border: none;
 }
 .playerFrame.Full #master_jp_container {
  position: absolute; bottom: 0; width: 100%;

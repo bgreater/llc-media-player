@@ -45,7 +45,7 @@ var llc = {
 		  		
 		  		// Append Slide
 				var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"';
-		  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><img src="'+t.file.text+'" /><span class="switchView"></span></a>').appendTo("#slides");
+		  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><span class="switchView"></span><img src="'+t.file.text+'" /></a>').appendTo("#slides");
 		  		
 		  		// Set Slide Load Interation
 		  		$("#"+t.id+" img").load(function(){
@@ -680,13 +680,13 @@ if (typeof item === "undefined"){
 			
 			// Update elements
 			$("body, div.playerFrame").addClass("Full");
-			$("#pres_info, info_tabs").hide();
+			$("#pres_info, #info_tabs").hide();
 			
 			// Resize Progress bar: Probably don't need from here...
 			$(window).resize(function() {
 				var w = $(document).width(),
 					h = $(document).height();
-				$("#master_jp_container .jp-progress").width(w-217);
+				$("#master_jp_container .jp-progress").width(w-222);
 				console.log('resized');
 			});
 			$(window).trigger('resize');
@@ -716,7 +716,7 @@ if (typeof item === "undefined"){
 			
 			$("body, div.playerFrame").removeClass("Full");
 			$("#master_jp_container div.jp-progress").attr('style','');
-			$("#pres_info, info_tabs").show();
+			$("#pres_info, #info_tabs").show();
 			
 			$(window).unbind('resize');
 			
