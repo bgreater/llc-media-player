@@ -45,7 +45,7 @@ var llc = {
 		  		
 		  		// Append Slide
 				var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"';
-		  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><img src="'+t.file.text+'" /></a>').appendTo("#slides");
+		  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><img src="'+t.file.text+'" /><span class="switchView"></span></a>').appendTo("#slides");
 		  		
 		  		// Set Slide Load Interation
 		  		$("#"+t.id+" img").load(function(){
@@ -58,6 +58,7 @@ var llc = {
 		  		/* ######## VIDEO SLIDE ################## */
 		  		
 		  		$('<div id="'+t.id+'" class="jp-video slide">\
+		  			<span class="switchView"></span>\
 		  			<div class="jp-type-single">\
 		  				<div id="jquery_jplayer_'+t.id+'" class="jp-jplayer"></div>\
 		  				<div class="jp-gui">\
@@ -133,7 +134,7 @@ var llc = {
 					cssSelectorAncestor: "#"+t.id,
 					loop: false,
 					//solution:"flash, html",
-					size: {							// Need variable size~!
+					size: {							// Need variable size~!?
 						width: "640px",
 						height: "360px",
 						cssClass: "jp-video-360p"
@@ -391,10 +392,45 @@ var llc = {
 		}
 		
 	},
-	switchView: function(view) { /* Change view (single, dual, full) for player presentation (mobile will include [notes, transcript, slides, video]) */
-		//console.log('switchView');
+	switchView: function(event,mode) { /* Change view (single, dual) for player presentation (mobile will include [notes, transcript, slides, video]) */
 		
+		console.log('switch view fired');
 		
+		var s = $("#slides"),
+			m = $("#master_jplayer"),
+			curMode = llc.switchView.curMode = llc.switchView.curMode ? llc.switchView.curMode : llc.pres.defaultInterface.text;
+		
+		if ((event && curMode == "Single Screen") || mode == "Dual Screen") { // Do Dual Screen
+			
+			console.log('dual view fired');
+			m.addClass("dual").removeClass("single");
+			s.addClass("dual").removeClass("single");
+			
+			llc.switchView.curMode = "Dual Screen"; // End with	
+			
+		} else if ((event && curMode == "Dual Screen") || mode == "Single Screen") { // Do Single Screen
+		
+			console.log('single view fired');
+			
+			if (event) { // Was clicked
+				
+				var p = $(event.target).parents('div.dual');
+				
+				p.addClass("single");
+
+											
+			} else {
+			
+				if (llc.pres.defaultWindow.id == 1) m.addClass("single");
+				else p.addClass("single");
+			}
+			
+			m.removeClass("dual");
+			s.removeClass("dual");
+			
+			llc.switchView.curMode = "Single Screen"; // End with
+		
+		}
 		
 	},
 	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
@@ -623,46 +659,43 @@ if (typeof item === "undefined"){
 		 ########################################## */
 		 
 			// set page content to window size
-			$("body").css({
-				'overflow':'hidden',
-				'position':'absolute',
-				'top':'0',
-				'left':'0',
-				'right':'0',
-				'bottom':'0',
-				'width':'100%',
-				'height':'100%'
-			});
+//			$("body").css({
+//				'overflow':'hidden',
+//				'position':'absolute',
+//				'top':'0',
+//				'left':'0',
+//				'right':'0',
+//				'bottom':'0',
+//				'width':'100%',
+//				'height':'100%'
+//			});
 			
 			// Preserve player state
-			if (!$("#master_jplayer").data("jPlayer").status.paused) {
-				llc.switchFull.playing = true;
-				$("#master_jplayer").jPlayer("pause");
-			} else {
-				llc.switchFull.playing = false;
-			}
+//			if (!$("#master_jplayer").data("jPlayer").status.paused) {
+//				llc.switchFull.playing = true;
+//				$("#master_jplayer").jPlayer("pause");
+//			} else {
+//				llc.switchFull.playing = false;
+//			}
 			
-			// Move DOM elements around
-			$("<div class='playerFrameFull'></div>").appendTo("body");
-			$("#slides").appendTo(".playerFrameFull");
-			$("#master_jplayer").appendTo(".playerFrameFull");
-			$("#master_jp_container").appendTo(".playerFrameFull");
+			// Update elements
+			$("body, div.playerFrame").addClass("Full");
+			$("#pres_info, info_tabs").hide();
 			
-			// Probably don't need from here...
+			// Resize Progress bar: Probably don't need from here...
 			$(window).resize(function() {
-				var w = $(document).width();
+				var w = $(document).width(),
+					h = $(document).height();
 				$("#master_jp_container .jp-progress").width(w-217);
 				console.log('resized');
 			});
 			$(window).trigger('resize');
 			// ...to here as we can achieve via CSS
 			
-			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
+//			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
 			
 			$("#master_jplayer").next().find('a.llc-full').addClass('active');
-			
-			console.log($("#master_jplayer"));
-			
+						
 		
 		} else if (val==false) {
 		
@@ -671,23 +704,23 @@ if (typeof item === "undefined"){
 		 ########################################## */
 			
 			// set page content to normal
-			$("body").attr('style','');
+//			$("body").attr('style','');
 			
-			if (!$("#master_jplayer").data("jPlayer").status.paused) {
-				llc.switchFull.playing = true;
-				$("#master_jplayer").jPlayer("pause");
-			} else {
-				llc.switchFull.playing = false;
-			}
-			$("#master_jp_container").prependTo(".playerFrame");
-			$("#master_jplayer").prependTo(".playerFrame");
-			$("#slides").prependTo(".playerFrame");
-			$("#master_jp_container .jp-progress").attr("style",'');
-			$(".playerFrameFull").remove();
+//			if (!$("#master_jplayer").data("jPlayer").status.paused) {
+//				llc.switchFull.playing = true;
+//				$("#master_jplayer").jPlayer("pause");
+//			} else {
+//				llc.switchFull.playing = false;
+//			}
+			
+			
+			$("body, div.playerFrame").removeClass("Full");
+			$("#master_jp_container div.jp-progress").attr('style','');
+			$("#pres_info, info_tabs").show();
 			
 			$(window).unbind('resize');
 			
-			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
+//			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
 			
 			$("#master_jplayer").next().find('a.llc-full').removeClass('active');
 		}
@@ -781,7 +814,7 @@ if (typeof item === "undefined"){
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,
-				    // solution:"flash, html",
+				    solution:"flash, html",
 				    wmode: "window"
 				}); // end jPlayer initialize
 				
@@ -865,6 +898,9 @@ if (typeof item === "undefined"){
 					llc.setCookie(llc.pres.id+'volume', llc.perVolume);
 				});
 				
+				// Set defualt view
+				llc.switchView(false,llc.pres.defaultInterface.text);
+								
 				/************************************* ATTACH CLICK HANDLERS */
 						
 				llc.saveRating();
@@ -872,6 +908,13 @@ if (typeof item === "undefined"){
 				llc.saveBookmark();
 				llc.setupSlideMagnify();
 				llc.disableRightClick();
+				
+				// Switch view event handler 
+				$("<span class='switchView'></span>").appendTo("#master_jplayer");
+				$("span.switchView").click(function(event){
+					llc.switchView(event,false);
+				});
+							
 				
 			}
 		}); // end ajax XML call
