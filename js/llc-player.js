@@ -264,7 +264,8 @@ var llc = {
 		var bmset = (prefix=='tabs_bookmarks') ? ' bookmark-set' : '';
 		if(prefix=='tabs_bookmarks'){
 		var numBMs = ($('#tabs_bookmarks .toc_thumb').length)+1;
-		$('div#noBookmarks p').html(numBMs + ' bookmarks saved');
+		var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
+		$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 		}
 		
 		$('<div class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
@@ -392,7 +393,9 @@ var llc = {
 	},
 	switchView: function(view) { /* Change view (single, dual, full) for player presentation (mobile will include [notes, transcript, slides, video]) */
 		//console.log('switchView');
-		// Use Switch case for differnt views for desktop and mobile
+		
+		
+		
 	},
 	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
@@ -426,7 +429,8 @@ if (typeof item === "undefined"){
 				if(numBMs==0){
 				$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
 				}else{
-				$('div#noBookmarks p').html(numBMs + ' bookmarks saved');
+				var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
+				$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 				}
 				
 				var script_url = 'ajax/deleteBookmark.php';
@@ -482,7 +486,8 @@ if (typeof item === "undefined"){
 				if(numBMs==0){
 				$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
 				}else{
-				$('div#noBookmarks p').html(numBMs + ' bookmarks saved');
+				var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
+				$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 				}
 				$(item).removeClass('llc-bookmark-set');
 				var script_url = 'ajax/deleteBookmark.php';

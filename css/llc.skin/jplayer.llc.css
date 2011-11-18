@@ -3,7 +3,7 @@
  background-color: #3d3b3c; text-align: center; width: 650px; margin: 50px auto 25px auto; text-align: left;
 }
 .playerFrame {
- background-color: #3d3b3c; width: 640px; padding: 5px; border: 1px solid #3d3b3c; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;
+ background-color: #3d3b3c; width: 640px; padding: 5px; border: 1px solid #3d3b3c; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden;
 }
 #loading {
  position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
