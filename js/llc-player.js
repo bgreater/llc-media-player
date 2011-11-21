@@ -10,7 +10,7 @@ return a};typeof a=="string"&&(a=f.text2xml(a));if(a.nodeType){if(a.nodeType==3|
 
 /*
  ### LLC Player v1.0
- * Dependancies: jQuery v1.6.4?, jQuery UI 1.8.16, xml2json v1.0(included), jPlayer v2.1.0
+ * Dependancies: jQuery v1.7, jQuery UI 1.8.16, xml2json v1.0(included), jPlayer v2.1.0
  * Authors: MultiView Team + B>
 Functions:
 setupItems
@@ -394,7 +394,7 @@ var llc = {
 	},
 	switchView: function(event,mode) { /* Change view (single, dual) for player presentation (mobile will include [notes, transcript, slides, video]) */
 		
-		console.log('switch view fired');
+		//console.log('switch view fired');
 		
 		var s = $("#slides"),
 			m = $("#master_jplayer"),
@@ -402,7 +402,7 @@ var llc = {
 		
 		if ((event && curMode == "Single Screen") || mode == "Dual Screen") { // Do Dual Screen
 			
-			console.log('dual view fired');
+			//console.log('dual view fired');
 			m.addClass("dual").removeClass("single");
 			s.addClass("dual").removeClass("single");
 			
@@ -410,7 +410,7 @@ var llc = {
 			
 		} else if ((event && curMode == "Dual Screen") || mode == "Single Screen") { // Do Single Screen
 		
-			console.log('single view fired');
+			//console.log('single view fired');
 			
 			if (event) { // Was clicked
 				
@@ -687,7 +687,7 @@ if (typeof item === "undefined"){
 				var w = $(document).width(),
 					h = $(document).height();
 				$("#master_jp_container .jp-progress").width(w-222);
-				console.log('resized');
+				//console.log('resized');
 			});
 			$(window).trigger('resize');
 			// ...to here as we can achieve via CSS
