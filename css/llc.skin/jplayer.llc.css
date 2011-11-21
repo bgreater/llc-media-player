@@ -454,7 +454,7 @@ a.jp-shuffle-off:hover {
  background-color: #3d3b3c; text-align: center; width: 650px; margin: 50px auto 25px auto; text-align: left;
 }
 .playerFrame {
- background-color: #3d3b3c; width: 640px; padding: 5px; border: 1px solid #3d3b3c; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: absolute; overflow: hidden;
+background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; padding:5px 0 5px 0; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden; background-image:url(player640x480bgGrad.png); background-position:0 0; background-repeat:repeat-x;
 }
 #loading {
  position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
@@ -579,12 +579,6 @@ font-size:1.1em;
 /***************************************************/
 #toc{width:596px; height:100%; margin-left:auto; margin-right:auto;z-index:0;position:relative;}
 .toc_thumb{float:left;margin:4px 6px 9px 5px; border:6px solid #ffffff; padding:0 2px 0 2px; text-align:center; position:relative; 
-	/*
-	border-radius:5px; -moz-border-radius:5px;
-	box-shadow: 0px 2px 8px #17181c;
-	-moz-box-shadow: 0px 2px 8px #17181c;
-	-webkit-box-shadow: 0px 2px 8px #17181c;
-	*/
 	width:124px;
 	height:163px;
 	background-image:url(radShadow_bg.png);
@@ -665,11 +659,9 @@ color:#f5f2f2;
 }
 #info_tabs #tabs a.lastTab{
 background-repeat:repeat-x; 
-/*-webkit-border-topright-radius:5px;-moz-border-radius-topright:5px;border-top-right-radius:5px;*/
 }
 #info_tabs #tabs a.firstTab{
 background-repeat:repeat-x; background-color:#f15a29;
-/*-webkit-border-topleft-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px;*/
 }
 #info_tabs #tabs a.active{background-position:0 -34px;background-color:#f15a29;border-left:1px solid #f15a29;border-right:1px solid #f15a29; }
 #info_tabs #tabs a table{

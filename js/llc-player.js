@@ -727,6 +727,15 @@ if (typeof item === "undefined"){
 		 
 	},
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
+	/*
+		
+		presentationID = $('input#pres_id').val(), 
+		userID = $('input#user_id').val(), 
+		siteID = $('input#site_id').val();
+		var url = 'playerPresentation.aspx?PID='+presentationID+'&SID='+siteID+'&UID='+userID;
+		*/
+
+		
 		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
 			//console.log('xml loaded');
 			llc.pres = $.xml2json(xml); // Serialize XML and set llc.pres object
@@ -747,9 +756,31 @@ if (typeof item === "undefined"){
 			
 			if (llc.pres.legacy) { // LEGACY
 				
-				/* ##########################################
-				  ################# load legacy player
-				 ########################################## */
+$.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
+			
+		var netSessionID = $('input#session_id').val(), 
+		presentationID = llc.pres.id, 
+		userID = $('input#user_id').val(), 
+		siteID = $('input#site_id').val();
+			$('div.player').flash({
+				swf: 'flash/FlashPlayer.swf',
+		        width: 650,
+		        height: 650,
+		        wmode: 'transparent',
+		        allowFullScreen: 'true',
+				flashvars: {
+		        SID: siteID,
+		        PID: presentationID,
+		        UID: userID,
+		        netSessionID: netSessionID,
+		        ISD: 'F',
+		        ISE: 'F'
+				}
+			}
+		);
+});
+						$("#loading").remove();
+
 				
 			} else { 
 			
