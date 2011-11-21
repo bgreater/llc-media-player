@@ -853,7 +853,7 @@ var llc = {
 				var con = $("#llc_container"),
 					top = con.offset().top;
 
-				con.height(685);
+				//con.height(695);
 				
 				$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
 				
