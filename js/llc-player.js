@@ -57,54 +57,8 @@ var llc = {
 		  		
 		  		/* ######## VIDEO SLIDE ################## */
 		  		
-		  		$('<div id="'+t.id+'" class="jp-video slide">\
-		  			<span class="switchView"></span>\
-		  			<div class="jp-type-single">\
-		  				<div id="jquery_jplayer_'+t.id+'" class="jp-jplayer"></div>\
-		  				<div class="jp-gui">\
-		  					<div class="jp-video-play">\
-		  						<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>\
-		  					</div>\
-		  					<div class="jp-interface">\
-		  						<div class="jp-progress">\
-		  							<div class="jp-seek-bar">\
-		  								<div class="jp-play-bar"></div>\
-		  							</div>\
-		  						</div>\
-		  						<div class="jp-current-time"></div>\
-		  						<div class="jp-duration"></div>\
-		  						<div class="jp-controls-holder">\
-		  							<ul class="jp-controls">\
-		  								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>\
-		  								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>\
-		  								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>\
-		  								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>\
-		  								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>\
-		  								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>\
-		  							</ul>\
-		  							<div class="jp-volume-bar">\
-		  								<div class="jp-volume-bar-value"></div>\
-		  							</div>\
-		  							<ul class="jp-toggles">\
-		  								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>\
-		  								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>\
-		  								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>\
-		  								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>\
-		  							</ul>\
-		  						</div>\
-		  						<div class="jp-title">\
-		  						  '+t.title+'\
-		  						</div>\
-		  					</div>\
-		  				</div>\
-		  				<div class="jp-no-solution">\
-		  					<span>Update Required</span>\
-		  					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.\
-		  				</div>\
-		  			</div>\
-		  		</div>').appendTo("#slides");
-		  		
-				/* ####### Initialize video instance ##### */
+		  		// Inject Video Slide Markup
+		  		$(llc.createMarkup(t)).appendTo("#slides");
 				
 				// Video File Types
 				var videoTypes = { files: { poster:t.poster } }
@@ -250,6 +204,142 @@ var llc = {
 					$(this).find('.playIcon').fadeOut();
 				}
 				});
+	},
+	createMarkup: function(obj) {
+	
+		if (this.pres.media.master.item === obj) {
+			
+			/* ##########################################
+			  ################# Master Markup
+			 ########################################## */
+			
+			markup = '<div id="llc_playerFrame" class="playerFrame">\
+			  <div id="slides"></div>\
+				<div id="master_jplayer" class="jp-jplayer"></div>\
+				<div id="master_jp_container" class="jp-audio">\
+					<div class="jp-type-single">\
+						<div class="jp-gui jp-interface">\
+							<ul class="jp-controls">\
+								<li><a href="javascript:;" class="jp-play" tabindex="1" title="play">play</a></li>\
+								<li><a href="javascript:;" class="jp-pause" tabindex="2" title="pause">pause</a></li>\
+								<li><a href="javascript:;" class="llc-prev" tabindex="3" title="prev">prev</a></li>\
+								<li><a href="javascript:;" class="llc-next" tabindex="4" title="next">next</a></li>\
+								<li>\
+									<div class="jp-progress">\
+										<div class="jp-seek-bar">\
+											<div class="jp-play-bar">\
+												<div class="jp-current-time"></div>\
+												<div class="jp-duration"></div>\
+											</div>\
+										</div>\
+									</div>\
+								</li>\
+								<li>\
+									<div class="jp-volume">\
+										<div class="jp-volume-bar-contain">\
+											<div class="jp-volume-bar">\
+												<span class="jp-volume-bar-drag"></span>\
+												<div class="jp-volume-bar-value"></div>\
+											</div>\
+										</div>\
+									</div>\
+								</li>\
+								<li><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
+								<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>\
+							</ul>\
+							<div class="jp-title"></div>\
+						</div>\
+						<div class="jp-no-solution">\
+							<span>Update Required</span>\
+							To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.\
+						</div>\
+					</div>\
+				</div>\
+				<div id="pres_info">\
+					<div id="ad_sponsored" style=""><div style="float:left; margin-right:3px;">Sponsored By: </div><img src="css/llc.skin/sponsor-AD.png" alt="IBM" /></div>\
+					<p id="pres_title"><strong>Title:</strong> <span></span></p>\
+					<p id="pres_presenter"><strong>Presenter(s):</strong> <span></span></p>\
+					<p id="pres_date"><strong>Date:</strong> <span>There is no date in xml</span></p>\
+					<div id="ratings_box" class="ratingsBox"></div>\
+				</div>\
+				<div id="info_tabs">\
+					<div id="tabs">\
+						<a href="#overview" rel="tabs_overview" class="firstTab" style=""><table><tr><td><img src="css/llc.skin/overview_tab_icon.png" /></td><td> OVERVIEW</td></tr></table></a>\
+						<a href="#notes" rel="tabs_notes" class="" style=""><table><tr><td><img src="css/llc.skin/notes_tab_icon.png" /></td><td> NOTES</td></tr></table></a>\
+						<a href="#bookmarks" rel="tabs_bookmarks" style=""><table><tr><td><img src="css/llc.skin/bookmarks_tab_icon.png" /></td><td> BOOKMARKS</td></tr></table></a>\
+						<a href="#transcripts" rel="tabs_transcripts" class="lastTab" style=""><table><tr><td><img src="css/llc.skin/transcript_tab_icon.png" /></td><td> TRANSCRIPT</td></tr></table></a>\
+					</div>\
+					<div id="content_area">\
+						<div id="tabs_overview" class="info"><div id="toc"></div></div>\
+						<div id="tabs_bookmarks" class="info"><div id="noBookmarks"><p>Your bookmarks folder is currently empty.</p></div></div>\
+						<div id="tabs_notes" class="info" style="border:1px solid #777777">\
+							<TEXTAREA id="note_pad" name="notePad" class="notesInput"></TEXTAREA>\
+							<div class="notesSubmitBox">\
+							<table style="width:100%"><tr><td><p class="">Keep track of the presentation\'s key points here.</p></td>\
+							<td><button class="llc-button-s" id="save_note_btn">SAVE</button></td></tr></table>\
+							</div>\
+						</div>\
+						<div id="tabs_transcripts" class="info"></div>\
+					</div>\
+					<div id="tabs_control"><div class="show_features" id="tabs_control_toggle_btn">SHOW PRESENTATION FEATURES</div></div>\
+				</div>\
+			</div>';
+			
+		} else {
+			
+			/* ##########################################
+			  ################# Video Slide Markup
+			 ########################################## */
+			 
+			markup = '<div id="'+obj.id+'" class="jp-video slide">\
+				<span class="switchView"></span>\
+				<div class="jp-type-single">\
+					<div id="jquery_jplayer_'+obj.id+'" class="jp-jplayer"></div>\
+					<div class="jp-gui">\
+						<div class="jp-video-play">\
+							<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>\
+						</div>\
+						<div class="jp-interface">\
+							<div class="jp-progress">\
+								<div class="jp-seek-bar">\
+									<div class="jp-play-bar"></div>\
+								</div>\
+							</div>\
+							<div class="jp-current-time"></div>\
+							<div class="jp-duration"></div>\
+							<div class="jp-controls-holder">\
+								<ul class="jp-controls">\
+									<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>\
+									<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>\
+									<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>\
+									<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>\
+									<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>\
+									<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>\
+								</ul>\
+								<div class="jp-volume-bar">\
+									<div class="jp-volume-bar-value"></div>\
+								</div>\
+								<ul class="jp-toggles">\
+									<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>\
+									<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>\
+									<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>\
+									<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>\
+								</ul>\
+							</div>\
+							<div class="jp-title">\
+							  '+obj.title+'\
+							</div>\
+						</div>\
+					</div>\
+					<div class="jp-no-solution">\
+						<span>Update Required</span>\
+						To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.\
+					</div>\
+				</div>\
+			</div>';
+		}
+		
+		return markup;
 	},
 	createThumbPanel: function(img,id,startPoint, title, pageid) {
 		//console.log('createThumbPanel');
@@ -435,121 +525,121 @@ var llc = {
 	},
 	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
-if (typeof item === "undefined"){
-		//has been called on init
-		$('a.toc-bookmark').live('click', function(){
-		var timePoint = $(this).attr('rel');
-		var title = $(this).attr('title');
-		var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
-
-		var netSessionID = $('input#session_id').val(), 
-		presentationID = llc.pres.id, 
-		userID = $('input#user_id').val(), 
-		siteID = $('input#site_id').val();
-		var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+		if (typeof item === "undefined"){
+				//has been called on init
+				$('a.toc-bookmark').live('click', function(){
+				var timePoint = $(this).attr('rel');
+				var title = $(this).attr('title');
+				var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
 		
-		if($(this).hasClass('bookmark-set')){
-				//remove bookmark
-				var slideCellElm = 'div#toc_thumb_'+slideID;
-				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-				$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
-					$(slideCellElm).find('div.bmThumbFlag').remove();
-				});
+				var netSessionID = $('input#session_id').val(), 
+				presentationID = llc.pres.id, 
+				userID = $('input#user_id').val(), 
+				siteID = $('input#site_id').val();
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 				
-				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
-				$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
-				$('div#tabs_bookmarks_thumb_'+slideID).remove();
-				
-				var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
-				if(numBMs==0){
-				$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+				if($(this).hasClass('bookmark-set')){
+						//remove bookmark
+						var slideCellElm = 'div#toc_thumb_'+slideID;
+						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+						$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
+							$(slideCellElm).find('div.bmThumbFlag').remove();
+						});
+						
+						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
+						$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
+						$('div#tabs_bookmarks_thumb_'+slideID).remove();
+						
+						var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
+						if(numBMs==0){
+						$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+						}else{
+						var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
+						$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
+						}
+						
+						var script_url = 'ajax/deleteBookmark.php';
 				}else{
-				var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
-				$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
+						//add new bookmark
+						var slideCellElm = 'div#toc_thumb_'+slideID;
+						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+						$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
+						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
+						$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
+						llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
+						
+						var script_url = 'ajax/addBookmark.php';
 				}
-				
-				var script_url = 'ajax/deleteBookmark.php';
+				/* start ajax */
+				$.ajax({
+		  		url: script_url,
+				data: params,
+		  		success: function(data) {
+				//alert(data);
+				}
+				});	
+				/* end ajax */
+				});
 		}else{
-				//add new bookmark
-				var slideCellElm = 'div#toc_thumb_'+slideID;
-				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
-				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
-				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-				llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
-				
-				var script_url = 'ajax/addBookmark.php';
-		}
-		/* start ajax */
-		$.ajax({
-  		url: script_url,
-		data: params,
-  		success: function(data) {
-		//alert(data);
-		}
-		});	
-		/* end ajax */
-		});
-}else{
-		//has been called by anchor's onclick
-
-		var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
-		var title = llc.pres.curEl.title;
-		var slideID = llc.pres.curEl.id;
-
-		var netSessionID = $('input#session_id').val(), 
-		presentationID = llc.pres.id, 
-		userID = $('input#user_id').val(), 
-		siteID = $('input#site_id').val();
-		var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+				//has been called by anchor's onclick
 		
-		if($(item).hasClass('llc-bookmark-set')){
-				//remove bookmark
-				var slideCellElm = 'div#toc_thumb_'+slideID;
-				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-				$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
-					$(slideCellElm).find('div.bmThumbFlag').remove();
-				});
+				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
+				var title = llc.pres.curEl.title;
+				var slideID = llc.pres.curEl.id;
+		
+				var netSessionID = $('input#session_id').val(), 
+				presentationID = llc.pres.id, 
+				userID = $('input#user_id').val(), 
+				siteID = $('input#site_id').val();
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 				
-				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
-				$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
-				$('div#tabs_bookmarks_thumb_'+slideID).remove();
-				
-				var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
-				if(numBMs==0){
-				$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+				if($(item).hasClass('llc-bookmark-set')){
+						//remove bookmark
+						var slideCellElm = 'div#toc_thumb_'+slideID;
+						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+						$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
+							$(slideCellElm).find('div.bmThumbFlag').remove();
+						});
+						
+						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
+						$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
+						$('div#tabs_bookmarks_thumb_'+slideID).remove();
+						
+						var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
+						if(numBMs==0){
+						$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+						}else{
+						var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
+						$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
+						}
+						$(item).removeClass('llc-bookmark-set');
+						var script_url = 'ajax/deleteBookmark.php';
 				}else{
-				var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
-				$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
+						//add new bookmark
+						var slideCellElm = 'div#toc_thumb_'+slideID;
+						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+						$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
+						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
+						$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
+						//$(item).addClass('llc-bookmark-set');
+						llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
+						
+						var script_url = 'ajax/addBookmark.php';
 				}
-				$(item).removeClass('llc-bookmark-set');
-				var script_url = 'ajax/deleteBookmark.php';
-		}else{
-				//add new bookmark
-				var slideCellElm = 'div#toc_thumb_'+slideID;
-				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
-				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
-				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-				//$(item).addClass('llc-bookmark-set');
-				llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
-				
-				var script_url = 'ajax/addBookmark.php';
+				/* start ajax */
+				$.ajax({
+		  		url: script_url,
+				data: params,
+		  		success: function(data) {
+				//alert(data);
+				}
+				});	
+				/* end ajax */
 		}
-		/* start ajax */
-		$.ajax({
-  		url: script_url,
-		data: params,
-  		success: function(data) {
-		//alert(data);
-		}
-		});	
-		/* end ajax */
-}
    
 
 	},
@@ -658,42 +748,21 @@ if (typeof item === "undefined"){
 		  ################# Go Full
 		 ########################################## */
 		 
-			// set page content to window size
-//			$("body").css({
-//				'overflow':'hidden',
-//				'position':'absolute',
-//				'top':'0',
-//				'left':'0',
-//				'right':'0',
-//				'bottom':'0',
-//				'width':'100%',
-//				'height':'100%'
-//			});
-			
-			// Preserve player state
-//			if (!$("#master_jplayer").data("jPlayer").status.paused) {
-//				llc.switchFull.playing = true;
-//				$("#master_jplayer").jPlayer("pause");
-//			} else {
-//				llc.switchFull.playing = false;
-//			}
-			
 			// Update elements
 			$("body, div.playerFrame").addClass("Full");
 			$("#pres_info, #info_tabs").hide();
 			
-			// Resize Progress bar: Probably don't need from here...
+			// Resize Progress bar and disable scrolling
 			$(window).resize(function() {
 				var w = $(document).width(),
 					h = $(document).height();
 				$("#master_jp_container .jp-progress").width(w-222);
-				//console.log('resized');
-			});
-			$(window).trigger('resize');
-			// ...to here as we can achieve via CSS
-			
-//			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
-			
+			}).scroll(function (event) { 
+				if ($(this).scrollTop()>0) {
+					scroll(0,0); 
+				}
+			}).trigger('resize').trigger('scroll');
+						
 			$("#master_jplayer").next().find('a.llc-full').addClass('active');
 						
 		
@@ -703,25 +772,12 @@ if (typeof item === "undefined"){
 		  ################# Back to Normal
 		 ########################################## */
 			
-			// set page content to normal
-//			$("body").attr('style','');
-			
-//			if (!$("#master_jplayer").data("jPlayer").status.paused) {
-//				llc.switchFull.playing = true;
-//				$("#master_jplayer").jPlayer("pause");
-//			} else {
-//				llc.switchFull.playing = false;
-//			}
-			
-			
 			$("body, div.playerFrame").removeClass("Full");
 			$("#master_jp_container div.jp-progress").attr('style','');
 			$("#pres_info, #info_tabs").show();
 			
-			$(window).unbind('resize');
-			
-//			if (llc.switchFull.playing) $("#master_jplayer").jPlayer("play");
-			
+			$(window).unbind('resize').unbind('scroll');
+						
 			$("#master_jplayer").next().find('a.llc-full').removeClass('active');
 		}
 		 
@@ -734,7 +790,9 @@ if (typeof item === "undefined"){
 		siteID = $('input#site_id').val();
 		var url = 'playerPresentation.aspx?PID='+presentationID+'&SID='+siteID+'&UID='+userID;
 		*/
-
+		
+		// Set loading
+		$('<div id="loading"></div>').appendTo("#llc_container");
 		
 		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
 			//console.log('xml loaded');
@@ -756,30 +814,31 @@ if (typeof item === "undefined"){
 			
 			if (llc.pres.legacy) { // LEGACY
 				
-$.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
-			
-		var netSessionID = $('input#session_id').val(), 
-		presentationID = llc.pres.id, 
-		userID = $('input#user_id').val(), 
-		siteID = $('input#site_id').val();
-			$('div.player').flash({
-				swf: 'flash/FlashPlayer.swf',
-		        width: 650,
-		        height: 650,
-		        wmode: 'transparent',
-		        allowFullScreen: 'true',
-				flashvars: {
-		        SID: siteID,
-		        PID: presentationID,
-		        UID: userID,
-		        netSessionID: netSessionID,
-		        ISD: 'F',
-		        ISE: 'F'
-				}
-			}
-		);
-});
-						$("#loading").remove();
+				$.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
+							
+						var netSessionID = $('input#session_id').val(), 
+						presentationID = llc.pres.id, 
+						userID = $('input#user_id').val(), 
+						siteID = $('input#site_id').val();
+							$('div.player').flash({
+								swf: 'flash/FlashPlayer.swf',
+						        width: 650,
+						        height: 650,
+						        wmode: 'transparent',
+						        allowFullScreen: 'true',
+								flashvars: {
+						        SID: siteID,
+						        PID: presentationID,
+						        UID: userID,
+						        netSessionID: netSessionID,
+						        ISD: 'F',
+						        ISE: 'F'
+								}
+							}
+						);
+				});
+				
+				$("#loading").remove();
 
 				
 			} else { 
@@ -788,6 +847,22 @@ $.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
 				  ################# Load HTML5 Media
 				 ########################################## */	
 				
+				/* ######## Load Markup and Position */
+				
+				// Adjust container height & position player 
+				var con = $("#llc_container"),
+					top = con.offset().top;
+
+				con.height(685);
+				
+				$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
+				
+				$("#llc_playerFrame").height(0).css({
+					'top':top+'px',
+					'left':'50%',
+					'margin-left':'-320px'
+				});
+					
 				// slide loading progress vars
 				llc.pres.imgsLoaded=0;
 				llc.pres.imgsCount=0;
@@ -800,14 +875,20 @@ $.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
 					if (llc.pres.imgsLoaded < llc.pres.imgsCount) {
 						$("#loading").text("loading slide "+llc.pres.imgsLoaded+" / "+llc.pres.imgsCount);
 					} else {
-						window.clearInterval("loader");
-						$("#loading").remove();
+						clearLoading();
 					}
 				}
+				function clearLoading() {
+					window.clearInterval("loader");
+					$("#loading").remove();
+					$("#llc_playerFrame").css('height','auto');
+				}
 				window.loader = window.setInterval(loading, 100);
-				window.setTimeout(function() {window.clearInterval("loader");$("#loading").remove();}, 30000); // loader fail safe 30 sec
+				window.setTimeout(clearLoading, 5000); // loader fail safe 30 sec
 
-				// Initialize Master jPlayer
+
+				/* ######## Initialize Master jPlayer */
+				
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
 				    	$.jPlayer.timeFormat.showHour = true; // set show hours
@@ -841,6 +922,7 @@ $.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
 				    	else t.parents('div.jp-volume').removeClass('mute');
 				    },
 				    verticalVolume: true,
+				    //preload: "auto",
 				    swfPath: "js",
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
@@ -848,6 +930,9 @@ $.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
 				    solution:"flash, html",
 				    wmode: "window"
 				}); // end jPlayer initialize
+				
+				
+				/* ######## ATTACH CLICK HANDLERS */
 				
 				// Assign volume show/hide click handlers
 				$("#master_jp_container div.jp-volume").toggle(function() {
@@ -912,6 +997,21 @@ $.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
 						llc.switchFull(false);
 				});
 				
+				llc.saveRating();
+				llc.saveNote();
+				llc.saveBookmark();
+				llc.setupSlideMagnify();
+				llc.disableRightClick();
+				
+				// Switch view event handler 
+				$("<span class='switchView'></span>").appendTo("#master_jplayer");
+				$("span.switchView").click(function(event){
+					llc.switchView(event,false);
+				});
+				
+				
+				/* ######## MISC */
+				
 				// Set presentation info
 				$("#pres_title span").text(llc.pres.title);
 				$("#pres_presenter span").text((function(){
@@ -930,22 +1030,7 @@ $.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
 				});
 				
 				// Set defualt view
-				llc.switchView(false,llc.pres.defaultInterface.text);
-								
-				/************************************* ATTACH CLICK HANDLERS */
-						
-				llc.saveRating();
-				llc.saveNote();
-				llc.saveBookmark();
-				llc.setupSlideMagnify();
-				llc.disableRightClick();
-				
-				// Switch view event handler 
-				$("<span class='switchView'></span>").appendTo("#master_jplayer");
-				$("span.switchView").click(function(event){
-					llc.switchView(event,false);
-				});
-							
+				llc.switchView(false,llc.pres.defaultInterface.text);					
 				
 			}
 		}); // end ajax XML call
