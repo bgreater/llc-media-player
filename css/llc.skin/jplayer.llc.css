@@ -291,7 +291,7 @@ div.jp-video div.jp-duration {
 
 /* @group playlist */
 div.jp-title {
- color: #eee; text-indent: 1em; font-size: 11px; line-height: 2;
+ color: #eee; text-indent: 1em; font-size: 11px; line-height: 2; text-align:left;
 }
 div.jp-title,
 div.jp-playlist {
