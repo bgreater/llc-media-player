@@ -480,6 +480,8 @@ span.switchView {
 .dual span.switchView {
  background: url(switchscreen.png) left no-repeat;
 }
+span.switchView:hover{opacity:.6;}
+
 #slides .slide.jp-video {
  display: block; width: 0px;
 }
