@@ -754,13 +754,24 @@ var llc = {
 			
 			// Resize Progress bar and disable scrolling
 			$(window).resize(function() {
+
 				var w = $(document).width(),
 					h = $(document).height();
+
 				$("#master_jp_container .jp-progress").width(w-222);
+
+				// Reset Dual sizing
+				if (llc.switchView.curMode=="Dual Screen") {
+					// Do for full screen 8x3 (2 wide 4x3) ratio
+					//if ()
+				}
+				
 			}).scroll(function (event) { 
+
 				if ($(this).scrollTop()>0) {
 					scroll(0,0); 
 				}
+
 			}).trigger('resize').trigger('scroll');
 						
 			$("#master_jplayer").next().find('a.llc-full').addClass('active');

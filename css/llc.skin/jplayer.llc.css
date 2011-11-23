@@ -523,9 +523,9 @@ div.jp-jplayer{
 .playerFrame.Full #slides .slide {
  height: 100%; width: 100%; text-align: center;
 }
-/*.playerFrame.Full #slides .slide img {
- height: 100%;
-}*/
+.playerFrame.Full #slides.single .slide img {
+ height: 100% !important;
+}
 /* @end */
 
 
