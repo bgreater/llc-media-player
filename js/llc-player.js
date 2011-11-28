@@ -256,7 +256,7 @@ var llc = {
 					</div>\
 				</div>\
 				<div id="pres_info">\
-					<div id="ad_sponsored" style=""><div style="float:left; margin-right:3px;">Sponsored By: </div><img src="css/llc.skin/sponsor-AD.png" alt="IBM" /></div>\
+					<div id="ad_sponsored" style=""><div style="float:left; margin-right:3px;">Sponsored By: </div><img src="images/player/sponsor-AD.png" alt="IBM" /></div>\
 					<p id="pres_title"><strong>Title:</strong> <span></span></p>\
 					<p id="pres_presenter"><strong>Presenter(s):</strong> <span></span></p>\
 					<p id="pres_date"><strong>Date:</strong> <span>There is no date in xml</span></p>\
@@ -264,10 +264,10 @@ var llc = {
 				</div>\
 				<div id="info_tabs">\
 					<div id="tabs">\
-						<a href="#overview" rel="tabs_overview" class="firstTab" style=""><table><tr><td><img src="css/llc.skin/overview_tab_icon.png" /></td><td> OVERVIEW</td></tr></table></a>\
-						<a href="#notes" rel="tabs_notes" class="" style=""><table><tr><td><img src="css/llc.skin/notes_tab_icon.png" /></td><td> NOTES</td></tr></table></a>\
-						<a href="#bookmarks" rel="tabs_bookmarks" style=""><table><tr><td><img src="css/llc.skin/bookmarks_tab_icon.png" /></td><td> BOOKMARKS</td></tr></table></a>\
-						<a href="#transcripts" rel="tabs_transcripts" class="lastTab" style=""><table><tr><td><img src="css/llc.skin/transcript_tab_icon.png" /></td><td> TRANSCRIPT</td></tr></table></a>\
+						<a href="#overview" rel="tabs_overview" class="firstTab" style=""><table><tr><td><img src="images/player/overview_tab_icon.png" /></td><td> OVERVIEW</td></tr></table></a>\
+						<a href="#notes" rel="tabs_notes" class="" style=""><table><tr><td><img src="images/player/notes_tab_icon.png" /></td><td> NOTES</td></tr></table></a>\
+						<a href="#bookmarks" rel="tabs_bookmarks" style=""><table><tr><td><img src="images/player/bookmarks_tab_icon.png" /></td><td> BOOKMARKS</td></tr></table></a>\
+						<a href="#transcripts" rel="tabs_transcripts" class="lastTab" style=""><table><tr><td><img src="images/player/transcript_tab_icon.png" /></td><td> TRANSCRIPT</td></tr></table></a>\
 					</div>\
 					<div id="content_area">\
 						<div id="tabs_overview" class="info"><div id="toc"></div></div>\
@@ -366,7 +366,7 @@ var llc = {
 			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
 			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
 			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
-			<img src="css/llc.skin/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
+			<img src="images/player/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
 		</div>').appendTo(pageid);
 	},
 	setupSlideMagnify: function() {
@@ -558,6 +558,10 @@ var llc = {
 				
 				if (s.is(".single")) m.height(0), s.height("auto");
 				else s.height(0), m.height("auto");
+				
+			} else {
+				
+				
 			}
 			
 			llc.switchView.curMode = "Single Screen"; // End with
@@ -971,7 +975,7 @@ var llc = {
 				    },
 				    verticalVolume: true,
 				    //preload: "auto",
-				    swfPath: "js",
+				    swfPath: "flash",
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,

@@ -49,7 +49,7 @@ div.jp-controls-holder {
  clear: both; width: 440px; margin: 0 auto; position: relative; overflow: hidden; top: -8px; /* This negative value depends on the size of the text in jp-currentTime and jp-duration */
 }
 div.jp-interface ul.jp-controls {
- list-style-type: none; margin: 0; padding: 0; background: url("jplayer.llc.png") bottom repeat-x;
+ list-style-type: none; margin: 0; padding: 0; background: url(../images/player/jplayer.llc.png) bottom repeat-x;
 }
 div.jp-audio ul.jp-controls {
  width: 380px; width: 100%; /*overide*/ padding: 0;
@@ -80,16 +80,16 @@ div.jp-volume {
  width: 35px; height: 25px;
 }
 a.jp-play {
- background: url("jplayer.llc.png") 0 0 no-repeat
+ background: url(../images/player/jplayer.llc.png) 0 0 no-repeat
 }
 a.jp-play:hover {
- background: url("jplayer.llc.png") -40px 0 no-repeat
+ background: url(../images/player/jplayer.llc.png) -40px 0 no-repeat
 }
 a.jp-pause {
- background: url("jplayer.llc.png") 0 -30px no-repeat; display: none;
+ background: url(../images/player/jplayer.llc.png) 0 -30px no-repeat; display: none;
 }
 a.jp-pause:hover {
- background: url("jplayer.llc.png") -40px -30px no-repeat
+ background: url(../images/player/jplayer.llc.png) -40px -30px no-repeat
 }
 /*a.jp-stop, a.jp-previous, a.jp-next {
 	width:28px;
@@ -98,48 +98,48 @@ a.jp-pause:hover {
 }
 
 a.jp-stop {
-	background: url("jplayer.llc.png") 0 -83px no-repeat;
+	background: url(../images/player/jplayer.llc.png) 0 -83px no-repeat;
 	margin-left:10px;
 }
 
 a.jp-stop:hover {
-	background: url("jplayer.llc.png") -29px -83px no-repeat;
+	background: url(../images/player/jplayer.llc.png) -29px -83px no-repeat;
 }*/
 a.llc-prev {
- background: url("jplayer.llc.png") 0 -90px no-repeat
+ background: url(../images/player/jplayer.llc.png) 0 -90px no-repeat
 }
 a.llc-prev:hover {
- background: url("jplayer.llc.png") -40px -90px no-repeat
+ background: url(../images/player/jplayer.llc.png) -40px -90px no-repeat
 }
 a.llc-next {
- background: url("jplayer.llc.png") 0 -120px no-repeat
+ background: url(../images/player/jplayer.llc.png) 0 -120px no-repeat
 }
 a.llc-next:hover {
- background: url("jplayer.llc.png") -40px -120px no-repeat
+ background: url(../images/player/jplayer.llc.png) -40px -120px no-repeat
 }
 a.llc-bookmark {
- background: url("jplayer.llc.png") 0 -60px no-repeat
+ background: url(../images/player/jplayer.llc.png) 0 -60px no-repeat
 }
 a.llc-bookmark:hover {
- background: url("jplayer.llc.png") -40px -60px no-repeat
+ background: url(../images/player/jplayer.llc.png) -40px -60px no-repeat
 }
 a.llc-bookmark-set {
- background: url("jplayer.llc.png") -80px -60px no-repeat
+ background: url(../images/player/jplayer.llc.png) -80px -60px no-repeat
 }
 a.llc-bookmark-set:hover {
- background: url("jplayer.llc.png") -40px -60px no-repeat
+ background: url(../images/player/jplayer.llc.png) -40px -60px no-repeat
 }
 a.llc-full {
- background: url("jplayer.llc.png") 0 -180px no-repeat
+ background: url(../images/player/jplayer.llc.png) 0 -180px no-repeat
 }
 a.llc-full:hover {
- background: url("jplayer.llc.png") -40px -180px no-repeat
+ background: url(../images/player/jplayer.llc.png) -40px -180px no-repeat
 }
 a.llc-full.active {
- background: url("jplayer.llc.png") -80px -180px no-repeat
+ background: url(../images/player/jplayer.llc.png) -80px -180px no-repeat
 }
 a.llc-full.active:hover {
- background: url("jplayer.llc.png") -120px -180px no-repeat
+ background: url(../images/player/jplayer.llc.png) -120px -180px no-repeat
 }
 /* @end */
 
@@ -160,14 +160,14 @@ div.jp-video div.jp-progress {
  top: 0px; left: 0px; width: 100%; height: 25px;
 }
 div.jp-seek-bar {
- background: #fff /*url("jplayer.llc.png") 0 -202px repeat-x*/; width:0px; height: 100%; cursor: pointer; /*position: relative;*/
+ background: #fff /*url(../images/player/jplayer.llc.png) 0 -202px repeat-x*/; width:0px; height: 100%; cursor: pointer; /*position: relative;*/
 }
 div.jp-play-bar {
- background: url("jplayer.llc.png") 0 -330px repeat-x; width: 0px; height: 100%;
+ background: url(../images/player/jplayer.llc.png) 0 -330px repeat-x; width: 0px; height: 100%;
 }
 /* The seeking class is added/removed inside jPlayer */
 div.jp-seeking-bg {
- background: url("jplayer.llc.pbar-ani.gif")
+ background: url(../images/player/jplayer.llc.pbar-ani.gif)
 }
 /* @end */
 
@@ -201,35 +201,35 @@ div.jp-video a.jp-volume-max {
  left: 134px
 }
 a.jp-mute {
- background: url("jplayer.llc.png") 0 -170px no-repeat
+ background: url(../images/player/jplayer.llc.png) 0 -170px no-repeat
 }
 a.jp-mute:hover {
- background: url("jplayer.llc.png") -19px -170px no-repeat
+ background: url(../images/player/jplayer.llc.png) -19px -170px no-repeat
 }
 a.jp-unmute {
- background: url("jplayer.llc.png") -60px -170px no-repeat; display: none;
+ background: url(../images/player/jplayer.llc.png) -60px -170px no-repeat; display: none;
 }
 a.jp-unmute:hover {
- background: url("jplayer.llc.png") -79px -170px no-repeat
+ background: url(../images/player/jplayer.llc.png) -79px -170px no-repeat
 }
 a.jp-volume-max {
- background: url("jplayer.llc.png") 0 -186px no-repeat
+ background: url(../images/player/jplayer.llc.png) 0 -186px no-repeat
 }
 a.jp-volume-max:hover {
- background: url("jplayer.llc.png") -19px -186px no-repeat
+ background: url(../images/player/jplayer.llc.png) -19px -186px no-repeat
 }
 /* Vertical volume style */
 div.jp-volume {
- background: url("jplayer.llc.png") 0px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer;
+ background: url(../images/player/jplayer.llc.png) 0px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer;
 }
 div.jp-volume.active {
- background: url("jplayer.llc.png") -40px -150px no-repeat; overflow: visible;
+ background: url(../images/player/jplayer.llc.png) -40px -150px no-repeat; overflow: visible;
 }
 div.jp-volume.mute {
- background: url("jplayer.llc.png") -80px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer;
+ background: url(../images/player/jplayer.llc.png) -80px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer;
 }
 div.jp-volume.mute.active {
- background: url("jplayer.llc.png") -120px -150px no-repeat; position: relative; overflow: visible; 
+ background: url(../images/player/jplayer.llc.png) -120px -150px no-repeat; position: relative; overflow: visible; 
 }
 div.jp-volume-bar {
  position: relative; height: 100%; border: 16px solid #a1a1a1; border-top: none; border-bottom: none; width: 3px; background: #999; bottom: 0px;
@@ -247,7 +247,7 @@ div.jp-volume span.jp-volume-bar-drag {
 div.jp-volume-bar {
 	position: absolute;
 	overflow:hidden;
-	background: url("jplayer.llc.png") 0 -250px repeat-x;
+	background: url(../images/player/jplayer.llc.png) 0 -250px repeat-x;
 	width:46px;
 	height:5px;
 	cursor: pointer;
@@ -261,7 +261,7 @@ div.jp-video div.jp-volume-bar {
 	left:72px;
 }
 div.jp-volume-bar-value {
-	background: url("jplayer.llc.png") 0 -256px repeat-x;
+	background: url(../images/player/jplayer.llc.png) 0 -256px repeat-x;
 	width:0px;
 	height:5px;
 }*/
@@ -364,10 +364,10 @@ div.jp-video-full div.jp-video-play {
  height: 100%; z-index: 1000;
 }
 a.jp-video-play-icon {
- position: relative; display: block; width: 112px; height: 100px; margin-left: -56px; margin-top: -50px; left: 50%; top: 50%; background: url("jplayer.llc.play.png") 0 0 no-repeat; text-indent: -9999px;
+ position: relative; display: block; width: 112px; height: 100px; margin-left: -56px; margin-top: -50px; left: 50%; top: 50%; background: url(../images/player/jplayer.llc.play.png) 0 0 no-repeat; text-indent: -9999px;
 }
 div.jp-video-play:hover a.jp-video-play-icon {
- background: url("jplayer.llc.play.png") 0 -100px no-repeat
+ background: url(../images/player/jplayer.llc.play.png) 0 -100px no-repeat
 }
 div.jp-jplayer audio,
 div.jp-jplayer {
@@ -398,40 +398,40 @@ ul.jp-toggles li a {
  display: block; width: 25px; height: 18px; text-indent: -9999px; line-height: 100%; /* need this for IE6 */
 }
 a.jp-full-screen {
- background: url("jplayer.llc.png") 0 -310px no-repeat; margin-left: 20px;
+ background: url(../images/player/jplayer.llc.png) 0 -310px no-repeat; margin-left: 20px;
 }
 a.jp-full-screen:hover {
- background: url("jplayer.llc.png") -30px -310px no-repeat
+ background: url(../images/player/jplayer.llc.png) -30px -310px no-repeat
 }
 a.jp-restore-screen {
- background: url("jplayer.llc.png") -60px -310px no-repeat; margin-left: 20px;
+ background: url(../images/player/jplayer.llc.png) -60px -310px no-repeat; margin-left: 20px;
 }
 a.jp-restore-screen:hover {
- background: url("jplayer.llc.png") -90px -310px no-repeat
+ background: url(../images/player/jplayer.llc.png) -90px -310px no-repeat
 }
 a.jp-repeat {
- background: url("jplayer.llc.png") 0 -290px no-repeat
+ background: url(../images/player/jplayer.llc.png) 0 -290px no-repeat
 }
 a.jp-repeat:hover {
- background: url("jplayer.llc.png") -30px -290px no-repeat
+ background: url(../images/player/jplayer.llc.png) -30px -290px no-repeat
 }
 a.jp-repeat-off {
- background: url("jplayer.llc.png") -60px -290px no-repeat
+ background: url(../images/player/jplayer.llc.png) -60px -290px no-repeat
 }
 a.jp-repeat-off:hover {
- background: url("jplayer.llc.png") -90px -290px no-repeat
+ background: url(../images/player/jplayer.llc.png) -90px -290px no-repeat
 }
 a.jp-shuffle {
- background: url("jplayer.llc.png") 0 -270px no-repeat; margin-left: 5px;
+ background: url(../images/player/jplayer.llc.png) 0 -270px no-repeat; margin-left: 5px;
 }
 a.jp-shuffle:hover {
- background: url("jplayer.llc.png") -30px -270px no-repeat
+ background: url(../images/player/jplayer.llc.png) -30px -270px no-repeat
 }
 a.jp-shuffle-off {
- background: url("jplayer.llc.png") -60px -270px no-repeat; margin-left: 5px;
+ background: url(../images/player/jplayer.llc.png) -60px -270px no-repeat; margin-left: 5px;
 }
 a.jp-shuffle-off:hover {
- background: url("jplayer.llc.png") -90px -270px no-repeat
+ background: url(../images/player/jplayer.llc.png) -90px -270px no-repeat
 }
 /* @end */
 
@@ -454,10 +454,10 @@ a.jp-shuffle-off:hover {
  background-color: #3d3b3c; text-align: center; width: 650px; margin: 50px auto 25px auto; text-align: left; position: relative;
 }
 .playerFrame {
-background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; padding:5px 0 5px 0; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: absolute; overflow: hidden; background-image:url(player640x480bgGrad.png); background-position:0 0; background-repeat:repeat-x;
+background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; padding:5px 0 5px 0; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: absolute; overflow: hidden; background-image:url(../images/player/player640x480bgGrad.png); background-position:0 0; background-repeat:repeat-x;
 }
 #loading {
- position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
+ position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(../images/player/ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
 }
 #slides {
  height: 0px; position: relative; overflow: hidden;
@@ -475,10 +475,10 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
  height: auto; max-height: 100%;
 }
 span.switchView {
- width: 33px; height: 21px; background: url(switchscreen.png) right no-repeat; position: absolute; bottom: 10px; left: 10px; cursor: pointer;
+ width: 33px; height: 21px; background: url(../images/player/switchscreen.png) right no-repeat; position: absolute; bottom: 10px; left: 10px; cursor: pointer;
 }
 .dual span.switchView {
- background: url(switchscreen.png) left no-repeat;
+ background: url(../images/player/switchscreen.png) left no-repeat;
 }
 span.switchView:hover{opacity:.6;}
 
@@ -492,7 +492,7 @@ div.jp-jplayer{
  overflow: hidden;
 }
 #master_jplayer {
- height: 0px; background: #1b2329 url(defaultMediaBg.png) center no-repeat; position: relative; overflow: hidden;
+ height: 0px; background: #1b2329 url(../images/player/defaultMediaBg.png) center no-repeat; position: relative; overflow: hidden;
 }
 #master_jplayer.single {
  height: 480px !important; width: 640px !important;
@@ -558,10 +558,10 @@ div.jp-jplayer{
  float: right; vertical-align: top; margin: .8em; color: #7b7b7b;
 }
 .jquery-ratings-star {
- cursor: pointer; width: 15px; height: 14px; background-image: url('empty-star.png'); background-repeat: no-repeat; position: relative; float: left; margin-right: 2px;
+ cursor: pointer; width: 15px; height: 14px; background-image: url(../images/player/empty-star.png); background-repeat: no-repeat; position: relative; float: left; margin-right: 2px;
 }
 .jquery-ratings-full {
- background-image: url('full-star.png');
+ background-image: url(../images/player/full-star.png);
 }
 #ratings_box {
  position: absolute; right: 150px; bottom: 10px; width: 140px; height: 14px;
@@ -595,7 +595,7 @@ font-size:1.1em;
 .toc_thumb{float:left;margin:4px 6px 9px 5px; border:6px solid #ffffff; padding:0 2px 0 2px; text-align:center; position:relative; 
 	width:124px;
 	height:163px;
-	background-image:url(radShadow_bg.png);
+	background-image:url(../images/player/radShadow_bg.png);
 	background-position:center center;
 	margin:0;
 	padding:12px;
@@ -603,7 +603,7 @@ font-size:1.1em;
 }
 .active_toc_thumb{
 	/*border:6px solid #fff200 !important;*/
-	background-image:url(radShadow_active_bg.png);
+	background-image:url(../images/player/radShadow_active_bg.png);
 }
 .active_toc_thumb a img.toc_thumb_img{
 /*width:270px;*/
@@ -612,7 +612,7 @@ font-size:1.1em;
 .toc_thumb table td{vertical-align:top;}
 .toc_thumb img.toc_thumb_img{width:118px;margin-left:auto;margin-right:auto; margin-top:3px; border:1px solid #676565;}
 .toc_thumb img.toc_thumb_img:hover{border:1px solid #6d6c6c;}
-.toc_thumb div.toc_magnify_img{float:right;top:0; cursor:pointer; background-image:url(magnify_icon.png); background-position:0 0; background-repeat:no-repeat; height:21px; width:21px;}
+.toc_thumb div.toc_magnify_img{float:right;top:0; cursor:pointer; background-image:url(../images/player/magnify_icon.png); background-position:0 0; background-repeat:no-repeat; height:21px; width:21px;}
 .toc_thumb div.toc_magnify_img:hover{background-position:0 -21px;}
 .toc_thumb_info{font-size:8pt; color:#58595b; font-family:Arial; position:relative; text-align:left;width:116px;margin-left:auto;margin-right:auto;}
 .toc-bookmark{float:right;}
@@ -620,8 +620,8 @@ font-size:1.1em;
 .toc_time{float:left;}
 .toc-bookmark{font-size:7pt;color:#9a9a9a;text-decoration:none; vertical-align:top;float:right;cursor:pointer;}
 .toc-bookmark:hover{color:#048be9;}
-.toc_add_bm{background-image:url(toc_add_bm_btn.png); background-position:0 0; background-repeat:no-repeat; width:48px; height:11px;}
-.bmThumbFlag{width:19px; height:28px; position:absolute; z-index:3; top:7px; right:15px; background-image:url(bookmark-flag.png);background-position:0 0; background-repeat:no-repeat;}
+.toc_add_bm{background-image:url(../images/player/toc_add_bm_btn.png); background-position:0 0; background-repeat:no-repeat; width:48px; height:11px;}
+.bmThumbFlag{width:19px; height:28px; position:absolute; z-index:3; top:7px; right:15px; background-image:url(../images/player/bookmark-flag.png);background-position:0 0; background-repeat:no-repeat;}
 #noBookmarks{margin-top:25px; font-size:1em; color:#17181c;margin-bottom:12px;text-align:left;padding-left:10px;}
 .zoom_box{
 position:absolute; 
@@ -641,7 +641,7 @@ border-radius:5px;
 }
 .zoom_img{width:500px; height:375px;}
 .zoom_box_control{height:20px; width:99%; background-color:#e6e7e8; text-align:right;padding-right:1px;}
-.zoom_box_control .close_button{background-image:url(16x16-close-button.png);background-position:0 0; background-repeat:no-repeat; width:16px; height:16px; float:right;cursor:pointer;}
+.zoom_box_control .close_button{background-image:url(../images/player/16x16-close-button.png);background-position:0 0; background-repeat:no-repeat; width:16px; height:16px; float:right;cursor:pointer;}
 .zoom_box_control .close_button:hover{background-position:0 -16px;}
 
 /***************************************************/
@@ -654,7 +654,7 @@ float:left;
 width:158px; 
 text-align:center; 
 vertical-align:middle; 
-background-image:url(tab_bg_3row.png);
+background-image:url(../images/player/tab_bg_3row.png);
 background-repeat:repeat-x;
 background-position:0 0;
 font-family:Arial;
@@ -743,7 +743,7 @@ background:#eee;
 	}
 
 #tabs_control{
-background-image:url(grayCtrlsBG.png);
+background-image:url(../images/player/grayCtrlsBG.png);
 background-position:0 0;
 background-repeat:repeat-x;
 height:31px;
@@ -768,7 +768,7 @@ margin-right:40px;
 margin-top:10px;
   background-repeat: no-repeat;
   background-position:220px 0px;
-  background-image: url('toggle_features_arrow_down.png');
+  background-image: url(../images/player/toggle_features_arrow_down.png);
 }
 #tabs_control_toggle_btn:hover{
 background-position:220px -13px;
@@ -777,7 +777,7 @@ color:#ffffff;
 .show_features{
 }
 .hide_features{
-  background-image: url('toggle_features_arrow_up.png') !important;
+  background-image: url(../images/player/toggle_features_arrow_up.png) !important;
 }
 /**************************************************************/
 
@@ -819,7 +819,7 @@ float:right;
 	font-weight:600;
 	letter-spacing:1px;
 	
-    background: url("button-bg.png") repeat-x scroll left bottom transparent;
+    background: url(../images/player/button-bg.png) repeat-x scroll left bottom transparent;
     border: 1px solid #999999;
     -webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;
     color: inherit;
@@ -838,7 +838,7 @@ padding:7px 6px 5px 6px;
 }
 .playIcon{
   background-color:transparent;
-  background-image: url('play_basic_white.gif');
+  background-image: url(../images/player/play_basic_white.gif);
   background-repeat: no-repeat;
   background-position:center center;
   width:120px;
