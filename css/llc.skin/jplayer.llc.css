@@ -523,8 +523,20 @@ div.jp-jplayer{
 .playerFrame.Full #slides .slide {
  height: 100%; width: 100%; text-align: center;
 }
+.playerFrame.Full #slides.single .slide {
+	text-align: left;
+}
 .playerFrame.Full #slides.single .slide img {
  height: 100% !important;
+}
+.playerFrame.Full #slides.dual {
+ left: 51%; width: 49%; margin: 0;
+}
+.playerFrame.Full #slides.dual .slide {
+ text-align: left;
+}
+.playerFrame.Full #slides.dual .slide img {
+ width: 100% !important; height: auto !important;
 }
 /* @end */
 

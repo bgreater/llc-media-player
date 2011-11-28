@@ -486,8 +486,12 @@ var llc = {
 		
 		//console.log('switch view fired');
 		
+		// ASSUMES 4x3 Aspect Ratio for Media~!!!
+		
 		var s = $("#slides"),
 			m = $("#master_jplayer"),
+			w = $("#llc_playerFrame").width(),
+			h = $("#llc_playerFrame").height(),
 			curMode = llc.switchView.curMode = llc.switchView.curMode ? llc.switchView.curMode : llc.pres.defaultInterface.text;
 		
 		if ((event && curMode == "Single Screen") || mode == "Dual Screen") { // Do Dual Screen
@@ -496,6 +500,16 @@ var llc = {
 			m.addClass("dual").removeClass("single");
 			s.addClass("dual").removeClass("single");
 			
+			// if full screen
+			if ($("#llc_playerFrame").is(".Full")) {
+				
+				// Do for full screen for above 8x3 (2 wide 4x3) ratio, probably not any screens that are longer than 8x3 ratio 
+				var mar = ((h-50)-((w*0.49)*0.75))/2;
+					
+				s.css({marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0}); 
+				m.css({height:s.height(), width:s.width(), marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0});
+			}
+			
 			llc.switchView.curMode = "Dual Screen"; // End with	
 			
 		} else if ((event && curMode == "Dual Screen") || mode == "Single Screen") { // Do Single Screen
@@ -503,20 +517,48 @@ var llc = {
 			//console.log('single view fired');
 			
 			if (event) { // Was clicked
-				
+								
 				var p = $(event.target).parents('div.dual');
 				
-				p.addClass("single");
+				p.removeClass("single").addClass("single");
 
 											
 			} else {
 			
-				if (llc.pres.defaultWindow.id == 1) m.addClass("single");
-				else p.addClass("single");
+				if (llc.pres.defaultWindow.id == 1 && !s.is(".single")) {
+					
+					// Show screen 1
+					m.removeClass("single").addClass("single");
+				
+				} else {
+					
+					// Show Slides (screen 2)
+					s.removeClass("single").addClass("single");
+				
+				}
 			}
 			
 			m.removeClass("dual");
 			s.removeClass("dual");
+			
+			// if full screen
+			if ($("#llc_playerFrame").is(".Full")) {
+				
+				m.css({marginTop:0, marginBottom:0});
+				s.css({marginTop:0, marginBottom:0});
+				
+				// wide aspect ratio
+				if (h-50 <= w*0.75) {
+					
+					var mar = (w-((h-50)/0.75))/2; 
+					
+					$("#llc_playerFrame").find(".single").css({marginLeft:mar, marginRight:mar})
+					
+				}
+				
+				if (s.is(".single")) m.height(0), s.height("auto");
+				else s.height(0), m.height("auto");
+			}
 			
 			llc.switchView.curMode = "Single Screen"; // End with
 		
@@ -755,16 +797,11 @@ var llc = {
 			// Resize Progress bar and disable scrolling
 			$(window).resize(function() {
 
-				var w = $(document).width(),
-					h = $(document).height();
+				var w = $("#llc_playerFrame").width();
 
 				$("#master_jp_container .jp-progress").width(w-222);
-
-				// Reset Dual sizing
-				if (llc.switchView.curMode=="Dual Screen") {
-					// Do for full screen 8x3 (2 wide 4x3) ratio
-					//if ()
-				}
+				
+				llc.switchView(false,llc.switchView.curMode);
 				
 			}).scroll(function (event) { 
 
