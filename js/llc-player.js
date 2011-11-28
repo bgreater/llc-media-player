@@ -903,7 +903,8 @@ var llc = {
 				
 				// Adjust container height & position player 
 				var con = $("#llc_container"),
-					top = con.offset().top;
+					top = con.offset(); // spliting off for ie9 issue
+					top = con.top;
 
 				//con.height(695);
 				
