@@ -835,21 +835,31 @@ var llc = {
 		 
 	},
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
-	/*
-		
-		presentationID = $('input#pres_id').val(), 
-		userID = $('input#user_id').val(), 
-		siteID = $('input#site_id').val();
-		var url = 'playerPresentation.aspx?PID='+presentationID+'&SID='+siteID+'&UID='+userID;
-		*/
-		
+	
+		 
+		if (document.domain.indexOf('dropbox')!=-1) {
+			
+			// Use test data
+			var url = 'presentation.xml';
+			
+		} else {
+			
+			// Use live data
+			presentationID = $('input#pres_id').val(),
+			userID = $('input#user_id').val(),
+			siteID = $('input#site_id').val();
+			var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + siteID + '&UID=' + userID;
+			
+		}
+				
 		// Set loading
 		$('<div id="loading"></div>').appendTo("#llc_container");
 		
-		$.get('presentation.xml', function(xml){ // Get XML ?is there always a common file name 'presentation.xml' or should that be a parameter?
-			//console.log('xml loaded');
-			llc.pres = $.xml2json(xml); // Serialize XML and set llc.pres object
-			//console.log(llc.pres);
+		// Serialize XML and set llc.pres object
+		$.get(url, function(xml){ 
+		
+			llc.pres = $.xml2json(xml); 
+
 				/*
 				  CURRENT IMPORTANT VARIABLES:
 				  pres.media.master.item.fileType = "mp3, ?video?" // this will determine if video or audio sync 
