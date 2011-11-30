@@ -451,7 +451,7 @@ a.jp-shuffle-off:hover {
 
 /* @group Basic Style */
 .player {
- background-color: #3d3b3c; text-align: center; width: 650px; padding: 5px 0; margin: 0px auto 25px auto; text-align: left; position: relative;
+ background-color: #3d3b3c; text-align: center; width: 655px; padding: 5px 0; margin: 0px auto 25px auto; text-align: left; position: relative;
 }
 .playerFrame {
 background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; padding:0; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: absolute; overflow: hidden; background-image:url(../images/player/player640x480bgGrad.png); background-position:0 0; background-repeat:repeat-x;

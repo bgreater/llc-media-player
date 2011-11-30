@@ -840,7 +840,7 @@ var llc = {
 		if (document.domain.indexOf('dropbox')!=-1) {
 			
 			// Use test data
-			var url = 'presentation.xml';
+			var url = 'pres-video.xml';
 			
 		} else {
 			
