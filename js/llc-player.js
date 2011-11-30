@@ -403,7 +403,7 @@ var llc = {
 		$('div.close_button').live('click', function(e){
 			$('div.zoom_box').remove();
 			$('div.toc_magnify_img').each(function(){
-			$(this).removeClass('zoom_selected');
+			$(this).removeClass('zoom_selected'); 
 			});
 		});
 		
