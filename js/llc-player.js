@@ -418,12 +418,10 @@ var llc = {
 		
 		var timeNow = event.jPlayer.status.currentTime,
 			curEl = llc.pres.curEl || llc.pres.media.items.item[0],
-			curBlurb = llc.pres.curBlurb || llc.pres.transcript.blurb[0] || null;
-			llc.pres.curEl = llc.pres.curEl || null;
-			llc.pres.curBlurb = llc.pres.curBlurb || null;
-		
-		if (window.console) console.log(llc.pres.curEl,llc.pres.curBlurb);
-		
+			curBlurb = llc.pres.transcript.blurb == undefined ? undefined : llc.pres.curBlurb || llc.pres.transcript.blurb[0];
+			llc.pres.curEl = llc.pres.curEl || undefined;
+			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
+				
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
 			var startPoint = llc.pres.media.items.item[i].startPoint/1000;
@@ -435,9 +433,7 @@ var llc = {
 			var startPoint = llc.pres.transcript.blurb[i].startPoint/1000;
 			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
 		}
-		
-		if (window.console) console.log(curEl,curBlurb);
-		
+				
 		// Should we do anything with slides?
 		if (llc.pres.curEl != curEl ) {
 			
