@@ -922,8 +922,7 @@ var llc = {
 
 					var con = $("#llc_container"),
 						frm = $("#llc_playerFrame"),
-						top = con.offset(); // spliting off for ie9 issue
-						top = top.top+'px';
+						top = con.offset().top+5+'px'; // 5px padding up top 
 
 					frm.css({
 						'top':top,
