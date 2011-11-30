@@ -913,8 +913,9 @@ var llc = {
 				
 				$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
 				
-				// hide for loading
+				// hide for loading & set initial inline container height
 				$("#llc_container").height(0);
+				$("#llc_playerFrame").height(695);
 				
 				// Adjust container height & position player
 				$("#llc_playerFrame").resize(function(){
