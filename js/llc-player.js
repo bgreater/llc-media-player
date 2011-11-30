@@ -139,8 +139,8 @@ var llc = {
 		 ########################################## */
 		 
 		$('#tabs_control_toggle_btn').click(function(){
-			if($('div#content_area').is(':animated')){}else{
-				$("#content_area").slideToggle();
+			if(!$('div#content_area').is(':animated')){
+				$("#content_area").slideToggle(function(){$("#llc_playerFrame").trigger('resize');});
 				$(this).toggleClass('hide_features');
 				var classChk = $(this).hasClass('hide_features');
 				if(classChk){
@@ -178,7 +178,7 @@ var llc = {
 						$("#tabs_"+ref).animate({ opacity: 1 }, 1000);
 				var curdisplay = $("#content_area").css('display');
 				if(curdisplay=='none'){
-				$("#content_area").slideToggle();
+				$("#content_area").slideToggle(function(){$("#llc_playerFrame").trigger('resize');});
 				$('#tabs_control_toggle_btn').toggleClass('hide_features');
 				$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
 				}else{
@@ -911,20 +911,30 @@ var llc = {
 				
 				/* ######## Load Markup and Position */
 				
-				// Adjust container height & position player 
-				var con = $("#llc_container"),
-					top = con.offset(); // spliting off for ie9 issue
-					top = con.top;
-
-				//con.height(695);
-				
 				$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
 				
-				$("#llc_playerFrame").height(0).css({
-					'top':top+'px',
-					'left':'50%',
-					'margin-left':'-320px'
-				});
+				// hide for loading
+				$("#llc_container").height(0);
+				
+				// Adjust container height & position player
+				$("#llc_playerFrame").resize(function(){
+
+					var con = $("#llc_container"),
+						frm = $("#llc_playerFrame"),
+						top = con.offset(); // spliting off for ie9 issue
+						top = top.top+'px';
+						console.log(top);				
+					frm.css({
+						'top':top,
+						'left':'50%',
+						'margin-left':'-320px',
+						'z-index':'99999'
+					});
+
+					con.height(frm.height());
+					
+				}).trigger('resize');
+				
 					
 				// slide loading progress vars
 				llc.pres.imgsLoaded=0;
@@ -941,13 +951,17 @@ var llc = {
 						clearLoading();
 					}
 				}
+				
 				function clearLoading() {
-					window.clearInterval("loader");
+					window.clearInterval(window.loader);
+					window.clearTimeout(window.loaderFail);	
 					$("#loading").remove();
 					$("#llc_playerFrame").css('height','auto');
+					$("#llc_playerFrame").trigger('resize');
+					console.log('clearLoading');
 				}
 				window.loader = window.setInterval(loading, 100);
-				window.setTimeout(clearLoading, 5000); // loader fail safe 30 sec
+				window.loaderFail = window.setTimeout(clearLoading, 20000); // loader fail safe 20 sec
 
 
 				/* ######## Initialize Master jPlayer */
@@ -995,9 +1009,9 @@ var llc = {
 				}); // end jPlayer initialize
 				
 				
-				/* ######## ATTACH CLICK HANDLERS */
+				/* ################################# ATTACH CLICK HANDLERS */
 				
-				// Assign volume show/hide click handlers
+				/* Assign volume show/hide click handlers */
 				$("#master_jp_container div.jp-volume").toggle(function() {
 						if(!$(this).is('.hover.active')) $(this).addClass("active");
 					}, function() {
