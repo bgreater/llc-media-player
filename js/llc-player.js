@@ -418,7 +418,7 @@ var llc = {
 		
 		var timeNow = event.jPlayer.status.currentTime,
 			curEl = llc.pres.curEl || llc.pres.media.items.item[0],
-			curBlurb = llc.pres.curBlurb || llc.pres.transcript.blurb[0];
+			curBlurb = llc.pres.curBlurb || llc.pres.transcript.blurb[0] || null;
 			llc.pres.curEl = llc.pres.curEl || null;
 			llc.pres.curBlurb = llc.pres.curBlurb || null;
 		
@@ -431,7 +431,7 @@ var llc = {
 		// Determine Blurb closest to play head	but not before current Time
 		for (i in llc.pres.transcript.blurb) {
 			var startPoint = llc.pres.transcript.blurb[i].startPoint/1000;
-			curBlurb = startPoint-timeNow <= 0 ? llc.pres.transcript.blurb[i] : curBlurb ;
+			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
 		}
 		
 		// Should we do anything with slides?
@@ -469,7 +469,7 @@ var llc = {
 		}
 		
 		// Should we do anything with Blurbs?
-		if (llc.pres.curBlurb != curBlurb ) {
+		if (llc.pres.curBlurb != curBlurb && curBlurb != null) {
 			
 			// Set global curBlurb
 			llc.pres.curBlurb = curBlurb;
@@ -924,7 +924,7 @@ var llc = {
 						frm = $("#llc_playerFrame"),
 						top = con.offset(); // spliting off for ie9 issue
 						top = top.top+'px';
-						console.log(top);				
+
 					frm.css({
 						'top':top,
 						'left':'50%',
@@ -959,7 +959,6 @@ var llc = {
 					$("#loading").remove();
 					$("#llc_playerFrame").css('height','auto');
 					$("#llc_playerFrame").trigger('resize');
-					console.log('clearLoading');
 				}
 				window.loader = window.setInterval(loading, 100);
 				window.loaderFail = window.setTimeout(clearLoading, 20000); // loader fail safe 20 sec
