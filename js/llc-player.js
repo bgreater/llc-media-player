@@ -422,6 +422,8 @@ var llc = {
 			llc.pres.curEl = llc.pres.curEl || null;
 			llc.pres.curBlurb = llc.pres.curBlurb || null;
 		
+		if (window.console) console.log(llc.pres.curEl,llc.pres.curBlurb);
+		
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
 			var startPoint = llc.pres.media.items.item[i].startPoint/1000;
@@ -433,6 +435,8 @@ var llc = {
 			var startPoint = llc.pres.transcript.blurb[i].startPoint/1000;
 			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
 		}
+		
+		if (window.console) console.log(curEl,curBlurb);
 		
 		// Should we do anything with slides?
 		if (llc.pres.curEl != curEl ) {
@@ -928,8 +932,7 @@ var llc = {
 					frm.css({
 						'top':top,
 						'left':'50%',
-						'margin-left':'-320px',
-						'z-index':'99999'
+						'margin-left':'-320px'
 					});
 
 					con.height(frm.height());
