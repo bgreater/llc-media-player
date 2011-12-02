@@ -10,18 +10,18 @@ div.jp-audio,
 div.jp-video {
  /* Edit the font-size to counteract inherited font sizing.: ; * Eg. 1.25em = 1 / 0.8em: ; */ font-size: 1em; /* No parent CSS that can effect the size in the demos ZIP */ font-family: Helvetica, Arial, sans-serif; line-height: 1.6; color: #666; /*border: 1px solid #009be3;*/ background-color: #eee; position: relative;
 }
-div.jp-audio {
- /*width: 420px; width: 640px; overide*/
+/*div.jp-audio {
+ width: 420px; width: 640px; overide
 }
-/*div.jp-video-270p {
+div.jp-video-270p {
  width: 480px
 }
 div.jp-video-360p {
  width: 640px
-}*/
-div.jp-video-full {
- /* Rules for IE6 (full-screen) */ width: 480px; height: 270px; /* Rules for IE7 (full-screen) - Otherwise the relative container causes other page items that are not position: static (default) to appear over the video/gui. */; position: static !important; position: relative;
 }
+div.jp-video-full {
+  Rules for IE6 (full-screen)  width: 480px; height: 270px;  Rules for IE7 (full-screen) - Otherwise the relative container causes other page items that are not position: static (default) to appear over the video/gui.  ; position: static !important; position: relative;
+}*/
 div.jp-video-full div.jp-jplayer {
  top: 0; left: 0; position: fixed !important; nowhitespace: afterproperty; position: relative; /* Rules for IE6 (full-screen) */ overflow: hidden; z-index: 1000;
 }
@@ -220,7 +220,7 @@ a.jp-volume-max:hover {
 }
 /* Vertical volume style */
 div.jp-volume {
- background: url(../images/player/jplayer.llc.png) 0px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer;
+ background: url(../images/player/jplayer.llc.png) 0px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer; z-index: 2;
 }
 div.jp-volume.active {
  background: url(../images/player/jplayer.llc.png) -40px -150px no-repeat; overflow: visible;
@@ -291,7 +291,7 @@ div.jp-video div.jp-duration {
 
 /* @group playlist */
 div.jp-title {
- color: #eee; text-indent: 1em; font-size: 11px; line-height: 2; text-align:left;
+ color: #eee; text-indent: 1em; font-size: 11px; line-height: 2; text-align:left; height: 25px; clear: both;
 }
 div.jp-title,
 div.jp-playlist {
@@ -460,7 +460,7 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
  position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(../images/player/ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
 }
 #media {
- height: 480px; width: 640px; position: relative;
+ height: 480px; width: 640px; position: absolute; overflow: hidden; z-index: 1; background: #3D3B3C; 
 }
 #slides {
  height: 0px; position: relative; overflow: hidden;
@@ -500,11 +500,11 @@ div.jp-jplayer{
 #master_jplayer.single {
  height: 480px !important; width: 640px !important;
 }
-#master_jplayer.dual {
+.inline #master_jplayer.dual {
  height: 236px !important; width: 315px !important; margin: 122px 0;
 }
 #master_jp_container {
-  height: 50px; clear: both;
+  height: 50px; clear: both; margin-top: 480px;
 }
 
 /* @end */
@@ -518,7 +518,7 @@ div.jp-jplayer{
  z-index: 1000; top: 0 !important; bottom: 0 !important; left: 0 !important; width: 100%; background-color: #3d3b3c; padding: 0; border: none; margin-left: 0 !important;
 }
 .playerFrame.Full #master_jp_container {
- position: absolute; bottom: 0; width: 100%;
+ position: absolute; bottom: 0; width: 100%; margin-top: 0;
 }
 .playerFrame.Full #media {
  position: absolute; top: 0; bottom: 50px; width: 100%; height: auto;
@@ -538,8 +538,11 @@ div.jp-jplayer{
 .playerFrame.Full #slides.dual {
  left: 51%; width: 49%; margin: 0;
 }
-.playerFrame.Full #master_jp_container.dual {
- width: 49%;
+.playerFrame.Full #master_jplayer.dual {
+ width: 49% !important; height: auto;
+}
+.playerFrame.Full #master_jplayer.single {
+ height: 100% !important;  width: auto !important;
 }
 .playerFrame.Full #slides.dual .slide {
  text-align: left;

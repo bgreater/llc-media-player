@@ -213,7 +213,7 @@ var llc = {
 			  ################# Master Markup
 			 ########################################## */
 			
-			markup = '<div id="llc_playerFrame" class="playerFrame">\
+			markup = '<div id="llc_playerFrame" class="playerFrame inline">\
 			    <div id="media">\
 			      <div id="slides"></div>\
 				  <div id="master_jplayer" class="jp-jplayer"></div>\
@@ -249,7 +249,7 @@ var llc = {
 								<li><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
 								<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>\
 							</ul>\
-							<div class="jp-title"></div>\
+							<div class="jp-title">Now Playing... '+llc.pres.title+'</div>\
 						</div>\
 						<div class="jp-no-solution">\
 							<span>Update Required</span>\
@@ -495,8 +495,8 @@ var llc = {
 			w = $("#llc_playerFrame").width(),
 			h = $("#llc_playerFrame").height(),
 			curMode = llc.switchView.curMode = llc.switchView.curMode ? llc.switchView.curMode : llc.pres.defaultInterface.text;
-		
-		if ((event && curMode == "Single Screen") || mode == "Dual Screen") { // Do Dual Screen
+				
+		if ((event && curMode == "Full Window") || mode == "Dual Screen") { // Do Dual Screen
 			
 			//console.log('dual view fired');
 			m.addClass("dual").removeClass("single");
@@ -508,13 +508,13 @@ var llc = {
 				// Do for full screen for above 8x3 (2 wide 4x3) ratio, probably not any screens that are longer than 8x3 ratio 
 				var mar = ((h-50)-((w*0.49)*0.75))/2;
 					
-				s.css({marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0}); 
-				m.css({height:s.height(), width:s.width(), marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0});
+				s.css({marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0, height:'auto'}); 
+				m.css({marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0, height:s.height()});
 			}
 			
 			llc.switchView.curMode = "Dual Screen"; // End with	
 			
-		} else if ((event && curMode == "Dual Screen") || mode == "Single Screen") { // Do Single Screen
+		} else if ((event && curMode == "Dual Screen") || mode == "Full Window") { // Do Single Screen
 		
 			//console.log('single view fired');
 			
@@ -566,7 +566,7 @@ var llc = {
 				
 			}
 			
-			llc.switchView.curMode = "Single Screen"; // End with
+			llc.switchView.curMode = "Full Window"; // End with
 		
 		}
 		
@@ -797,7 +797,7 @@ var llc = {
 		 ########################################## */
 		 
 			// Update elements
-			$("body, div.playerFrame").addClass("Full");
+			$("body, div.playerFrame").addClass("Full").removeClass("inline");
 			$("#pres_info, #info_tabs").hide();
 			
 			// Resize Progress bar and disable scrolling
@@ -812,14 +812,14 @@ var llc = {
 			}).scroll(function (event) { 
 
 				if ($(this).scrollTop()>0) {
-					scroll(0,0); 
+					scroll(0,0); // Prevent scrolling in full screen
 				}
 
 			}).trigger('resize').trigger('scroll');
 						
-			$("#master_jplayer").next().find('a.llc-full').addClass('active');
+			$("#master_jp_container a.llc-full").addClass('active');
 			
-			$("#master_jplayer").jPlayer("option", {"fullScreen": true});
+			// $("#master_jplayer").jPlayer("option", {"fullScreen": true}); // not needed with 100% size option
 						
 		
 		} else if (val==false) {
@@ -828,15 +828,15 @@ var llc = {
 		  ################# Back to Normal
 		 ########################################## */
 			
-			$("body, div.playerFrame").removeClass("Full");
-			$("#master_jp_container div.jp-progress").attr('style','');
+			$("body, div.playerFrame").removeClass("Full").addClass("inline");
+			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style','');
 			$("#pres_info, #info_tabs").show();
 			
 			$(window).unbind('resize').unbind('scroll');
 						
-			$("#master_jplayer").next().find('a.llc-full').removeClass('active');
+			$("#master_jp_container a.llc-full").removeClass('active');
 			
-			("#master_jplayer").jPlayer("option", {"fullScreen": false});
+			// ("#master_jplayer").jPlayer("option", {"fullScreen": false});
 		}
 		 
 	},
@@ -846,7 +846,7 @@ var llc = {
 		if (document.domain.indexOf('dropbox')!=-1) {
 			
 			// Use test data
-			var url = 'pres-video.xml';
+			var url = 'pres-video2.xml';
 			
 		} else {
 			
@@ -1015,8 +1015,15 @@ var llc = {
 				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,
+				    size: {
+				    	width: "100%",
+				    	height: "100%",
+				    	cssClass: "full"
+				    }, 
+				    fullScreen : true,
+				    autohide: {full:false},
 				    solution:"flash, html",
-				    wmode: "window"
+				    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
 				}); // end jPlayer initialize
 				
 				
