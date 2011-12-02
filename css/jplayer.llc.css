@@ -13,12 +13,12 @@ div.jp-video {
 div.jp-audio {
  /*width: 420px; width: 640px; overide*/
 }
-div.jp-video-270p {
+/*div.jp-video-270p {
  width: 480px
 }
 div.jp-video-360p {
  width: 640px
-}
+}*/
 div.jp-video-full {
  /* Rules for IE6 (full-screen) */ width: 480px; height: 270px; /* Rules for IE7 (full-screen) - Otherwise the relative container causes other page items that are not position: static (default) to appear over the video/gui. */; position: static !important; position: relative;
 }
@@ -54,12 +54,12 @@ div.jp-interface ul.jp-controls {
 div.jp-audio ul.jp-controls {
  width: 380px; width: 100%; /*overide*/ padding: 0;
 }
-div.jp-video div.jp-type-single ul.jp-controls {
+/*div.jp-video div.jp-type-single ul.jp-controls {
  width: 78px; margin-left: 200px;
 }
 div.jp-video div.jp-type-playlist ul.jp-controls {
  width: 134px; margin-left: 172px;
-}
+}*/
 div.jp-video ul.jp-controls,
 div.jp-interface ul.jp-controls li {
  display: inline; float: left;
@@ -156,9 +156,9 @@ div.jp-audio div.jp-type-single div.jp-progress {
 div.jp-audio div.jp-type-playlist div.jp-progress {
  left: 166px; width: 130px;
 }
-div.jp-video div.jp-progress {
+/*div.jp-video div.jp-progress {
  top: 0px; left: 0px; width: 100%; height: 25px;
-}
+}*/
 div.jp-seek-bar {
  background: #fff /*url(../images/player/jplayer.llc.png) 0 -202px repeat-x*/; width:0px; height: 100%; cursor: pointer; /*position: relative;*/
 }
@@ -197,9 +197,9 @@ div.jp-video a.jp-mute,
 div.jp-video a.jp-unmute {
  left: 50px
 }
-div.jp-video a.jp-volume-max {
+/*div.jp-video a.jp-volume-max {
  left: 134px
-}
+}*/
 a.jp-mute {
  background: url(../images/player/jplayer.llc.png) 0 -170px no-repeat
 }
@@ -459,6 +459,9 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
 #loading {
  position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(../images/player/ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
 }
+#media {
+ height: 480px; width: 640px; position: relative;
+}
 #slides {
  height: 0px; position: relative; overflow: hidden;
 }
@@ -475,7 +478,7 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
  height: auto; max-height: 100%;
 }
 span.switchView {
- width: 33px; height: 21px; background: url(../images/player/switchscreen.png) right no-repeat; position: absolute; bottom: 10px; left: 10px; cursor: pointer;
+ width: 33px; height: 21px; background: url(../images/player/switchscreen.png) right no-repeat; position: absolute; bottom: 10px; left: 10px; cursor: pointer; z-index: 9999;
 }
 .dual span.switchView {
  background: url(../images/player/switchscreen.png) left no-repeat;
@@ -517,8 +520,11 @@ div.jp-jplayer{
 .playerFrame.Full #master_jp_container {
  position: absolute; bottom: 0; width: 100%;
 }
+.playerFrame.Full #media {
+ position: absolute; top: 0; bottom: 50px; width: 100%; height: auto;
+}
 .playerFrame.Full #slides {
- position: absolute; top: 0; bottom: 50px; width: 100%; height: auto; border: none;
+ position: absolute; top: 0; bottom: 0; width: 100%; height: auto; border: none;
 }
 .playerFrame.Full #slides .slide {
  height: 100%; width: 100%; text-align: center;
@@ -531,6 +537,9 @@ div.jp-jplayer{
 }
 .playerFrame.Full #slides.dual {
  left: 51%; width: 49%; margin: 0;
+}
+.playerFrame.Full #master_jp_container.dual {
+ width: 49%;
 }
 .playerFrame.Full #slides.dual .slide {
  text-align: left;

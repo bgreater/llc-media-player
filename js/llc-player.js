@@ -214,8 +214,10 @@ var llc = {
 			 ########################################## */
 			
 			markup = '<div id="llc_playerFrame" class="playerFrame">\
-			  <div id="slides"></div>\
-				<div id="master_jplayer" class="jp-jplayer"></div>\
+			    <div id="media">\
+			      <div id="slides"></div>\
+				  <div id="master_jplayer" class="jp-jplayer"></div>\
+				</div>\
 				<div id="master_jp_container" class="jp-audio">\
 					<div class="jp-type-single">\
 						<div class="jp-gui jp-interface">\
@@ -816,6 +818,8 @@ var llc = {
 			}).trigger('resize').trigger('scroll');
 						
 			$("#master_jplayer").next().find('a.llc-full').addClass('active');
+			
+			$("#master_jplayer").jPlayer("option", {"fullScreen": true});
 						
 		
 		} else if (val==false) {
@@ -831,6 +835,8 @@ var llc = {
 			$(window).unbind('resize').unbind('scroll');
 						
 			$("#master_jplayer").next().find('a.llc-full').removeClass('active');
+			
+			("#master_jplayer").jPlayer("option", {"fullScreen": false});
 		}
 		 
 	},
@@ -963,6 +969,13 @@ var llc = {
 
 
 				/* ######## Initialize Master jPlayer */
+				
+				// Video File Types  ???????  How are multiple file types handled?
+//				var fileTypes = { files: { poster:t.poster } }
+//				for (i in llc.pres.media.master.item.fileType) { 
+//					fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+t.file[i].type : t.file[i].type ;
+//					fileTypes.files[t.file[i].type] = t.file[i].text;
+//				}
 				
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
