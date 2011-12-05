@@ -477,6 +477,9 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
 #slides .slide img {
  height: auto; max-height: 100%;
 }
+#slides .slide .jp-type-single { 
+ width: 100%; height: 100%;
+}
 span.switchView {
  width: 33px; height: 21px; background: url(../images/player/switchscreen.png) right no-repeat; position: absolute; bottom: 10px; left: 10px; cursor: pointer; z-index: 9999;
 }
