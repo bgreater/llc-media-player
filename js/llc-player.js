@@ -83,16 +83,19 @@ var llc = {
 					    	$("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
 					    });   
 					},
-					swfPath: "js",
+					swfPath: "flash",
 					supplied: videoTypes.supplied, 
 					cssSelectorAncestor: "#"+t.id,
 					loop: false,
-					//solution:"flash, html",
-					size: {							// Need variable size~!?
-						width: "640px",
-						height: "360px",
-						cssClass: "jp-video-360p"
-					}
+					size: {
+						width: "100%",
+						height: "100%",
+						cssClass: "full"
+					}, 
+					//fullScreen : true,
+					//autohide: {full:false},
+					solution:"flash, html",
+					wmode:'transparent'
 				}); 
 		  	}
 		});
@@ -449,12 +452,12 @@ var llc = {
 			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide();
 			
 			// Play/Pause video slide
-			if (curEl.fileType=="video") { 
+			if (curEl.fileType!="jpg") { 
 				$("#master_jplayer").jPlayer("pause");
-				$("#master_jp_container").slideUp(300);
+				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
 				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
 			} else if (curEl.fileType=="jpg") { 
-				$("#master_jp_container").slideDown(0);
+				//$("#master_jp_container").attr('style','');
 			}
 			
 			// update TOC, Title and scroll to current thumb
@@ -864,7 +867,7 @@ var llc = {
 		
 		// Serialize XML and set llc.pres object
 		$.get(url, function(xml){ 
-		
+		 
 			llc.pres = $.xml2json(xml); 
 
 				/*

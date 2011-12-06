@@ -460,7 +460,7 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
  position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(../images/player/ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
 }
 #media {
- height: 480px; width: 640px; position: absolute; overflow: hidden; z-index: 1; background: #3D3B3C; 
+ height: 480px; width: 640px; position: absolute; overflow: hidden; z-index: 1; background: #3D3B3C;
 }
 #slides {
  height: 0px; position: relative; overflow: hidden;
@@ -476,6 +476,9 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
 }
 #slides .slide img {
  height: auto; max-height: 100%;
+}
+#slides .slide .jp-type-single { 
+ width: 100%; height: 100%;
 }
 span.switchView {
  width: 33px; height: 21px; background: url(../images/player/switchscreen.png) right no-repeat; position: absolute; bottom: 10px; left: 10px; cursor: pointer; z-index: 9999;
