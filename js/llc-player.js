@@ -416,7 +416,7 @@ var llc = {
 		
 	},
 	timeUpdate: function(event) { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
-		console.log('timeUpdate');
+		//console.log('timeUpdate');
 		
 		/* ##########################################
 		  ################# Time Update Functions
