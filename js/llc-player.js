@@ -37,15 +37,16 @@ var llc = {
 		  	var t=this;
 		  	
 		  	// Add thumbnail to TOC			
-		  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.file.text),t.id,t.startPoint, t.title, '#toc');
+		  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc');
 		  	
-			if (t.fileType == "jpg"){ 		
+		  	// 2nd file in files is slide t.files.file[1]
+			if (t.files.file[1].fileType == "jpg"){ 		
 			  		  		
 		  		/* ######## JPG SLIDE #################### */
 		  		
 		  		// Append Slide
 				var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"';
-		  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><span class="switchView"></span><img src="'+t.file.text+'" /></a>').appendTo("#slides");
+		  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><span class="switchView"></span><img src="'+t.files.file[1].text+'" /></a>').appendTo("#slides");
 		  		
 		  		// Set Slide Load Interation
 		  		$("#"+t.id+" img").load(function(){
@@ -53,18 +54,18 @@ var llc = {
 		  		});	llc.pres.imgsCount++;
 		  	
 		  			  
-		  	} else if (t.fileType != "jpg") { // Need standard video flag in xml?
+		  	} else if (t.files.file[1].fileType == "flv") { // Need standard video flag in xml?
 		  		
 		  		/* ######## VIDEO SLIDE ################## */
 		  		
 		  		// Inject Video Slide Markup
 		  		$(llc.createMarkup(t)).appendTo("#slides");
 				
-				// Video File Types
+				// Video File Types llc.pres.media.items.item.files.file
 				var videoTypes = { files: { poster:t.poster } }
-				for (i in t.file) { 
-					videoTypes.supplied = videoTypes.supplied ? videoTypes.supplied+','+t.file[i].type : t.file[i].type ;
-					videoTypes.files[t.file[i].type] = t.file[i].text;
+				for (i in t.files.file) { 
+					videoTypes.supplied = videoTypes.supplied ? videoTypes.supplied+','+t.files.file[i].fileType : t.files.file[i].fileType ;
+					videoTypes.files[t.files.file[i].fileType] = t.files.file[i].text;
 					//console.log(t.file[i]);
 				}
 				//console.log(videoTypes); 
@@ -415,7 +416,7 @@ var llc = {
 		
 	},
 	timeUpdate: function(event) { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
-		//console.log('timeUpdate');
+		console.log('timeUpdate');
 		
 		/* ##########################################
 		  ################# Time Update Functions
@@ -849,11 +850,10 @@ var llc = {
 		if (document.domain.indexOf('dropbox')!=-1) {
 			
 			// Use test data
-			var url = 'pres.xml';
+			var url = 'sample-3.xml';
 			
 		} else {
 			
-			var url = 'pres.xml';
 			// Use live data
 			presentationID = $('input#pres_id').val(),
 			userID = $('input#user_id').val(),
@@ -974,19 +974,24 @@ var llc = {
 
 				/* ######## Initialize Master jPlayer */
 				
-				// Video File Types  ???????  How are multiple file types handled?
-//				var fileTypes = { files: { poster:t.poster } }
-//				for (i in llc.pres.media.master.item.fileType) { 
-//					fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+t.file[i].type : t.file[i].type ;
-//					fileTypes.files[t.file[i].type] = t.file[i].text;
-//				}
+				// File Types
+				var f = llc.pres.media.master.item,
+					fileTypes = { files: { poster:f.poster } };
+				if (typeof(f.files.file[0])=='string') {
+					fileTypes.supplied = f.files.file.fileType;
+					fileTypes.files[f.files.file.fileType] = f.files.file.text;
+				} else {
+					for (i in f) { 
+						fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType ;
+						fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
+					}
+				}
 				
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
 				    	$.jPlayer.timeFormat.showHour = true; // set show hours
-				    	var media = new Object();
-				    		media[llc.pres.media.master.item.fileType] = llc.pres.media.master.item.file.text;
-				    	$(this).jPlayer("setMedia", media);
+	
+				    	$(this).jPlayer("setMedia", fileTypes.files);
 				    	
 				    	// Set playback if cookied
 				    	var playhead = llc.getCookie(llc.pres.id+'playhead') ? llc.getCookie(llc.pres.id+'playhead') : 0;
@@ -1016,7 +1021,7 @@ var llc = {
 				    verticalVolume: true,
 				    //preload: "auto",
 				    swfPath: "flash",
-				    supplied: llc.pres.media.master.item.fileType, // Assumes mp3 or native jPlayer video format
+				    supplied: fileTypes.supplied, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,
 				    size: {
