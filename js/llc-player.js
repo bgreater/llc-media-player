@@ -579,12 +579,12 @@ var llc = {
 				var timePoint = $(this).attr('rel');
 				var title = $(this).attr('title');
 				var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
-		
+
 				var netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id='+slideID;
 				
 				if($(this).hasClass('bookmark-set')){
 						//remove bookmark
@@ -607,7 +607,7 @@ var llc = {
 						$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 						}
 						
-						var script_url = 'ajax/deleteBookmark.php';
+						var script_url = 'delBookmark.aspx';
 				}else{
 						//add new bookmark
 						var slideCellElm = 'div#toc_thumb_'+slideID;
@@ -618,7 +618,7 @@ var llc = {
 						$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
 						llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
 						
-						var script_url = 'ajax/addBookmark.php';
+						var script_url = 'addBookmark.aspx';
 				}
 				/* start ajax */
 				$.ajax({
@@ -704,9 +704,9 @@ var llc = {
 			userID = $('input#user_id').val(), 
 			siteID = $('input#site_id').val(), 
 			presentationID = llc.pres.id;
-			var params = 'rating='+newRating+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;		
+			var params = 'value='+newRating+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;		
 			$.ajax({
-			url: 'ajax/addRating.php',
+			url: 'saveRating.aspx',
 			data: params,
 			success: function(data) {
 			var confirmMessage = data + ' - rating this presentation: ' + newRating;
@@ -738,7 +738,7 @@ var llc = {
 		var params = 'note='+note+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 		/* start ajax */
 		$.ajax({
-  		url: 'ajax/saveNotes.php',
+  		url: 'saveNotes.aspx',
 		data: params,
   		success: function(data) {
 		alert(data);
@@ -846,15 +846,16 @@ var llc = {
 		if (document.domain.indexOf('dropbox')!=-1) {
 			
 			// Use test data
-			var url = 'pres-video2.xml';
+			var url = 'pres.xml';
 			
 		} else {
 			
+			var url = 'pres.xml';
 			// Use live data
 			presentationID = $('input#pres_id').val(),
 			userID = $('input#user_id').val(),
 			siteID = $('input#site_id').val();
-			var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + siteID + '&UID=' + userID;
+			//var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + siteID + '&UID=' + userID;
 			
 		}
 				
