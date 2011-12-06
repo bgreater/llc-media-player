@@ -1004,7 +1004,7 @@ var llc = {
 				    	llc.timeUpdate(event);   	
 				    },
 				    volumechange: function(event) { // make sure volume dragable moves on click
-				    	var t = $(this).next().find("div.jp-volume-bar-value"),
+				    	var t = $("#master_jp_container div.jp-volume-bar-value"),
 				    		bottom = t.height(),
 				    		height = t.parent().height(),
 				    		top = height-bottom;
@@ -1062,7 +1062,7 @@ var llc = {
 						$("#master_jplayer").jPlayer("volume", llc.perVolume);
 					}
 				});
-
+				
 				// Unbind current time and duration click events so play bar can function
 				$("#master_jp_container .jp-current-time, #master_jp_container .jp-duration").unbind('click');
 				

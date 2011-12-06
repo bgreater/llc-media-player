@@ -457,7 +457,7 @@ a.jp-shuffle-off:hover {
 background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; padding:0; -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); position: absolute; overflow: hidden; background-image:url(../images/player/player640x480bgGrad.png); background-position:0 0; background-repeat:repeat-x;
 }
 #loading {
- position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(../images/player/ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
+ position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(../images/player/ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center; z-index: 5;
 }
 #media {
  height: 480px; width: 640px; position: absolute; overflow: hidden; z-index: 1; background: #3D3B3C;
