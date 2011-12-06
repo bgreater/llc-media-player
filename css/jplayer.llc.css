@@ -460,7 +460,7 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
  position: absolute; top: 5px; left: 5px; bottom: 5px; right: 5px; color: #999; background: #ffffff url(../images/player/ajax-loader.gif) center 130px no-repeat; padding: 100px 0; text-align: center;
 }
 #media {
- height: 480px; width: 640px; position: absolute; overflow: hidden; z-index: 1; background: #3D3B3C; 
+ height: 480px; width: 640px; position: absolute; overflow: hidden; z-index: 1; background: #3D3B3C;
 }
 #slides {
  height: 0px; position: relative; overflow: hidden;

@@ -866,7 +866,7 @@ var llc = {
 		
 		// Serialize XML and set llc.pres object
 		$.get(url, function(xml){ 
-		
+		 
 			llc.pres = $.xml2json(xml); 
 
 				/*
