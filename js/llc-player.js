@@ -864,7 +864,7 @@ var llc = {
 			presentationID = $('input#pres_id').val(),
 			userID = $('input#user_id').val(),
 			siteID = $('input#site_id').val();
-			//var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + siteID + '&UID=' + userID;
+			var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + siteID + '&UID=' + userID;
 			
 		}
 				
