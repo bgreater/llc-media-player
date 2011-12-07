@@ -34,71 +34,75 @@ var llc = {
 		 ########################################## */
 		 
 		$(slides).each(function(i){ 
+		  	
 		  	var t=this;
+
+		  	if ( typeof(t.files)=='object' ) {
 		  	
-		  	// Add thumbnail to TOC			
-		  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc');
-		  	
-		  	// 2nd file in files is slide t.files.file[1]
-			if (t.files.file[1].fileType == "jpg"){ 		
-			  		  		
-		  		/* ######## JPG SLIDE #################### */
-		  		
-		  		// Append Slide
-				var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"';
-		  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><span class="switchView"></span><img src="'+t.files.file[1].text+'" /></a>').appendTo("#slides");
-		  		
-		  		// Set Slide Load Interation
-		  		$("#"+t.id+" img").load(function(){
-		  			llc.pres.imgsLoaded++;
-		  		});	llc.pres.imgsCount++;
-		  	
-		  			  
-		  	} else if (t.files.file[1].fileType == "flv") { // Need standard video flag in xml?
-		  		
-		  		/* ######## VIDEO SLIDE ################## */
-		  		
-		  		// Inject Video Slide Markup
-		  		$(llc.createMarkup(t)).appendTo("#slides");
-				
-				// Video File Types llc.pres.media.items.item.files.file
-				var videoTypes = { files: { poster:t.poster } }
-				for (i in t.files.file) { 
-					videoTypes.supplied = videoTypes.supplied ? videoTypes.supplied+','+t.files.file[i].fileType : t.files.file[i].fileType ;
-					videoTypes.files[t.files.file[i].fileType] = t.files.file[i].text;
-					//console.log(t.file[i]);
-				}
-				//console.log(videoTypes); 
-				
-				// Load Video Jplayer
-				$("#jquery_jplayer_"+t.id).jPlayer({  
-					ready: function () {
-						$(this).jPlayer("setMedia", videoTypes.files);
-					},
-					play: function() { // To avoid both jPlayers playing together
-						$(this).jPlayer("pauseOthers");
-					},
-					ended: function() { // Trigger master player to start again
-					    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
-					    $("#master_jp_container").slideDown(300, function(){
-					    	$("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
-					    });   
-					},
-					swfPath: "flash",
-					supplied: videoTypes.supplied, 
-					cssSelectorAncestor: "#"+t.id,
-					loop: false,
-					size: {
-						width: "100%",
-						height: "100%",
-						cssClass: "full"
-					}, 
-					//fullScreen : true,
-					//autohide: {full:false},
-					//solution:"flash, html",
-					wmode:'transparent'
-				}); 
-		  	}
+			  	// Add thumbnail to TOC			
+			  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc');
+			  	
+			  	// 2nd file in files is slide t.files.file[1]
+				if (t.files.file[1].fileType == "jpg"){ 		
+				  		  		
+			  		/* ######## JPG SLIDE #################### */
+			  		
+			  		// Append Slide
+					var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"';
+			  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><span class="switchView"></span><img src="'+t.files.file[1].text+'" /></a>').appendTo("#slides");
+			  		
+			  		// Set Slide Load Interation
+			  		$("#"+t.id+" img").load(function(){
+			  			llc.pres.imgsLoaded++;
+			  		});	llc.pres.imgsCount++;
+			  	
+			  			  
+			  	} else if (t.files.file[1].fileType == "flv") { // Need standard video flag in xml?
+			  		
+			  		/* ######## VIDEO SLIDE ################## */
+			  		
+			  		// Inject Video Slide Markup
+			  		$(llc.createMarkup(t)).appendTo("#slides");
+					
+					// Video File Types llc.pres.media.items.item.files.file
+					var videoTypes = { files: { poster:t.poster } }
+					for (i in t.files.file) { 
+						videoTypes.supplied = videoTypes.supplied ? videoTypes.supplied+','+t.files.file[i].fileType : t.files.file[i].fileType ;
+						videoTypes.files[t.files.file[i].fileType] = t.files.file[i].text;
+						//console.log(t.file[i]);
+					}
+					//console.log(videoTypes); 
+					
+					// Load Video Jplayer
+					$("#jquery_jplayer_"+t.id).jPlayer({  
+						ready: function () {
+							$(this).jPlayer("setMedia", videoTypes.files);
+						},
+						play: function() { // To avoid both jPlayers playing together
+							$(this).jPlayer("pauseOthers");
+						},
+						ended: function() { // Trigger master player to start again
+						    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
+						    $("#master_jp_container").slideDown(300, function(){
+						    	$("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
+						    });   
+						},
+						swfPath: "flash",
+						supplied: videoTypes.supplied, 
+						cssSelectorAncestor: "#"+t.id,
+						loop: false,
+						size: {
+							width: "100%",
+							height: "100%",
+							cssClass: "full"
+						}, 
+						//fullScreen : true,
+						//autohide: {full:false},
+						//solution:"flash, html",
+						wmode:'transparent'
+					}); 
+			  	}
+			}
 		});
 		
 		/* ##########################################
