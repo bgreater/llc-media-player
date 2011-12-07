@@ -95,7 +95,7 @@ var llc = {
 					}, 
 					//fullScreen : true,
 					//autohide: {full:false},
-					solution:"flash, html",
+					//solution:"flash, html",
 					wmode:'transparent'
 				}); 
 		  	}
@@ -439,10 +439,10 @@ var llc = {
 			var startPoint = llc.pres.transcript.blurb[i].startPoint/1000;
 			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
 		}
-				
+						
 		// Should we do anything with slides?
 		if (llc.pres.curEl != curEl ) {
-			
+						
 			// Set global curEl
 			llc.pres.curEl = curEl;
 			
@@ -451,16 +451,16 @@ var llc = {
 			$("#"+curEl.id+".jp-video").width('100%').height('100%')
 			$("#slides .jp-video").not("#"+curEl.id).width(0).height(0); // 0 out the jPlayer as hiding disables the flash instance
 			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide();
-			
+						
 			// Play/Pause video slide
-			if (curEl.fileType!="jpg") { 
+			if (curEl.files.file[1].fileType!="jpg") { 
 				$("#master_jplayer").jPlayer("pause");
 				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
 				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
-			} else if (curEl.fileType=="jpg") { 
+			} else { 
 				//$("#master_jp_container").attr('style','');
 			}
-			
+						
 			// update TOC, Title and scroll to current thumb
 			$("#master_jp_container div.jp-title").text("Now Playing... Slide "+(llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length+": "+curEl.title);
 			$("div.toc_thumb").each(function(){
@@ -472,6 +472,7 @@ var llc = {
 				pos -= 120;
 				$("#tabs_overview").animate({scrollTop: pos}, 900);
 			}
+			
 		}
 		
 		// Should we do anything with Blurbs?
@@ -485,6 +486,7 @@ var llc = {
 			var pos = document.getElementById('s'+curBlurb.startPoint).offsetTop;
 				pos -= 140;
 			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
+			
 		}
 		
 	},
@@ -1031,7 +1033,8 @@ var llc = {
 				    }, 
 				    fullScreen : true,
 				    autohide: {full:false},
-				    solution:"flash, html",
+				    errorAlerts: true,
+				    //solution:"flash, html",
 				    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
 				}); // end jPlayer initialize
 				
