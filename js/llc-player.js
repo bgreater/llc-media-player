@@ -853,7 +853,7 @@ var llc = {
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 	
 		 
-		if (document.domain.indexOf('dropbox')!=-1) {
+		if (document.domain.indexOf('dropbox')!=-1 || document.domain.indexOf('localhost')!=-1) {
 			
 			// Use test data
 			var url = 'sample-3.xml';
@@ -868,6 +868,14 @@ var llc = {
 			
 		}
 				
+var showPathCheck = urlParse('showpath');
+if(showPathCheck=='y'){
+alert(url);
+}
+var manualSourceCheck = urlParse('source');
+if(manualSourceCheck.length > 1){
+var url = manualSourceCheck;
+}
 		// Set loading
 		$('<div id="loading"></div>').appendTo("#llc_container");
 		
@@ -1219,6 +1227,25 @@ function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&quot;');
 }
 
+ /******************* PARSE URL ***********/
+
+function urlParse(parameter) {
+  var loc = location.search.substring(1, location.search.length);
+  var param_value = false;
+
+  var params = loc.split("&");
+  for (i=0; i<params.length;i++) {
+      param_name = params[i].substring(0,params[i].indexOf('='));
+      if (param_name == parameter) {
+          param_value = params[i].substring(params[i].indexOf('=')+1)
+      }
+  }
+  if (param_value) {
+      return param_value;
+  } else {
+      return false;
+  }
+}
 
 
 
