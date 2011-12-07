@@ -38,18 +38,18 @@ var llc = {
 		  	var t=this;
 
 		  	if ( typeof(t.files)=='object' ) {
-		  	
+		  		
 			  	// Add thumbnail to TOC			
-			  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc');
+			  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file.text || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc');
 			  	
 			  	// 2nd file in files is slide t.files.file[1]
-				if (t.files.file[1].fileType == "jpg"){ 		
+				if ((t.files.file.fileType || t.files.file[1].fileType) == "jpg"){ 		
 				  		  		
 			  		/* ######## JPG SLIDE #################### */
 			  		
 			  		// Append Slide
 					var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"';
-			  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><span class="switchView"></span><img src="'+t.files.file[1].text+'" /></a>').appendTo("#slides");
+			  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><span class="switchView"></span><img src="'+(t.files.file.text || t.files.file[1].text)+'" /></a>').appendTo("#slides");
 			  		
 			  		// Set Slide Load Interation
 			  		$("#"+t.id+" img").load(function(){
@@ -57,7 +57,7 @@ var llc = {
 			  		});	llc.pres.imgsCount++;
 			  	
 			  			  
-			  	} else if (t.files.file[1].fileType == "flv") { // Need standard video flag in xml?
+			  	} else if ((t.files.file.fileType || t.files.file[1].fileType) == "flv") { // Need standard video flag in xml?
 			  		
 			  		/* ######## VIDEO SLIDE ################## */
 			  		
@@ -856,7 +856,7 @@ var llc = {
 		if (document.domain.indexOf('dropbox')!=-1 || document.domain.indexOf('localhost')!=-1) {
 			
 			// Use test data
-			var url = window.location.search ? window.location.search.split('?')[1] : 'sample-4.xml' ;
+			var url = 'sample-4.xml' ;
 			
 		} else {
 			
