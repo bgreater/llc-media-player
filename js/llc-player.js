@@ -856,7 +856,7 @@ var llc = {
 		if (document.domain.indexOf('dropbox')!=-1 || document.domain.indexOf('localhost')!=-1) {
 			
 			// Use test data
-			var url = 'sample-3.xml';
+			var url = window.location.search ? window.location.search.split('?')[1] : 'sample-4.xml' ;
 			
 		} else {
 			
