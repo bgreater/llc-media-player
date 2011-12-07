@@ -890,7 +890,7 @@ var llc = {
 				
 			/* Set int functions here */
 			
-			if (llc.pres.legacy) { // LEGACY
+			/*if (llc.pres.legacy) { // LEGACY
 				
 				$.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
 							
@@ -919,7 +919,8 @@ var llc = {
 				$("#loading").remove();
 
 				
-			} else { 
+			} else {
+			*/ 
 			
 				/* ##########################################
 				  ################# Load HTML5 Media
@@ -1142,8 +1143,9 @@ var llc = {
 				
 				// Set defualt view
 				llc.switchView(false,llc.pres.defaultInterface.text);					
-				
+			/* commented else on legacy	
 			}
+			*/
 		}); // end ajax XML call
 	}
 } 
