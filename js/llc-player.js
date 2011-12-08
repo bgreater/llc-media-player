@@ -267,9 +267,9 @@ var llc = {
 				</div>\
 				<div id="pres_info">\
 					<div id="ad_sponsored" style=""><div style="float:left; margin-right:3px;">Sponsored By: </div><img src="images/player/sponsor-AD.png" alt="IBM" /></div>\
-					<p id="pres_title"><strong>Title:</strong> <span></span></p>\
-					<p id="pres_presenter"><strong>Presenter(s):</strong> <span></span></p>\
-					<p id="pres_date"><strong>Date:</strong> <span>There is no date in xml</span></p>\
+					<p style="display:block" id="pres_title"><strong>Title:</strong> <span></span></p>\
+					<p style="display:block" id="pres_presenter"><strong>Presenter(s):</strong> <span></span></p>\
+					<p style="display:block" id="pres_date"><strong>Date:</strong> <span>There is no date in xml</span></p>\
 					<div id="ratings_box" class="ratingsBox"></div>\
 				</div>\
 				<div id="info_tabs">\
