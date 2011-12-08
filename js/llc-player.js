@@ -132,9 +132,14 @@ var llc = {
 		  ################# Create Blurbs
 		 ########################################## */
 		 
+		var bct = $(blurbs).length;
+		if(bct > 0){
 		$(blurbs).each(function(i){
-			$('<p id="s'+this.startPoint+'">'+this.text.toString()+'</p>').appendTo("#tabs_transcripts")
+			$('<p class="transcript" id="s'+this.startPoint+'">'+this.text.toString()+'</p>').appendTo("#tabs_transcripts")
 		});
+		}else{
+		$('<div id="noTranscript"><p>Transcript is unavailable or does not exist.</p></div>').appendTo("#tabs_transcripts")
+		}
 		
 		/* ##########################################
 		  ################# Create Notes
