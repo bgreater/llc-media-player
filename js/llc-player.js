@@ -108,24 +108,27 @@ var llc = {
 		/* ##########################################
 		  ################# Create Bookmarks
 		 ########################################## */
-		 
-		$(bookmarks).each(function(i){
+
+		$(bookmarks.bookmark).each(function(i){
+
 			var t=this;
-			var bmStart = parseInt(t.bookmark.startPoint);
+			var bmStart = parseInt(t.startPoint);
 			var slideStart = 0;
-			var i = 0;
+			var ix = 0;
 			var xml = llc.pres.media.items.item;
-			while(slideStart < bmStart){
-			var slideStart = parseInt(xml[i].startPoint);
-			i++;
+			var maxloops = xml.length-1;
+			while(slideStart < bmStart && ix < maxloops){
+			var slideStart = llc.pres.media.items.item[ix].startPoint;
+			ix = ix+1;
 			}
-				var slideCellElm = 'div#toc_thumb_'+xml[i-2].id;
+				var slideCellElm = 'div#toc_thumb_'+xml[ix-1].id;
 				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
 				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
 				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
 				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
 				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-			llc.createThumbPanel(xml[i-2].file, xml[i-2].id, bmStart, xml[i-2].title, '#tabs_bookmarks');
+			llc.createThumbPanel(xml[ix-1].files.file[0], xml[ix-1].id, bmStart, xml[ix-1].title, '#tabs_bookmarks', t.id);
+
 		});
 		
 		/* ##########################################
@@ -356,7 +359,7 @@ var llc = {
 		
 		return markup;
 	},
-	createThumbPanel: function(img,id,startPoint, title, pageid) {
+	createThumbPanel: function(img,id,startPoint, title, pageid, bmid) {
 		//console.log('createThumbPanel');
 			
 		/* ##########################################
@@ -368,9 +371,11 @@ var llc = {
 		var prefix = pageid.substr(1, pageid.length);
 		var bmaction = (prefix=='tabs_bookmarks') ? 'remove' : 'add';
 		var bmset = (prefix=='tabs_bookmarks') ? ' bookmark-set' : '';
+		var bmrel = '';
 		if(prefix=='tabs_bookmarks'){
 		var numBMs = ($('#tabs_bookmarks .toc_thumb').length)+1;
 		var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
+		var bmrel = ' rel="'+bmid+'" ';
 		$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 		}
 		
@@ -381,7 +386,7 @@ var llc = {
 			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
 			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
 			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
-			<img src="images/player/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
+			<img '+bmrel+' src="images/player/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
 		</div>').appendTo(pageid);
 	},
 	setupSlideMagnify: function() {
@@ -516,69 +521,44 @@ var llc = {
 			//console.log('dual view fired');
 			m.addClass("dual").removeClass("single");
 			s.addClass("dual").removeClass("single");
-			
 			// if full screen
 			if ($("#llc_playerFrame").is(".Full")) {
-				
 				// Do for full screen for above 8x3 (2 wide 4x3) ratio, probably not any screens that are longer than 8x3 ratio 
 				var mar = ((h-50)-((w*0.49)*0.75))/2;
-					
 				s.css({marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0, height:'auto'}); 
 				m.css({marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0, height:s.height()});
 			}
-			
 			llc.switchView.curMode = "Dual Screen"; // End with	
-			
 		} else if ((event && curMode == "Dual Screen") || mode == "Full Window") { // Do Single Screen
-		
 			//console.log('single view fired');
-			
 			if (event) { // Was clicked
-								
 				var p = $(event.target).parents('div.dual');
-				
-				p.removeClass("single").addClass("single");
-
-											
+				p.removeClass("single").addClass("single");	
 			} else {
-			
 				if (llc.pres.defaultWindow.id == 1 && !s.is(".single")) {
-					
 					// Show screen 1
 					m.removeClass("single").addClass("single");
-				
 				} else {
-					
 					// Show Slides (screen 2)
 					s.removeClass("single").addClass("single");
-				
 				}
 			}
-			
 			m.removeClass("dual");
 			s.removeClass("dual");
 			
 			// if full screen
 			if ($("#llc_playerFrame").is(".Full")) {
-				
 				m.css({marginTop:0, marginBottom:0});
 				s.css({marginTop:0, marginBottom:0});
 				
 				// wide aspect ratio
 				if (h-50 <= w*0.75) {
-					
 					var mar = (w-((h-50)/0.75))/2; 
-					
-					$("#llc_playerFrame").find(".single").css({marginLeft:mar, marginRight:mar})
-					
+					$("#llc_playerFrame").find(".single").css({marginLeft:mar, marginRight:mar});
 				}
-				
 				if (s.is(".single")) m.height(0), s.height("auto");
 				else s.height(0), m.height("auto");
-				
 			} else {
-				
-				
 			}
 			
 			llc.switchView.curMode = "Full Window"; // End with
@@ -597,14 +577,16 @@ var llc = {
 
 				var netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
-				userID = $('input#user_id').val(), 
+				userID = $('input#user_id').val(),
 				siteID = $('input#site_id').val();
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id='+slideID;
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 				
 				if($(this).hasClass('bookmark-set')){
 						//remove bookmark
 						var slideCellElm = 'div#toc_thumb_'+slideID;
 						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+						var bmid = $(this).find('img').attr('rel');
+						alert(bmid);
 						$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
 							$(slideCellElm).find('div.bmThumbFlag').remove();
 						});
@@ -632,7 +614,7 @@ var llc = {
 						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
 						$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
 						llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
-						
+						params = params + '&id+-1';
 						var script_url = 'addBookmark.aspx';
 				}
 				/* start ajax */
@@ -640,7 +622,7 @@ var llc = {
 		  		url: script_url,
 				data: params,
 		  		success: function(data) {
-				//alert(data);
+				alert(data);
 				}
 				});	
 				/* end ajax */
@@ -1051,7 +1033,7 @@ var url = manualSourceCheck;
 				    }, 
 				    fullScreen : true,
 				    autohide: {full:false},
-				    errorAlerts: true,
+				    //errorAlerts: true,
 				    //solution:"flash, html",
 				    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
 				}); // end jPlayer initialize

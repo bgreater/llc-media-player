@@ -38,9 +38,21 @@
         <title><![CDATA[Social Media Spotlight]]></title>
         <files>
           <file id="276313" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+          <file id="276314" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+          <file id="276315" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
         </files>
         <window id="2"><![CDATA[RightWindow]]></window>
         <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="253505" inTOC="True">
+        <title><![CDATA[Dude Media Spotlight]]></title>
+        <files>
+          <file id="276313" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+          <file id="276314" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>299188</startPoint>
         <link type="-1"><![CDATA[]]></link>
       </item>
     </items>
@@ -48,5 +60,15 @@
   <transcript/>
   <speakers/>
   <agreements/>
-  <bookmarks/>
+  
+  <bookmarks>
+    <bookmark id="57">
+      <title><![CDATA[Bookmark #1]]></title>
+      <startPoint>293773</startPoint>
+    </bookmark>
+    <bookmark id="58">
+      <title><![CDATA[Bookmark #2]]></title>
+      <startPoint>210773</startPoint>
+    </bookmark>
+  </bookmarks>
 </presentation>
