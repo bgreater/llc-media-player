@@ -33,7 +33,7 @@ var llc = {
 		  ################# Create Slides
 		 ########################################## */
 		 
-		$(slides).each(function(i){ 
+		$(slides).each(function(i){
 		  	
 		  	var t=this;
 
@@ -140,6 +140,8 @@ var llc = {
 			llc.createThumbPanel(xml[i-1].files.file[0], t.id, bmStart, xml[i-1].title, '#tabs_bookmarks', '');
 
 		});
+		
+		
 		
 		/* ##########################################
 		  ################# Create Blurbs
@@ -736,7 +738,7 @@ var llc = {
 			userID = $('input#user_id').val(), 
 			siteID = $('input#site_id').val(), 
 			presentationID = llc.pres.id;
-			var params = 'value='+newRating+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;		
+			var params = 'value='+newRating+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';		
 			$.ajax({
 			url: 'saveRating.aspx',
 			data: params,
@@ -756,7 +758,7 @@ var llc = {
 		 
 		 }
 	},
-	saveNote: function() { 
+	saveNote: function() {
 		//console.log('setNote'); 
 		/* ##########################################
 		  ################# Retrieve note - post it to server
@@ -767,7 +769,7 @@ var llc = {
 		userID = $('input#user_id').val(), 
 		siteID = $('input#site_id').val(), 
 		presentationID = llc.pres.id;
-		var params = 'note='+note+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+		var params = 'note='+note+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';
 		/* start ajax */
 		$.ajax({
   		url: 'saveNotes.aspx',
