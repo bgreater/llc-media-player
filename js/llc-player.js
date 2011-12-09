@@ -81,6 +81,14 @@ var llc = {
 						play: function() { // To avoid both jPlayers playing together
 							$(this).jPlayer("pauseOthers");
 						},
+						timeupdate: function (event) { // Set/Show Current time/Slide function
+							var curTime = $("#master_jplayer").data("jPlayer").status.currentTime + .25,
+								percent = (curTime / $("#master_jplayer").data("jPlayer").status.duration) * 100;
+							
+							$("#master_jplayer").jPlayer("playHead",percent);
+							llc.seatTime('update');
+							
+						},
 						ended: function() { // Trigger master player to start again
 						    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
 						    $("#master_jp_container").slideDown(300, function(){
@@ -436,6 +444,9 @@ var llc = {
 		  ################# Time Update Functions
 		 ########################################## */
 		
+		// Update seatTime
+		if(!event.jPlayer.status.paused) llc.seatTime('update');
+		
 		var timeNow = event.jPlayer.status.currentTime,
 			curEl = llc.pres.curEl || llc.pres.media.items.item[0],
 			curBlurb = llc.pres.transcript.blurb == undefined ? undefined : llc.pres.curBlurb || llc.pres.transcript.blurb[0];
@@ -565,6 +576,34 @@ var llc = {
 		
 		}
 		
+	},
+	seatTime: function(method) { /* Seat time tracking = llc.seatTime('update') and llc.saving seatTime('save') */
+		console.log('seatTime');
+		if (method=='update'){
+			
+			llc.seatTime.time = llc.seatTime.time != undefined ? llc.seatTime.time + 250 : 0 ;
+			
+			if (llc.seatTime.time != 0 && llc.seatTime.time % 60000 == 0) llc.seatTime('save');   
+			
+		} else if (method=='save') {
+			
+			var netSessionID = $('input#session_id').val(), 
+				presentationID = llc.pres.id, 
+				userID = $('input#user_id').val(),
+				siteID = $('input#site_id').val(),
+				params = '&netSessionID='+netSessionID+'&timeID='+llc.seatTime.time+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+			
+			$.ajax({
+				url: 'saveSeatTime.aspx',
+				data: params,
+				success: function(data) {
+					alert(data);
+				}
+			});	
+			
+		}
+		
+	
 	},
 	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
@@ -855,14 +894,14 @@ var llc = {
 			
 		}
 				
-var showPathCheck = urlParse('showpath');
-if(showPathCheck=='y'){
-alert(url);
-}
-var manualSourceCheck = urlParse('source');
-if(manualSourceCheck.length > 1){
-var url = manualSourceCheck;
-}
+		var showPathCheck = urlParse('showpath');
+		if(showPathCheck=='y'){
+			alert(url);
+		}
+		var manualSourceCheck = urlParse('source');
+		if(manualSourceCheck.length > 1){
+			var url = manualSourceCheck;
+		}
 		// Set loading
 		$('<div id="loading"></div>').appendTo("#llc_container");
 		
@@ -1009,6 +1048,9 @@ var url = manualSourceCheck;
 				    },
 				    timeupdate: function (event) { // Set/Show Current time/Slide function
 				    	llc.timeUpdate(event);   	
+				    },
+				    ended: function() {
+				    	llc.seatTime('save');
 				    },
 				    volumechange: function(event) { // make sure volume dragable moves on click
 				    	var t = $("#master_jp_container div.jp-volume-bar-value"),
