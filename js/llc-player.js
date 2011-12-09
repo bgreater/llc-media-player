@@ -693,7 +693,6 @@ var llc = {
 				});//END TOC CLICK HANDLER
 		}else{
 				//add new bookmark - called by media player onclick
-				
 				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
 				var title = llc.pres.curEl.title;
 				var slideID = llc.pres.curEl.id;
@@ -704,12 +703,6 @@ var llc = {
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
 				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';
-				var slideCellElm = 'div#toc_thumb_'+slideID;
-				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
-				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
-				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
 				/* start ajax */
 				$.ajax({
 		  		url: script_url,
