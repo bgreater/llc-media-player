@@ -40,7 +40,7 @@ var llc = {
 		  	if ( typeof(t.files)=='object' ) {
 		  		
 			  	// Add thumbnail to TOC			
-			  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file.text || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc');
+			  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file.text || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc', '');
 			  	
 			  	// 2nd file in files is slide t.files.file[1]
 				if ((t.files.file.fileType || t.files.file[1].fileType) == "jpg"){ 		
@@ -117,25 +117,27 @@ var llc = {
 		  ################# Create Bookmarks
 		 ########################################## */
 
-		$(bookmarks.bookmark).each(function(i){
+		$(bookmarks.bookmark).each(function(index){
 
 			var t=this;
 			var bmStart = parseInt(t.startPoint);
 			var slideStart = 0;
-			var ix = 0;
+			var i = 0;
 			var xml = llc.pres.media.items.item;
 			var maxloops = xml.length-1;
-			while(slideStart < bmStart && ix < maxloops){
-			var slideStart = llc.pres.media.items.item[ix].startPoint;
-			ix = ix+1;
+			while(slideStart < bmStart && i < maxloops){
+			var slideStart = llc.pres.media.items.item[i].startPoint;
+			i = i+1;
 			}
-				var slideCellElm = 'div#toc_thumb_'+xml[ix-1].id;
+			/*
+				var slideCellElm = 'div#toc_thumb_'+xml[i-1].id;
 				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
 				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
 				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
 				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
 				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-			llc.createThumbPanel(xml[ix-1].files.file[0], xml[ix-1].id, bmStart, xml[ix-1].title, '#tabs_bookmarks', t.id);
+				*/
+			llc.createThumbPanel(xml[i-1].files.file[0], t.id, bmStart, xml[i-1].title, '#tabs_bookmarks', '');
 
 		});
 		
@@ -367,7 +369,7 @@ var llc = {
 		
 		return markup;
 	},
-	createThumbPanel: function(img,id,startPoint, title, pageid, bmid) {
+	createThumbPanel: function(img,id,startPoint, title, pageid, toc_id) {
 		//console.log('createThumbPanel');
 			
 		/* ##########################################
@@ -379,22 +381,21 @@ var llc = {
 		var prefix = pageid.substr(1, pageid.length);
 		var bmaction = (prefix=='tabs_bookmarks') ? 'remove' : 'add';
 		var bmset = (prefix=='tabs_bookmarks') ? ' bookmark-set' : '';
-		var bmrel = '';
+		var thumbRel = (toc_id.length > 0) ? 'rel="'+toc_id+'"' : 'rel=""';
 		if(prefix=='tabs_bookmarks'){
 		var numBMs = ($('#tabs_bookmarks .toc_thumb').length)+1;
 		var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
-		var bmrel = ' rel="'+bmid+'" ';
 		$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 		}
 		
-		$('<div class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
+		$('<div '+thumbRel+' class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
 			<a href="" onclick="slideJump('+((startPoint/1000)+.3)+')">\
 			  <img class="toc_thumb_img" src="'+img+'" />\
 			</a>\
 			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
 			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
 			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
-			<img '+bmrel+' src="images/player/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
+			<img src="images/player/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
 		</div>').appendTo(pageid);
 	},
 	setupSlideMagnify: function() {
@@ -608,33 +609,42 @@ var llc = {
 	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
 		if (typeof item === "undefined"){
-				//has been called on init
+				//has been called on init and is attaching to the toc-bookmark links
 				$('a.toc-bookmark').live('click', function(){
 				var timePoint = $(this).attr('rel');
 				var title = $(this).attr('title');
-				var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
-
 				var netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(),
 				siteID = $('input#site_id').val();
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 				
 				if($(this).hasClass('bookmark-set')){
 						//remove bookmark
-						var slideCellElm = 'div#toc_thumb_'+slideID;
-						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-						var bmid = $(this).find('img').attr('rel');
-						alert(bmid);
-						$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
+						var thumbtype = $(this).parents('div.toc_thumb').attr('id');
+						if(thumbtype.indexOf('tabs_bookmarks')==0){
+						//this click came from the bookmarks section
+						var slideID = $(this).parents('div.toc_thumb').attr('rel');
+						}else{
+						//this click came from the overview section
+						var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
+						}
+							if(slideID.length > 0){
+							var slideCellElm = 'div#toc_thumb_'+slideID;
+							var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+							$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
 							$(slideCellElm).find('div.bmThumbFlag').remove();
-						});
-						
-						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
-						$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
-						$('div#tabs_bookmarks_thumb_'+slideID).remove();
-						
+							});
+							var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+							$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
+							$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
+							}
+							
+							
+						var elmsel = 'a.toc-bookmark[rel^='+timePoint+']';
+						var elm = $('div#tabs_bookmarks').find('div.toc_thumb').find(elmsel);
+						var parent_id = $(elm).parents('div.toc_thumb').attr('id');
+						bmid = parent_id.substr((parent_id.lastIndexOf('_')+1), parent_id.length);
+						$('div#'+parent_id).remove();
 						var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
 						if(numBMs==0){
 						$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
@@ -643,19 +653,8 @@ var llc = {
 						$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 						}
 						
-						var script_url = 'delBookmark.aspx';
-				}else{
-						//add new bookmark
-						var slideCellElm = 'div#toc_thumb_'+slideID;
-						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-						$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
-						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
-						$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-						llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
-						params = params + '&id+-1';
-						var script_url = 'addBookmark.aspx';
-				}
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id='+bmid;
+				var script_url = 'delBookmark.aspx';
 				/* start ajax */
 				$.ajax({
 		  		url: script_url,
@@ -665,65 +664,62 @@ var llc = {
 				}
 				});	
 				/* end ajax */
-				});
-		}else{
-				//has been called by anchor's onclick
-		
-				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
-				var title = llc.pres.curEl.title;
-				var slideID = llc.pres.curEl.id;
-		
-				var netSessionID = $('input#session_id').val(), 
-				presentationID = llc.pres.id, 
-				userID = $('input#user_id').val(), 
-				siteID = $('input#site_id').val();
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
-				
-				if($(item).hasClass('llc-bookmark-set')){
-						//remove bookmark
-						var slideCellElm = 'div#toc_thumb_'+slideID;
-						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-						$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
-							$(slideCellElm).find('div.bmThumbFlag').remove();
-						});
-						
-						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
-						$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
-						$('div#tabs_bookmarks_thumb_'+slideID).remove();
-						
-						var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
-						if(numBMs==0){
-						$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
-						}else{
-						var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
-						$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
-						}
-						$(item).removeClass('llc-bookmark-set');
-						var script_url = 'ajax/deleteBookmark.php';
 				}else{
 						//add new bookmark
+						var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
 						var slideCellElm = 'div#toc_thumb_'+slideID;
 						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
 						$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
 						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
 						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
 						$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-						//$(item).addClass('llc-bookmark-set');
-						llc.createThumbPanel(curImgSrc,slideID,timePoint, title, '#tabs_bookmarks');
 						
-						var script_url = 'ajax/addBookmark.php';
-				}
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID + '&id=-1';
+				var script_url = 'addBookmark.aspx';
 				/* start ajax */
 				$.ajax({
 		  		url: script_url,
 				data: params,
 		  		success: function(data) {
-				//alert(data);
+				var responseVals = data.split('&');
+				var newbmid = responseVals[0].substr(3);
+				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', slideID);
 				}
 				});	
 				/* end ajax */
-		}
+				}
+				});//END TOC CLICK HANDLER
+		}else{
+				//add new bookmark - called by media player onclick
+				
+				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
+				var title = llc.pres.curEl.title;
+				var slideID = llc.pres.curEl.id;
+		
+				var script_url = 'addBookmark.aspx', 
+				netSessionID = $('input#session_id').val(), 
+				presentationID = llc.pres.id, 
+				userID = $('input#user_id').val(), 
+				siteID = $('input#site_id').val();
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';
+				var slideCellElm = 'div#toc_thumb_'+slideID;
+				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+				$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
+				var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+				$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
+				$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
+				/* start ajax */
+				$.ajax({
+		  		url: script_url,
+				data: params,
+		  		success: function(data) {
+				var responseVals = data.split('&');
+				var newbmid = responseVals[0].substr(3);
+				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', '');				
+				}
+				});	
+				/* end ajax */
+		}//end media player onclick
    
 
 	},
