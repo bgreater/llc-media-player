@@ -873,7 +873,7 @@ var llc = {
 		if (document.domain.indexOf('dropbox')!=-1 || document.domain.indexOf('localhost')!=-1) {
 			
 			// Use test data
-			var url = 'sample-4.xml' ;
+			var url = 'pres.xml' ;
 			
 		} else {
 			
