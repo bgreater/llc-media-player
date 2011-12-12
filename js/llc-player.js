@@ -601,8 +601,7 @@ var llc = {
 			
 		} else if (method=='save') {
 			
-			var init = llc.seatTime.init = llc.seatTime.init ? llc.seatTime.init : false ,
-				netSessionID = $('input#session_id').val(), 
+			var netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(),
 				siteID = $('input#site_id').val(),
@@ -614,9 +613,8 @@ var llc = {
 				url: 'saveSeatTime.aspx',
 				data: params,
 				success: function(data) {
-					//alert(data);
-					if(!llc.seatTime.ID) {
-						var llc.seatTime.ID = data.split('&')[0].substr(3);
+					if(!llc.seatTime.ID && data) {
+						llc.seatTime.ID = data.split('&')[0].substr(3);
 					}
 				}
 			});	
