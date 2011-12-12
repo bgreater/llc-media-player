@@ -592,7 +592,7 @@ var llc = {
 		
 	},
 	seatTime: function(method) { /* Seat time tracking = llc.seatTime('update') and llc.saving seatTime('save') */
-		console.log('seatTime');
+		//console.log('seatTime');
 		if (method=='update'){
 			
 			llc.seatTime.time = llc.seatTime.time != undefined ? llc.seatTime.time + 250 : 0 ;
