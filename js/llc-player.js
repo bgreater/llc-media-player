@@ -913,7 +913,7 @@ var llc = {
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 	
 		 
-		if (document.domain.indexOf('dropbox')!=-1 || document.domain.indexOf('localhost')!=-1) {
+		if (document.domain.indexOf('dropbox')!=-1 || document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
 			
 			// Use test data
 			var url = 'pres.xml' ;
@@ -1050,12 +1050,17 @@ var llc = {
 					fileTypes.supplied = f.files.file.fileType;
 					fileTypes.files[f.files.file.fileType] = f.files.file.text;
 				} else {
-
-					for (i in f) { 
-						fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType ;
-						fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
-					}
+					if (f.files.file.fileType) {
+						fileTypes.supplied = f.files.file.fileType ;
+						fileTypes.files[f.files.file.fileType] = f.files.file.text;
+					} else {	
+						for (i in f.files.file) { 
+							if (f.files.file[i].fileType) fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType , 
+							fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
+						}						
+					}					
 				}
+				console.log(fileTypes);
 				
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
@@ -1068,7 +1073,7 @@ var llc = {
 				    	$(this).jPlayer("pause", Math.abs(playhead));
 				    	
 				    	// Set volume if cookied
-				    	llc.perVolume = llc.getCookie(llc.pres.id+'volume') ? llc.getCookie(llc.pres.id+'volume') : 0.8;
+				    	llc.perVolume = llc.getCookie(llc.pres.id+'volume') ? parseFloat(llc.getCookie(llc.pres.id+'volume')) : 0.8;
 				    	$(this).jPlayer("volume", llc.perVolume);
 				    	
 				    },
@@ -1105,7 +1110,7 @@ var llc = {
 				    fullScreen : true,
 				    autohide: {full:false},
 				    //errorAlerts: true,
-				    //solution:"flash, html",
+				    solution:"flash, html",
 				    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
 				}); // end jPlayer initialize
 				
