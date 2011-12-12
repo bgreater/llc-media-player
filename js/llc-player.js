@@ -721,11 +721,12 @@ var llc = {
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
 				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';				
-
+/*
 				$(item).siblings('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
 					}
 				});
+				*/
 				/* start ajax */
 				$.ajax({
 		  		url: script_url,
@@ -766,12 +767,13 @@ var llc = {
 			llc.setCookie('llc|'+llc.pres.id+'|rated', newRating);
 			}
 			});	
+			/*
 				$('#ratings_box').siblings('div.response_box').animate({top: '-=5px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
 					}
 				});
 			});
-			
+			*/
 			
 		 }else{
 		$('#ratings_box').ratings(5, hasRated);

@@ -902,6 +902,7 @@ padding:7px 6px 5px 6px;
 	top: 0;
 	left: 0;
 	z-index: 99999;
+outline:0;
 }
 
 #tiptip_holder.tip_top {
@@ -910,6 +911,7 @@ padding:7px 6px 5px 6px;
 
 #tiptip_holder.tip_bottom {
 	padding-top: 5px;
+outline:0;
 }
 
 #tiptip_holder.tip_right {
@@ -921,6 +923,7 @@ padding:7px 6px 5px 6px;
 }
 
 #tiptip_content {
+outline:0;
 	font-size: 11px;
 	color: #fff;
 	text-shadow: 0 0 2px #000;
@@ -938,6 +941,7 @@ padding:7px 6px 5px 6px;
 }
 
 #tiptip_arrow, #tiptip_arrow_inner {
+outline:0;
 	position: absolute;
 	border-color: transparent;
 	border-style: solid;
