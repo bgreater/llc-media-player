@@ -492,7 +492,7 @@ var llc = {
 						
 			// Play/Pause video slide
 			if (curEl.files.file[1].fileType!="jpg" && curEl.files.file.fileType!="jpg") { 
-				console.log(curEl.files.file[1].fileType);
+				//console.log(curEl.files.file[1].fileType);
 				$("#master_jplayer").jPlayer("pause");
 				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
 				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
@@ -1060,7 +1060,7 @@ var llc = {
 						}						
 					}					
 				}
-				console.log(fileTypes);
+				//console.log(fileTypes);
 				
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
@@ -1110,7 +1110,7 @@ var llc = {
 				    fullScreen : true,
 				    autohide: {full:false},
 				    //errorAlerts: true,
-				    solution:"flash, html",
+				    //solution:"flash, html",
 				    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
 				}); // end jPlayer initialize
 				
