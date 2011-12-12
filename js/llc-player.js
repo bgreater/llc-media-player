@@ -977,7 +977,7 @@ var llc = {
 					llc.position();
 
 					llc.position.con.height(llc.position.frm.height());
-					
+					 
 				}).trigger('resize');
 				
 				// Link playerframe resize on window resize
