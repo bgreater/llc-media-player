@@ -111,3 +111,23 @@
 		border-top-color: rgba(20,20,20,0.92);
 	}
 }
+
+.response_box{
+	position:absolute;
+	z-index:54;
+	font-size:12px;
+	padding:5px;
+	font-size: 11px;
+	font-family:Arial;
+	font-weight:800;
+	color: #000000;
+	vertical-align:middle;
+	text-align:center;
+	padding: 4px 8px;
+	border: 0;
+	background-color: transparent;
+	opacity:0;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /* IE 8 */
+    filter:alpha(opacity=0);
+    zoom:1
+}

@@ -299,7 +299,7 @@ var llc = {
 					<p style="display:block" id="pres_title"><strong>Title:</strong> <span></span></p>\
 					<p style="display:block" id="pres_presenter"><strong>Presenter(s):</strong> <span></span></p>\
 					<p style="display:block" id="pres_date"><strong>Date:</strong> <span>There is no date in xml</span></p>\
-					<div id="ratings_box" class="ratingsBox"></div>\
+					<div style="left:349px; top:35px;" class="response_box">Rating Saved!</div><div id="ratings_box" class="ratingsBox"></div>\
 				</div>\
 				<div id="info_tabs">\
 					<div id="tabs">\
@@ -738,7 +738,7 @@ var llc = {
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
-		 var hasRated = llc.getCookie(llc.pres.id+'rated');
+		 var hasRated = llc.getCookie('llc|'+llc.pres.id+'|rated');
 		 if(!hasRated){
 		$('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
 			var newRating = data.rating, 
@@ -752,12 +752,22 @@ var llc = {
 			data: params,
 			success: function(data) {
 			var confirmMessage = data + ' - rating this presentation: ' + newRating;
-			alert(confirmMessage);
-			llc.setCookie(llc.pres.id+'rated', newRating);
+			//alert(confirmMessage);
+			llc.setCookie('llc|'+llc.pres.id+'|rated', newRating);
 			}
 			});	
-			
+				$('#ratings_box').siblings('div.response_box').animate({top: '-=6px', opacity: '1'}, {duration:500, complete:function(){
+					$(this).delay(1500).fadeOut();
+					}
+				});
+			/*
+			$('div.response_box').fadeIn(2555, function(){
+				$(this).delay(2000).fadeOut();
+				});
+			*/
 			});
+			
+			
 		 }else{
 		$('#ratings_box').ratings(5, hasRated);
 		$('div.jquery-ratings-star').unbind('click');
