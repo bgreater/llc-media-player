@@ -481,7 +481,8 @@ var llc = {
 			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide();
 						
 			// Play/Pause video slide
-			if (curEl.files.file[1].fileType!="jpg") { 
+			if (curEl.files.file[1].fileType!="jpg" && curEl.files.file.fileType!="jpg") { 
+				console.log(curEl.files.file[1].fileType);
 				$("#master_jplayer").jPlayer("pause");
 				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
 				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
@@ -814,6 +815,17 @@ var llc = {
 		return false;
 		});
 	},
+	position: function() { /* Position the player */
+		var con = llc.position.con = llc.position.con ? llc.position.con : $("#llc_container"),
+		frm = llc.position.frm = llc.position.frm ? llc.position.frm : $("#llc_playerFrame"),
+		left = con.offset().left, 
+		top = llc.position.top = llc.position.top ? llc.position.top : con.offset().top;  
+		
+		frm.css({
+			'top':(top+5+'px'),
+			'left':(left+8+'px')
+		});
+	},
 	switchFull: function(val) { /* Get playback cookie */
 		//console.log('trigger full screen');
 		
@@ -828,7 +840,7 @@ var llc = {
 			$("#pres_info, #info_tabs").hide();
 			
 			// Resize Progress bar and disable scrolling
-			$(window).resize(function() {
+			$(window).unbind('resize').resize(function() {
 
 				var w = $("#llc_playerFrame").width();
 
@@ -859,7 +871,7 @@ var llc = {
 			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style','');
 			$("#pres_info, #info_tabs").show();
 			
-			$(window).unbind('resize').unbind('scroll');
+			$(window).unbind('resize').unbind('scroll').resize(function() { llc.position() });
 						
 			$("#master_jp_container a.llc-full").removeClass('active');
 			
@@ -962,20 +974,14 @@ var llc = {
 				// Adjust container height & position player
 				$("#llc_playerFrame").resize(function(){
 
-					var con = $("#llc_container"),
-						frm = $("#llc_playerFrame"),
-						top = con.offset().top+5+'px'; // 5px padding up top 
+					llc.position();
 
-					frm.css({
-						'top':top,
-						'left':'50%',
-						'margin-left':'-320px'
-					});
-
-					con.height(frm.height());
+					llc.position.con.height(llc.position.frm.height());
 					
 				}).trigger('resize');
 				
+				// Link playerframe resize on window resize
+				$(window).resize(function(){llc.position()});
 					
 				// slide loading progress vars
 				llc.pres.imgsLoaded=0;

@@ -450,6 +450,7 @@ a.jp-shuffle-off:hover {
 
 
 /* @group Basic Style */
+
 .player {
  background-color: #3d3b3c; text-align: center; width: 655px; padding: 5px 0; margin: 0px auto 25px auto; text-align: left; position: relative;
 }
