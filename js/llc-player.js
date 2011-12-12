@@ -238,7 +238,8 @@ var llc = {
 		  ################# Setup tool tips
 		 ########################################## */
 		 
-		 $("ul.jp-controls li a, div.toc_thumb_info a.toc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+		 $("ul.jp-controls li a, div.toc_thumb_info a.toc-bookmark").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+		 $("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'bottom'});
 		 
 				
 	},
@@ -283,7 +284,7 @@ var llc = {
 										</div>\
 									</div>\
 								</li>\
-								<li><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
+								<li><div style="right:2px; bottom:41px; color:#ffffff;" class="response_box">Bookmark Saved!</div><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
 								<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>\
 							</ul>\
 							<div class="jp-title">Now Playing... '+llc.pres.title+'</div>\
@@ -716,7 +717,11 @@ var llc = {
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
 				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';				
-	
+
+				$(item).siblings('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
+					$(this).delay(1200).animate({opacity:0});
+					}
+				});
 				/* start ajax */
 				$.ajax({
 		  		url: script_url,
@@ -726,6 +731,7 @@ var llc = {
 				var responseVals = data.split('&');
 				var newbmid = responseVals[0].substr(3);
 				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', '');
+				
 				}
 				});	
 				/* end ajax */
@@ -738,7 +744,7 @@ var llc = {
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
-		 var hasRated = llc.getCookie('llc|'+llc.pres.id+'|rated');
+		 var hasRated = llc.getCookie('llc|'+llc.pres.id+'|3rated');
 		 if(!hasRated){
 		$('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
 			var newRating = data.rating, 
@@ -756,15 +762,10 @@ var llc = {
 			llc.setCookie('llc|'+llc.pres.id+'|rated', newRating);
 			}
 			});	
-				$('#ratings_box').siblings('div.response_box').animate({top: '-=6px', opacity: '1'}, {duration:500, complete:function(){
-					$(this).delay(1500).fadeOut();
+				$('#ratings_box').siblings('div.response_box').animate({top: '-=5px', opacity: '1'}, {duration:500, complete:function(){
+					$(this).delay(1200).animate({opacity:0});
 					}
 				});
-			/*
-			$('div.response_box').fadeIn(2555, function(){
-				$(this).delay(2000).fadeOut();
-				});
-			*/
 			});
 			
 			
