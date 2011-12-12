@@ -601,17 +601,23 @@ var llc = {
 			
 		} else if (method=='save') {
 			
-			var netSessionID = $('input#session_id').val(), 
+			var init = llc.seatTime.init = llc.seatTime.init ? llc.seatTime.init : false ,
+				netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(),
 				siteID = $('input#site_id').val(),
-				params = '&netSessionID='+netSessionID+'&timeID='+llc.seatTime.time+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+				timeID = llc.seatTime.ID ? llc.seatTime.time : -1 ,
+				ID = llc.seatTime.ID ? 'id='+llc.seatTime.ID : undefined,
+				params = (ID || '')+'&netSessionID='+netSessionID+'&timeID='+timeID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 			
 			$.ajax({
 				url: 'saveSeatTime.aspx',
 				data: params,
 				success: function(data) {
-					alert(data);
+					//alert(data);
+					if(!llc.seatTime.ID) {
+						var llc.seatTime.ID = data.split('&')[0].substr(3);
+					}
 				}
 			});	
 			
@@ -881,7 +887,7 @@ var llc = {
 
 			}).trigger('resize').trigger('scroll');
 						
-			$("#master_jp_container a.llc-full").addClass('active');
+			$("#master_jp_container a.llc-full").addClass('active').tipTip({content: "normal", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
 			
 			// $("#master_jplayer").jPlayer("option", {"fullScreen": true}); // not needed with 100% size option
 						
@@ -898,7 +904,7 @@ var llc = {
 			
 			$(window).unbind('resize').unbind('scroll').resize(function() { llc.position() });
 						
-			$("#master_jp_container a.llc-full").removeClass('active');
+			$("#master_jp_container a.llc-full").removeClass('active').tipTip({content: "full", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
 			
 			// ("#master_jplayer").jPlayer("option", {"fullScreen": false});
 		}
