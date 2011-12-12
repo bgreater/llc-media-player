@@ -233,6 +233,14 @@ var llc = {
 					$(this).find('.playIcon').fadeOut();
 				}
 				});
+				
+		/* ##########################################
+		  ################# Setup tool tips
+		 ########################################## */
+		 
+		 $("ul.jp-controls li a").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+		 
+				
 	},
 	createMarkup: function(obj) {
 	
