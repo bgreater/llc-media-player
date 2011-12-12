@@ -685,6 +685,7 @@ var llc = {
 		  		url: script_url,
 				data: params,
 		  		success: function(data) {
+				alert(data);
 				var responseVals = data.split('&');
 				var newbmid = responseVals[0].substr(3);
 				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', slideID);
