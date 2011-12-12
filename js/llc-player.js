@@ -129,6 +129,7 @@ var llc = {
 			var slideStart = llc.pres.media.items.item[i].startPoint;
 			i = i+1;
 			}
+			i = (i<0) ? 0 : i;
 			/*
 				var slideCellElm = 'div#toc_thumb_'+xml[i-1].id;
 				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
@@ -697,21 +698,25 @@ var llc = {
 				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
 				var title = llc.pres.curEl.title;
 				var slideID = llc.pres.curEl.id;
-		
+				var slideCellElm = 'div#toc_thumb_'+slideID;
+				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+
 				var script_url = 'addBookmark.aspx', 
 				netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';				
+	
 				/* start ajax */
 				$.ajax({
 		  		url: script_url,
 				data: params,
 		  		success: function(data) {
+				alert(data);
 				var responseVals = data.split('&');
 				var newbmid = responseVals[0].substr(3);
-				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', '');				
+				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', '');
 				}
 				});	
 				/* end ajax */
