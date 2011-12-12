@@ -238,7 +238,7 @@ var llc = {
 		  ################# Setup tool tips
 		 ########################################## */
 		 
-		 $("ul.jp-controls li a").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+		 $("ul.jp-controls li a, div.toc_thumb_info a.toc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
 		 
 				
 	},
