@@ -1044,14 +1044,12 @@ var llc = {
 				// File Types
 				var f = llc.pres.media.master.item,
 					fileTypes = { files: { poster:f.poster } };
-				if (f.files.file.fileType = 'mp3') {
-
+				if (f.files.file.fileType == 'mp3') {
 					fileTypes.supplied = f.files.file.fileType;
 					fileTypes.files[f.files.file.fileType] = f.files.file.text;
 				} else {
 
 					for (i in f) { 
-						
 						fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType ;
 						fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
 					}
