@@ -238,7 +238,7 @@ var llc = {
 		  ################# Setup tool tips
 		 ########################################## */
 		 
-		 $("ul.jp-controls li a, div.toc_thumb_info a.toc-bookmark").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+		 $("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
 		 $("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'bottom'});
 		 
 				
@@ -399,7 +399,6 @@ var llc = {
 		var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
 		$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 		}
-		
 		$('<div '+thumbRel+' class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
 			<a href="" onclick="slideJump('+((startPoint/1000)+.3)+')">\
 			  <img class="toc_thumb_img" src="'+img+'" />\
@@ -428,7 +427,6 @@ var llc = {
 		if(!zoomcheck){
 		var xpos = e.pageX - 244;
 		var ypos = e.pageY - 420;
-		//alert(ympos);
 		var imgSrc = $(this).parents('div.toc_thumb').find('img.toc_thumb_img').attr('src');
 		var zoomTag = '<div style="left:'+xpos+'px; top:'+ypos+'px;" class="zoom_box"><div class="zoom_box_control"><div class="close_button"></div></div><img src="'+imgSrc+'" class="zoom_img" /></div>';
 		var zoomTitle = '<div class="zoom_box_title"></div>';
@@ -634,7 +632,6 @@ var llc = {
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(),
 				siteID = $('input#site_id').val();
-				
 				if($(this).hasClass('bookmark-set')){
 						//remove bookmark
 						var thumbtype = $(this).parents('div.toc_thumb').attr('id');
@@ -721,12 +718,12 @@ var llc = {
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
 				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';				
-/*
+
 				$(item).siblings('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
 					}
 				});
-				*/
+			
 				/* start ajax */
 				$.ajax({
 		  		url: script_url,
@@ -749,7 +746,7 @@ var llc = {
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
-		 var hasRated = llc.getCookie('llc|'+llc.pres.id+'|3rated');
+		 var hasRated = llc.getCookie('llc|'+llc.pres.id+'|rated');
 		 if(!hasRated){
 		$('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
 			var newRating = data.rating, 
@@ -763,17 +760,18 @@ var llc = {
 			data: params,
 			success: function(data) {
 			var confirmMessage = data + ' - rating this presentation: ' + newRating;
-			//alert(confirmMessage);
+			alert(data);
 			llc.setCookie('llc|'+llc.pres.id+'|rated', newRating);
 			}
 			});	
-			/*
+		
 				$('#ratings_box').siblings('div.response_box').animate({top: '-=5px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
 					}
 				});
+				
 			});
-			*/
+		
 			
 		 }else{
 		$('#ratings_box').ratings(5, hasRated);
