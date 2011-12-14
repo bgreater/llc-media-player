@@ -296,7 +296,7 @@ var llc = {
 					</div>\
 				</div>\
 				<div id="pres_info">\
-					<div id="ad_sponsored" style=""><div style="float:left; margin-right:3px;">Sponsored By: </div><img src="images/player/sponsor-AD.png" alt="IBM" /></div>\
+					<div id="ad_sponsored" style=""><div style="float:left; margin-right:3px;">Sponsored By: </div><div id="ad_sponsored_box"><!--<img src="images/player/sponsor-AD.png" alt="IBM" />--></div></div>\
 					<p style="display:block" id="pres_title"><strong>Title:</strong> <span></span></p>\
 					<p style="display:block" id="pres_presenter"><strong>Presenter(s):</strong> <span></span></p>\
 					<p style="display:block" id="pres_date"><strong>Date:</strong> <span>There is no date in xml</span></p>\
@@ -667,7 +667,7 @@ var llc = {
 						$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 						}
 						
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id='+bmid;
+				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID='+bmid;
 				var script_url = 'delBookmark.aspx';
 				/* start ajax */
 				$.ajax({
@@ -911,18 +911,19 @@ var llc = {
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 	
 		 
-		if (document.domain.indexOf('dropbox')!=-1 || document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
-			
-			// Use test data
-			var url = 'pres.xml' ;
-			
-		} else {
-			
-			// Use live data
-			presentationID = $('input#pres_id').val(),
+        if (document.domain.indexOf('dropbox') != -1 || document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
+
+            // Use test data
+            var url = 'pres.xml';
+
+        } else {
+
+            // Use live data
+            var presentationID = $('input#pres_id').val(),
+			curSessionID = $('input#cur_session_id').val(),
 			userID = $('input#user_id').val(),
 			siteID = $('input#site_id').val();
-			var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + siteID + '&UID=' + userID;
+            var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + curSessionID + '&UID=' + userID;
 			
 		}
 				
@@ -1029,11 +1030,30 @@ var llc = {
 				}
 				
 				function clearLoading() {
-					window.clearInterval(window.loader);
-					window.clearTimeout(window.loaderFail);	
-					$("#loading").remove();
-					$("#llc_playerFrame").css('height','auto');
-					$("#llc_playerFrame").trigger('resize');
+					
+					if (!llc.loaded) {
+					
+						window.clearInterval(window.loader);
+						window.clearTimeout(window.loaderFail);
+						$("#loading").remove();
+						$("#llc_playerFrame").css('height','auto');
+						$("#llc_playerFrame").trigger('resize');
+						
+						/* Set up ad */
+						if (!document.phpAds_used) document.phpAds_used = ',';
+						phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+						
+						adjs = "//content.multiview.com/adjs.php?n=" + phpAds_random;
+						adjs += "&what=zone:"+(llc.pres.sponsorZoneId||1609)+"&target=_blank&block=1";
+						adjs += "&exclude=" + document.phpAds_used;
+						
+						$.getScript(adjs, function(){
+						   $("#ad_sponsored_box").html(phpadsbanner);
+						});
+						
+						llc.loaded = true;
+					}
+					
 				}
 				window.loader = window.setInterval(loading, 100);
 				window.loaderFail = window.setTimeout(clearLoading, 20000); // loader fail safe 20 sec
@@ -1307,7 +1327,6 @@ function urlParse(parameter) {
       return false;
   }
 }
-
 
 
 
