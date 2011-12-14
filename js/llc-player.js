@@ -688,7 +688,7 @@ var llc = {
 						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
 						$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
 						
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID + '&id=-1';
+				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID + '&bookmarkID=-1';
 				var script_url = 'addBookmark.aspx';
 				/* start ajax */
 				$.ajax({
@@ -717,7 +717,7 @@ var llc = {
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';				
+				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID=-1';				
 
 				$(item).siblings('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
@@ -792,7 +792,7 @@ var llc = {
 		userID = $('input#user_id').val(), 
 		siteID = $('input#site_id').val(), 
 		presentationID = llc.pres.id;
-		var params = 'note='+note+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';
+		var params = 'note='+escape(note)+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';
 		/* start ajax */
 		$.ajax({
   		url: 'saveNotes.aspx',
