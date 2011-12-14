@@ -603,9 +603,9 @@ var llc = {
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(),
 				siteID = $('input#site_id').val(),
-				timeID = llc.seatTime.ID ? llc.seatTime.time : -1 ,
-				ID = llc.seatTime.ID ? 'id='+llc.seatTime.ID : undefined,
-				params = (ID || '')+'&netSessionID='+netSessionID+'&timeID='+timeID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+				timeID = llc.seatTime.time,
+				ID = llc.seatTime.ID ? llc.seatTime.ID : -1,
+				params = 'id='+ID+'&netSessionID='+netSessionID+'&timeID='+timeID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
 			
 			$.ajax({
 				url: 'saveSeatTime.aspx',
