@@ -1307,7 +1307,3 @@ function urlParse(parameter) {
       return false;
   }
 }
-
-
-
-
