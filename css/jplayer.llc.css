@@ -560,7 +560,7 @@ div.jp-jplayer{
  width: 100% !important; height: auto !important;
 }
 /* @end */
-
+ 
 
 /* @group Presentation Info */
 #pres_info {
@@ -577,6 +577,9 @@ div.jp-jplayer{
 }
 #ad_sponsored {
  float: right; vertical-align: top; margin: .8em; color: #7b7b7b;
+}
+#ad_sponsored_box {
+ width: 120px; height: 60px; overflow: hidden; position: relative; border: 1px solid #333;
 }
 .jquery-ratings-star {
  cursor: pointer; width: 15px; height: 14px; background-image: url(../images/player/empty-star.png); background-repeat: no-repeat; position: relative; float: left; margin-right: 2px;
