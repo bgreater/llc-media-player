@@ -674,7 +674,10 @@ var llc = {
 		  		url: script_url,
 				data: params,
 		  		success: function(data) {
-				alert(data);
+		var debugCheck = urlParse('debug');
+		if(debugCheck=='y'){
+			alert(data);
+		}
 				}
 				});	
 				/* end ajax */
@@ -695,7 +698,10 @@ var llc = {
 		  		url: script_url,
 				data: params,
 		  		success: function(data) {
-				alert(data);
+		var debugCheck = urlParse('debug');
+		if(debugCheck=='y'){
+			alert(data);
+		}
 				var responseVals = data.split('&');
 				var newbmid = responseVals[0].substr(3);
 				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', slideID);
@@ -729,7 +735,10 @@ var llc = {
 		  		url: script_url,
 				data: params,
 		  		success: function(data) {
-				alert(data);
+		var debugCheck = urlParse('debug');
+		if(debugCheck=='y'){
+			alert(data);
+		}
 				var responseVals = data.split('&');
 				var newbmid = responseVals[0].substr(3);
 				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', '');
@@ -759,8 +768,10 @@ var llc = {
 			url: 'saveRating.aspx',
 			data: params,
 			success: function(data) {
-			var confirmMessage = data + ' - rating this presentation: ' + newRating;
+		var debugCheck = urlParse('debug');
+		if(debugCheck=='y'){
 			alert(data);
+		}
 			llc.setCookie('llc|'+llc.pres.id+'|rated', newRating);
 			}
 			});	
@@ -798,7 +809,11 @@ var llc = {
   		url: 'saveNotes.aspx',
 		data: params,
   		success: function(data) {
-		alert(data);
+		var debugCheck = urlParse('debug');
+		if(debugCheck=='y'){
+			alert(data);
+		}
+		
 		}
 		});	
 		/* end ajax */
