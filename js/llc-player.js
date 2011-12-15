@@ -393,7 +393,7 @@ var llc = {
 		$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 		}
 		$('<div '+thumbRel+' class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
-			<a href="" onclick="slideJump('+((startPoint/1000)+.3)+')">\
+			<a href="javascript:;" onclick="slideJump('+((startPoint/1000)+.3)+')">\
 			  <img class="toc_thumb_img" src="'+img+'" />\
 			</a>\
 			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
