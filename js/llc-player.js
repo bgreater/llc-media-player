@@ -307,8 +307,8 @@ var llc = {
 						<div id="tabs_bookmarks" class="info"><div id="noBookmarks"><p>Your bookmarks folder is currently empty.</p></div></div>\
 						<div id="tabs_notes" class="info" style="border:1px solid #777777">\
 							<TEXTAREA id="note_pad" name="notePad" class="notesInput"></TEXTAREA>\
-							<div class="notesSubmitBox">\
-							<table style="width:100%"><tr><td><p class="">Keep track of the presentation\'s key points here.</p></td>\
+							<div class="notesSubmitBox" style="position:relative;"><div style="right:8px; top:-5px; color:#000000;" class="response_box">Notes Saved!</div>\
+							<table style="width:100%;"><tr><td><p class="">Keep track of the presentation\'s key points here.</p></td>\
 							<td><button class="llc-button-s" id="save_note_btn">SAVE</button></td></tr></table>\
 							</div>\
 						</div>\
@@ -716,8 +716,8 @@ var llc = {
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
-				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID=-1';				
-
+				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID=-1';
+				
 				$(item).siblings('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
 					}
@@ -815,6 +815,11 @@ var llc = {
 		}
 		});	
 		/* end ajax */
+		
+				$(this).parents('div.notesSubmitBox').find('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
+					$(this).delay(1200).animate({opacity:0});
+					}
+				});
 		});
 		
 		
