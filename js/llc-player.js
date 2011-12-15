@@ -605,7 +605,7 @@ var llc = {
 				siteID = $('input#site_id').val(),
 				timeID = llc.seatTime.time,
 				ID = llc.seatTime.ID ? llc.seatTime.ID : -1,
-				params = 'id='+ID+'&netSessionID='+netSessionID+'&timeID='+timeID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID;
+				params = 'timeID=' + ID + '&netSessionID=' + netSessionID + '&userID=' + userID + '&siteID=' + siteID + '&presentationID=' + presentationID;
 			
 			$.ajax({
 				url: 'saveSeatTime.aspx',
@@ -755,26 +755,31 @@ var llc = {
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
-		 var hasRated = llc.getCookie('llc|'+llc.pres.id+'|rated');
-		 if(!hasRated){
-		$('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
-			var newRating = data.rating, 
-			netSessionID = $('input#session_id').val(), 
-			userID = $('input#user_id').val(), 
-			siteID = $('input#site_id').val(), 
-			presentationID = llc.pres.id;
-			var params = 'value='+newRating+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';		
-			$.ajax({
-			url: 'saveRating.aspx',
-			data: params,
-			success: function(data) {
-		var debugCheck = urlParse('debug');
-		if(debugCheck=='y'){
-			alert(data);
-		}
-			llc.setCookie('llc|'+llc.pres.id+'|rated', newRating);
-			}
-			});	
+        var curSessionID = $('input#cur_session_id').val();
+        var hasRated = llc.getCookie('llc|' + curSessionID + '|rated');
+        if (hasRated != llc.pres.ratingAverage) {
+            llc.setCookie('llc|' + curSessionID + '|rated', llc.pres.ratingAverage);
+            hasRated = llc.pres.ratingAverage;
+        }
+        if (!hasRated) {
+            $('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
+                var newRating = data.rating,
+                      netSessionID = $('input#session_id').val(),
+                      userID = $('input#user_id').val(),
+                      siteID = $('input#site_id').val();
+                var params = 'value=' + newRating + '&netSessionID=' + netSessionID + '&userID=' + userID + '&siteID=' + siteID + '&sessionID=' + curSessionID + '&id=-1';
+                $.ajax({
+                    url: 'saveRating.aspx',
+                    data: params,
+                    success: function(data) {
+                        var debugCheck = urlParse('debug');
+                        if (debugCheck == 'y') {
+                            alert(data);
+                        }
+                        llc.setCookie('llc|' + curSessionID + '|rated', newRating);
+                    }
+                });
+
 		
 				$('#ratings_box').siblings('div.response_box').animate({top: '-=5px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
