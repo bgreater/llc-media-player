@@ -124,15 +124,23 @@ var llc = {
 			var slideStart = 0;
 			var i = 0;
 			var xml = llc.pres.media.items.item;
-			var maxloops = xml.length-1;
-			while(slideStart < bmStart && i < maxloops){
+			if(xml.length==undefined){var xmllen = 1;}else{var xmllen = xml.length;}
+			if(xmllen==1){
+			var filename = xml.files.file;
+			var title = xml.title;
+			}else{
+			var maxloops = xmllen-1;
+			while(slideStart <= bmStart && i <= maxloops){
 			var slideStart = llc.pres.media.items.item[i].startPoint;
 			i = i+1;
 			}
-			i = (i<1) ? 1 : i;
-				print_r(xml[i-1].files.file[0]);
-			llc.createThumbPanel(xml[i-1].files.file, t.id, bmStart, xml[i-1].title, '#tabs_bookmarks', '');
+			i = (i<1) ? 1 : i-1;
+			var filename = xml[i-1].files.file;
+			var title = xml[i-1].title;
+			
+			}
 
+			llc.createThumbPanel(filename, t.id, bmStart, title, '#tabs_bookmarks', '');
 		});
 		
 		
