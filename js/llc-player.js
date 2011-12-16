@@ -23,6 +23,8 @@ saveRating
 saveNote
 setCookie
 getCookie
+tosAgreed
+tosDecline
 init
 */
 var llc = {
@@ -881,6 +883,19 @@ var llc = {
 			'left':(left+8+'px')
 		});
 	},
+	tosAgreed: function() {
+	$('div.lightbox_overlay').fadeOut();
+	$('div.lightbox_content').fadeOut();
+	var agreeLink = llc.pres.agreement.acceptLink;
+		if(agreeLink.length > 0){
+		var winame = Math.floor(Math.random()*1001);
+		var newind = window.open(agreeLink,winame);
+		}
+	},
+	tosDecline: function() {
+	var declineLink = llc.pres.agreement.declineLink;
+	window.location = declineLink;
+	},
 	switchFull: function(val) { /* Get playback cookie */
 		//console.log('trigger full screen');
 		
@@ -964,10 +979,25 @@ var llc = {
 		// Set loading
 		$('<div id="loading"></div>').appendTo("#llc_container");
 		
+		
 		// Serialize XML and set llc.pres object
 		$.get(url, function(xml){ 
 		 
 			llc.pres = $.xml2json(xml); 
+			
+//TOS Agreement verification			
+if(llc.pres.agreement != undefined){
+var tosHTML = '<div class="lightbox_overlay"></div>\
+				<div class="lightbox_content">\
+				<h1>'+llc.pres.agreement.name+'</h1>\
+				<div class="inner">'+llc.pres.agreement.text+'</div>\
+				<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreement.declineText+'</button></div>\
+				</div>';
+				
+$("body").prepend(tosHTML);
+$('div.lightbox_overlay, div.lightbox_content').fadeIn();
+}
+
 
 				/*
 				  CURRENT IMPORTANT VARIABLES:
@@ -1121,7 +1151,6 @@ var llc = {
 				    	var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
 				    	llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
 				    	$(this).jPlayer("volume", llc.perVolume);
-				    	
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
 				    	$(this).jPlayer("pauseOthers");
@@ -1278,6 +1307,7 @@ var llc = {
  /******************* PRINT_R IS NEAT ***********/
  // You can access the js object in your browser console so you don't really need this ...
  // Isn't this a PHP function name ? ;) 
+ // Yes, and in PHP land print_r is your best buddy...
 function print_r(theObj){
   if(theObj.constructor == Array ||
      theObj.constructor == Object){

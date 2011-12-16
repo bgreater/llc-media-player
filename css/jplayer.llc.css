@@ -1014,3 +1014,50 @@ outline:0;
 		border-top-color: rgba(20,20,20,0.92);
 	}
 }
+/* TOS Agreement Lightbox */
+		.lightbox_overlay{
+			display: none;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			z-index:12001 !important;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+		}
+		.lightbox_content {
+			display: none;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			width: 660px;
+			margin-left:-346px;
+			max-height: 425px;
+			padding: 16px;
+			border: 16px solid #bdbdbd;
+			background-color: white;
+			z-index:12002 !important;
+			text-align:left;
+		}
+		.lightbox_content h1{
+		margin-bottom:10px;
+		}
+		.lightbox_content .inner{
+		position:relative;
+		width:100%;
+		max-height:320px;
+		padding:0 10px 0 0;
+		overflow:auto;
+		font-size:16px;
+		line-height:25px;
+		}
+		.toc_controls{
+		position:relative;
+		clear:both;
+		width:99%;
+		text-align:right;
+		margin-top:10px;
+		}
