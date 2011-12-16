@@ -1062,11 +1062,12 @@ var llc = {
 						phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
 						
 						adjs = "//content.multiview.com/adjs.php?n=" + phpAds_random;
-						adjs += "&what=zone:"+(llc.pres.sponsorZoneId||1609)+"&target=_blank&block=1";
+						adjs += "&what=zone:"+llc.pres.sponsorZoneId+"&target=_blank&block=1";
 						adjs += "&exclude=" + document.phpAds_used;
 						
 						$.getScript(adjs, function(){
-						   $("#ad_sponsored_box").html(phpadsbanner);
+							var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
+						   $("#ad_sponsored_box").html(phpadsbanner || defaultAd);
 						});
 						
 						llc.loaded = true;
@@ -1105,11 +1106,12 @@ var llc = {
 				    	$(this).jPlayer("setMedia", fileTypes.files);
 				    	
 				    	// Set playback if cookied
-				    	var playhead = llc.getCookie(llc.pres.id+'playhead') ? llc.getCookie(llc.pres.id+'playhead') : 0;
+				    	var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
 				    	$(this).jPlayer("pause", Math.abs(playhead));
 				    	
 				    	// Set volume if cookied
-				    	llc.perVolume = llc.getCookie(llc.pres.id+'volume') ? parseFloat(llc.getCookie(llc.pres.id+'volume')) : 0.8;
+				    	var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
+				    	llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
 				    	$(this).jPlayer("volume", llc.perVolume);
 				    	
 				    },
@@ -1233,19 +1235,25 @@ var llc = {
 				
 				// Set presentation info
 				$("#pres_title span").text(llc.pres.title);
+				
+				// Set speakers
 				$("#pres_presenter span").text((function(){
 					var spks
 					for (i in llc.pres.speakers.speaker) {
 						var s = llc.pres.speakers.speaker[i];
 						if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', '+ s.firstName + " " + s.lastName :  s.firstName + " " + s.lastName ;
-					} return spks
+					} 
+					spks = spks ? spks : 'N/A' ;
+					return spks
 				})());
-				// $("#pres_date span").text(llc.pres.date?);
+				
+				// Set Date
+				$("#pres_date span").text((llc.pres.date || 'N/A'));
 				
 				// Set playback value in Cookie on quit
 				$(window).bind('beforeunload', function() {
-					llc.setCookie(llc.pres.id+'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
-					llc.setCookie(llc.pres.id+'volume', llc.perVolume);
+					llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
+					llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume', llc.perVolume);
 				});
 				
 				// Set defualt view

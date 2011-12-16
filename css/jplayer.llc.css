@@ -220,7 +220,7 @@ a.jp-volume-max:hover {
 }
 /* Vertical volume style */
 div.jp-volume {
- background: url(../images/player/jplayer.llc.png) 0px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer; z-index: 2;
+ background: url(../images/player/jplayer.llc.png) 0px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer; z-index: 55;
 }
 div.jp-volume.active {
  background: url(../images/player/jplayer.llc.png) -40px -150px no-repeat; overflow: visible;
@@ -579,7 +579,7 @@ div.jp-jplayer{
  float: right; vertical-align: top; margin: .8em; color: #7b7b7b;
 }
 #ad_sponsored_box {
- width: 120px; height: 60px; overflow: hidden; position: relative; border: 1px solid #333;
+ width: 120px; height: 60px; overflow: hidden; position: relative; border: 1px solid #333; background: url(../images/player/defaultAdBg.png);
 }
 .jquery-ratings-star {
  cursor: pointer; width: 15px; height: 14px; background-image: url(../images/player/empty-star.png); background-repeat: no-repeat; position: relative; float: left; margin-right: 2px;
