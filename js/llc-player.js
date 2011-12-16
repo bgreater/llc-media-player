@@ -886,14 +886,14 @@ var llc = {
 	tosAgreed: function() {
 	$('div.lightbox_overlay').fadeOut();
 	$('div.lightbox_content').fadeOut();
-	var agreeLink = llc.pres.agreement.acceptLink;
+	var agreeLink = llc.pres.agreements.agreement.acceptLink;
 		if(agreeLink.length > 0){
 		var winame = Math.floor(Math.random()*1001);
 		var newind = window.open(agreeLink,winame);
 		}
 	},
 	tosDecline: function() {
-	var declineLink = llc.pres.agreement.declineLink;
+	var declineLink = llc.pres.agreements.agreement.declineLink;
 	window.location = declineLink;
 	},
 	switchFull: function(val) { /* Get playback cookie */
@@ -986,12 +986,12 @@ var llc = {
 			llc.pres = $.xml2json(xml); 
 			
 //TOS Agreement verification			
-if(llc.pres.agreement != undefined){
+if(llc.pres.agreements != undefined){
 var tosHTML = '<div class="lightbox_overlay"></div>\
 				<div class="lightbox_content">\
-				<h1>'+llc.pres.agreement.name+'</h1>\
-				<div class="inner">'+llc.pres.agreement.text+'</div>\
-				<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreement.declineText+'</button></div>\
+				<h1>'+llc.pres.agreements.agreement.name+'</h1>\
+				<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
+				<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
 				</div>';
 				
 $("body").prepend(tosHTML);
