@@ -1031,10 +1031,10 @@ outline:0;
 		.lightbox_content {
 			display: none;
 			position: absolute;
-			top: 20%;
+			top: 15%;
 			left: 50%;
-			width: 660px;
-			margin-left:-346px;
+			width: 620px;
+			margin-left:-340px;
 			max-height: 425px;
 			padding: 16px;
 			border: 16px solid #bdbdbd;
@@ -1044,6 +1044,8 @@ outline:0;
 		}
 		.lightbox_content h1{
 		margin-bottom:10px;
+		font-family:Arial;
+		color:#3e3e3e;
 		}
 		.lightbox_content .inner{
 		position:relative;
@@ -1051,13 +1053,15 @@ outline:0;
 		max-height:320px;
 		padding:0 10px 0 0;
 		overflow:auto;
-		font-size:16px;
-		line-height:25px;
+		font-size:14px;
+		line-height:22px;
+		font-family:"Arial";
+		color:#555454;
 		}
 		.toc_controls{
 		position:relative;
 		clear:both;
 		width:99%;
 		text-align:right;
-		margin-top:10px;
+		margin-top:14px;
 		}
