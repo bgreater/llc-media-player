@@ -128,7 +128,7 @@ var llc = {
 			var xml = llc.pres.media.items.item;
 			if(xml.length==undefined){var xmllen = 1;}else{var xmllen = xml.length;}
 			if(xmllen==1){
-			var filename = xml.files.file;
+			var filename = (xml.files.file.constructor.toString().indexOf('Array') != -1) ? xml.files.file[0] : xml.files.file;
 			var title = xml.title;
 			}else{
 			var maxloops = xmllen-1;
@@ -137,11 +137,9 @@ var llc = {
 			i = i+1;
 			}
 			i = (i<1) ? 1 : i-1;
-			var filename = xml[i-1].files.file;
+			var filename = (xml[i-1].files.file.constructor.toString().indexOf('Array') != -1) ? xml[i-1].files.file[0] : xml[i-1].files.file;
 			var title = xml[i-1].title;
-			
 			}
-
 			llc.createThumbPanel(filename, t.id, bmStart, title, '#tabs_bookmarks', '');
 		});
 		
@@ -286,7 +284,7 @@ var llc = {
 								<li><div style="right:2px; bottom:41px; color:#ffffff;" class="response_box">Bookmark Saved!</div><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
 								<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>\
 							</ul>\
-							<div class="jp-title">Now Playing... '+llc.pres.title+'</div>\
+							<div class="jp-title"><span id="titleIntroText">Now Playing</span>... '+llc.pres.title+'</div>\
 						</div>\
 						<div class="jp-no-solution">\
 							<span>Update Required</span>\
@@ -1305,15 +1303,16 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				});
 				
 				// Set defualt view
-				llc.switchView(false,llc.pres.defaultInterface.text);	
+				llc.switchView(false,llc.pres.defaultInterface.text);
 
 				//check preivew mode - setup helper functions
-				if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
+				if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
 				llc.saveRating();
 				llc.saveNote();
 				llc.saveBookmark();
 				llc.setupSlideMagnify();
 				}else{
+				if(llc.pres.previewMode=='True'){$('span#titleIntroText').html('Preview Mode');}
 				$('div#info_tabs').hide();
 				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
 				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
