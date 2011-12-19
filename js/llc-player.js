@@ -986,7 +986,7 @@ var llc = {
 			llc.pres = $.xml2json(xml); 
 			
 //TOS Agreement verification			
-if(llc.pres.agreements != undefined){
+if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
 var tosHTML = '<div class="lightbox_overlay"></div>\
 				<div class="lightbox_content">\
 				<h1>'+llc.pres.agreements.agreement.name+'</h1>\
