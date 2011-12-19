@@ -241,10 +241,6 @@ var llc = {
 		  ################# Setup tool tips
 		 ########################################## */
 		 
-		 $("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
-		 $("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'bottom'});
-		 
-				
 	},
 	createMarkup: function(obj) {
 	
@@ -458,14 +454,35 @@ var llc = {
 		  ################# Time Update Functions
 		 ########################################## */
 		
-		// Update seatTime
-		if(!event.jPlayer.status.paused) llc.seatTime('update');
-		
 		var timeNow = event.jPlayer.status.currentTime,
 			curEl = llc.pres.curEl || llc.pres.media.items.item[0],
 			curBlurb = llc.pres.transcript.blurb == undefined ? undefined : llc.pres.curBlurb || llc.pres.transcript.blurb[0];
 			llc.pres.curEl = llc.pres.curEl || undefined;
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
+			
+			
+		if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
+		// Update seatTime
+		if(!event.jPlayer.status.paused) llc.seatTime('update');
+		
+		}//end preview/embed block
+			else{//else NOT preview or embed mode
+				if(llc.pres.previewMode=='True'){
+				var timeNow = event.jPlayer.status.currentTime,
+				demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
+				demoStart = parseInt(llc.pres.demoStartPoint);
+					if(timeNow > demoStop){
+					$("#master_jplayer").jPlayer("stop");
+					}
+					if(timeNow < demoStart){
+					$("#master_jplayer").jPlayer("pause", demoStart);
+					}
+				
+				}
+			}
+		
+		
+		
 				
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
@@ -492,7 +509,7 @@ var llc = {
 			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide();
 						
 			// Play/Pause video slide
-			if (curEl.files.file[1].fileType!="jpg" && curEl.files.file.fileType!="jpg") { 
+			if (curEl.files.file[1].fileType!="jpg" && curEl.files.file.fileType!="jpg") {
 				//console.log(curEl.files.file[1].fileType);
 				$("#master_jplayer").jPlayer("pause");
 				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
@@ -528,7 +545,6 @@ var llc = {
 			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
 			
 		}
-		
 	},
 	switchView: function(event,mode) { /* Change view (single, dual) for player presentation (mobile will include [notes, transcript, slides, video]) */
 		
@@ -1255,11 +1271,6 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 						llc.switchFull(false);
 				});
 				
-				llc.saveRating();
-				llc.saveNote();
-				llc.saveBookmark();
-				llc.setupSlideMagnify();
-				llc.disableRightClick();
 				
 				// Switch view event handler 
 				$("<span class='switchView'></span>").appendTo("#master_jplayer");
@@ -1294,7 +1305,24 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				});
 				
 				// Set defualt view
-				llc.switchView(false,llc.pres.defaultInterface.text);					
+				llc.switchView(false,llc.pres.defaultInterface.text);	
+
+				//check preivew mode - setup helper functions
+				if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
+				llc.saveRating();
+				llc.saveNote();
+				llc.saveBookmark();
+				llc.setupSlideMagnify();
+				}else{
+				$('div#info_tabs').hide();
+				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
+				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
+				}
+				$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+				$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'bottom'});
+				llc.disableRightClick();
+				
+				
 			/* commented else on legacy	
 			}
 			*/
