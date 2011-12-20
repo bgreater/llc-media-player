@@ -458,27 +458,6 @@ var llc = {
 			llc.pres.curEl = llc.pres.curEl || undefined;
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
 			
-			
-		if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
-		// Update seatTime
-		if(!event.jPlayer.status.paused) llc.seatTime('update');
-		
-		}//end preview/embed block
-			else{//else NOT preview or embed mode
-				if(llc.pres.previewMode=='True'){
-				var timeNow = event.jPlayer.status.currentTime,
-				demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
-				demoStart = parseInt(llc.pres.demoStartPoint);
-					if(timeNow > demoStop){
-					$("#master_jplayer").jPlayer("stop");
-					}
-					if(timeNow < demoStart){
-					$("#master_jplayer").jPlayer("pause", demoStart);
-					}
-				
-				}
-			}
-		
 		
 		
 				
@@ -543,6 +522,39 @@ var llc = {
 			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
 			
 		}
+		
+		
+			
+		if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
+		// Update seatTime
+		if(!event.jPlayer.status.paused) llc.seatTime('update');
+		
+		}//end seat time
+			else{//is preview or embed mode
+				if(llc.pres.previewMode=='True'){
+				//var htmltest = '<div>'+event.jPlayer.status.currentTime+'</div><div>'+llc.pres.demoLength+'</div><div>'+llc.pres.demoStartPoint+'</div>';
+				var timeNow = event.jPlayer.status.currentTime,
+				demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
+				demoStart = parseInt(llc.pres.demoStartPoint),
+				numMins = llc.pres.demoLength/60, 
+				msg = '<div class="previewNotification">Preview Mode is limited to '+numMins+' minutes</div>';
+				//$('div#testHolder').html(htmltest);
+					if(timeNow > demoStop){
+					$("#master_jplayer").jPlayer("play", demoStart);
+					$('div#slides').prepend(msg);
+					$('div#slides').find('div.previewNotification').delay(2000).fadeOut('slow', function(){
+						$('div#slides').find('div.previewNotification').remove();
+					});
+					}
+					if(timeNow < demoStart){
+					$("#master_jplayer").jPlayer("play", demoStart);
+					
+					
+					}
+				
+				}
+			}
+		
 	},
 	switchView: function(event,mode) { /* Change view (single, dual) for player presentation (mobile will include [notes, transcript, slides, video]) */
 		
@@ -730,6 +742,8 @@ var llc = {
 		}else{
 				//add new bookmark - called by media player onclick
 				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
+				var curEl = llc.pres.curEl || llc.pres.media.items.item;
+				
 				var title = llc.pres.curEl.title;
 				var slideID = llc.pres.curEl.id;
 				var slideCellElm = 'div#toc_thumb_'+slideID;
@@ -1313,7 +1327,7 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				llc.setupSlideMagnify();
 				}else{
 				if(llc.pres.previewMode=='True'){$('span#titleIntroText').html('Preview Mode');}
-				$('div#info_tabs').hide();
+				$('div#info_tabs').remove();
 				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
 				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
 				}

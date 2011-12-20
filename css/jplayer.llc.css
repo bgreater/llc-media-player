@@ -1065,3 +1065,10 @@ outline:0;
 		text-align:right;
 		margin-top:14px;
 		}
+
+/* MISC */
+.previewNotification{
+position:absolute; z-index:500; top:0;height:100%;  width:100%; 
+text-align:center; background-color:#151313; color:#ffffff; font-size:26px; font-family:Arial; vertical-align:middle;
+padding-top:25%;
+}		
