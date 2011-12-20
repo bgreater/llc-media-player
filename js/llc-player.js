@@ -453,7 +453,7 @@ var llc = {
 		 ########################################## */
 		
 		var timeNow = event.jPlayer.status.currentTime,
-			curEl = llc.pres.curEl || llc.pres.media.items.item[0],
+			curEl = llc.pres.curEl || llc.pres.media.items.item[0] || llc.pres.media.items.item,
 			curBlurb = llc.pres.transcript.blurb == undefined ? undefined : llc.pres.curBlurb || llc.pres.transcript.blurb[0];
 			llc.pres.curEl = llc.pres.curEl || undefined;
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
