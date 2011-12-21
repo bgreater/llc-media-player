@@ -927,33 +927,50 @@ var llc = {
 	switchFull: function(val) { /* Get playback cookie */
 		//console.log('trigger full screen');
 		
+		var val = val; 
+		
 		if (val==true) { 
 		
 		/* ##########################################
 		  ################# Go Full
 		 ########################################## */
-		 
+		 	
+		 	// Set viewport for ipad fix
+		 	$('meta[name=viewport]').remove();
+		 	$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=1; maximum-scale=1; user-scalable=0;">');
+		 	
+		 	
 			// Update elements
-			$("body, div.playerFrame").addClass("Full").removeClass("inline");
 			$("#pres_info, #info_tabs").hide();
+			$("body, div.playerFrame").addClass("Full").removeClass("inline");
+			
 			
 			// Resize Progress bar and disable scrolling
 			$(window).unbind('resize').resize(function() {
-
+				
 				var w = $("#llc_playerFrame").width();
 
 				$("#master_jp_container .jp-progress").width(w-222);
 				
 				llc.switchView(false,llc.switchView.curMode);
 				
+				scroll(0,0);
+				
+				//alert("RESIZED");
+				
 			}).scroll(function (event) { 
 
-				if ($(this).scrollTop()>0) {
+				if ($(this).scrollTop()>0 || $(this).scrollLeft()>0) {
 					scroll(0,0); // Prevent scrolling in full screen
 				}
 
-			}).trigger('resize').trigger('scroll');
-						
+			}).trigger('resize');
+				
+		 	// on orientation change
+		 	window.onorientationchange = function() {
+		 		$(window).trigger('resize');
+		 	}	
+		 		
 			$("#master_jp_container a.llc-full").addClass('active').tipTip({content: "normal", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
 			
 			// $("#master_jplayer").jPlayer("option", {"fullScreen": true}); // not needed with 100% size option
@@ -964,6 +981,9 @@ var llc = {
 		/* ##########################################
 		  ################# Back to Normal
 		 ########################################## */
+			
+			// remove viewport 
+			$('meta[name=viewport]').remove();
 			
 			$("body, div.playerFrame").removeClass("Full").addClass("inline");
 			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style','');
