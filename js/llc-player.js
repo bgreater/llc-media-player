@@ -543,10 +543,10 @@ var llc = {
 					if(timeNow > demoStop){
 					$("#master_jplayer").jPlayer("pause", demoStart);
 					$('div#media').prepend(msg);
-					/*
+					
 					$('div#slides').find('div.previewNotification').delay(2000).fadeOut('slow', function(){
 						$('div#slides').find('div.previewNotification').remove();
-					});*/
+					});
 					}
 					if(timeNow < demoStart){
 					$("#master_jplayer").jPlayer("play", demoStart);
