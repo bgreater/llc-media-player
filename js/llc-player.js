@@ -545,7 +545,7 @@ var llc = {
 					$("#master_jplayer").jPlayer("pause", demoStart);
 					$('div#media').prepend(msg);
 					
-					$('div#media').find('div.previewNotification').delay(2000).fadeOut('slow', function(){
+					$('div#media').find('div.previewNotification').delay(4000).fadeOut('slow', function(){
 						$('div#slides').find('div.previewNotification').remove();
 					});
 				}
