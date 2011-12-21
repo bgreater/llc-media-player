@@ -539,12 +539,11 @@ var llc = {
 				demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
 				demoStart = parseInt(llc.pres.demoStartPoint),
 				msg = '<div class="previewNotification">YOUR PREVIEW SESSION HAS EXPIRED<BR><BR><TABLE style="width:390px; margin-left:auto; margin-right:auto;"><TR><TD><img src="images/player/previewmode-lock.png" /></TD><td style="width:15px;"></td><TD style="text-align:left;"> Please acquire to unlock<br />remaining content.</TD></TR></TABLE></div>';
-				//$('div#testHolder').html(htmltest);
 					if(timeNow > demoStop){
 					$("#master_jplayer").jPlayer("pause", demoStart);
 					$('div#media').prepend(msg);
 					
-					$('div#slides').find('div.previewNotification').delay(2000).fadeOut('slow', function(){
+					$('div#media').find('div.previewNotification').delay(2000).fadeOut('slow', function(){
 						$('div#slides').find('div.previewNotification').remove();
 					});
 					}
