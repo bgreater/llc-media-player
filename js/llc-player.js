@@ -963,7 +963,7 @@ var llc = {
 
 			}).trigger('resize');
 				
-		 	// on orientation change
+		 	// on orientation change update
 		 	window.onorientationchange = function() {
 		 		$(window).trigger('resize');
 		 	}	
