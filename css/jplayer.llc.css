@@ -220,7 +220,7 @@ a.jp-volume-max:hover {
 }
 /* Vertical volume style */
 div.jp-volume {
- background: url(../images/player/jplayer.llc.png) 0px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer; z-index: 55;
+ background: url(../images/player/jplayer.llc.png) 0px -150px no-repeat; position: relative; overflow: hidden; cursor: pointer; z-index: 4;
 }
 div.jp-volume.active {
  background: url(../images/player/jplayer.llc.png) -40px -150px no-repeat; overflow: visible;
@@ -230,6 +230,9 @@ div.jp-volume.mute {
 }
 div.jp-volume.mute.active {
  background: url(../images/player/jplayer.llc.png) -120px -150px no-repeat; position: relative; overflow: visible; 
+}
+div.jp-volume.inactive:before {
+ content: ''; position: absolute; z-index: 5; top: 0; left: 0; width: 100%; height: 100%; background: rgba(200, 200, 200, .75);
 }
 div.jp-volume-bar {
  position: relative; height: 100%; border: 16px solid #a1a1a1; border-top: none; border-bottom: none; width: 3px; background: #999; bottom: 0px;
@@ -878,7 +881,7 @@ padding:7px 6px 5px 6px;
 
 .response_box{
 	position:absolute;
-	z-index:54;
+	z-index:3;
 	font-size:12px;
 	padding:5px;
 	font-size: 11px;
