@@ -497,7 +497,9 @@ var llc = {
 						
 			// update TOC, Title and scroll to current thumb
 			var introTxt = (llc.pres.previewMode=='False') ? 'Now Playing' : 'Preview Mode';
-			$("#master_jp_container div.jp-title").text(introTxt+"...  Slide "+(llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length+": "+curEl.title);
+			var slideNum =  typeof(llc.pres.media.items.item) == 'array' ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
+			$("#master_jp_container div.jp-title").text(introTxt+"...  Slide "+slideNum+": "+curEl.title);
+			
 			if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
 			$("div.toc_thumb").each(function(){
 				$(this).removeClass('active_toc_thumb');
