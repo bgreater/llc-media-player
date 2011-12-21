@@ -355,7 +355,7 @@ span.jp-artist {
 /* @end */
 
 div.jp-video-play {
- position: absolute; top: 0; left: 0; width: 100%; cursor: pointer; background-color: rgba(0,0,0,0); /* Makes IE9 work with the active area over the whole video area. IE6/7/8 only have the button as active area. */
+ position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; background-color: rgba(0,0,0,0); /* Makes IE9 work with the active area over the whole video area. IE6/7/8 only have the button as active area. */
 }
 div.jp-video-270p div.jp-video-play {
  height: 270px
@@ -471,6 +471,9 @@ background-color: #3d3b3c; width: 640px; margin-left:auto;margin-right:auto; pad
 }
 #slides.single {
  height: 480px; width: 640px; 
+}
+#slides .jp-interface {
+ display: none;
 }
 div.dual{
 -moz-box-shadow: 1px 25px 20px #343434;

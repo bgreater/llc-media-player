@@ -490,14 +490,14 @@ var llc = {
 				//console.log(curEl.files.file[1].fileType);
 				$("#master_jplayer").jPlayer("pause");
 				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
-				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+				//$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
 			} else { 
 				//$("#master_jp_container").attr('style','');
 			}
 						
 			// update TOC, Title and scroll to current thumb
 			var introTxt = (llc.pres.previewMode=='False') ? 'Now Playing' : 'Preview Mode';
-			var slideNum =  typeof(llc.pres.media.items.item) == 'array' ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
+			var slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
 			$("#master_jp_container div.jp-title").text(introTxt+"...  Slide "+slideNum+": "+curEl.title);
 			
 			if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
@@ -530,33 +530,32 @@ var llc = {
 		
 			
 		if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
-		// Update seatTime
-		if(!event.jPlayer.status.paused) llc.seatTime('update');
+			// Update seatTime
+			if(!event.jPlayer.status.paused) llc.seatTime('update');
 		
 		}//end seat time
-			else{//is preview or embed mode
-				if(llc.pres.previewMode=='True'){
+		else{//is preview or embed mode
+			if(llc.pres.previewMode=='True'){
 				//var htmltest = '<div>'+event.jPlayer.status.currentTime+'</div><div>'+llc.pres.demoLength+'</div><div>'+llc.pres.demoStartPoint+'</div>';
 				var timeNow = event.jPlayer.status.currentTime,
 				demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
 				demoStart = parseInt(llc.pres.demoStartPoint),
 				msg = '<div class="previewNotification">YOUR PREVIEW SESSION HAS EXPIRED<BR><BR><TABLE style="width:390px; margin-left:auto; margin-right:auto;"><TR><TD><img src="images/player/previewmode-lock.png" /></TD><td style="width:15px;"></td><TD style="text-align:left;"> Please acquire to unlock<br />remaining content.</TD></TR></TABLE></div>';
-					if(timeNow > demoStop){
+				if(timeNow > demoStop){
 					$("#master_jplayer").jPlayer("pause", demoStart);
 					$('div#media').prepend(msg);
 					
 					$('div#media').find('div.previewNotification').delay(2000).fadeOut('slow', function(){
 						$('div#slides').find('div.previewNotification').remove();
 					});
-					}
-					if(timeNow < demoStart){
-					$("#master_jplayer").jPlayer("play", demoStart);
-					
-					
-					}
+				}
+				if(timeNow < demoStart){
+					$("#master_jplayer").jPlayer("play", demoStart);	
 				
 				}
+				
 			}
+		}
 		
 	},
 	switchView: function(event,mode) { /* Change view (single, dual) for player presentation (mobile will include [notes, transcript, slides, video]) */
@@ -961,7 +960,7 @@ var llc = {
 					scroll(0,0); // Prevent scrolling in full screen
 				}
 
-			}).trigger('resize');
+			});
 				
 		 	// on orientation change update
 		 	window.onorientationchange = function() {
@@ -971,6 +970,7 @@ var llc = {
 		 	// Update elements
 		 	$("#pres_info, #info_tabs").hide();
 		 	$("body, div.playerFrame").addClass("Full").removeClass("inline");
+		 	$(window).trigger('resize');
 		 		
 			$("#master_jp_container a.llc-full").addClass('active')
 			
