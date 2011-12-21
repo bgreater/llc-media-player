@@ -490,7 +490,7 @@ var llc = {
 				//console.log(curEl.files.file[1].fileType);
 				$("#master_jplayer").jPlayer("pause");
 				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
-				//$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
 			} else { 
 				//$("#master_jp_container").attr('style','');
 			}
