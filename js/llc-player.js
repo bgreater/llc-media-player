@@ -942,13 +942,7 @@ var llc = {
 		 	$('meta[name=viewport]').remove();
 		 	$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=1; maximum-scale=1; user-scalable=0;">');
 		 	
-		 	
-			// Update elements
-			$("#pres_info, #info_tabs").hide();
-			$("body, div.playerFrame").addClass("Full").removeClass("inline");
-			
-			
-			// Resize Progress bar and disable scrolling
+		 	// Resize Progress bar and disable scrolling
 			$(window).unbind('resize').resize(function() {
 				
 				var w = $("#llc_playerFrame").width();
@@ -973,6 +967,10 @@ var llc = {
 		 	window.onorientationchange = function() {
 		 		$(window).trigger('resize');
 		 	}	
+		 	
+		 	// Update elements
+		 	$("#pres_info, #info_tabs").hide();
+		 	$("body, div.playerFrame").addClass("Full").removeClass("inline");
 		 		
 			$("#master_jp_container a.llc-full").addClass('active')
 			
@@ -991,6 +989,7 @@ var llc = {
 			
 			// remove viewport 
 			$('meta[name=viewport]').remove();
+			$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=.25; maximum-scale=1; user-scalable=1;">');
 			
 			$("body, div.playerFrame").removeClass("Full").addClass("inline");
 			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style','');
