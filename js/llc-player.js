@@ -459,6 +459,7 @@ var llc = {
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
 			
 		
+		
 				
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
@@ -493,10 +494,10 @@ var llc = {
 			} else { 
 				//$("#master_jp_container").attr('style','');
 			}
-			var introTxt = (llc.pres.previewMode=='False') ? 'Now Playing' : 'Preview Mode';
-			$("#master_jp_container div.jp-title").text(introTxt"... Slide "+(llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length+": "+curEl.title);
-			
+						
 			// update TOC, Title and scroll to current thumb
+			var introTxt = (llc.pres.previewMode=='False') ? 'Now Playing' : 'Preview Mode';
+			$("#master_jp_container div.jp-title").text(introTxt+"...  Slide "+(llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length+": "+curEl.title);
 			if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
 			$("div.toc_thumb").each(function(){
 				$(this).removeClass('active_toc_thumb');
@@ -508,11 +509,26 @@ var llc = {
 				$("#tabs_overview").animate({scrollTop: pos}, 900);
 			}
 			}
+		}
+		
+		// Should we do anything with Blurbs?
+		if (llc.pres.curBlurb != curBlurb && curBlurb != null && llc.pres.previewMode=='False') {
+			
+			// Set global curBlurb
+			llc.pres.curBlurb = curBlurb;
+			
+			// update Transcript to current blurb
+			$("#tabs_transcripts p").removeClass('active').filter('#s'+curBlurb.startPoint).addClass('active');
+			var pos = document.getElementById('s'+curBlurb.startPoint).offsetTop;
+				pos -= 140;
+			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
 			
 		}
+		
+		
 			
-		// Update seatTime 
 		if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
+		// Update seatTime
 		if(!event.jPlayer.status.paused) llc.seatTime('update');
 		
 		}//end seat time
@@ -540,23 +556,6 @@ var llc = {
 				
 				}
 			}
-		
-		
-		// Should we do anything with Blurbs?
-		if (llc.pres.curBlurb != curBlurb && curBlurb != null && llc.pres.embededMode=='False' && llc.pres.previewMode=='False') {
-			
-			// Set global curBlurb
-			llc.pres.curBlurb = curBlurb;
-			
-			// update Transcript to current blurb
-			$("#tabs_transcripts p").removeClass('active').filter('#s'+curBlurb.startPoint).addClass('active');
-			var pos = document.getElementById('s'+curBlurb.startPoint).offsetTop;
-				pos -= 140;
-			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
-			
-		}
-		
-		
 		
 	},
 	switchView: function(event,mode) { /* Change view (single, dual) for player presentation (mobile will include [notes, transcript, slides, video]) */
@@ -974,7 +973,11 @@ var llc = {
 		 		$(window).trigger('resize');
 		 	}	
 		 		
-			$("#master_jp_container a.llc-full").addClass('active').tipTip({content: "normal", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+			$("#master_jp_container a.llc-full").addClass('active')
+			
+			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
+				$("#master_jp_container a.llc-full").tipTip({content: "normal", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+			}
 			
 			// $("#master_jplayer").jPlayer("option", {"fullScreen": true}); // not needed with 100% size option
 						
@@ -994,7 +997,11 @@ var llc = {
 			
 			$(window).unbind('resize').unbind('scroll').resize(function() { llc.position() });
 						
-			$("#master_jp_container a.llc-full").removeClass('active').tipTip({content: "full", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+			$("#master_jp_container a.llc-full").removeClass('active')
+			
+			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
+				$("#master_jp_container a.llc-full").tipTip({content: "full", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+			}
 			
 			// ("#master_jplayer").jPlayer("option", {"fullScreen": false});
 		}
@@ -1202,6 +1209,11 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				    	var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
 				    	llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
 				    	$(this).jPlayer("volume", llc.perVolume);
+				    	
+				    	// Disable volume button if noVolume object hides volume bar
+				    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
+				    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
+				    	}
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
 				    	$(this).jPlayer("pauseOthers");
@@ -1222,8 +1234,9 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				    	if (llc.perVolume == 0) t.parents('div.jp-volume').addClass('mute');
 				    	else t.parents('div.jp-volume').removeClass('mute');
 				    },
+				    // noVolume: { chrome: /chrome/ },
 				    verticalVolume: true,
-				    //preload: "auto",
+				    preload: "auto",
 				    swfPath: "flash",
 				    supplied: fileTypes.supplied, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
@@ -1354,8 +1367,13 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
 				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
 				}
-				$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
-				$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'bottom'});
+				
+				// Add tool tips if non-mobile or tablet 
+				if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
+					$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+					$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'bottom'});
+				}
+				
 				llc.disableRightClick();
 				
 				
