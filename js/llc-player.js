@@ -459,7 +459,6 @@ var llc = {
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
 			
 		
-		
 				
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
@@ -494,9 +493,11 @@ var llc = {
 			} else { 
 				//$("#master_jp_container").attr('style','');
 			}
-						
+			var introTxt = (llc.pres.previewMode=='False') ? 'Now Playing' : 'Preview Mode';
+			$("#master_jp_container div.jp-title").text(introTxt"... Slide "+(llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length+": "+curEl.title);
+			
 			// update TOC, Title and scroll to current thumb
-			$("#master_jp_container div.jp-title").text("Now Playing... Slide "+(llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length+": "+curEl.title);
+			if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
 			$("div.toc_thumb").each(function(){
 				$(this).removeClass('active_toc_thumb');
 			});
@@ -506,27 +507,12 @@ var llc = {
 				pos -= 120;
 				$("#tabs_overview").animate({scrollTop: pos}, 900);
 			}
+			}
 			
 		}
-		
-		// Should we do anything with Blurbs?
-		if (llc.pres.curBlurb != curBlurb && curBlurb != null) {
 			
-			// Set global curBlurb
-			llc.pres.curBlurb = curBlurb;
-			
-			// update Transcript to current blurb
-			$("#tabs_transcripts p").removeClass('active').filter('#s'+curBlurb.startPoint).addClass('active');
-			var pos = document.getElementById('s'+curBlurb.startPoint).offsetTop;
-				pos -= 140;
-			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
-			
-		}
-		
-		
-			
+		// Update seatTime 
 		if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
-		// Update seatTime
 		if(!event.jPlayer.status.paused) llc.seatTime('update');
 		
 		}//end seat time
@@ -554,6 +540,23 @@ var llc = {
 				
 				}
 			}
+		
+		
+		// Should we do anything with Blurbs?
+		if (llc.pres.curBlurb != curBlurb && curBlurb != null && llc.pres.embededMode=='False' && llc.pres.previewMode=='False') {
+			
+			// Set global curBlurb
+			llc.pres.curBlurb = curBlurb;
+			
+			// update Transcript to current blurb
+			$("#tabs_transcripts p").removeClass('active').filter('#s'+curBlurb.startPoint).addClass('active');
+			var pos = document.getElementById('s'+curBlurb.startPoint).offsetTop;
+				pos -= 140;
+			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
+			
+		}
+		
+		
 		
 	},
 	switchView: function(event,mode) { /* Change view (single, dual) for player presentation (mobile will include [notes, transcript, slides, video]) */
@@ -927,33 +930,50 @@ var llc = {
 	switchFull: function(val) { /* Get playback cookie */
 		//console.log('trigger full screen');
 		
+		var val = val; 
+		
 		if (val==true) { 
 		
 		/* ##########################################
 		  ################# Go Full
 		 ########################################## */
-		 
+		 	
+		 	// Set viewport for ipad fix
+		 	$('meta[name=viewport]').remove();
+		 	$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=1; maximum-scale=1; user-scalable=0;">');
+		 	
+		 	
 			// Update elements
-			$("body, div.playerFrame").addClass("Full").removeClass("inline");
 			$("#pres_info, #info_tabs").hide();
+			$("body, div.playerFrame").addClass("Full").removeClass("inline");
+			
 			
 			// Resize Progress bar and disable scrolling
 			$(window).unbind('resize').resize(function() {
-
+				
 				var w = $("#llc_playerFrame").width();
 
 				$("#master_jp_container .jp-progress").width(w-222);
 				
 				llc.switchView(false,llc.switchView.curMode);
 				
+				scroll(0,0);
+				
+				//alert("RESIZED");
+				
 			}).scroll(function (event) { 
 
-				if ($(this).scrollTop()>0) {
+				if ($(this).scrollTop()>0 || $(this).scrollLeft()>0) {
 					scroll(0,0); // Prevent scrolling in full screen
 				}
 
-			}).trigger('resize').trigger('scroll');
-						
+			}).trigger('resize');
+				
+		 	// on orientation change
+		 	window.onorientationchange = function() {
+		 		$(window).trigger('resize');
+		 	}	
+		 		
 			$("#master_jp_container a.llc-full").addClass('active').tipTip({content: "normal", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
 			
 			// $("#master_jplayer").jPlayer("option", {"fullScreen": true}); // not needed with 100% size option
@@ -964,6 +984,9 @@ var llc = {
 		/* ##########################################
 		  ################# Back to Normal
 		 ########################################## */
+			
+			// remove viewport 
+			$('meta[name=viewport]').remove();
 			
 			$("body, div.playerFrame").removeClass("Full").addClass("inline");
 			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style','');
