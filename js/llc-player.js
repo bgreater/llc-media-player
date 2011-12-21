@@ -538,15 +538,15 @@ var llc = {
 				var timeNow = event.jPlayer.status.currentTime,
 				demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
 				demoStart = parseInt(llc.pres.demoStartPoint),
-				numMins = llc.pres.demoLength/60, 
-				msg = '<div class="previewNotification">Preview Mode is limited to '+numMins+' minutes</div>';
+				msg = '<div class="previewNotification">YOUR PREVIEW SESSION HAS EXPIRED<BR><BR><TABLE style="width:390px; margin-left:auto; margin-right:auto;"><TR><TD><img src="images/player/previewmode-lock.png" /></TD><td style="width:15px;"></td><TD style="text-align:left;"> Please acquire to unlock<br />remaining content.</TD></TR></TABLE></div>';
 				//$('div#testHolder').html(htmltest);
 					if(timeNow > demoStop){
-					$("#master_jplayer").jPlayer("play", demoStart);
-					$('div#slides').prepend(msg);
+					$("#master_jplayer").jPlayer("pause", demoStart);
+					$('div#media').prepend(msg);
+					/*
 					$('div#slides').find('div.previewNotification').delay(2000).fadeOut('slow', function(){
 						$('div#slides').find('div.previewNotification').remove();
-					});
+					});*/
 					}
 					if(timeNow < demoStart){
 					$("#master_jplayer").jPlayer("play", demoStart);
