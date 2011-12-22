@@ -1014,7 +1014,7 @@ var llc = {
         if (document.domain.indexOf('dropbox') != -1 || document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
 
             // Use test data
-            var url = 'pres.xml';
+            var url = 'sample-3.xml';
 
         } else {
 
