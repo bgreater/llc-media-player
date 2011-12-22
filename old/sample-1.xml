@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<presentation id="12236">
+  <title><![CDATA[KS Test Session - Audio Only]]></title>
+  <date><![CDATA[]]></date>
+  <defaultInterface id="1">Dual Screen</defaultInterface>
+  <defaultWindow id="2">RightWindow</defaultWindow>
+  <demoStartPoint>0</demoStartPoint>
+  <demoLength>600</demoLength>
+  <allowNavigation>True</allowNavigation>
+  <duration>2144067</duration>
+  <forwardLink type="-1"><![CDATA[]]></forwardLink>
+  <ratingAverage><![CDATA[]]></ratingAverage>
+  <totalRatings><![CDATA[0]]></totalRatings>
+  <viewer id="549518">
+    <firstName><![CDATA[Alexander]]></firstName>
+    <middleName><![CDATA[]]></middleName>
+    <lastName><![CDATA[Yakimov]]></lastName>
+    <title><![CDATA[]]></title>
+    <organization><![CDATA[]]></organization>
+    <email><![CDATA[ayakimov@multiview.com]]></email>
+    <userName><![CDATA[ayakimov@multiview.com]]></userName>
+    <notes><![CDATA[]]></notes>
+    <rating><![CDATA[-1]]></rating>
+  </viewer>
+  <media>
+    <master>
+      <item id="443759">
+        <files>
+          <file id="478599" fileType="mp3" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/020.mp3]]></file>
+        </files>
+        <window id="0"><![CDATA[No Window]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </master>
+    <items>
+      <item id="443762" inTOC="True">
+        <title><![CDATA[Training Presentation Title]]></title>
+        <files />
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443729" inTOC="True">
+        <title><![CDATA[Unhealthy Drinking:A Workplace Issue]]></title>
+        <files>
+          <file id="478634" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide7.png]]></file>
+          <file id="478572" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide7.jpg]]></file>
+          <file id="478603" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide7.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443763" inTOC="True">
+        <title><![CDATA[Demo Slide 1]]></title>
+        <files />
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>4600</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443730" inTOC="True">
+        <title><![CDATA[Skills for the Workplace]]></title>
+        <files>
+          <file id="478635" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide8.png]]></file>
+          <file id="478573" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide8.jpg]]></file>
+          <file id="478604" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide8.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>10333</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443764" inTOC="True">
+        <title><![CDATA[Demo Slide 2]]></title>
+        <files />
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>14600</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443765" inTOC="True">
+        <title><![CDATA[Demo Slide 3]]></title>
+        <files />
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>20400</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443766" inTOC="True">
+        <title><![CDATA[Video1]]></title>
+        <files />
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>29000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443767" inTOC="True">
+        <title><![CDATA[Demo Slide 4]]></title>
+        <files />
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>41400</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443768" inTOC="True">
+        <title><![CDATA[Demo Slide 5]]></title>
+        <files />
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>57867</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443731" inTOC="True">
+        <title><![CDATA[Alcohol Usage in the U.S.]]></title>
+        <files>
+          <file id="478636" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide9.png]]></file>
+          <file id="478574" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide9.jpg]]></file>
+          <file id="478605" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide9.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>174467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443732" inTOC="True">
+        <title><![CDATA[Four Patterns of Alcohol Use2]]></title>
+        <files>
+          <file id="478637" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide10.png]]></file>
+          <file id="478575" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide10.jpg]]></file>
+          <file id="478606" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide10.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>217000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443733" inTOC="True">
+        <title><![CDATA[Four Patterns of Alcohol Use2]]></title>
+        <files>
+          <file id="478638" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide11.png]]></file>
+          <file id="478576" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide11.jpg]]></file>
+          <file id="478607" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide11.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>277667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443734" inTOC="True">
+        <title><![CDATA[Four Patterns of Alcohol Use2]]></title>
+        <files>
+          <file id="478639" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide12.png]]></file>
+          <file id="478577" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide12.jpg]]></file>
+          <file id="478608" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide12.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>291800</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443735" inTOC="True">
+        <title><![CDATA[Four Patterns of Alcohol Use2]]></title>
+        <files>
+          <file id="478640" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide13.png]]></file>
+          <file id="478578" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide13.jpg]]></file>
+          <file id="478609" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide13.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>324733</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443736" inTOC="True">
+        <title><![CDATA[Four Patterns of Alcohol Use2]]></title>
+        <files>
+          <file id="478641" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide14.png]]></file>
+          <file id="478579" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide14.jpg]]></file>
+          <file id="478610" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide14.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>341667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443737" inTOC="True">
+        <title><![CDATA[Costs of Unhealthy Drinking4]]></title>
+        <files>
+          <file id="478642" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide15.png]]></file>
+          <file id="478580" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide15.jpg]]></file>
+          <file id="478611" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide15.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>408667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443738" inTOC="True">
+        <title><![CDATA[Costs to U.S. Employers]]></title>
+        <files>
+          <file id="478643" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide16.png]]></file>
+          <file id="478581" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide16.jpg]]></file>
+          <file id="478612" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide16.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>472867</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443739" inTOC="True">
+        <title><![CDATA[Costs to U.S. Employers6]]></title>
+        <files>
+          <file id="478644" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide18.png]]></file>
+          <file id="478582" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide18.jpg]]></file>
+          <file id="478613" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide18.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>530000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443740" inTOC="True">
+        <title><![CDATA[Costs to U.S. Employers7]]></title>
+        <files>
+          <file id="478645" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide17.png]]></file>
+          <file id="478583" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide17.jpg]]></file>
+          <file id="478614" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide17.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>586600</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443741" inTOC="True">
+        <title><![CDATA[EAPs and Unhealthy Alcohol Use]]></title>
+        <files>
+          <file id="478646" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide19.png]]></file>
+          <file id="478584" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide19.jpg]]></file>
+          <file id="478615" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide19.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>680267</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443742" inTOC="True">
+        <title><![CDATA[Current EAP Practice]]></title>
+        <files>
+          <file id="478647" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide20.png]]></file>
+          <file id="478585" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide20.jpg]]></file>
+          <file id="478616" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide20.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>765667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443743" inTOC="True">
+        <title><![CDATA[Current EAP Practice]]></title>
+        <files>
+          <file id="478648" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide21.png]]></file>
+          <file id="478586" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide21.jpg]]></file>
+          <file id="478617" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide21.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>874667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443744" inTOC="True">
+        <title><![CDATA[Current EAP Practice]]></title>
+        <files>
+          <file id="478649" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide22.png]]></file>
+          <file id="478587" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide22.jpg]]></file>
+          <file id="478618" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide22.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>989067</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443745" inTOC="True">
+        <title><![CDATA[EAP Service Delivery Models]]></title>
+        <files>
+          <file id="478650" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide23.png]]></file>
+          <file id="478588" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide23.jpg]]></file>
+          <file id="478619" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide23.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1057667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443746" inTOC="True">
+        <title><![CDATA[EAP Models]]></title>
+        <files>
+          <file id="478651" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide1.png]]></file>
+          <file id="478589" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide1.JPG]]></file>
+          <file id="478620" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide1.JPG]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1102267</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443747" inTOC="True">
+        <title><![CDATA[EAP Service Delivery Models]]></title>
+        <files>
+          <file id="478652" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide2.png]]></file>
+          <file id="478590" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide2.JPG]]></file>
+          <file id="478621" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide2.JPG]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1144400</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443748" inTOC="True">
+        <title><![CDATA[EAP Models]]></title>
+        <files>
+          <file id="478653" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide3.png]]></file>
+          <file id="478591" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide3.JPG]]></file>
+          <file id="478622" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide3.JPG]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1163000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443749" inTOC="True">
+        <title><![CDATA[EAP Service Delivery Models]]></title>
+        <files>
+          <file id="478654" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide4.png]]></file>
+          <file id="478592" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide4.JPG]]></file>
+          <file id="478623" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide4.JPG]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1188467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443750" inTOC="True">
+        <title><![CDATA[EAP Models]]></title>
+        <files>
+          <file id="478655" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide5.png]]></file>
+          <file id="478593" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide5.JPG]]></file>
+          <file id="478624" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide5.JPG]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1212000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443751" inTOC="True">
+        <title><![CDATA[EAP Service Delivery Models]]></title>
+        <files>
+          <file id="478656" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide6.png]]></file>
+          <file id="478594" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide6.JPG]]></file>
+          <file id="478625" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide6.JPG]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1232267</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443752" inTOC="True">
+        <title><![CDATA[EAP Models]]></title>
+        <files>
+          <file id="478661" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/PNG/Slide7.png]]></file>
+          <file id="478572" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide7.jpg]]></file>
+          <file id="478631" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide7.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1245667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443753" inTOC="True">
+        <title><![CDATA[EAP Service Delivery Models]]></title>
+        <files>
+          <file id="478662" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/PNG/Slide8.png]]></file>
+          <file id="478573" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide8.jpg]]></file>
+          <file id="478632" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide8.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1337533</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443754" inTOC="True">
+        <title><![CDATA[EAP Models]]></title>
+        <files>
+          <file id="478663" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/PNG/Slide9.png]]></file>
+          <file id="478574" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide9.jpg]]></file>
+          <file id="478633" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide9.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1344867</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443755" inTOC="True">
+        <title><![CDATA[Basic EAP Workflow]]></title>
+        <files>
+          <file id="478657" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide26.png]]></file>
+          <file id="478595" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide26.jpg]]></file>
+          <file id="478626" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide26.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1424000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443756" inTOC="True">
+        <title><![CDATA[EAP Care Management]]></title>
+        <files>
+          <file id="478658" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide27.png]]></file>
+          <file id="478596" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide27.jpg]]></file>
+          <file id="478627" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide27.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1605067</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443757" inTOC="True">
+        <title><![CDATA[EAPs and Unhealthy Alcohol Use]]></title>
+        <files>
+          <file id="478659" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide28.png]]></file>
+          <file id="478597" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide28.jpg]]></file>
+          <file id="478628" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide28.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1704067</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443758" inTOC="True">
+        <title><![CDATA[Asking about Drinking with the AUDIT]]></title>
+        <files>
+          <file id="478660" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/png/Slide29.png]]></file>
+          <file id="478598" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/JPG/Slide29.jpg]]></file>
+          <file id="478629" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310815/020Test/Slide29.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2049267</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </items>
+  </media>
+  <transcript />
+  <speakers />
+  <agreements />
+  <bookmarks />
+</presentation>

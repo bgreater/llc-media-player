@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<presentation id="12237">
+  <title><![CDATA[KS Test Session - Audio Only]]></title>
+  <date><![CDATA[]]></date>
+  <defaultInterface id="1">Dual Screen</defaultInterface>
+  <defaultWindow id="2">RightWindow</defaultWindow>
+  <demoStartPoint>0</demoStartPoint>
+  <demoLength>600</demoLength>
+  <allowNavigation>True</allowNavigation>
+  <duration>2144067</duration>
+  <forwardLink type="-1"><![CDATA[]]></forwardLink>
+  <ratingAverage><![CDATA[]]></ratingAverage>
+  <totalRatings><![CDATA[0]]></totalRatings>
+  <viewer id="549518">
+    <firstName><![CDATA[Alexander]]></firstName>
+    <middleName><![CDATA[]]></middleName>
+    <lastName><![CDATA[Yakimov]]></lastName>
+    <title><![CDATA[]]></title>
+    <organization><![CDATA[]]></organization>
+    <email><![CDATA[ayakimov@multiview.com]]></email>
+    <userName><![CDATA[ayakimov@multiview.com]]></userName>
+    <notes><![CDATA[]]></notes>
+    <rating><![CDATA[-1]]></rating>
+  </viewer>
+  <media>
+    <master>
+      <item id="443769">
+        <files>
+          <file id="478671" fileType="mp3" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/310.mp3]]></file>
+        </files>
+        <window id="0"><![CDATA[No Window]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </master>
+    <items>
+      <item id="443763" inTOC="True">
+        <title><![CDATA[Demo Slide 1]]></title>
+        <files>
+          <file id="478678" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/png/Slide2.png]]></file>
+          <file id="478665" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/JPG/Slide2.jpg]]></file>
+          <file id="478684" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Slide2.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>4600</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443764" inTOC="True">
+        <title><![CDATA[Demo Slide 2]]></title>
+        <files>
+          <file id="478679" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/png/Slide3.png]]></file>
+          <file id="478666" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/JPG/Slide3.jpg]]></file>
+          <file id="478685" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Slide3.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>14600</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443765" inTOC="True">
+        <title><![CDATA[Demo Slide 3]]></title>
+        <files>
+          <file id="478680" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/png/Slide4.png]]></file>
+          <file id="478667" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/JPG/Slide4.jpg]]></file>
+          <file id="478686" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Slide4.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>20400</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443766" inTOC="True">
+        <title><![CDATA[Video1]]></title>
+        <files>
+          <file id="478668" fileType="webm" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Video1.webm]]></file>
+          <file id="478681" fileType="flv" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Video1.flv]]></file>
+          <file id="478687" fileType="m4v" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Video1.m4v]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>29000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443767" inTOC="True">
+        <title><![CDATA[Demo Slide 4]]></title>
+        <files>
+          <file id="478682" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/png/Slide6.png]]></file>
+          <file id="478669" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/JPG/Slide6.jpg]]></file>
+          <file id="478688" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Slide6.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>41400</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="443768" inTOC="True">
+        <title><![CDATA[Demo Slide 5]]></title>
+        <files>
+          <file id="478683" fileType="png" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/png/Slide7.png]]></file>
+          <file id="478670" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/JPG/Slide7.jpg]]></file>
+          <file id="478689" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Slide7.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>57867</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </items>
+  </media>
+  <transcript />
+  <speakers />
+  <agreements />
+  <bookmarks />
+</presentation>

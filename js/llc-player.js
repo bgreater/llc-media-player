@@ -505,25 +505,25 @@ var llc = {
 			}
 						
 			// update TOC, Title and scroll to current thumb
-			var introTxt = (llc.pres.previewMode=='False') ? 'Now Playing' : 'Preview Mode';
+			var introTxt = (llc.pres.previewMode=='False' || llc.pres.previewMode==undefined) ? 'Now Playing' : 'Preview Mode';
 			var slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
 			$("#master_jp_container div.jp-title").text(introTxt+"...  Slide "+slideNum+": "+curEl.title);
 			
-			if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
-			$("div.toc_thumb").each(function(){
-				$(this).removeClass('active_toc_thumb');
-			});
-			$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
-			var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
-			if(pos > 800){
-				pos -= 120;
-				$("#tabs_overview").animate({scrollTop: pos}, 900);
-			}
+			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+				$("div.toc_thumb").each(function(){
+					$(this).removeClass('active_toc_thumb');
+				});
+				$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
+				var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
+				if(pos > 800){
+					pos -= 120;
+					$("#tabs_overview").animate({scrollTop: pos}, 900);
+				}
 			}
 		}
 		
 		// Should we do anything with Blurbs?
-		if (llc.pres.curBlurb != curBlurb && curBlurb != null && llc.pres.previewMode=='False') {
+		if (llc.pres.curBlurb != curBlurb && curBlurb != null && !llc.pres.previewMode=='True') {
 			
 			// Set global curBlurb
 			llc.pres.curBlurb = curBlurb;
@@ -538,7 +538,7 @@ var llc = {
 		
 		
 			
-		if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
+		if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
 			// Update seatTime
 			if(!event.jPlayer.status.paused) llc.seatTime('update');
 		

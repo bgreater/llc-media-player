@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<presentation id="2925">
+  <title><![CDATA[S22:  Hyundai Integrates Social Into CRM]]></title>
+  <date><![CDATA[10/20/2009 11:15:00 AM]]></date>
+  <defaultInterface id="1">Dual Screen</defaultInterface>
+  <defaultWindow id="2">RightWindow</defaultWindow>
+  <demoStartPoint>0</demoStartPoint>
+  <demoLength>300</demoLength>
+  <allowNavigation>True</allowNavigation>
+  <duration>3144600</duration>
+  <forwardLink type="-1"><![CDATA[]]></forwardLink>
+  <ratingAverage><![CDATA[]]></ratingAverage>
+  <totalRatings><![CDATA[0]]></totalRatings>
+  <viewer id="549518">
+    <firstName><![CDATA[Alexander]]></firstName>
+    <middleName><![CDATA[]]></middleName>
+    <lastName><![CDATA[Yakimov]]></lastName>
+    <title><![CDATA[]]></title>
+    <organization><![CDATA[]]></organization>
+    <email><![CDATA[ayakimov@multiview.com]]></email>
+    <userName><![CDATA[ayakimov@multiview.com]]></userName>
+    <notes><![CDATA[]]></notes>
+    <rating><![CDATA[-1]]></rating>
+  </viewer>
+  <media>
+    <master>
+      <item id="99564">
+        <files>
+          <file id="101584" fileType="mp3"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/760/760.mp3]]></file>
+        </files>
+        <window id="0"><![CDATA[No Window]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </master>
+    <items>
+      <item id="101428" inTOC="True">
+        <title><![CDATA[S22: Hyundai Integrates Social Into CRM]]></title>
+        <files>      
+          <file id="104347" fileType="png" quality="high"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/760/PNG/Slide1.png]]></file>
+          <file id="101584" fileType="jpg" quality="medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/760/JPG/Slide1.jpg]]></file>
+          <file id="101584" fileType="jpg" quality="low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/760/Slide1.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </items>
+  </media>
+  <transcript />
+  <speakers />
+  <agreements />
+  <bookmarks />
+</presentation>

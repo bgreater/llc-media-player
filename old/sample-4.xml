@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<presentation id="7708">
+  <title><![CDATA[Social Media Spotlight - Rahim Fazal, CEO, Involver]]></title>
+  <date><![CDATA[10/31/2010]]></date>
+  <defaultInterface id="2">Full Window</defaultInterface>
+  <defaultWindow id="1">Left Window</defaultWindow>
+  <demoStartPoint>0</demoStartPoint>
+  <demoLength>300</demoLength>
+  <allowNavigation>True</allowNavigation>
+  <duration>3709000</duration>
+  <forwardLink type="-1"><![CDATA[]]></forwardLink>
+  <ratingAverage><![CDATA[]]></ratingAverage>
+  <totalRatings><![CDATA[0]]></totalRatings>
+  <viewer id="549518">
+    <firstName><![CDATA[Alexander]]></firstName>
+    <middleName><![CDATA[]]></middleName>
+    <lastName><![CDATA[Yakimov]]></lastName>
+    <title><![CDATA[]]></title>
+    <organization><![CDATA[]]></organization>
+    <email><![CDATA[ayakimov@multiview.com]]></email>
+    <userName><![CDATA[ayakimov@multiview.com]]></userName>
+    <notes><![CDATA[]]></notes>
+    <rating><![CDATA[5]]></rating>
+  </viewer>
+  <media>
+    <master>
+      <item id="253508">
+        <files>
+          <file id="276314" fileType="flv" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/030.flv]]></file>
+        </files>
+        <window id="1"><![CDATA[Left Window]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </master>
+    <items>
+      <item id="253507" inTOC="True">
+        <title><![CDATA[Social Media Spotlight]]></title>
+        <files>
+          <file id="276313" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+          <file id="276314" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+          <file id="276315" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="253505" inTOC="True">
+        <title><![CDATA[Dude Media Spotlight]]></title>
+        <files>
+          <file id="276313" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+          <file id="276314" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/310214/030/Slide1.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>299188</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </items>
+  </media>
+  <transcript/>
+  <speakers/>
+  <agreements/>
+  
+  <bookmarks>
+    <bookmark id="57">
+      <title><![CDATA[Bookmark #1]]></title>
+      <startPoint>293773</startPoint>
+    </bookmark>
+    <bookmark id="58">
+      <title><![CDATA[Bookmark #2]]></title>
+      <startPoint>210773</startPoint>
+    </bookmark>
+  </bookmarks>
+</presentation>
