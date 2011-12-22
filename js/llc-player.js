@@ -380,7 +380,10 @@ var llc = {
 	},
 	createThumbPanel: function(img,id,startPoint, title, pageid, toc_id) {
 		//console.log('createThumbPanel');
-			
+		var thumbFileType = img.substring(img.lastIndexOf('.')+1);
+		if(thumbFileType in {'flv':'', 'webm':'','m4v':''}) {
+		var img = 'images/player/video-icon.png';
+		}
 		/* ##########################################
 		  ################# Add thumbnail to document
 		 ########################################## */
