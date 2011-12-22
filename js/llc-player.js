@@ -27,6 +27,12 @@ tosAgreed
 tosDecline
 init
 */
+
+// Set viewport for ipad fix
+$('meta[name=viewport]').remove();
+$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=1; maximum-scale=1; user-scalable=0;">');
+
+// Main Object
 var llc = {
 	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
 		//console.log('setSlides');
@@ -939,11 +945,7 @@ var llc = {
 		/* ##########################################
 		  ################# Go Full
 		 ########################################## */
-		 	
-		 	// Set viewport for ipad fix
-		 	$('meta[name=viewport]').remove();
-		 	$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=1; maximum-scale=1; user-scalable=0;">');
-		 	
+		 		 	
 		 	// Resize Progress bar and disable scrolling
 			$(window).unbind('resize').resize(function() {
 				
@@ -989,10 +991,6 @@ var llc = {
 		/* ##########################################
 		  ################# Back to Normal
 		 ########################################## */
-			
-			// remove viewport 
-			$('meta[name=viewport]').remove();
-			$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=.25; maximum-scale=1; user-scalable=1;">');
 			
 			$("body, div.playerFrame").removeClass("Full").addClass("inline");
 			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style','');
