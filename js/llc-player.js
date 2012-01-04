@@ -97,12 +97,11 @@ var llc = {
 							llc.seatTime('update');
 							
 						},
-						ended: function() { // Trigger master player to start again
-						    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
-						    $("#master_jp_container").slideDown(300, function(){
-						    	$("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
-						    });   
-						},
+//						ended: function() { // Trigger master player to start again
+//							console.log('videoslide ended');
+//						    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
+//						    $("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?  
+//						},
 						swfPath: "flash",
 						supplied: videoTypes.supplied, 
 						cssSelectorAncestor: "#"+t.id,
@@ -263,8 +262,8 @@ var llc = {
 					<div class="jp-type-single">\
 						<div class="jp-gui jp-interface">\
 							<ul class="jp-controls">\
-								<li><a href="javascript:;" class="jp-play" tabindex="1" title="play">play</a></li>\
-								<li><a href="javascript:;" class="jp-pause" tabindex="2" title="pause">pause</a></li>\
+								<li><a href="javascript:;" class="jp-play" tabindex="1" title="play"><span>play</span></a></li>\
+								<li><a href="javascript:;" class="jp-pause" tabindex="2" title="pause"><span>pause</span></a></li>\
 								<li><a href="javascript:;" class="llc-prev" tabindex="3" title="prev">prev</a></li>\
 								<li><a href="javascript:;" class="llc-next" tabindex="4" title="next">next</a></li>\
 								<li>\
@@ -466,9 +465,7 @@ var llc = {
 			curBlurb = llc.pres.transcript.blurb == undefined ? undefined : llc.pres.curBlurb || llc.pres.transcript.blurb[0];
 			llc.pres.curEl = llc.pres.curEl || undefined;
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
-			
-		
-		
+					
 				
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
@@ -481,10 +478,33 @@ var llc = {
 			var startPoint = llc.pres.transcript.blurb[i].startPoint/1000;
 			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
 		}
-						
+		
+		// Overide play pause for main timeline on video slide
+		if (llc.pres.curEl && llc.pres.curElisVideo) {
+			
+			var videoData = $("#jquery_jplayer_"+curEl.id).data("jPlayer");
+			
+			if (videoData && videoData.status.paused === false) {
+				
+				console.log("play hide");
+				$("#master_jp_container .jp-play").hide();
+				$("#master_jp_container .jp-pause").show();
+				
+			} else {
+			
+				console.log("play show");
+				$("#master_jp_container .jp-play").show();
+				$("#master_jp_container .jp-pause").hide();
+				
+			}
+			
+		}
+		
 		// Should we do anything with slides?
-		if (llc.pres.curEl != curEl ) {
+		if (llc.pres.curEl != curEl) {
 						
+			console.log('changed slide');
+			
 			// Set global curEl
 			llc.pres.curEl = curEl;
 			
@@ -496,25 +516,54 @@ var llc = {
 						
 			// Play/Pause video slide
 			if (curEl.files.file[1].fileType!="jpg" && curEl.files.file.fileType!="jpg") {
-				//console.log(curEl.files.file[1].fileType);
+			
+				// Activate video slide
 				$("#master_jplayer").jPlayer("pause");
-				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
 				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+				$("#master_jp_container .jp-pause span").click(function() {
+					$("#jquery_jplayer_"+curEl.id).jPlayer("pause");
+					return false;
+				});
+				$("#master_jp_container .jp-play span").click(function() {
+					$("#jquery_jplayer_"+curEl.id).jPlayer("play");
+					return false;
+				});
+				
+				llc.pres.curElisVideo = true;
+				
 			} else { 
-				//$("#master_jp_container").attr('style','');
+				
+				// Restart master player 
+				if (llc.pres.curElisVideo) {
+					
+					// Stop active video
+					$("#slides .jp-jplayer").jPlayer("stop");
+					$("#master_jp_container .jp-pause span, #master_jp_container .jp-play span").unbind('click');
+					
+					$("#master_jplayer").jPlayer("play");
+					
+				}
+				
+				llc.pres.curElisVideo = false;
+				
 			}
 						
 			// update TOC, Title and scroll to current thumb
-			var introTxt = (llc.pres.previewMode=='False' || llc.pres.previewMode==undefined) ? 'Now Playing' : 'Preview Mode';
-			var slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
+			var introTxt = (llc.pres.previewMode=='False' || llc.pres.previewMode==undefined) ? 'Now Playing' : 'Preview Mode',
+				slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
+				
 			$("#master_jp_container div.jp-title").text(introTxt+"...  Slide "+slideNum+": "+curEl.title);
 			
 			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+			
 				$("div.toc_thumb").each(function(){
 					$(this).removeClass('active_toc_thumb');
 				});
+				
 				$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
+				
 				var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
+				
 				if(pos > 800){
 					pos -= 120;
 					$("#tabs_overview").animate({scrollTop: pos}, 900);
@@ -536,20 +585,23 @@ var llc = {
 			
 		}
 		
-		
 			
-		if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+		if ((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+		
 			// Update seatTime
 			if(!event.jPlayer.status.paused) llc.seatTime('update');
 		
-		}//end seat time
-		else{//is preview or embed mode
+		} else {
+			
+			//is preview or embed mode
 			if(llc.pres.previewMode=='True'){
+				
 				//var htmltest = '<div>'+event.jPlayer.status.currentTime+'</div><div>'+llc.pres.demoLength+'</div><div>'+llc.pres.demoStartPoint+'</div>';
 				var timeNow = event.jPlayer.status.currentTime,
-				demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
-				demoStart = parseInt(llc.pres.demoStartPoint),
-				msg = '<div class="previewNotification">YOUR PREVIEW SESSION HAS EXPIRED<BR><BR><TABLE style="width:390px; margin-left:auto; margin-right:auto;"><TR><TD><img src="images/player/previewmode-lock.png" /></TD><td style="width:15px;"></td><TD style="text-align:left;"> Please acquire to unlock<br />remaining content.</TD></TR></TABLE></div>';
+					demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
+					demoStart = parseInt(llc.pres.demoStartPoint),
+					msg = '<div class="previewNotification">YOUR PREVIEW SESSION HAS EXPIRED<BR><BR><TABLE style="width:390px; margin-left:auto; margin-right:auto;"><TR><TD><img src="images/player/previewmode-lock.png" /></TD><td style="width:15px;"></td><TD style="text-align:left;"> Please acquire to unlock<br />remaining content.</TD></TR></TABLE></div>';
+				
 				if(timeNow > demoStop){
 					$("#master_jplayer").jPlayer("pause", demoStart);
 					$('div#media').prepend(msg);
@@ -558,6 +610,7 @@ var llc = {
 						$('div#slides').find('div.previewNotification').remove();
 					});
 				}
+				
 				if(timeNow < demoStart){
 					$("#master_jplayer").jPlayer("play", demoStart);	
 				

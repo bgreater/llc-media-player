@@ -91,6 +91,7 @@ a.jp-pause {
 a.jp-pause:hover {
  background: url(../images/player/jplayer.llc.png) -40px -30px no-repeat
 }
+a.jp-pause span, a.jp-play span { display: block; width: 35px; height: 25px; }
 /*a.jp-stop, a.jp-previous, a.jp-next {
 	width:28px;
 	height:28px;
