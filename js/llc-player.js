@@ -289,7 +289,7 @@ var llc = {
 								<li><div style="right:2px; bottom:41px; color:#ffffff;" class="response_box">Bookmark Saved!</div><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
 								<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>\
 							</ul>\
-							<div class="jp-title"><span id="titleIntroText">Now Playing</span>... '+llc.pres.title+'</div>\
+							<div class="jp-title"><span id="titleIntroText">Viewing</span>: '+llc.pres.title+'</div>\
 						</div>\
 						<div class="jp-no-solution">\
 							<span>Update Required</span>\
@@ -503,7 +503,7 @@ var llc = {
 		// Should we do anything with slides?
 		if (llc.pres.curEl != curEl) {
 						
-			console.log('changed slide');
+			//console.log('changed slide');
 			
 			// Set global curEl
 			llc.pres.curEl = curEl;
@@ -549,10 +549,10 @@ var llc = {
 			}
 						
 			// update TOC, Title and scroll to current thumb
-			var introTxt = (llc.pres.previewMode=='False' || llc.pres.previewMode==undefined) ? 'Now Playing' : 'Preview Mode',
+			var introTxt = (llc.pres.previewMode=='False' || llc.pres.previewMode==undefined) ? 'Viewing' : 'Preview Mode',
 				slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
 				
-			$("#master_jp_container div.jp-title").text(introTxt+"...  Slide "+slideNum+": "+curEl.title);
+			$("#master_jp_container div.jp-title").text(introTxt+":  Slide "+slideNum+" - "+curEl.title);
 			
 			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
 			
@@ -1230,7 +1230,7 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 
 				/* ######## Initialize Master jPlayer */
 				
-				// File Types
+				/* File Types */
 				var f = llc.pres.media.master.item,
 					fileTypes = { files: { poster:f.poster } };
 				if (f.files.file.fileType == 'mp3') {
@@ -1255,16 +1255,16 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 	
 				    	$(this).jPlayer("setMedia", fileTypes.files);
 				    	
-				    	// Set playback if cookied
-				    	var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
-				    	$(this).jPlayer("pause", Math.abs(playhead));
+				    	/* Set playback if cookied */
+				    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
+				    	//$(this).jPlayer("pause", Math.abs(playhead));
 				    	
-				    	// Set volume if cookied
-				    	var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
-				    	llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
-				    	$(this).jPlayer("volume", llc.perVolume);
+				    	/* Set volume if cookied */
+				    	//var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
+				    	//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
+				    	//$(this).jPlayer("volume", llc.perVolume);
 				    	
-				    	// Disable volume button if noVolume object hides volume bar
+				    	/* Disable volume button if noVolume object hides volume bar */
 				    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
 				    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
 				    	}
