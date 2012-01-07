@@ -73,13 +73,7 @@ var llc = {
 			  		$(llc.createMarkup(t)).appendTo("#slides");
 					
 					// Video File Types llc.pres.media.items.item.files.file
-					var videoTypes = { files: { poster:t.poster } }
-					for (i in t.files.file) { 
-						videoTypes.supplied = videoTypes.supplied ? videoTypes.supplied+','+t.files.file[i].fileType : t.files.file[i].fileType ;
-						videoTypes.files[t.files.file[i].fileType] = t.files.file[i].text;
-						//console.log(t.file[i]);
-					}
-					//console.log(videoTypes); 
+					var videoTypes = llc.fileTypes(t);
 					
 					// Load Video Jplayer
 					$("#jquery_jplayer_"+t.id).jPlayer({  
@@ -111,6 +105,7 @@ var llc = {
 							height: "100%",
 							cssClass: "full"
 						}, 
+						//errorAlerts: true,
 						//fullScreen : true,
 						//autohide: {full:false},
 						//solution:"flash, html",
@@ -486,13 +481,13 @@ var llc = {
 			
 			if (videoData && videoData.status.paused === false) {
 				
-				console.log("play hide");
+				//console.log("play hide");
 				$("#master_jp_container .jp-play").hide();
 				$("#master_jp_container .jp-pause").show();
 				
 			} else {
 			
-				console.log("play show");
+				//console.log("play show");
 				$("#master_jp_container .jp-play").show();
 				$("#master_jp_container .jp-pause").hide();
 				
@@ -1061,6 +1056,25 @@ var llc = {
 		}
 		 
 	},
+	fileTypes: function(item) {
+		var f = item,
+			fileTypes = { files: { poster:f.poster } };
+		if (f.files.file.fileType == 'mp3') {
+			fileTypes.supplied = f.files.file.fileType;
+			fileTypes.files[f.files.file.fileType] = f.files.file.text;
+		} else {
+			if (f.files.file.fileType) {
+				fileTypes.supplied = f.files.file.fileType ;
+				fileTypes.files[f.files.file.fileType] = f.files.file.text;
+			} else {	
+				for (i in f.files.file) { 
+					if (f.files.file[i].fileType) fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType , 
+					fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
+				}						
+			}					
+		}
+		return fileTypes
+	},
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 	
 		 
@@ -1097,18 +1111,18 @@ var llc = {
 		 
 			llc.pres = $.xml2json(xml); 
 			
-//TOS Agreement verification			
-if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
-var tosHTML = '<div class="lightbox_overlay"></div>\
-				<div class="lightbox_content">\
-				<h1>'+llc.pres.agreements.agreement.name+'</h1>\
-				<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
-				<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
-				</div>';
-				
-$("body").prepend(tosHTML);
-$('div.lightbox_overlay, div.lightbox_content').fadeIn();
-}
+		//TOS Agreement verification			
+		if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
+		var tosHTML = '<div class="lightbox_overlay"></div>\
+						<div class="lightbox_content">\
+						<h1>'+llc.pres.agreements.agreement.name+'</h1>\
+						<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
+						<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
+						</div>';
+						
+		$("body").prepend(tosHTML);
+		$('div.lightbox_overlay, div.lightbox_content').fadeIn();
+		}
 
 
 				/*
@@ -1230,30 +1244,13 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 
 				/* ######## Initialize Master jPlayer */
 				
-				/* File Types */
-				var f = llc.pres.media.master.item,
-					fileTypes = { files: { poster:f.poster } };
-				if (f.files.file.fileType == 'mp3') {
-					fileTypes.supplied = f.files.file.fileType;
-					fileTypes.files[f.files.file.fileType] = f.files.file.text;
-				} else {
-					if (f.files.file.fileType) {
-						fileTypes.supplied = f.files.file.fileType ;
-						fileTypes.files[f.files.file.fileType] = f.files.file.text;
-					} else {	
-						for (i in f.files.file) { 
-							if (f.files.file[i].fileType) fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType , 
-							fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
-						}						
-					}					
-				}
-				//console.log(fileTypes);
+				var f = llc.fileTypes(llc.pres.media.master.item);
 				
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
 				    	$.jPlayer.timeFormat.showHour = true; // set show hours
 	
-				    	$(this).jPlayer("setMedia", fileTypes.files);
+				    	$(this).jPlayer("setMedia", f.files);
 				    	
 				    	/* Set playback if cookied */
 				    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
@@ -1292,7 +1289,7 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				    verticalVolume: true,
 				    preload: "auto",
 				    swfPath: "flash",
-				    supplied: fileTypes.supplied, // Assumes mp3 or native jPlayer video format
+				    supplied: f.supplied, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,
 				    size: {
