@@ -116,7 +116,7 @@ var llc = {
 						ended: function() { // If short clip, trigger master player to start again
 						
 							//console.log('video slide ended');
-							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint);
+							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
 							else {
 								$("#master_jp_container .jp-play").show();
 								$("#master_jp_container .jp-pause").hide();
