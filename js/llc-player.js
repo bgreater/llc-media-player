@@ -27,6 +27,12 @@ tosAgreed
 tosDecline
 init
 */
+
+// Set viewport for ipad fix
+$('meta[name=viewport]').remove();
+$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=1; maximum-scale=1; user-scalable=0;">');
+
+// Main Object
 var llc = {
 	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
 		//console.log('setSlides');
@@ -91,12 +97,11 @@ var llc = {
 							llc.seatTime('update');
 							
 						},
-						ended: function() { // Trigger master player to start again
-						    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
-						    $("#master_jp_container").slideDown(300, function(){
-						    	$("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?
-						    });   
-						},
+//						ended: function() { // Trigger master player to start again
+//							console.log('videoslide ended');
+//						    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
+//						    $("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?  
+//						},
 						swfPath: "flash",
 						supplied: videoTypes.supplied, 
 						cssSelectorAncestor: "#"+t.id,
@@ -235,6 +240,8 @@ var llc = {
 				}
 				});
 				
+		 
+		 
 		/* ##########################################
 		  ################# Setup tool tips
 		 ########################################## */
@@ -257,8 +264,8 @@ var llc = {
 					<div class="jp-type-single">\
 						<div class="jp-gui jp-interface">\
 							<ul class="jp-controls">\
-								<li><a href="javascript:;" class="jp-play" tabindex="1" title="play">play</a></li>\
-								<li><a href="javascript:;" class="jp-pause" tabindex="2" title="pause">pause</a></li>\
+								<li><a href="javascript:;" class="jp-play" tabindex="1" title="play"><span>play</span></a></li>\
+								<li><a href="javascript:;" class="jp-pause" tabindex="2" title="pause"><span>pause</span></a></li>\
 								<li><a href="javascript:;" class="llc-prev" tabindex="3" title="prev">prev</a></li>\
 								<li><a href="javascript:;" class="llc-next" tabindex="4" title="next">next</a></li>\
 								<li>\
@@ -284,7 +291,7 @@ var llc = {
 								<li><div style="right:2px; bottom:41px; color:#ffffff;" class="response_box">Bookmark Saved!</div><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
 								<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>\
 							</ul>\
-							<div class="jp-title"><span id="titleIntroText">Now Playing</span>... '+llc.pres.title+'</div>\
+							<div class="jp-title"><span id="titleIntroText">Viewing</span>: '+llc.pres.title+'</div>\
 						</div>\
 						<div class="jp-no-solution">\
 							<span>Update Required</span>\
@@ -460,9 +467,7 @@ var llc = {
 			curBlurb = llc.pres.transcript.blurb == undefined ? undefined : llc.pres.curBlurb || llc.pres.transcript.blurb[0];
 			llc.pres.curEl = llc.pres.curEl || undefined;
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
-			
-		
-		
+					
 				
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
@@ -475,10 +480,33 @@ var llc = {
 			var startPoint = llc.pres.transcript.blurb[i].startPoint/1000;
 			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
 		}
-						
+		
+		// Overide play pause for main timeline on video slide
+		if (llc.pres.curEl && llc.pres.curElisVideo) {
+			
+			var videoData = $("#jquery_jplayer_"+curEl.id).data("jPlayer");
+			
+			if (videoData && videoData.status.paused === false) {
+				
+				console.log("play hide");
+				$("#master_jp_container .jp-play").hide();
+				$("#master_jp_container .jp-pause").show();
+				
+			} else {
+			
+				console.log("play show");
+				$("#master_jp_container .jp-play").show();
+				$("#master_jp_container .jp-pause").hide();
+				
+			}
+			
+		}
+		
 		// Should we do anything with slides?
-		if (llc.pres.curEl != curEl ) {
+		if (llc.pres.curEl != curEl) {
 						
+			//console.log('changed slide');
+			
 			// Set global curEl
 			llc.pres.curEl = curEl;
 			
@@ -490,34 +518,63 @@ var llc = {
 						
 			// Play/Pause video slide
 			if (curEl.files.file[1].fileType!="jpg" && curEl.files.file.fileType!="jpg") {
-				//console.log(curEl.files.file[1].fileType);
+			
+				// Activate video slide
 				$("#master_jplayer").jPlayer("pause");
-				//$("#master_jp_container").attr('style','height:0; overflow:hidden;');
 				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+				$("#master_jp_container .jp-pause span").click(function() {
+					$("#jquery_jplayer_"+curEl.id).jPlayer("pause");
+					return false;
+				});
+				$("#master_jp_container .jp-play span").click(function() {
+					$("#jquery_jplayer_"+curEl.id).jPlayer("play");
+					return false;
+				});
+				
+				llc.pres.curElisVideo = true;
+				
 			} else { 
-				//$("#master_jp_container").attr('style','');
+				
+				// Restart master player 
+				if (llc.pres.curElisVideo) {
+					
+					// Stop active video
+					$("#slides .jp-jplayer").jPlayer("stop");
+					$("#master_jp_container .jp-pause span, #master_jp_container .jp-play span").unbind('click');
+					
+					$("#master_jplayer").jPlayer("play");
+					
+				}
+				
+				llc.pres.curElisVideo = false;
+				
 			}
 						
 			// update TOC, Title and scroll to current thumb
-			var introTxt = (llc.pres.previewMode=='False') ? 'Now Playing' : 'Preview Mode';
-			var slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
-			$("#master_jp_container div.jp-title").text(introTxt+"...  Slide "+slideNum+": "+curEl.title);
+			var introTxt = (llc.pres.previewMode=='False' || llc.pres.previewMode==undefined) ? 'Viewing' : 'Preview Mode',
+				slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
+				
+			$("#master_jp_container div.jp-title").text(introTxt+":  Slide "+slideNum+" - "+curEl.title);
 			
-			if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
-			$("div.toc_thumb").each(function(){
-				$(this).removeClass('active_toc_thumb');
-			});
-			$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
-			var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
-			if(pos > 800){
-				pos -= 120;
-				$("#tabs_overview").animate({scrollTop: pos}, 900);
-			}
+			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+			
+				$("div.toc_thumb").each(function(){
+					$(this).removeClass('active_toc_thumb');
+				});
+				
+				$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
+				
+				var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
+				
+				if(pos > 800){
+					pos -= 120;
+					$("#tabs_overview").animate({scrollTop: pos}, 900);
+				}
 			}
 		}
 		
 		// Should we do anything with Blurbs?
-		if (llc.pres.curBlurb != curBlurb && curBlurb != null && llc.pres.previewMode=='False') {
+		if (llc.pres.curBlurb != curBlurb && curBlurb != null && !llc.pres.previewMode=='True') {
 			
 			// Set global curBlurb
 			llc.pres.curBlurb = curBlurb;
@@ -530,20 +587,23 @@ var llc = {
 			
 		}
 		
-		
 			
-		if(llc.pres.embededMode=='False' && llc.pres.previewMode=='False'){
+		if ((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+		
 			// Update seatTime
 			if(!event.jPlayer.status.paused) llc.seatTime('update');
 		
-		}//end seat time
-		else{//is preview or embed mode
+		} else {
+			
+			//is preview or embed mode
 			if(llc.pres.previewMode=='True'){
+				
 				//var htmltest = '<div>'+event.jPlayer.status.currentTime+'</div><div>'+llc.pres.demoLength+'</div><div>'+llc.pres.demoStartPoint+'</div>';
 				var timeNow = event.jPlayer.status.currentTime,
-				demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
-				demoStart = parseInt(llc.pres.demoStartPoint),
-				msg = '<div class="previewNotification">YOUR PREVIEW SESSION HAS EXPIRED<BR><BR><TABLE style="width:390px; margin-left:auto; margin-right:auto;"><TR><TD><img src="images/player/previewmode-lock.png" /></TD><td style="width:15px;"></td><TD style="text-align:left;"> Please acquire to unlock<br />remaining content.</TD></TR></TABLE></div>';
+					demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
+					demoStart = parseInt(llc.pres.demoStartPoint),
+					msg = '<div class="previewNotification">YOUR PREVIEW SESSION HAS EXPIRED<BR><BR><TABLE style="width:390px; margin-left:auto; margin-right:auto;"><TR><TD><img src="images/player/previewmode-lock.png" /></TD><td style="width:15px;"></td><TD style="text-align:left;"> Please acquire to unlock<br />remaining content.</TD></TR></TABLE></div>';
+				
 				if(timeNow > demoStop){
 					$("#master_jplayer").jPlayer("pause", demoStart);
 					$('div#media').prepend(msg);
@@ -552,6 +612,7 @@ var llc = {
 						$('div#slides').find('div.previewNotification').remove();
 					});
 				}
+				
 				if(timeNow < demoStart){
 					$("#master_jplayer").jPlayer("play", demoStart);	
 				
@@ -655,7 +716,8 @@ var llc = {
 		
 	
 	},
-	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
+	saveBookmark: function(item) {
+	/* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
 		if (typeof item === "undefined"){
 				//has been called on init and is attaching to the toc-bookmark links
@@ -745,6 +807,8 @@ var llc = {
 				}
 				});//END TOC CLICK HANDLER
 		}else{
+		if(llc.pres.previewMode || llc.pres.embededMode === 'True'){return false;}
+		
 				//add new bookmark - called by media player onclick
 				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
 				var curEl = llc.pres.curEl || llc.pres.media.items.item;
@@ -760,7 +824,7 @@ var llc = {
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
 				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID=-1';
-				
+				alert(params);
 				$(item).siblings('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
 					}
@@ -868,6 +932,22 @@ var llc = {
 		
 		// postback to server 
 	},
+	previewEmbedSetup: function(){
+	
+		 var embedCheck = llc.pres.embededMode, previewCheck = llc.pres.previewMode;
+				if(previewCheck){
+				$('span#titleIntroText').html('Preview Mode');
+				$('#master_jp_container .llc-next').addClass('llc-next-disabled');
+				$('#master_jp_container .llc-prev').addClass('llc-prev-disabled');
+				$('#master_jp_container .llc-prev, #master_jp_container .llc-next, #master_jp_container .llc-bookmark').unbind('click');
+				$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
+				}
+				
+				$("#master_jp_container .llc-bookmark").addClass('llc-bookmark-disabled');
+				$('div#info_tabs').remove();
+				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
+				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
+	},
 	setCookie: function(name,value) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
 		//console.log('setCookie');
 		
@@ -939,11 +1019,7 @@ var llc = {
 		/* ##########################################
 		  ################# Go Full
 		 ########################################## */
-		 	
-		 	// Set viewport for ipad fix
-		 	$('meta[name=viewport]').remove();
-		 	$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=1; maximum-scale=1; user-scalable=0;">');
-		 	
+		 		 	
 		 	// Resize Progress bar and disable scrolling
 			$(window).unbind('resize').resize(function() {
 				
@@ -989,10 +1065,6 @@ var llc = {
 		/* ##########################################
 		  ################# Back to Normal
 		 ########################################## */
-			
-			// remove viewport 
-			$('meta[name=viewport]').remove();
-			$('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=.25; maximum-scale=1; user-scalable=1;">');
 			
 			$("body, div.playerFrame").removeClass("Full").addClass("inline");
 			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style','');
@@ -1179,7 +1251,7 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 
 				/* ######## Initialize Master jPlayer */
 				
-				// File Types
+				/* File Types */
 				var f = llc.pres.media.master.item,
 					fileTypes = { files: { poster:f.poster } };
 				if (f.files.file.fileType == 'mp3') {
@@ -1204,16 +1276,16 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 	
 				    	$(this).jPlayer("setMedia", fileTypes.files);
 				    	
-				    	// Set playback if cookied
-				    	var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
-				    	$(this).jPlayer("pause", Math.abs(playhead));
+				    	/* Set playback if cookied */
+				    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
+				    	//$(this).jPlayer("pause", Math.abs(playhead));
 				    	
-				    	// Set volume if cookied
-				    	var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
-				    	llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
-				    	$(this).jPlayer("volume", llc.perVolume);
+				    	/* Set volume if cookied */
+				    	//var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
+				    	//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
+				    	//$(this).jPlayer("volume", llc.perVolume);
 				    	
-				    	// Disable volume button if noVolume object hides volume bar
+				    	/* Disable volume button if noVolume object hides volume bar */
 				    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
 				    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
 				    	}
@@ -1365,10 +1437,7 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				llc.saveBookmark();
 				llc.setupSlideMagnify();
 				}else{
-				if(llc.pres.previewMode=='True'){$('span#titleIntroText').html('Preview Mode');}
-				$('div#info_tabs').remove();
-				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
-				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
+				llc.previewEmbedSetup();
 				}
 				
 				// Add tool tips if non-mobile or tablet 
