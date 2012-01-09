@@ -1,5 +1,11188 @@
-html{margin:0;padding:0;border:0;}
-body{background:#BBBBBB;font-family:Arial;text-align:center;margin:0;padding:0;border:0;height:2655px;}
-img{border:0;padding:0;margin:0;}
-a{color:#760000;}
-h1.title{margin:0;padding:.6em .3em;text-align:center;font-size:22px;color:#fff;text-shadow:0px 1px 3px rgba(0, 0, 0, 0.6);background:#009be3;border-botom:1px solid #009be3;background:#0993d2;background:-webkit-gradient(linear, left bottom, left top, color-stop(0, #0f6e99), color-stop(1, #0993d2));background:-ms-linear-gradient(bottom, #0f6e99, #0993d2);background:-moz-linear-gradient(center bottom, #0f6e99 0%, #0993d2 100%);}
+/* Live Learning Center */
+/* HTML Tags */
+html
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body
+{
+    font-family: Arial;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: #FFFFFF;
+}
+
+img
+{
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+a
+{
+    color: #760000;
+}
+
+/* Dev Header */
+.devHeader
+{
+	position:fixed;
+	left:0;
+	top:0;
+	
+	width:100%;
+	
+	background-color:#0000FF;
+	color:#FFFFFF;	
+}
+
+.devHeaderBar
+{
+	width:100%;
+	height:25px;
+}
+
+.devHeaderBarText
+{
+	float:left;
+		
+	font-size:10px;
+		
+	text-align:center;
+	
+	padding:5px 0px 0px 5px;
+}
+
+.devHeaderBarDetails
+{
+	width:150px;
+	
+	float:right;
+	
+	text-align:right;
+}
+
+.devHeaderContents
+{
+	height:350px;
+	
+	font-size: 9px;
+	
+	text-align:left;		
+	
+	margin:20px 20px 20px 20px;
+	padding:10px 10px 10px 10px;
+	border:1px solid #FFFFFF;
+	
+	overflow-y:scroll;
+}
+
+/* Structure Tags */
+
+.page
+{
+    width: 995px;
+    text-align: left;
+    margin: 0 auto 0 auto;
+}
+
+.header
+{
+    width: 995px;
+    height: 145px;
+    clear: both;
+}
+
+.body
+{
+    width: 995px;
+    clear: both;
+    margin: 10px 0px 0px 0px;
+}
+
+.bodyFrame
+{
+    clear: both;
+}
+
+.content
+{
+    width: 655px;
+    float: left;
+    margin: 0px 10px 0px 10px;
+}
+
+.adServerIndustryPartners
+{
+	padding: 15px 0px 15px 0px;
+    text-align: center;
+}
+.adServerSkyscraper, .adServerLeaderboard
+{
+}
+
+.ufcolumn, .lfcolumn
+{
+    text-align: center;
+}
+
+.lcolumn
+{
+    width: 160px;
+    float: left;
+}
+
+.rcolumn
+{
+    width: 160px;
+    float: left;
+}
+
+.clear
+{
+    height: 0px;
+    clear: both;
+}
+
+.footer
+{
+    width: 995px;
+    height: 42px;
+    clear: both;
+}
+
+.version
+{
+	width: 100%;
+    clear: both;
+    padding: 5px 0px 40px 0px;
+    font-size: 8px;
+    text-align: center;
+}
+
+.error
+{
+    margin: 10px 25% 10px 25%;
+    text-align: center;
+    padding: 30px 30px 30px 30px;
+    
+    background-color:#FFFFFF;
+	border:1px solid #000000;
+}
+
+.errorTitle
+{
+    font-size: 18px;
+    text-align: left;
+}
+
+.errorDescription
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 20px 0px 20px 0px;
+}
+
+.errorLink
+{
+    font-size: 12px;
+    text-align: left;
+}
+
+.errorSupport
+{
+    font-size: 12px;
+    text-align: left;
+}
+
+.errorSupport ul
+{
+    padding: 10px 0px 0px 35px;
+}
+
+/* Pane Header */
+.paneInactiveTabHeader
+{
+    width: 160px;
+    height: 30px;
+    float: left;
+}
+
+.paneTabHeader
+{
+    width: 160px;
+    height: 30px;
+    float: left;
+}
+
+.paneTabHeaderLeft
+{
+    width: 5px;
+    height: 30px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.paneTabHeaderRight
+{
+    width: 5px;
+    height: 30px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.paneTabHeaderTitle
+{
+    width: 150px;
+    height: 30px;
+    float: left;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.paneTabHeaderTitle input
+{
+    width: 150px;
+    height: 30px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 14px;
+    background-color: Transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.paneInactiveTabHeader .paneTabHeaderTitle input
+{
+    color: #FFFFFF;
+}
+
+.paneTabHeader .paneTabHeaderTitle input
+{
+    color: #E5E5E5;
+}
+
+/* Panel & Pane Control */
+.panelControl, .spanelControl
+{
+    margin: 0px 0px 10px 0px;
+}
+
+.panelControlTitlebar
+{
+    width: 655px;
+    height: 30px;
+}
+
+.spanelControlTitlebar
+{
+    width: 160px;
+    height: 30px;
+}
+
+.panelControlTitlebarLeft
+{
+    width: 5px;
+    height: 30px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.panelControlTitlebarRight
+{
+    width: 5px;
+    height: 30px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.panelControlTitlebarIcon
+{
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.panelControlHeaderText
+{
+    background-color: #FFFFFF;
+    border-left: 1px solid #828282;
+    border-right: 1px solid #828282;
+    padding: 6px 6px 6px 6px;
+}
+
+.panelControlFooterText
+{
+    background-color: #FFFFFF;
+    border-left: 1px solid #828282;
+    border-right: 1px solid #828282;
+    padding: 0px 6px 0px 6px;
+}
+
+.spanelControl .panelControlHeader .panelControlTitlebar .panelControlTitle
+{
+    width: 150px;
+    height: 24px;
+    float: left;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #E5E5E5;
+    padding: 6px 0px 0px 0px;
+}
+
+.spanelControl .panelControlHeader .panelControlTitlebar .panelControlTitlebarText
+{
+    width: 120px;
+    height: 24px;
+    float: left;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #E5E5E5;
+    padding: 6px 0px 0px 0px;
+}
+
+.spanelControl .panelControlHeader .panelControlTitlebar .panelControlTitlebarIconText
+{
+    width: 120px;
+    height: 24px;
+    float: left;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #E5E5E5;
+    padding: 6px 0px 0px 0px;
+}
+
+.panelControl .panelControlHeader .panelControlTitlebar .panelControlTitle
+{
+    width: 645px;
+    height: 24px;
+    float: left;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #E5E5E5;
+    padding: 6px 0px 0px 0px;
+}
+
+.panelControl .panelControlHeader .panelControlTitlebar .panelControlTitlebarText
+{
+    width: 615px;
+    height: 24px;
+    float: left;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #E5E5E5;
+    padding: 6px 0px 0px 0px;
+}
+
+.panelControl .panelControlHeader .panelControlTitlebar .panelControlTitlebarIconText
+{
+    width: 615px;
+    height: 24px;
+    float: left;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #E5E5E5;
+    padding: 6px 0px 0px 0px;
+}
+
+.panelControlPanes
+{
+    background-color: #FFFFFF;
+    border-left: 1px solid #828282;
+    border-right: 1px solid #828282;
+}
+
+/*.panelControl .panelControlHeaderText
+{
+	width:613px;
+	
+	font-size:8pt;
+	
+	background-color:#FFFFFF;
+
+	border-left:1px solid #828282;
+	border-right:1px solid #828282;
+	padding:20px 20px 0px 20px;
+}*/
+
+.panelControlTransparentPanes
+{
+    background-color: transparent;
+}
+
+.spanelControl .panelControlFooter
+{
+    width: 160px;
+    height: 5px;
+    background-image: url(../images/headers/panel_bottom_right.png);
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+.panelControl .panelControlFooter
+{
+    width: 655px;
+    height: 5px;
+    background-image: url(../images/headers/panel_bottom_center_wide.png);
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+.paneControl
+{
+    /*width:655px;*/
+}
+
+/* Header */
+.headerBar
+{
+    height: 35px; /*30px*/
+}
+
+.headerBarLogo
+{
+    width: 466px;
+    height: 30px;
+    float: left;
+}
+
+.headerBanner
+{
+    height: 115px;
+}
+
+/* Footer */
+.footerLeft
+{
+    width: 160px;
+    height: 37px;
+    float: left;
+}
+
+.footerContent
+{
+    width: 675px;
+    height: 37px;
+    text-align: center;
+    float: left; /*margin: 0 auto 0 auto; /* 	 	background-image:url(/images/headers/footer_grey_center.png); 	background-position:top left; 	background-repeat:repeat-x;*/
+}
+
+.footerRight
+{
+    width: 160px;
+    height: 37px;
+    float: left;
+}
+
+.footerContentCopyright
+{
+    width: 675px;
+    font-size: 9px; /*float:left;	*/
+    text-align: center; /*padding:15px 0px 0px 10px;*/
+}
+
+.footerContentLinks
+{
+    width: 200px;
+    font-size: 10px;
+    float: left;
+    text-align: right;
+    padding: 15px 10px 0px 0px;
+}
+
+
+/* Promotion Billboard */
+.promoPanel
+{
+	padding:0;
+	margin-top:0px;
+	width:995px;
+	height:350px;
+	position:relative;
+	border:1px solid #122f4b;
+	background-color:#ffffff;
+	font-family:Arial;
+	font-size:9pt;
+	overflow:hidden;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:left;
+}
+.promoMain
+{
+	padding:0;
+	margin:0;
+	width:670px;
+	height:338px;
+	position:absolute;
+	top:0;
+	left:0;
+	border:6px solid #e2e2e1;
+}
+.mainSlideBox
+{
+	width:420px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:8px;
+}
+.mainSlideControl
+{
+	width:60px;
+	height:60px;
+	text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+	background-position:0 0;
+	background-repeat:no-repeat;
+}
+.mainSlideControl:hover
+{
+	background-position:0 -60px;
+}
+.mainSlide
+{
+	text-align:center;
+	width:284px;
+	height:210px;
+	border:9px solid #e1e1e1;
+	-moz-border-radius: 8px;
+}
+
+.mainInfoBox
+{
+	font-family:Arial;
+	color:#474646;
+	font-size:9pt;
+	width:100%;
+	padding:15px;
+}
+.mainInfoBox b
+{ 
+	color:#363636;
+}
+.mainInfoBox h2
+{
+	padding:0;
+	padding-bottom:4px;
+	margin:0;
+	font-size:12pt;
+	font-weight:800;
+	color:#363636;
+}
+.promoListBox
+{
+	padding:0;
+	margin:0;
+	width:325px;
+	height:100%;
+	position:absolute;
+	top:0;
+	right:0;
+	background-color:#94c941;
+}
+.promoListTop
+{
+	background-color:#ebebeb;
+	width:314px;
+	height:281px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:6px;
+	position:relative;
+}
+ul.promoList
+{
+	width:100%;
+	list-style-type:none;
+	padding:0;
+	top:0;
+	margin:0;
+}
+.promoList li
+{
+	height:45px;
+	padding-top:8px;
+	width:100%;
+	vertical-align:middle;
+}
+.promoList li:hover
+{
+	background-color:#d2d3d7;
+}
+.listThumb
+{
+	width:85px;
+	height:35px;
+	float:left;
+	text-align:center;
+}
+.listThumb img
+{
+	width:50px;
+	height:35px;
+	border:1px solid #ffffff;
+}
+.listDetails
+{
+	display:inline;
+	width:215px;
+	height:35px;
+	float:right;
+	vertical-align:middle;
+	padding-right:5px;
+}
+.arrowPointer
+{
+	position:absolute;
+	z-index:25;
+	bottom:0;
+	left:0;
+	height:11px;
+	width:100%;
+	background-image:url(../images/greenUpArrow.png);
+	background-position:57px 0;
+	background-repeat:no-repeat;
+}
+.arrowPointerChanged
+{
+	background-position:217px 0;
+}
+.promoListBottom
+{
+	background-color:#5c8828;
+	width:325px;
+	height:63px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.promoListToggle
+{
+	position:relative;
+	height:63px;
+	text-align: center;
+	vertical-align:middle;
+	cursor:pointer;
+	padding-top: 20px;
+}
+.promoListToggleTop5
+{
+	position:relative;
+	height:63px;
+	text-align: center;
+	vertical-align:middle;
+	cursor:pointer;
+	padding-top: 20px;
+	width:145px;
+	height:63px;
+	float:left;
+}
+.promoListToggleMostViewed
+{
+	position:relative;
+	height:63px;
+	text-align: center;
+	vertical-align:middle;
+	cursor:pointer;
+	padding-top: 20px;
+	width:180px;
+	height:63px;
+	float:left;
+}
+.promoListToggle:hover
+{
+	background-color:#5f8d29;
+}
+.promoListToggle img
+{
+	margin-top:22px;
+}
+.selectedPromo
+{
+	background-image:url(../images/greenGrad.jpg);
+	background-repeat:repeat-x;
+	cursor:default;
+}
+/* PANEL - Special Offers */
+.specialOffersContent
+{
+    width:651px;
+	background-color:#EBEBEB;
+	border:2px solid #7F7F7F;
+}
+
+.specialOffersPanelTitle
+{
+    width:641px;
+	padding: 10px 5px 0px 5px;
+	color: #7F7F7F;
+	text-align: left;	
+}
+
+.specialOffersFeaturedName
+{
+	font-weight: bold;
+	
+	padding:0px 0px 10px 0px;
+}
+
+.specialOffersFeaturedDescription
+{
+	font-size: 12px;
+	height:130px;
+	overflow:hidden;
+}
+
+.specialOffersDetailsContent
+{
+    width:641px;   
+    
+    padding:10px 0px 10px 0px; 
+}
+
+.specialOffersDetails
+{
+    float:right;    
+    width:327px;
+}
+
+.specialOffersBanner
+{
+    float:left;
+    width:299px;
+    
+    padding:0px 5px 0px 10px;
+}
+
+.specialOffersBuyNow
+{
+    height:36px;    
+}
+
+.specialOffersPrice
+{
+    height:36px; 
+    vertical-align:middle;
+    
+    padding:0px 0px 0px 10px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.specialOffersAdvertCircles
+{
+    text-align:center;    
+}
+
+/* PANEL - Featured Events */
+.featuredEventPanelTitle, .specialOffersPanelTitle, .featuredPanelTitle
+{
+	padding: 10px 0px 0px 5px;
+	color: #7F7F7F;
+	text-align: left;	
+}
+.featuredEventTitleFeatured, .specialOffersTitleSpecial, .ultraGothamBold
+{
+	text-transform: uppercase;
+	font-family: GothamUltraRegular;
+	padding: 10px 0px 0px 5px;
+	color: #7F7F7F;
+	text-align: left;
+}
+.featuredEventTitleEvents, .specialOffersTitleOffers, .ultraGotham
+{
+	padding-top: 10px;
+	font-family: GothamBookRegular;
+	text-transform: uppercase;
+	color: #7F7F7F;
+	text-align: left;
+}
+.featuredSessionsTableRow
+{
+	width: 260px;
+}
+.ultraGothamSeparator
+{
+	width:200px;
+	padding: 10px 0px 0px 5px;
+	font-family: GothamBookRegular;
+	text-transform: uppercase;
+	color: #7F7F7F;
+}
+.featuredEventsAdvertPanelMain
+{
+	background-color:#EBEBEB;
+	border:2px solid #7F7F7F;
+}
+.featuredEventsMainSlideBox
+{
+	width:420px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:8px;
+}
+.featuredEventsAdvertMainSlide
+{
+	text-align:center;
+	width:651px;
+	height:300px;
+}
+.featuredEventAdvert
+{
+	height: 300px;
+	width: 651px;
+		
+}
+.featuredEventsAdvertCircle, .specialOffersAdvertCircle
+{
+	text-align: center;
+	padding-left: 20px;
+}
+.featuredEventsAdvertCircle:hover, .specialOffersAdvertCircle:hover
+{
+	cursor:pointer;
+}
+.featuredEventsAdvertCircles, .SpecialOffersAdvertCircles
+{
+	text-align: center;
+	padding-left: 20px;
+}
+
+
+/* PANEL - Featured Sessions */
+.gothamFeaturedPanelTitle{
+	color:#6c6c6c;
+	font-size:16px;
+	padding: 0;
+	width:600px;
+	margin-left:18px;
+	margin-top:14px;
+}
+
+.featuredSessionImage:image
+{
+	height: 210px;
+	width: 285px;
+}
+.featuredPanelTitleFeatured
+{
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 10px 0px 0px 5px;
+	color: #7F7F7F;
+	text-align: left;
+}
+.featuredPanelTitlePageNumber, .featuredPanelTitlePageTotalResults
+{
+	padding: 10px 0px 0px 5px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #7F7F7F;
+	text-align: left;
+}
+.featuredPanelTitleSessions
+{
+	padding: 10px 0px 0px 0px;
+	text-transform: uppercase;
+	color: #7F7F7F;
+	text-align: left;
+}
+.featuredSessionContent
+{
+	background-color:#EBEBEB;
+	width:991px;
+	text-align: left;
+	border:2px solid #7F7F7F;
+	overflow:hidden;
+}
+.featuredMainSlideBox
+{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:8px;
+}
+.featuredMainSlideBox td
+{
+	vertical-align:middle;
+	padding:0;
+	position:relative;
+}
+.featuredSessionMainSlide
+{
+	width:285px; height:210px;
+	float:left;
+	margin:0 24px 0 0;
+	outline:none;
+	position:relative;
+}
+.featuredSessionMainSlide img
+{
+	width:285px;
+	height:210px;
+}
+.moreInfo_btn
+{
+	position:absolute;
+	z-index:1200;
+	bottom:5px; 
+	right:6px;
+	background-color:transparent;
+	background-image:url(../images/buttons/button_moreInfo.png);
+	background-repeat:no-repeat;
+	height:55px;
+	width:53px;
+	cursor:pointer;
+	display:none;
+}
+.blackOverlay
+{
+	position:absolute;
+	z-index:0;
+	top:0;
+	left:0;
+	cursor:pointer;
+}
+.featuredSessionArrowTableRow
+{
+	text-align:center; 
+	width:46px;
+}
+.featuredSessionArrow
+{
+	padding-left: 10px;
+	cursor:pointer;
+}
+.featuredPanelArrow
+{
+	cursor:pointer;
+	height:42px;
+	width:30px;
+	background-position:0 0;
+}
+.featuredPanelArrow:hover
+{
+	background-position:0 -42px;
+}
+#featuredPanelLeftArrow
+{
+	display:none;
+	background-image:url(http://media.multiview.com/emailMedia/llc/button_greyLeft.png);
+	background-repeat:no-repeat;
+}
+#featuredPanelRightArrow
+{
+	background-image:url(http://media.multiview.com/emailMedia/llc/button_greyRight.png);
+	background-repeat:no-repeat;
+}
+.infoArrow
+{
+	background-image:url('http://media.multiview.com/emailMedia/llc/infoArrowSection.png');
+	background-repeat:no-repeat;
+	background-position:0 0;
+	height:20px;
+	width:100%;
+	margin-top:2px;
+}
+.infoSection
+{
+	background-color:#7e7f7e;
+	height:100px;
+	width:100%;
+	position:relative;
+}
+.infoText
+{
+	width:825px;
+	height:80px;
+	position:absolute;
+	top:2px;
+	left:25px;
+	color:#c2c2c1;
+	margin-top:2px;
+	font-size:12px;
+	line-height:19px;
+	display:none;
+}
+.sponsorBox .sponsor_120x60_img
+{
+	margin-top:23px;
+	width: 120px;
+	height: 60px;
+}
+.hidden
+{
+	display:none;
+}
+.infoText a
+{
+	color:#ffffff;
+}
+.infoText .heading
+{
+	color:#fff;
+	font-weight:800;
+}
+.panelControlTransparentPanes
+{
+}
+.featuredSessionPageSlideSeparator
+{
+	width:5px;
+}
+.featuredSession_title
+{
+	font-size:16px;
+	font-weight:800;
+	padding-bottom:10px;
+}
+.featuredSession_title:link
+{
+	font-size:16px;
+	font-weight:800;
+	padding-bottom:5px;
+	color: #ffffff;
+}
+.featuredSessionCategoriesSeparator
+{
+	font-size:12px;
+	font-weight:normal;
+	padding-bottom:0px;	
+	color:#ffffff;
+	padding-bottom:3px;
+}
+.featuredSession_location, .featuredSession_categories, .featuredSession_presenters
+{
+	font-size:12px;
+	font-weight:800;
+	padding-bottom:0px;
+	color: #e1e1e1;	
+}
+.featuredSession_categories:link, .featuredSession_location:link
+{
+	font-size:12px;
+	font-weight:normal;
+	padding-bottom:0px;	
+	color:#ffffff;
+	padding-bottom:3px;
+}
+.featuredSession_presenters
+{
+	font-size:12px;
+	font-weight:normal;
+	padding-bottom:0px;
+	color: #e1e1e1;	
+}
+.featuredSession_location:link
+{
+	color:#ffffff;
+	padding-bottom:3px;
+}
+.sponsorBox
+{
+	position:absolute;
+	background-image:url('http://media.multiview.com/emailMedia/llc/sponsoredby_text.png');
+	background-repeat:no-repeat;
+	background-position:0 0;
+	right:25px;
+	top:1px;
+	width:120px;
+}
+.contentMask
+{
+	width:900px;
+	height:210px;
+	margin:0 2px;
+	position:relative;
+	overflow:hidden;
+	padding:0;
+}
+.innerContent
+{
+	position:absolute;
+	height:210px;
+	width:3825px;
+	outline:none;  
+	-moz-user-select: none;
+	-khtml-user-select: none;
+}
+.featuredSessionInformation
+{
+	background-color:#7F7F7F;
+	width: 991px;
+}
+.featuredSessionInfoBox
+{
+	float: left;
+	text-align:left;
+	font-size:12px;
+	width: 831px;
+	padding: 0px 10px 0px 10px;
+}
+.featuredSessionInfoSessionName
+{
+	width: 831px;
+	padding-top: 5px;
+}
+.featuredSessionInfoSessionName:link
+{
+	font-size: 16px;
+	color: #e1e1e1;
+}
+.featuredSessionInfoConferenceName, .featuredSessionInfoSpeakers, .featuredSessionInfoGroups
+{
+	padding-top: 5px;
+	width: 831px;
+	color: #e1e1e1;
+}
+.featuredSessionInfoGroups:link
+{
+	color: #e1e1e1;
+}
+.featuredSessionInfoConferenceName:link
+{
+	color: #e1e1e1;
+}
+.featuredSessionSponsorBox
+{
+	float: right;
+	width: 120px;
+	padding: 0px 10px 5px 10px;
+}
+.featuredSponsor
+{
+	float: right;
+	padding-top: 40px;
+}
+.featuredSessionSponsorBoxLabel
+{
+	font-size: 12px;
+	text-align: center;
+	padding: 5px 0px 5px 0px;
+	color:	#e1e1e1;
+	text-transform: uppercase;
+}
+.featuredArrowPointer
+{
+	background-color:#EBEBEB;
+	height:16px;
+	width:100%;
+	background-image:url(../images/greyUpArrow.png);
+	background-position:170px 0;
+	background-repeat:no-repeat;
+	visibility: inherit;
+}
+
+.featuredPromoListTop
+{
+	background-color:#ebebeb;
+	width:314px;
+	height:281px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:6px;
+	position:relative;
+}
+
+
+/* PANEL - Main Menu */
+.mainMenuWelcome
+{
+    padding: 6px 0px 6px 0px;
+}
+
+.mainMenuWelcomeLogout
+{
+    text-align: right;
+    padding: 0px 6px 0px 0px;
+}
+
+.mainMenuWelcomeLogout a
+{
+    font-size: 8pt;
+}
+
+.mainMenuWelcomeMessage
+{
+    color: #CC0000;
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mainMenuWelcomeName
+{
+    font-size: 8pt;
+    text-align: center;
+}
+
+.mainMenuContent
+{
+    width: 158px;
+    padding: 0px 0px 10px 0px;
+}
+
+.mainMenuItems
+{
+    width: 158px;
+}
+
+.mainMenuItem
+{
+    width: 158px;
+    background-image: url(../images/headers/menu_unselected.png);
+    background-repeat: repeat-x;
+    margin: 0px 0px 1px 0px;
+}
+
+.mainMenuItem a:hover
+{
+    cursor: pointer;
+}
+.mainMenuItem input:hover
+{
+    cursor: pointer;
+}
+
+.mainMenuItem input
+{
+    width: 158px;
+    height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 9px;
+    color: #666666;
+    background-color: Transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.mainMenuItemSelected
+{
+    width: 158px;
+    background-image: url(../images/headers/menu_selected.png);
+    background-repeat: repeat-x;
+    margin: 0px 0px 1px 0px;
+}
+.mainMenuItemSelected a:hover
+{
+    cursor: pointer;
+}
+.mainMenuItemSelected input:hover
+{
+    cursor: pointer;
+}
+.mainMenuItemSelected input
+{
+    width: 158px;
+    height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 9px;
+    color: #ffffff;
+    background-color: Transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+/* PANEL - Social Networking */
+.socialNetworkingLinks
+{
+    width: 158px;
+}
+
+.socialNetworkingLink
+{
+    width: 158px;
+    text-align: center;
+}
+
+/* PANEL - Social Networking Quick List */
+.socialNetworkingQuickListContent
+{
+    width: 158px;
+}
+
+.socialNetworkingQuickListTable
+{
+    width: 158px;
+    text-align: center;
+}
+
+/* PANEL - Group Legend */
+.groupLegendContent
+{
+    width: 158px;
+}
+
+.groupLegendContainer
+{
+    width: 158px;
+}
+
+.groupLegendRow
+{
+    width: 158px;
+}
+
+.groupLegendColourSwatchContainer
+{
+    width: 24px;
+    height: 24px;
+    float: left;
+    padding: 2px 4px 2px 4px;
+}
+
+.groupLegendColourSwatch
+{
+    width: 16px;
+    height: 16px;
+    display: block;
+    border: 1px solid #000000;
+}
+
+.groupLegendTextContainer
+{
+    width: 120px;
+    font-size: 9px;
+    float: left;
+    padding: 2px 0px 0px 5px;
+}
+
+.groupLegendText
+{
+    width: 115px;
+}
+
+/* PANEL - RSS Feeds */
+.rssFeeds
+{
+    width: 158px;
+}
+
+.rssFeed
+{
+    width: 158px;
+}
+
+.rssFeedTitle
+{
+    width: 148px;
+    padding: 5px 5px 5px 5px;
+    font-size: 10pt;
+}
+
+.rssFeedTitle a
+{
+    color: #990000;
+}
+
+.rssFeedItem1, .rssFeedItem2
+{
+    width: 148px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+}
+
+.rssFeedItem1 a, .rssFeedItem2 a
+{
+    color: #3333CC;
+}
+
+.rssFeedItem1
+{
+    background-color: #DFDFDD;
+}
+
+.rssFeedItem2
+{
+    background-color: #F1F1F1;
+}
+
+/* PANEL - SiteList */
+.siteList
+{
+    width: 158px;
+}
+
+.siteTypes
+{
+    width: 158px;
+}
+
+.siteType
+{
+    width: 148px;
+    padding: 5px 5px 5px 5px;
+    color: #990000;
+    font-size: 10pt;
+}
+
+.siteItem1, .siteItem2
+{
+    width: 148px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+}
+
+.siteItem1 a, .siteItem2 a
+{
+    color: #3333CC;
+}
+
+.siteItem1
+{
+    background-color: #DFDFDD;
+}
+
+.siteItem2
+{
+    background-color: #F1F1F1;
+}
+
+/* PANEL - Shopping Cart */
+.shoppingCartContent
+{
+    width: 158px;
+}
+
+.shoppingCartMessage
+{
+	width: 148px;
+	
+    font-size: 8pt;
+    color: #666666;
+    padding: 0px 5px 5px 5px;
+    
+    text-align:center;
+}
+
+.shoppingCartItems
+{
+    width: 158px;
+    height: 236px;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    clear:both;
+}
+
+.shoppingCartItemTable
+{
+	width:148px;
+}
+
+.shoppingCartItemInformation
+{
+	width:138px;
+}
+.shoppingCartItemInformationIE9
+{
+	width:122px;
+}
+
+.shoppingCartItemControl
+{
+	width:10px;
+	vertical-align:top;	
+}
+.shoppingCartItemControlIE9
+{
+	width:20px;
+	vertical-align:top;	
+}
+
+.shoppingCartItem1
+{
+    width: 148px;
+    background-color: #DFDFDD;
+    padding: 5px 5px 5px 5px;
+    clear:both;
+}
+
+.shoppingCartItem2
+{
+    width: 148px;
+    background-color: #F1F1F1;
+    padding: 5px 5px 5px 5px;
+    clear:both;
+}
+
+.shoppingCartCheckout
+{
+    width: 158px;
+    height: 28px;
+    border-top: 1px solid #828282;
+    clear:both;
+}
+
+.shoppingCartItemMedia
+{
+    font-size: 8pt;
+    clear:both;
+    width: 80%;
+}
+.shoppingCartItemPriceLine
+{
+    width:130px;
+    clear:both;
+    width: 80%;
+}
+.shoppingCartItemPrice
+{
+    font-size: 10pt;
+    font-weight: bold;
+    padding-bottom:3px;
+    width: 80%;
+}
+.shoppingCartItemRemoveButton
+{   
+    vertical-align:top;
+    text-align:left;
+}
+.shoppingCartItemName
+{
+    font-size: 8pt;
+    color: #990000;
+    clear:both;
+    white-space:normal;
+    width:80%;
+}
+
+/* PANEL - Promotion Viewer */
+.promotionContent
+{
+    width: 655px;
+    height: 300px;
+}
+
+/* PANEL - Player */
+.playerContent
+{
+    width: 655px;
+    height: 500px;
+}
+
+.playerContentHTML
+{
+    width: 655px;
+}
+
+
+/* PANEL - Player Redirect */
+.playerPurchaseRediect
+{
+    width: 615px;
+    padding: 0px 20px 10px 20px;
+}
+.playerPurchaseRediectLinkButton
+{
+    text-align:right;    
+}
+
+.playerPurchaseRediectTitle
+{
+    width: 615px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 0px 10px 0px;
+}
+
+/* PANEL - Featured Events */
+.featuredEventsContent
+{
+    width: 655px;
+}
+
+.featuredEventContainer
+{
+    width: 655px;
+    float: left;
+    padding: 10px 0px 10px 5px;
+}
+
+.featuredEventBanner
+{
+    padding-right: 15px;
+    padding-left: 10px;
+    width: 300px;
+    height: 100px;
+    float: left;
+}
+
+.featuredEventText
+{
+    padding-right: 10px;
+    width: 310px;
+    float: left;
+}
+
+.featuredEventTitle
+{
+    color: #990000;
+    font-size: 13px;
+    padding: 0px 0px 5px 0px;
+}
+
+.featuredEventDescription
+{
+    font-size: 12px;
+}
+
+/* PANEL - Featured Items */
+.featuredItemsContent
+{
+    width: 655px;
+}
+
+.featuredItemContainer
+{
+    width: 653px;
+}
+
+.featuredItem, .featuredTopItem
+{
+    width: 613px;
+    padding: 20px 20px 20px 20px;
+}
+
+.featuredItem
+{
+    border-top: 2px solid #DFDFDF;
+}
+
+.featuredItemBanner
+{
+    width: 300px;
+    float: left;
+}
+
+.featuredItemDetails
+{
+    width: 300px;
+    float: left;
+    padding: 0px 0px 0px 13px;
+}
+
+.featuredItemName
+{
+    width: 300px;
+    font-size: 8pt;
+    font-weight: bold;
+    padding: 10px 0px 10px 0px;
+}
+
+.featuredItemPrice
+{
+    width: 300px;
+    font-size: 8pt;
+    font-weight: bold;
+    padding: 0px 0px 10px 0px;
+   
+}
+.featuredItemCurrency
+{
+ padding-left:2px;
+  float:left;
+}
+.featuredItemAmount
+{
+ float:left;
+}
+.featuredItemDescription
+{
+    width: 300px;
+    font-size: 8pt;
+}
+
+.featuredItemMoreDetails
+{
+    width: 300px;
+    font-size: 8pt;
+    padding: 0px 0px 5px 0px;
+    float:left;
+}
+.featuredItemButton
+{
+  width: 300px;
+    font-size: 8pt;
+    padding: 5px 0px 0px 0px;
+    float:left;
+}
+/* PANEL - Package Details */
+.packageDetailsContent
+{
+    width: 655px;
+    padding: 0px 20px 20px 20px;
+}
+
+.packageDetailsInformation
+{
+    width: 615px;
+}
+
+.packageDetailsTitle
+{
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.packageDetailsDescription
+{
+    font-size: 8pt;
+    padding: 10px 0px 20px 0px;
+}
+
+.packageDetailsProductList
+{
+    width: 615px;
+    border: 2px solid #000000;
+}
+
+.packageDetailsProductListTable
+{
+    width: 615px;
+}
+
+.packageDetailsProductListTable tr th
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #000000;
+    padding: 3px 0px 3px 0px;
+}
+
+.packageDetailsProductListTableDataNA1, .packageDetailsProductListTableDataNA2
+{
+    width: 515px;
+    height: 65px;
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 3px 3px 3px 3px;
+}
+
+.packageDetailsProductListTableDataME1, .packageDetailsProductListTableDataME2
+{
+    width: 100px;
+    border-left: 1px solid #000000;
+    text-align: center;
+    padding: 0px 5px 0px 5px;
+}
+
+.packageDetailsProductListTableDataNA1, .packageDetailsProductListTableDataME1
+{
+    background-color: #DFDFDD;
+}
+
+.packageDetailsProductListTableDataNA2, .packageDetailsProductListTableDataME2
+{
+    background-color: #F1F1F1;
+}
+
+.packageDetailsProductListTableIcon
+{
+    padding: 3px 3px 3px 3px;
+}
+/* PANEL - Event List */
+.eventListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.eventListContainer
+{
+    width: 615px;
+    height: 150px;
+    border: 1px solid #828282;
+    overflow-x: hidden;
+    overflow-y: auto; 
+}
+
+.eventList
+{
+    width: 615px;
+    border: 0;
+}
+
+.eventListHeader
+{
+    font-size: 10pt;
+    text-align: left;
+    color: #FFFFFF;
+    background-color: #828282;
+    border: 0;
+    padding: 0px 0px 0px 5px;
+}
+
+.eventListHeader a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.eventListCell
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 0px 5px 2px;
+}
+
+.eventListCellTitle
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 0px 5px 2px;
+    width:58%;
+}
+
+.eventListCellOther
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 0px 5px 2px;
+    width:16%;
+}
+
+.eventListCellCredit
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 0px 5px 2px;
+    width:10%;
+}
+
+
+.eventListCell a
+{
+    color: #000000;
+}
+
+/* PANEL - Event List */
+.occurenceListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.occurenceListContainer
+{
+    width: 615px;
+    height: 150px;
+    border: 1px solid #828282;
+    overflow-y: scroll;
+    overflow-x: hidden; 
+}
+
+.occurenceList
+{
+    width: 615px;
+    border: 0;
+}
+
+.occurenceListHeader
+{
+    font-size: 10pt;
+    text-align: left;
+    color: #FFFFFF;
+    background-color: #828282;
+    border: 0;
+    padding: 0px 0px 0px 5px;
+}
+
+.occurenceListHeader a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.occurenceListIDCell, .occurenceListDateCell, .occurenceListStartTimeCell, .occurenceListEndTimeCell, .occurenceListRoomNameCell
+{
+    font-size: 8pt;
+    text-align: left;
+    padding: 5px 0px 5px 2px;
+}
+
+/* PANEL - Registration Details */
+.registrationDetailsContent
+{
+	width: 655px;
+	background-color: #FFFFFF;
+}
+.registrationDetailsContainer
+{
+    width: 655px;
+}
+.registrationDetailsClient
+{
+    width: 615px;
+    font-family: arial,helvetica,sans-serif; 
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 0px 0px 20px;
+}
+.registrationDetailsDate
+{
+    width: 615px;
+    font-family: arial,helvetica,sans-serif; 
+    font-size: 12px;
+    padding: 10px 20px 0px 20px;
+}
+.registrationDetailsVenue
+{
+    width: 615px;
+    font-family: arial,helvetica,sans-serif; 
+    font-size: 12px;
+    padding: 0px 20px 0px 20px;
+}
+.registrationDetailsSessionGroup
+{
+    width: 615px;
+    font-family: arial,helvetica,sans-serif; 
+    font-size: 12px;
+    font-style: italic;
+    padding: 0px 20px 0px 20px;
+}
+.registrationDetailsPrice
+{
+    width: 615px;
+    font-family: arial,helvetica,sans-serif; 
+    font-size: 12px;
+    font-weight:bold;
+    padding: 0px 20px 0px 20px;
+}
+
+
+/* PANEL - Conference Details */
+.conferenceDetailsContent
+{
+    width: 655px;
+}
+
+.conferenceDetailsContainer
+{
+    width: 655px;
+}
+
+.conferenceDetailsBanner
+{
+    margin: -20px 0px 0px 0px;
+}
+
+.conferenceDetailsClient
+{
+    width: 615px;
+    font-size: 12pt;
+    padding: 20px 20px 0px 20px;
+    display: none;
+}
+
+.conferenceDetailsConference
+{
+    width: 615px;
+    font-size: 16px;
+    padding: 30px 20px 0px 20px;
+    font-weight:bold;
+}
+
+.conferenceDetailsDate
+{
+    width: 615px;
+    font-size: 14px;
+    font-weight: inherit;
+    padding: 0px 20px 0px 20px;
+}
+
+.conferenceDetailsLocation
+{
+    width: 615px;
+    font-size: 14px;
+    font-weight: inherit;
+    padding: 0px 20px 0px 20px;
+}
+
+.conferenceDetailsDescription
+{
+    width: 615px;
+    font-size: 12px;
+    padding: 20px 20px 20px 20px;
+}
+
+.conferenceListPageFirst, .conferenceListPagePrevious, .conferenceListPageNext, .conferenceListPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+.conferenceListDetailsDate, .conferenceListDetailsVenue
+{
+    width: 615px;
+    font-size: 11px;
+    padding: 0px 20px 0px 0px;
+}
+
+/* PANEL - Exam */
+.examDetailsContent
+{
+    width: 655px;
+}
+
+.examDetailsContainer
+{
+    width: 655px;
+}
+
+.examDetailsName
+{
+    width: 615px;
+    font-size: 16pt;
+    padding: 0px 20px 0px 20px;
+}
+
+.examDetailsDate
+{
+    width: 615px;
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 0px 20px 0px 20px;
+}
+
+.examDetailsDescription
+{
+    width: 615px;
+    font-size: 8pt;
+    padding: 20px 20px 20px 20px;
+}
+
+.examDetailsButtons
+{
+    margin: 0 auto 0 auto;
+    text-align: center;
+    padding: 20px 0px 20px 0px;
+}
+
+.examDetailButton
+{
+    padding: 0px 40px 0px 40px;
+}
+
+/* PANEL - Curriculum Details */
+.curriculumDetailsContent
+{
+    width: 655px;
+}
+
+.curriculumDetailsContainer
+{
+    width: 655px;
+    clear:both;
+}
+
+.curriculumDetailsName
+{
+    width: 615px;
+    font-size: 16pt;
+    padding: 20px 20px 0px 20px;
+}
+
+.curriculumDetailsDate
+{
+    width: 615px;
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 0px 20px 0px 20px;
+}
+
+.curriculumDetailsDescription
+{
+    width: 615px;
+    font-size: 8pt;
+    padding: 20px 20px 20px 20px;
+}
+.curriculumDetailsButtonContainer
+{
+    clear:both;
+    padding: 5px 20px 5px 20px;
+}
+.curriculumDetailsStartCourseButton
+{
+    
+}
+.curriculumDetailsReturnButton
+{
+    float:left;
+    
+}
+.curriculumDetailsPreviousButton
+{
+    float:left;
+}
+.curriculumDetailsNextButton
+{
+    float:right;
+}
+.curriculumDetailsFinishButton
+{
+    float:right;
+}
+
+.curriculumDetailsLinkContainer
+{
+    clear:both;
+    padding-top:10px;
+    padding-left:20px;
+    padding-bottom: 40px;
+    width:615px;
+    text-align:center;
+	text-transform:uppercase;
+	font-size:12px;
+} 
+
+.curriculumDetailsPreviousButton
+{
+	display: none
+}
+
+.curriculumDetailsFinishButton
+{
+	display:none;
+} 
+
+.curriculumDetailsReturnButton
+{
+	display:none;
+}
+
+.curriculumDetailsNextButton
+{
+	display:none;
+}
+
+
+.curriculumDetailsLinkContainerLeftSide
+{
+    float:left;
+    width:450px;
+} 
+
+.CurriculumBranchUnSelectedNode 
+{
+    font-family: arial;
+    font-size: 12px;
+}
+
+.CurriculumLearningActivityUnSelectedNode 
+{
+    color: Gray;
+    font-size: 12px;
+}
+ 
+.curriculumDetailsLinkContainerRightSide
+{
+    float:right;
+    width:150px;
+} 
+.curriculumDetailsButtonLink
+{
+    float:left;
+    text-align:center;
+}
+.curriculumDetailsButtonSpacer
+{
+    float:left;
+    padding-left:5px;
+    padding-right:5px;
+    text-align:center;
+}
+.curriculumDetailsButtonLinkExit
+{
+    float:right;
+    text-align:center;
+}
+.curriculumDetailsButtonLinkHome
+{
+    float:right;
+    text-align:center;
+}
+.curriculumDetailsButtonSpacerRight
+{
+    float:right;
+    padding-left:5px;
+    padding-right:5px;
+    text-align:center;
+}
+/* PANEL - Curriculum Handout */
+.curriculumHandoutContent
+{
+    width: 655px;
+}
+
+.curriculumDetailsDocument
+{
+    width: 655px;
+}
+
+.curriculumHandoutDescription
+{
+    width: 615px;
+    font-size: 8pt;
+    padding: 20px 20px 20px 20px;
+}
+
+/* PANEL - Curriculum Module Details */
+.moduleDetailsContent
+{
+    width: 655px;
+}
+
+.moduleDetailsHeaderText
+{
+    width: 615px;
+    font-size: 8pt;
+    padding: 20px 20px 20px 20px;
+}
+
+.moduleDetailsFooterText
+{
+    width: 615px;
+    font-size: 8pt;
+    padding: 20px 20px 20px 20px;
+}
+
+/* PANEL - Session List */
+.sessionListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.sessionListMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.sessionListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.sessionListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.sessionListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.sessionListThumbnail img
+{
+    border: 1px solid #000000 !important;
+}
+
+.sessionListDetails
+{
+    width: 405px;
+    float: left;
+}
+
+.sessionListSubtitle
+{
+	width: 390px;
+    font-size: 11px;
+    color: #000000;
+    padding: 2px 0px 5px 0px;
+    font-style:italic;
+}
+
+.divOptionTop
+{
+    width: 235px;
+    font-size: 8pt;
+    text-align: left !important;
+    float: left;
+}
+
+.sessionItemsPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.sessionItemsPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.sessionItemsPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.sessionItemsPageFirst, .sessionItemsPagePrevious, .sessionItemsPageNext, .sessionItemsPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.sessionItemsPageFirst a, .sessionItemsPagePrevious a, .sessionItemsPageNext a, .sessionItemsPageLast a
+{
+    color: #666666;
+}
+
+.sessionItemsCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.sessionListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.sessionListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+.OtherSessionListTbl
+{
+    padding: 10px 10px 10px 10px;
+}
+
+.sessionListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 0px 10px 0px;
+}
+.sessionListControlContainerTopDesc
+{
+    color:#990000;
+    font-size: 12px;
+}
+.sessionListControlContainerBtmDesc
+{
+    color:#990000;
+    font-size: 12px;
+}   
+.OtherSessionListRow
+{
+    padding: 10px 10px 10px 10px;
+}
+
+.sessionListTitle
+{
+    width: 380px;
+    color: #990000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sessionListConference, .sessionListDate, .sessionListSpeakers, .sessionListRating
+{
+    font-size:12px;
+    width:390px;
+}
+
+.sessionListSpeakers
+{
+	font-weight:bold;
+	padding:0px 0px 5px 0px;
+}
+
+.sessionListSpeakers div
+{
+	font-weight:normal;
+}
+
+.sessionListPricing
+{
+    font-size:11px;
+    width:390px;
+    font-weight:bold;
+}
+
+/* PANEL - User Results */
+.userResultsContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.userResultsMessage
+{
+    font-size: 8pt;
+    padding: 20px 0px 10px 0px;
+}
+
+.userResultsGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.userResultsContainer
+{
+    width: 615px;
+    padding: 0px 10px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.userResultsThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.userResultsThumbnail img
+{
+    width:80px;
+    
+    border: 1px solid #000000 !important;
+}
+
+.userResultsDetails
+{
+    width: 405px;
+    float: left;
+}
+
+.userResultsName
+{
+	width: 390px;
+    font-size: 14px;
+    color: #000000;
+    padding: 0px 0px 5px 0px;
+}
+
+.userResultsTitle, .userResultsOrganization
+{
+	width: 390px;
+    font-size: 11px;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+    font-style:italic;
+}
+
+.userResultsRequestPending
+{
+    font-size: 11px;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+    font-style:italic;   
+}
+
+.userResultsButton
+{
+    padding: 0px 0px 5px 0px;  
+}
+
+.userResultsPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.userResultsPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.userResultsPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.userResultsPageFirst, .userResultsPagePrevious, .userResultsPageNext, .userResultsPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.userResultsPageFirst a, .userResultsPagePrevious a, .userResultsPageNext a, .userResultsPageLast a
+{
+    color: #666666;
+}
+
+.userResultsCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.userResultsControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.userResultsControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.userResultsControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 0px 10px 0px;
+}
+
+/* PANEL - My Friends */
+.friendListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.friendListMessage
+{
+    font-size: 8pt;
+    padding: 20px 0px 10px 0px;
+}
+
+.friendListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.friendListContainer
+{
+    width: 615px;
+    padding: 0px 10px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.friendListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.friendListThumbnail img
+{
+    width:80px;
+    
+    border: 1px solid #000000 !important;
+}
+
+.friendListDetails
+{
+    width: 405px;
+    float: left;
+}
+
+.friendListName
+{
+	width: 390px;
+    font-size: 14px;
+    color: #000000;
+    padding: 0px 0px 5px 0px;
+}
+
+.friendListTitle, .friendListOrganization
+{
+	width: 390px;
+    font-size: 11px;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+    font-style:italic;
+}
+
+.friendListRequestPending
+{
+    font-size: 11px;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+    font-style:italic;   
+}
+
+.friendListButton
+{
+    padding: 0px 0px 5px 0px;  
+}
+
+.friendListPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.friendListPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.friendListPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.friendListPageFirst, .friendListPagePrevious, .friendListPageNext, .friendListPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.friendListPageFirst a, .friendListPagePrevious a, .friendListPageNext a, .friendListPageLast a
+{
+    color: #666666;
+}
+
+.friendListCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.friendListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.friendListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.friendListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 0px 10px 0px;
+}
+
+/* PANEL - Friend Requests */
+.requestListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.requestListMessage
+{
+    font-size: 8pt;
+    padding: 20px 0px 10px 0px;
+}
+
+.requestListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.requestListContainer
+{
+    width: 615px;
+    padding: 0px 10px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.requestListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.requestListThumbnail img
+{
+    width:80px;
+    
+    border: 1px solid #000000 !important;
+}
+
+.requestListDetails
+{
+    width: 405px;
+    float: left;
+}
+
+.requestListName
+{
+	width: 390px;
+    font-size: 14px;
+    color: #000000;
+    padding: 0px 0px 5px 0px;
+}
+
+.requestListTitle, .requestListOrganization
+{
+	width: 390px;
+    font-size: 11px;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+    font-style:italic;
+}
+
+.requestListRequestPending
+{
+    font-size: 11px;
+    color: #000000;
+    padding: 0px 0px 0px 0px;
+    font-style:italic;   
+}
+
+.requestListButton
+{
+    padding: 0px 0px 5px 0px;  
+}
+
+.requestListPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.requestListPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.requestListPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.requestListPageFirst, .requestListPagePrevious, .requestListPageNext, .requestListPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.requestListPageFirst a, .requestListPagePrevious a, .requestListPageNext a, .requestListPageLast a
+{
+    color: #666666;
+}
+
+.requestListCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.requestListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.requestListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.requestListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 0px 10px 0px;
+}
+
+/* PANEL - Content Suggestion Grid */
+.contentSuggestionContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.contentSuggestionGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.contentSuggestionTable
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+}
+
+.contentSuggestionTableThumnbail
+{
+    text-align: left;
+}
+
+.contentSuggestionTableThumnbail img
+{
+    border: 1px solid #000000 !important;
+}
+
+.contentSuggestionTableDetails
+{
+}
+
+.contentSuggestionTableData
+{
+    width: 150px;
+    vertical-align: top;
+    padding: 0px 0px 20px 0px;
+}
+
+.contentSuggestionPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.contentSuggestionPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.contentSuggestionPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.contentSuggestionPageFirst, .contentSuggestionPagePrevious, .contentSuggestionPageNext, .contentSuggestionPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.contentSuggestionPageFirst a, .contentSuggestionPagePrevious a, .contentSuggestionPageNext a, .contentSuggestionPageLast a
+{
+    color: #666666;
+}
+
+.contentSuggestionCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.contentSuggestionTableTitle
+{
+    width: 150px;
+    font-size: 8pt;
+    font-weight: bold;
+    padding: 10px 0px 0px 0px;
+}
+
+.contentSuggestionTableTitle a
+{
+    color: #0000FF;
+    text-decoration: none;
+}
+
+.contentSuggestionTableSpeakers
+{
+    width: 150px;
+    font-size: 8pt;
+    font-weight: bold;
+    padding: 0px 0px 10px 0px;
+}
+
+.contentSuggestionTableSpeakerName
+{
+    font-weight: normal;
+}
+
+.contentSuggestionTableDuration
+{
+    width: 150px;
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.contentSuggestionTableRating, .contentSuggestionTableDuration
+{
+    width: 150px;
+    font-size: 8pt;
+}
+
+.contentSuggestionTableMoreDetails
+{
+    width: 150px;
+    font-size: 8pt;
+}
+
+.contentSuggestionTableMoreDetails a
+{
+    color: #0000FF;
+    text-decoration: none;
+}
+
+/* PANEL - Search */
+.searchContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.searchContainer
+{
+    width: 615px;
+    clear: both;
+}
+
+.searchLabel
+{
+    width: 105px;
+    float: left;
+    font-size: 12px;
+    text-align: right;
+    padding: 2px 5px 0px 0px;
+}
+
+.searchField
+{
+    width: 265px;
+    float: left;
+}
+
+.searchField input
+{
+    width: 345px;
+    height: 15px;
+    font-size: 8pt;
+}
+
+.searchSelector
+{
+    width: 150px;
+    float: right;
+}
+
+.searchSelector select
+{
+    width: 145px;
+    height: 21px;
+    font-size: 12px;
+}
+
+.searchButton
+{
+    width: 80px;
+    float: left;
+    padding-left: 110px;
+    padding-top: 10px;
+}
+
+.searchButtonEx
+{
+    width: 60px;
+    float: left;
+    visibility:hidden;
+}
+
+.searchMore
+{
+    width: 610px;
+    font-size: 12px;
+    text-align: right;
+    padding: 10px 0px 0px 0px;
+}
+
+.searchAdvancedContainer
+{
+    width: 615px;
+    margin-top: 5px;
+}
+
+.searchAdvancedFilter
+{
+    width: 615px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+}
+
+.searchAdvancedLabel
+{
+    width: 105px;
+    float: left;
+    font-size: 8pt;
+    text-align: right;
+    padding: 2px 5px 0px 0px;
+}
+
+.searchAdvancedSelector
+{
+    width: 505px;
+    float: left;
+}
+
+.searchAdvancedSelector select
+{
+    width: 500px;
+    height: 21px;
+    font-size: 8pt;
+}
+
+/* PANEL - userSearch */
+.userSearchContent
+{
+    width: 615px;
+    padding: 20px 20px 20px 20px;
+}
+
+.userSearchContainer
+{
+    width: 615px;
+    clear: both;
+}
+
+.userSearchLabel
+{
+    width: 105px;
+    float: left;
+    font-size: 12px;
+    text-align: right;
+    padding: 2px 5px 0px 0px;
+}
+
+.userSearchField
+{
+    width: 410px;
+    float: left;
+}
+
+.userSearchField input
+{
+    width: 400px;
+    height: 15px;
+    font-size: 8pt;
+}
+
+.userSearchButton
+{
+    width: 80px;
+    float: left;
+    
+    padding:0px 0px 0px 10px;
+}
+
+/* PANEL - Quick Search */
+.quickSearchContent
+{
+    width: 158px;
+    padding: 0px 5px 0px 5px;
+}
+
+.quickSearchContainer
+{
+    width: 148px;
+}
+
+.quickSearchLabel
+{
+    width: 148px;
+    font-size: 8pt;
+    text-align: left;
+    padding: 0px 0px 5px 0px;
+}
+
+.quickSearchField
+{
+    width: 148px;
+    padding: 0px 0px 5px 0px;
+}
+
+.quickSearchField input
+{
+    width: 141px;
+    height: 15px;
+    font-size: 8pt;
+}
+
+.quickSearchSelector
+{
+    width: 148px;
+    padding: 0px 0px 5px 0px;
+}
+
+.quickSearchSelector select
+{
+    width: 148px;
+    height: 21px;
+    font-size: 8pt;
+}
+
+.quickSearchButton
+{
+    width: 148px;
+    text-align: right;
+    padding: 10px 0px 0px 0px;
+}
+
+/* PANEL - Polling */
+.pollContent
+{
+    width: 158px;
+    padding: 0px 2px 0px 2px;
+}
+
+.pollContainer
+{
+    width: 154px;
+}
+
+.pollQuestion
+{
+    width: 154px;
+    font-size: 8pt;
+    text-align: left;
+    padding: 0px 0px 5px 0px;
+}
+
+.pollAnswers
+{
+	font-size: 8pt;
+}
+
+/* PANEL - Session Details */
+.sessionDetailsContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.sessionDetailsContainer
+{
+    width: 615px;
+}
+
+.sessionDetailsRating
+{
+    font-size: 12px;
+}
+
+.sessionDetailsTitle
+{
+    width: 615px;
+    font-size: 14px;
+    font-weight:bold;
+    color: #990000;
+    padding: 5px 0px 0px 0px;
+}
+
+.sessionDetailsSubtitle
+{
+	width: 615px;
+    font-size: 11px;
+    color: #000000;
+    padding: 5px 0px 10px 0px;
+    font-style:italic;
+}
+
+.sessionDetailsGroups
+{
+    font-size: 12px;
+}
+
+.sessionDetailsCode
+{
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+}
+.sessionDetailsDate
+{
+    font-size: 12px;
+}
+.sessionDetailsConference
+{
+    font-size: 12px;
+}
+.sessionDetailsFaculty
+{
+    font-size: 12px;
+}
+
+.sessionDetailsSpeakersContainer
+{
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+}
+
+.sessionDetailsSpeakers
+{
+	font-weight:bold;
+	padding:0px 0px 5px 0px;
+}
+
+.sessionDetailsSpeakers div
+{
+	font-weight:normal;
+}
+
+.sessionDetailsDescriptionSubtitle
+{
+    font-size: 12px;
+    font-weight: bold; 
+    padding: 0px 0px 10px 0px;   
+}
+
+.sessionDetailsObjectivesSubtitle, .sessionDetailsSessionTypeSubTitle
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+.sessionDetailsSessionItems
+{
+    padding-top:10px;
+}
+
+.sessionDetailsDescription
+{
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+}
+
+.sessionDetailsObjectives
+{
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+}
+
+.sessionDetailsObjectives ul
+{
+    padding-top: 0px;
+    padding-left: 12px;
+    margin-top: 0px;
+}
+.sessionDetailsSessionType
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+.keyword
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+.subjectArea
+{
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+}
+.presentationFormat
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+.learningObjectives
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+.facDisclosureInfoLabel
+{
+    width: 500px;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.facDisclosureQuestion
+{
+    width: 200px;
+    font-size: 12px;
+    vertical-align: top;  
+    padding-bottom: 15px;
+
+}
+.facDisclosureResponseVal
+{
+    width: 400px;
+    font-size: 12px;
+    vertical-align: top;  
+    padding-bottom: 15px;
+    padding-left: 55px;
+}
+.facDisclosureInfo
+{
+    width: 500px;
+    font-size: 12px;
+    vertical-align: top;  
+}
+
+/* PANEL - Rate Session */
+.rateSessionContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.rateSessionContainer
+{
+    width: 615px;
+}
+
+.rateSessionTitle
+{
+    width: 615px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #990000;
+    padding: 5px 0px 10px 0px;
+}
+
+.rateSessionRatingLabel
+{
+    width: 150px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #990000;
+    text-transform: uppercase;
+    float: left;
+}
+
+.rateSessionRatingControl
+{
+    width: 465px;
+    float: left;
+}
+
+.rateSessionRatingDescription
+{
+    width: 615px;
+    font-size: 12px;
+    clear: both;
+    padding: 0px 0px 0px 0px;
+}
+
+.rateSessionCommentsLabel
+{
+    width: 615px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #990000;
+    text-transform: uppercase;
+    clear: both;
+    padding: 10px 0px 0px 0px;
+}
+
+.rateTipText
+{
+    width: 615px;
+    font-size: 11px;
+    clear: both;
+    padding: 10px 0px 0px 0px;
+}
+
+.commentTipText
+{
+    width: 615px;
+    font-size: 11px;
+    clear: both;
+    padding: 10px 0px 0px 0px;
+}
+
+.rateSessionRatingRead
+{
+    font-size: 12px;
+}
+
+.rateSessionCommentsRead
+{
+    width: 615px;
+    font-size: 12px;
+    padding: 10px 0px 0px 0px;
+}
+
+.rateSessionCommentsField textarea
+{
+    width: 615px;
+    height: 150px;
+}
+
+.rateSessionCommentsSubmit
+{
+    padding: 5px 0px 0px 0px;
+}
+
+/* PANEL - Redeem Voucher */
+.redeemVoucherContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.redeemVoucherDescription
+{
+    font-size: 8pt;
+}
+
+.redeemVoucherError
+{
+    font-size: 8pt;
+    color: #FF0000;
+    padding: 20px 0px 0px 0px;
+}
+
+.redeemVoucherTableContainer
+{
+    width: 615px;
+    padding: 20px 0px 20px 0px;
+}
+
+.redeemVoucherTable
+{
+    width: 615px;
+}
+
+.redeemVoucherTableLabel
+{
+    width: 100px;
+    font-size: 8pt;
+}
+
+.redeemVoucherTableField
+{
+    width: 515px;
+}
+
+.redeemVoucherTableField input
+{
+    width: 515px;
+}
+
+.redeemVoucherButtons
+{
+    width: 615px;
+    font-size: 8pt;
+    clear: both;
+    padding: 0px 0px 0px 0px;
+    text-align: right;
+}
+
+/* PANEL - Speaker List */
+.speakerListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+/* PANEL - Speaker Biographies */
+.speakerBioContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.speakerBioListContainer
+{
+    width: 615px;
+}
+
+.speakerBioTitle
+{
+    width: 615px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #990000;
+    padding: 5px 0px 10px 0px;
+}
+
+.speakerBioTitle > a
+{
+    font-size: 12pt;
+    font-weight: bold;
+    color: #990000;
+    margin: 5px 5px 5px 5px;
+}
+
+.speakerBioListItem
+{
+    width: 615px;
+    clear: both;
+    padding: 0px 0px 20px 0px;
+}
+
+.speakerBioListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+.speakerBioListThumbnail > img
+{
+    /*height: 120px;     width: 100px;*/
+}
+
+.speakerBioListDetails
+{
+    width: 500px;
+    float: left;
+    padding-left: 14px;
+}
+
+.speakerBioListName
+{
+    width: 500px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.speakerBioListTitle
+{
+    width: 500px;
+    font-size: 12px;
+}
+
+.speakerBioListOrganization
+{
+    width: 500px;
+    font-size: 12px;
+}
+
+.speakerBiographyListLabel
+{
+    width: 500px;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 0px;
+}
+.speakerBioListBiography
+{
+    width: 500px;
+    font-size: 12px;
+    padding: 10px 0px 20px 0px;
+}
+.speakerBioListNoBiography
+{
+    width: 500px;
+    font-size: 12px;
+    padding: 10px 0px 20px 0px;
+    font-style:italic;
+}
+.speakerBioListNoSpeakers
+{
+    width: 500px;
+    font-size: 12px;
+    padding: 10px 0px 20px 0px;
+    font-style:italic;
+}
+
+/* PANEL - Login */
+.loginContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.loginMessage
+{
+    font-size: 8pt;
+    font-weight: bold;
+    color: #990000;
+    padding: 0px 0px 10px 0px;
+}
+
+.loginUsernameLabel, .loginPasswordLabel
+{
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.loginUsernameField input, .loginPasswordField input
+{
+    width: 300px;
+}
+
+.loginUsername
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.loginPassword
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.loginRemeber
+{
+    font-size: 12px;
+}
+.keepMeLoggedIn
+{
+    font-size: 12px;
+}
+.KeepPrefLoggedIn
+{
+    font-size: 12px;
+    padding: 10px 0px 10px 10px;
+}
+.loginSubmit
+{
+    padding: 10px 0px 10px 0px;
+}
+
+.loginForgot
+{
+    font-size: 8pt;
+    color: #990000;
+}
+
+/* PANEL - Forgot Password */
+.forgotPasswordContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.forgotPasswordMessage
+{
+    font-size: 12px;
+    font-weight: bold;
+    color: #990000;
+    padding: 0px 0px 10px 0px;
+}
+
+.forgotPasswordEmailLabel
+{
+    font-size: 10pt;
+    text-transform: uppercase;
+}
+
+.forgotPasswordEmailField input
+{
+    width: 600px;
+}
+
+.forgotPasswordEmail
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.forgotPasswordSubmit
+{
+    padding: 10px 0px 10px 0px;
+}
+
+/* PANEL - My Content */
+.myContentContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.myContentDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.myContentHRule
+{
+    width: 80%;
+    height: 3px;
+    color: #000000;
+    background-color: #000000;
+    margin: 20px auto 20px auto;
+}
+
+.myContentSelector
+{
+    width: 615px;
+    padding-top: 5px;
+    font-size: 8pt;
+}
+.myContentSelectorLabel
+{
+    width: 100px;
+    padding-right: 5px;
+    text-align: right;
+    float: left;
+}
+.myContentMessage
+{
+    width: 615px;
+    padding-top: 5px;
+    font-size: 8pt;
+}
+
+.myContentSelector select
+{
+    width: 450px;
+}
+
+.myContentSelector > span
+{
+    font-size: 10pt;
+    padding-bottom: 5px;
+}
+.myContentTableContainer
+{
+    width: 615px;
+    border: 2px solid #000000;
+    margin-top: 5px;
+}
+
+.myContentTableSessionSubtitle
+{
+    font-size: 11px;
+    color: #000000;
+    padding: 2px 0px 2px 0px;
+    font-style:italic;
+}
+
+.myContentTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+}
+.myContentTable > tbody > tr > th > a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.myContentTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: center;
+    padding: 5px 0px 5px 5px;
+}
+
+.myContentTableContentRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+}
+
+.myContentTableContentDL1, .myContentTableContentDL2, .myContentTableContentHN1, .myContentTableContentHN2, .myContentTableContentOL1, .myContentTableContentOL2, .myContentTableContentDU1, .myContentTableContentDU2
+{
+    width: 80px;
+	border-left-color-value: #BCC3C8 !important;
+}
+
+.myContentTableContentST1, .myContentTableContentDL1, .myContentTableContentHN1, .myContentTableContentOL1, .myContentTableContentDU1
+{
+    background-color: #DFDFDD;
+}
+
+.myContentTableContentST2, .myContentTableContentDL2, .myContentTableContentHN2, .myContentTableContentOL2, .myContentTableContentDU2
+{
+    background-color: #F1F1F1;
+}
+.myContentTableContentUploadedTime
+{
+    font-size:7pt;
+}
+
+/* PANEL - Session Content */
+.sessionContentContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.sessionContentDescription
+{
+ 	width:615px;
+	
+	font-size:12px;
+	color:#999999;
+	font-style:italic;
+	
+	text-align:center;
+	
+	padding:0px 0px 10px 0px;
+}
+
+.sessionContentHRule
+{
+    width: 80%;
+    height: 3px;
+    color: #000000;
+    background-color: #000000;
+    margin: 20px auto 20px auto;
+}
+
+.sessionContentSelector
+{
+    width: 615px;
+    padding-top: 5px;
+    font-size: 8pt;
+}
+.sessionContentSelectorLabel
+{
+    width: 100px;
+    padding-right: 5px;
+    text-align: right;
+    float: left;
+}
+.sessionContentMessage
+{
+    width: 615px;
+    padding-top: 5px;
+    font-size: 8pt;
+}
+
+.sessionContentSelector select
+{
+    width: 450px;
+}
+
+.sessionContentSelector > span
+{
+    font-size: 10pt;
+    padding-bottom: 5px;
+}
+.sessionContentTableContainer
+{
+    width: 615px;
+    border: 2px solid #000000;
+    margin-top: 5px;
+}
+
+.sessionContentTableSessionSubtitle
+{
+    font-size: 11px;
+    color: #000000;
+    padding: 2px 0px 2px 0px;
+    font-style:italic;
+}
+
+.sessionContentTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+}
+.sessionContentTable > tbody > tr > th > a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.sessionContentTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: center;
+    padding: 5px 0px 5px 5px;
+}
+
+.sessionContentTableContentRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+}
+
+.sessionContentTableContentDL1, .sessionContentTableContentDL2, .sessionContentTableContentHN1, .sessionContentTableContentHN2, .sessionContentTableContentOL1, .sessionContentTableContentOL2, .sessionContentTableContentDU1, .sessionContentTableContentDU2
+{
+    width: 80px;
+    border-left: 1px solid #000000;
+}
+
+.sessionContentTableContentST1, .sessionContentTableContentDL1, .sessionContentTableContentHN1, .sessionContentTableContentOL1, .sessionContentTableContentDU1
+{
+    background-color: #DFDFDD;
+}
+
+.sessionContentTableContentST2, .sessionContentTableContentDL2, .sessionContentTableContentHN2, .sessionContentTableContentOL2, .sessionContentTableContentDU2
+{
+    background-color: #F1F1F1;
+}
+
+.sessionContentTableContentUploadedTime
+{
+    font-size:7pt;
+}
+
+/* PANEL - Certificate List */
+.certificateListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.certificateListCourses
+{
+    padding: 0px 0px 20px 0px;
+}
+
+.certificateListCoursesTitle
+{
+    font-size: 10pt;
+    padding: 10px 0px 10px 0px;
+}
+
+.certificateCourseTables
+{
+}
+
+.certificateCourseTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+}
+
+.certificateCourseTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+}
+
+.certificateCourseTableRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+    vertical-align: middle;
+}
+
+.certificateCourseTableDataBU1, .certificateCourseTableDataNM1, .certificateCourseTableDataDA1, .certificateCourseTableDataCR1
+{
+    background-color: #DFDFDD;
+}
+
+.certificateCourseTableDataBU2, .certificateCourseTableDataNM2, .certificateCourseTableDataDA2, .certificateCourseTableDataCR2
+{
+    background-color: #F1F1F1;
+}
+
+.certificateListAttendances
+{
+    padding: 0px 0px 20px 0px;
+}
+
+.certificateListAttendancesTitle
+{
+    font-size: 10pt;
+    padding: 10px 0px 10px 0px;
+}
+
+.certificateAttendanceTables
+{
+}
+
+.certificateAttendanceTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+}
+
+.certificateAttendanceTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+}
+
+.certificateAttendanceTableRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+    vertical-align: middle;
+}
+
+.certificateAttendanceTableDataBU1, .certificateAttendanceTableDataNM1, .certificateAttendanceTableDataDA1, .certificateAttendanceTableDataCR1
+{
+    background-color: #DFDFDD;
+}
+
+.certificateAttendanceTableDataBU2, .certificateAttendanceTableDataNM2, .certificateAttendanceTableDataDA2, .certificateAttendanceTableDataCR2
+{
+    background-color: #F1F1F1;
+}
+
+.certificateListCredits
+{
+    padding: 0px 0px 20px 0px;
+}
+
+.certificateListCreditsTitle
+{
+    font-size: 10pt;
+    padding: 10px 0px 10px 0px;
+}
+
+.certificateCreditTables
+{
+}
+
+.certificateCreditTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+}
+
+.certificateCreditTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+}
+
+.certificateCreditTableRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+    vertical-align: middle;
+}
+
+.certificateCreditTableDataBU1, .certificateCreditTableDataNM1, .certificateCreditTableDataDA1, .certificateCreditTableDataCR1
+{
+    background-color: #DFDFDD;
+}
+
+.certificateCreditTableDataBU2, .certificateCreditTableDataNM2, .certificateCreditTableDataDA2, .certificateCreditTableDataCR2
+{
+    background-color: #F1F1F1;
+}
+
+
+/* PANEL - Media Legend */
+.mediaLegendContent
+{
+    width: 158px;
+}
+
+.mediaLegendTableContainer
+{
+    width: 158px;
+}
+
+.mediaLegendTable
+{
+    width: 158px;
+}
+
+.mediaLegendTable > tbody > tr
+{
+    width: 158px;
+}
+
+.mediaLegendTableContentRow td
+{
+    padding: 2px 0px 2px 0px;
+}
+
+.mediaLegendTableContentIC
+{
+    width: 50px;
+    padding: 0px 0px 0px 5px;
+}
+
+.mediaLegendTableContentDE
+{
+    width: 98px;
+    font-size: 8pt;
+    text-transform: uppercase;
+    vertical-align: middle;
+    padding: 0px 0px 0px 5px;
+}
+
+/* PANEL - My Orders */
+.myOrdersContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.myOrdersDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.myOrdersHRule
+{
+    width: 80%;
+    height: 3px;
+    color: #000000;
+    background-color: #000000;
+    margin: 20px auto 20px auto;
+}
+
+.myOrdersSelector
+{
+    width: 615px;
+}
+
+.myOrdersSelector select
+{
+    width: 300px;
+}
+
+.myOrdersTableContainer
+{
+    width: 615px;
+}
+
+.myOrdersTable
+{
+    width: 615px;
+    border: 1px solid #000000;
+}
+
+.myOrdersTableHeader
+{
+    font-size: 8pt;
+    color: #990000;
+    background-color: #F1F1F1;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 5px 0px 5px 5px;
+}
+
+.myOrdersTableContentRow td
+{
+    font-size: 8pt;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+    border-top: 1px solid #000000;
+}
+
+.myOrdersTableContentSK1, .myOrdersTableContentNA1, .myOrdersTableContentQT1, .myOrdersTableContentAM1, .myOrdersTableContentLT1, .myOrdersTableContentCC1, .myOrdersTableContentFN1
+{
+    background-color: #DFDFDD;
+}
+
+.myOrdersTableContentSK2, .myOrdersTableContentNA2, .myOrdersTableContentQT2, .myOrdersTableContentAM2, .myOrdersTableContentLT2, .myOrdersTableContentCC2, .myOrdersTableContentFN2
+{
+    background-color: #F1F1F1;
+}
+
+.myOrdersTableContentNA1, .myOrdersTableContentQT1, .myOrdersTableContentAM1, .myOrdersTableContentLT1, .myOrdersTableContentNA2, .myOrdersTableContentQT2, .myOrdersTableContentAM2, .myOrdersTableContentLT2, .myOrdersTableContentCC1, .myOrdersTableContentCC2, .myOrdersTableContentFN1, .myOrdersTableContentFN2
+{
+    border-left: 1px solid #000000;
+}
+
+.myOrdersDetails
+{
+    width: 593px;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+
+.myOrdersDetailsLeft
+{
+    width: 293px;
+    float: left;
+}
+
+.myOrdersDetailsCreditCard
+{
+    clear: both;
+}
+
+.myOrdersDetailsCreditCardTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.myOrdersDetailsBillingAddress
+{
+    padding: 10px 0px 0px 0px;
+    clear: both;
+}
+
+.myOrdersDetailsBillingTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.myOrdersDetailsBillingLabel
+{
+    color: #990000;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 3px 0px 0px;
+}
+
+.myOrdersDetailsBillingField
+{
+    font-size: 8pt;
+    float: left;
+}
+
+.myOrdersDetailsShippingAddress
+{
+    padding: 10px 0px 0px 0px;
+    clear: both;
+}
+
+.myOrdersDetailsShippingTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.myOrdersDetailsShippingLabel
+{
+    color: #990000;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 3px 0px 0px;
+}
+
+.myOrdersDetailsShippingField
+{
+    font-size: 8pt;
+    float: left;
+}
+
+.myOrdersDetailsRight
+{
+    width: 300px;
+    float: left;
+}
+
+.myOrdersDetailsLabel
+{
+    width: 200px;
+    color: #990000;
+    font-size: 8pt;
+    text-align: right;
+    float: left;
+}
+
+.myOrdersDetailsAmount
+{
+    width: 100px;
+    font-size: 8pt;
+    text-align: right;
+    float: left;
+}
+
+.myOrdersDetailsTotal div
+{
+    font-weight: bold;
+}
+
+/* PANEL - Order Confirmation */
+.orderConfirmationContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.orderConfirmationDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.orderConfirmationTableContainer
+{
+    width: 615px;
+}
+
+.orderConfirmationTable
+{
+    width: 615px;
+    border: 1px solid #000000;
+}
+
+.orderConfirmationTableHeader
+{
+    font-size: 8pt;
+    color: #990000;
+    background-color: #F1F1F1;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 5px 0px 5px 5px;
+}
+
+.orderConfirmationTableContentRow td
+{
+    font-size: 8pt;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+    border-top: 1px solid #000000;
+}
+
+.orderConfirmationTableContentSK1, .orderConfirmationTableContentNA1, .orderConfirmationTableContentQT1, .orderConfirmationTableContentAM1, .orderConfirmationTableContentLT1
+{
+    background-color: #DFDFDD;
+}
+
+.orderConfirmationTableContentSK2, .orderConfirmationTableContentNA2, .orderConfirmationTableContentQT2, .orderConfirmationTableContentAM2, .orderConfirmationTableContentLT2
+{
+    background-color: #F1F1F1;
+}
+
+.orderConfirmationTableContentNA1, .orderConfirmationTableContentQT1, .orderConfirmationTableContentAM1, .orderConfirmationTableContentLT1, .orderConfirmationTableContentNA2, .orderConfirmationTableContentQT2, .orderConfirmationTableContentAM2, .orderConfirmationTableContentLT2
+{
+    border-left: 1px solid #000000;
+}
+
+.orderConfirmationDetails
+{
+    width: 593px;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+
+.orderConfirmationDetailsLeft
+{
+    width: 293px;
+    float: left;
+}
+
+.orderConfirmationDetailsCreditCard
+{
+    clear: both;
+}
+
+.orderConfirmationDetailsCreditCardTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.orderConfirmationDetailsBillingAddress
+{
+    padding: 0px 0px 0px 0px;
+    clear: both;
+}
+
+.orderConfirmationDetailsBillingTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.orderConfirmationDetailsBillingLabel
+{
+    color: #990000;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 3px 0px 0px;
+}
+
+.orderConfirmationDetailsBillingField
+{
+    font-size: 8pt;
+    float: left;
+}
+
+.orderConfirmationDetailsShippingAddress
+{
+    padding: 10px 0px 0px 0px;
+    clear: both;
+}
+
+.orderConfirmationDetailsShippingTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.orderConfirmationDetailsShippingLabel
+{
+    color: #990000;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 3px 0px 0px;
+}
+
+.orderConfirmationDetailsShippingField
+{
+    font-size: 8pt;
+    float: left;
+}
+
+.orderConfirmationDetailsRight
+{
+    width: 300px;
+    float: left;
+}
+
+.orderConfirmationDetailsLabel
+{
+    width: 200px;
+    color: #990000;
+    font-size: 8pt;
+    text-align: right;
+    float: left;
+}
+
+.orderConfirmationDetailsAmount
+{
+    width: 100px;
+    font-size: 8pt;
+    text-align: right;
+    float: left;
+}
+
+.orderConfirmationDetailsTotal div
+{
+    font-weight: bold;
+}
+
+.orderConfirmationEditOrder
+{
+    width: 615px;
+    text-align: right;
+    padding: 10px 0px 0px 0px;
+}
+
+/* PANEL - Order Receipt */
+.orderReceiptContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.orderReceiptTableContainer
+{
+    width: 615px;
+}
+
+.orderReceiptTable
+{
+    width: 615px;
+    border: 1px solid #000000;
+}
+.orderIDContainer
+{
+    width: 615px;
+    font: 8pt;
+    padding: 10px 10px 10px 10px;
+}
+.orderIDLabel
+{
+    float: left;
+}
+.orderReceiptTableHeader
+{
+    font-size: 8pt;
+    color: #990000;
+    background-color: #F1F1F1;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 5px 0px 5px 5px;
+}
+
+.orderReceiptTableContentRow td
+{
+    font-size: 8pt;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+    border-top: 1px solid #000000;
+}
+
+.orderReceiptTableContentSK1, .orderReceiptTableContentNA1, .orderReceiptTableContentQT1, .orderReceiptTableContentAM1, .orderReceiptTableContentLT1
+{
+    background-color: #DFDFDD;
+}
+
+.orderReceiptTableContentSK2, .orderReceiptTableContentNA2, .orderReceiptTableContentQT2, .orderReceiptTableContentAM2, .orderReceiptTableContentLT2
+{
+    background-color: #F1F1F1;
+}
+
+.orderReceiptTableContentNA1, .orderReceiptTableContentQT1, .orderReceiptTableContentAM1, .orderReceiptTableContentLT1, .orderReceiptTableContentNA2, .orderReceiptTableContentQT2, .orderReceiptTableContentAM2, .orderReceiptTableContentLT2
+{
+    border-left: 1px solid #000000;
+}
+
+.orderReceiptGeneralInstructionsContainer
+{
+    padding: 10px 0px 10px 0px;
+}
+
+.orderReceiptGeneralInstructionsLabel
+{
+    font-weight: bold;
+    font-size: 8pt;
+    text-decoration: underline;
+    padding: 0px 0px 5px 0px;
+}
+
+.orderReceiptGeneralInstruction
+{
+    padding: 0px 0px 10px 0px;
+    font-size: 8pt;
+}
+
+.orderReceiptSpecialInstructionsContainer
+{
+    padding: 10px 0px 10px 0px;
+}
+
+.orderReceiptSpecialInstructionsLabel
+{
+    font-weight: bold;
+    font-size: 8pt;
+    text-decoration: underline;
+    padding: 0px 0px 5px 0px;
+}
+
+.orderReceiptSpecialInstruction
+{
+    padding: 0px 0px 10px 0px;
+    font-size: 8pt;
+}
+
+.orderReceiptDetails
+{
+    width: 593px;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+.OrderReceiptDetail
+{
+    width: 593px;
+}
+
+.orderReceiptDetailShippingAddress
+{
+    width: 293px;
+}
+.OrderReceiptOrderNumberField
+{
+    font-size: 8pt;
+}
+.orderReceiptDetailShippingLabel
+{
+    font-size: 8pt;
+    text-align: right;
+}
+.orderReceiptDetailShippingField
+{
+    font-size: 8pt;
+    text-align: left;
+}
+.orderReceiptDetailsLeft
+{
+    width: 293px;
+    float: left;
+}
+.OrderReceiptOrderNumber
+{
+    width: 593px;
+}
+.OrderReceiptDetailLeft
+{
+    width: 293px;
+    vertical-align: top;
+}
+.orderReceiptDetailsCreditCard
+{
+    clear: both;
+}
+
+.orderReceiptDetailsCreditCardTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.orderReceiptDetailsBillingAddress
+{
+    padding: 0px 0px 0px 0px;
+    clear: both;
+}
+
+.orderReceiptDetailsBillingTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.orderReceiptDetailsBillingLabel
+{
+    color: #990000;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 3px 0px 0px;
+}
+
+.orderReceiptDetailsBillingField
+{
+    font-size: 8pt;
+    float: left;
+}
+
+.orderReceiptDetailsShippingAddress
+{
+    padding: 10px 0px 0px 0px;
+    clear: both;
+}
+
+.orderReceiptDetailsShippingTitle
+{
+    color: #990000;
+    font-size: 10pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.orderReceiptDetailsShippingLabel
+{
+    color: #990000;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 3px 0px 0px;
+}
+
+.orderReceiptDetailsShippingField
+{
+    font-size: 8pt;
+    float: left;
+}
+
+.orderReceiptDetailsRight
+{
+    width: 300px;
+    float: left;
+}
+. OrderReceiptDetailRight
+{
+    width: 300px;
+    vertical-align: top;
+}
+.orderReceiptDetailTotals
+{
+}
+.orderReceiptDetailBillingAddress
+{
+    width: 300px;
+}
+.orderReceiptDetailTotalsLabel
+{
+    font-size: 8pt;
+    text-align: right;
+}
+.orderReceiptDetailTotalsField
+{
+    font-size: 8pt;
+    text-align: right;
+}
+.OrderBlankLine
+{
+    height: 20px;
+}
+.orderReceiptDetailsLabel
+{
+    width: 200px;
+    color: #990000;
+    font-size: 8pt;
+    text-align: right;
+    float: left;
+}
+
+.orderReceiptDetailsAmount
+{
+    width: 100px;
+    font-size: 8pt;
+    text-align: right;
+    float: left;
+}
+
+.orderReceiptDetailsTotal div
+{
+    font-weight: bold;
+}
+
+.orderReceiptPrint
+{
+    width: 615px;
+    text-align: right;
+    padding: 10px 0px 0px 0px;
+}
+
+/* PANEL - Order Details */
+.orderDetailsContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.orderDetailsTableContainer
+{
+    width: 615px;
+}
+
+.orderDetailsTable
+{
+    width: 615px;
+    border: 1px solid #000000;
+}
+
+.orderDetailsTableHeader
+{
+    font-size: 8pt;
+    color: #990000;
+    background-color: #F1F1F1;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 5px 0px 5px 5px;
+}
+
+.orderDetailsTableContentRow td
+{
+    font-size: 8pt;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+    border-top: 1px solid #000000;
+}
+
+.orderDetailsTableContentSK1, .orderDetailsTableContentNA1, .orderDetailsTableContentQT1, .orderDetailsTableContentAM1, .orderDetailsTableContentLT1
+{
+    background-color: #DFDFDD;
+}
+
+.orderDetailsTableContentSK2, .orderDetailsTableContentNA2, .orderDetailsTableContentQT2, .orderDetailsTableContentAM2, .orderDetailsTableContentLT2
+{
+    background-color: #F1F1F1;
+}
+
+.orderDetailsTableContentNA1, .orderDetailsTableContentQT1, .orderDetailsTableContentAM1, .orderDetailsTableContentLT1, .orderDetailsTableContentNA2, .orderDetailsTableContentQT2, .orderDetailsTableContentAM2, .orderDetailsTableContentLT2
+{
+    border-left: 1px solid #000000;
+}
+
+.orderDetailsTableTotalRow td
+{
+    padding: 5px 0px 5px 5px;
+    border-top: 2px solid #000000;
+}
+
+.orderDetailsTableTotalLabel
+{
+    color: #990000;
+    font-size: 8pt;
+    text-align: right;
+}
+
+.orderDetailsTableTotalAmount
+{
+    width: 100px;
+    color: #990000;
+    font-size: 9pt;
+    font-weight: bold;
+    text-align: left;
+    border-left: 1px solid #000000;
+}
+
+.orderDetailsContinueShopping
+{
+    width: 615px;
+    text-align: right;
+    padding: 10px 0px 0px 0px;
+}
+
+/* PANEL - Billing Details */
+.billingDetailsContent
+{
+    width: 615px;
+    min-height: 125px;
+    padding: 0px 20px 20px 20px;
+}
+
+.billingDetailsBilling
+{
+    height: 125px;
+    padding: 0px 0px 10px 0px;
+}
+.billingDetailsShipping
+{
+    padding: 25px 0px 10px 0px;
+    height: 125px;
+}
+
+.billingDetailsBillingHeader, .billingDetailsShippingHeader
+{
+    clear: both;
+}
+
+.billingDetailsBillingHeaderLabel, .billingDetailsShippingHeaderLabel
+{
+    float: left;
+    color: #990000;
+    font-size: 8pt;
+    text-transform: uppercase;
+    padding: 0px 0px 5px 0px;
+}
+
+.billingDetailsBillingHeaderError, .billingDetailsShippingHeaderError
+{
+    color: #CC0000;
+    font-size: 8pt;
+    padding: 5px 0px 5px 0px;
+}
+
+.billingDetailsBillingHeaderField, .billingDetailsShippingHeaderField
+{
+    width: 211px;
+    float: right;
+    text-align: right;
+    padding: 0px 4px 0px 0px;
+}
+
+.billingDetailsBillingHeaderField select, .billingDetailsShippingHeaderField select
+{
+    width: 175px;
+}
+
+.billingDetailsBillingTable, .billingDetailsShippingTable
+{
+    width: 613px;
+    position: relative;
+    float: left;
+    border: 1px solid #000000;
+}
+
+.billingDetailsBillingTableLabel, .billingDetailsShippingTableLabel
+{
+    width: 125px;
+    font-size: 8pt;
+    text-align: right;
+    padding: 0px 5px 0px 0px;
+}
+
+.billingDetailsBillingTableField, .billingDetailsShippingTableField
+{
+    width: 175px;
+}
+
+.billingDetailsBillingTableField input, .billingDetailsShippingTableField input
+{
+    width: 170px;
+}
+
+.billingDetailsBillingTableField select, .billingDetailsShippingTableField select
+{
+    width: 175px;
+}
+
+.billingDetailsBillingSave input
+{
+    float: right;
+    padding-top: 5px;
+}
+
+.billingDetailsShippingSave
+{
+    position: relative;
+    float: right;
+}
+.billingDetailsShippingSave input
+{
+    float: right;
+}
+
+.billingDetailsRequireShipping
+{
+    position: relative;
+    float: left;
+    font-size: 8pt;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+/* PANEL - Payment Details */
+.paymentDetailsContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.paymentDetails
+{
+    padding: 0px 0px 10px 0px;
+}
+
+.paymentDetailsMessage
+{
+    padding: 0px 0px 10px 0px;
+    color:#990000;
+}
+
+.paymentDetailsHeader
+{
+    width: 615px;
+    color: #990000;
+    font-size: 8pt;
+    text-transform: uppercase;
+    padding: 0px 0px 5px 0px;
+    clear: both;
+}
+
+.paymentDetailsTable
+{
+    width: 613px;
+    border: 1px solid #000000;
+    
+    margin:2px 0px 2px 0px;
+    padding:5px 0px 5px 0px;
+}
+
+.paymentDetailsTableLabel
+{
+    width: 125px;
+    font-size: 8pt;
+    text-align: right;
+    padding: 0px 5px 0px 0px;
+}
+
+.paymentDetailsTableField
+{
+    width: 175px;
+}
+
+.paymentDetailsTableField input
+{
+    width: 170px;
+}
+
+.paymentDetailsTableField select
+{
+    width: 175px;
+}
+
+.paymentDetailsProcessOrder
+{
+    width: 615px;
+    text-align: right;
+    padding: 10px 0px 0px 0px;
+}
+
+.paymentDetailsRadiosOnline
+{
+    font-size: 8pt;
+}
+
+.paymentDetailsRadiosPayByCheck
+{
+    font-size: 8pt;
+}
+.paymentDetailsRadios
+{
+    font-size: 8pt;
+    
+    padding:0px 0px 10px 0px;
+}
+
+/* PANEL - Order Summary */
+.orderSummaryContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.orderSummaryDescription
+{
+    width: 300px;
+    float: left;
+    font-size: 8pt;
+    padding: 0px 0px 0px 0px;
+}
+
+.orderSummaryMessage
+{
+    font-size: 8pt;
+    padding: 10px 0px 10px 0px;
+    color: #FF0000;
+}
+
+.orderSummaryDetails
+{
+    width: 295px;
+    float: left;
+    padding: 0px 10px 0px 10px;
+}
+
+.orderSummaryDetailsLabel
+{
+    width: 195px;
+    color: #990000;
+    font-size: 8pt;
+    text-align: right;
+    float: left;
+}
+
+.orderSummaryDetailsAmount
+{
+    width: 100px;
+    font-size: 8pt;
+    text-align: right;
+    float: left;
+}
+
+.orderSummaryDetailsTotal div
+{
+    font-weight: bold;
+}
+
+.orderSummaryControls
+{
+    width: 615px;
+    clear: both;
+    text-align: right;
+    padding: 10px 0px 0px 0px;
+}
+
+/* PANEL - Promotion Code */
+.promotionCodeContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.promotionCodeMessage
+{
+    font-size: 8pt;
+    
+    padding:10px 0px 10px 0px;
+    color:#FF0000;
+}
+
+.promotionCodeLabel
+{
+    font-size: 8pt;
+}
+
+.promotionCodeField
+{
+    text-align: right;
+    padding: 10px 0px 10px 0px;
+}
+
+.promotionCodeField input
+{
+    width: 500px;
+    text-align: right;
+}
+
+.promotionCodeSubmit
+{
+    text-align: right;
+}
+
+/* PANEL - Shipping Options */
+.shippingOptionsContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.shippingOptionsLabel
+{
+    font-size: 8pt;
+}
+
+.shippingOptionsField
+{
+    text-align: right;
+    padding: 10px 0px 10px 0px;
+}
+
+.shippingOptionsField select
+{
+    width: 500px;
+    text-align: right;
+}
+
+/* PANEL - Presentation List */
+.presentationListContent
+{
+    width: 615px;
+    padding: 20px 20px 20px 20px;
+}
+
+.presentationListContainer
+{
+	padding:0px 0px 20px 0px;
+}
+
+.presentationListTitle
+{
+    font-size: 14px;
+    font-weight:bold;
+    
+    padding:0px 0px 10px 0px;	
+}
+
+.presentationListAlternateDescription
+{
+	font-size:12px;
+	
+	padding:0px 0px 10px 0px;	
+}
+
+.presentationListDescription
+{
+	font-size: 12px;
+	
+	padding:0px 0px 10px 0px;	
+}
+.presentationListPrimarySpeaker
+{
+	font-size: 12px;
+	font-style:italic;
+	font-weight:bold;
+	padding:0px 0px 5px 0px;	
+}
+.presentationListSpeaker
+{
+	font-size: 12px;
+	font-style:italic;
+	
+	padding:0px 0px 5px 0px;	
+}
+
+/* PANEL - Personal Details */
+.personalDetailsContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.personalDetailsDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.personalDetailsMessage
+{
+    font-size: 8pt;
+    color: #990000;
+    padding: 10px 0px 20px 0px;
+}
+
+.personalDetailsListContainer
+{
+    width: 615px;
+}
+
+.personalDetailsListLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.personalDetailsListField
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.personalDetailsListField input
+{
+    width: 300px;
+}
+
+.personalDetailsListSave
+{
+    padding: 20px 0px 0px 0px;
+}
+
+/* PANEL - Need Account */
+.needAccountContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.needAccountDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.needAccountMessage
+{
+    font-size: 8pt;
+    color: #990000;
+    padding: 10px 0px 20px 0px;
+}
+
+/* PANEL - Create Account */
+.createAccountContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.createAccountDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.createAccountMessage
+{
+    font-size: 8pt;
+    color: #990000;
+    padding: 10px 0px 20px 0px;
+}
+
+.createAccountListContainer
+{
+    width: 615px;
+}
+
+.createAccountListLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.createAccountListField
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.createAccountListFieldCheckBox
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+    text-align: justify;
+    font-size: 12px;
+}
+
+.createAccountListField input
+{
+    width: 300px;
+}
+
+.createAccountListFieldDropDown
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.createAccountListFieldDropDown select
+{
+    width: 305px;
+}
+
+
+.createAccountListSave
+{
+    padding: 20px 0px 0px 0px;
+}
+
+/* PANEL - Change Password */
+.changePasswordContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.changePasswordDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.changePasswordMessage
+{
+    font-size: 8pt;
+    color: #990000;
+    padding: 10px 0px 20px 0px;
+}
+
+.changePasswordListContainer
+{
+    width: 615px;
+}
+
+.changePasswordListLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.changePasswordListField
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.changePasswordListField input
+{
+    width: 300px;
+}
+
+.changePasswordListChange
+{
+    padding: 20px 0px 0px 0px;
+}
+
+/* PANEL - Addresses */
+.addressesContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.addressesMessage
+{
+    font-size: 8pt;
+    color: #990000;
+    padding: 10px 0px 20px 0px;
+}
+
+.addressesListContainer
+{
+    width: 615px;
+}
+
+.addressesListLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.addressesListField
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.addressesListField input
+{
+    width: 300px;
+}
+
+.addressesListField select
+{
+    width: 305px;
+}
+
+.addressesListAdd
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.addressesGridContainer
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.addressesGrid
+{
+    width: 615px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.addressesGridHeaderRow th
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #92918C;
+    border: 0;
+    padding: 3px 0px 3px 0px;
+    text-align: left;
+}
+
+.addressesGridRow1 td
+{
+    font-size: 8pt;
+    color: #000000;
+    background-color: #DFDFDD;
+    border: 0;
+}
+
+.addressesGridRow2 td
+{
+    font-size: 8pt;
+    color: #000000;
+    background-color: #F1F1F1;
+    border: 0;
+}
+
+/* PANEL - Phone Numbers */
+.phoneNumbersContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.phoneNumbersMessage
+{
+    font-size: 8pt;
+    color: #990000;
+    padding: 10px 0px 20px 0px;
+}
+
+.phoneNumbersListContainer
+{
+    width: 615px;
+}
+
+.phoneNumbersListLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.phoneNumbersListField
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.phoneNumbersListField input
+{
+    width: 300px;
+}
+
+.phoneNumbersListField select
+{
+    width: 305px;
+}
+
+.phoneNumbersListAdd
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.phoneNumbersGridContainer
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.phoneNumbersGrid
+{
+    width: 615px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.phoneNumbersGridHeaderRow th
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #92918C;
+    border: 0;
+    padding: 3px 0px 3px 0px;
+    text-align: left;
+}
+
+.phoneNumbersGridRow1 td
+{
+    font-size: 8pt;
+    color: #000000;
+    background-color: #DFDFDD;
+    border: 0;
+}
+
+.phoneNumbersGridRow2 td
+{
+    font-size: 8pt;
+    color: #000000;
+    background-color: #F1F1F1;
+    border: 0;
+}
+/* PANEL - Prof Cat */
+.profContent
+{
+    width: 665px;
+    padding: 0px 20px 20px 20px;
+}
+.profListContainer
+{
+    width: 615px;
+}
+.profListLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+.profListField
+{
+    font-size: 8pt;
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.profListField input
+{
+    width: 300px;
+}
+
+.profListField select
+{
+    width: 300px;
+}
+.profpaneControl
+{
+    width: 665px;
+}
+.profDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+.profMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+    color: Red;
+}
+/* PANEL - Order Error */
+.orderErrorContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.orderErrorTitle
+{
+    font-size: 12pt;
+}
+
+.orderErrorCode
+{
+    width: 595px;
+    color: #990000;
+    font-size: 8pt;
+    padding: 10px 20px 10px 20px;
+}
+
+.orderErrorMessage
+{
+    font-size: 8pt;
+}
+
+/* PANEL - Order Received */
+.orderReceivedContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.orderReceivedTitle
+{
+    font-size: 12pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.orderReceivedMessage
+{
+    font-size: 8pt;
+}
+
+/* PANEL - Session List */
+.sessionPackages
+{
+    width: 615px;
+    padding: 0px 0px 0px 0px;
+}
+.sessionItemsListContent
+{
+    width: 615px;
+    padding: 10px 20px 10px 10px;
+}
+.OtherSessionItems
+{
+    width: 615px;
+    padding: 10px 20px 20px 10px;
+}
+
+/* Session List Flyout */
+.sessionItemsListTable
+{
+	width:300px;
+}
+
+.sessionItemsListRow1
+{
+	width:300px;
+	background-color:#F1F1F1;
+}
+
+.sessionItemsListRow2
+{
+	width:300px;
+	background-color:#DFDFDD;
+}
+
+.sessionItemsListRow1 td, .sessionItemsListRow2 td
+{
+	padding:5px 0px 20px 0px;
+}
+
+.sessionItemsListContainer
+{
+    width: 225px;
+}
+
+.sessionListControlContainerMessage
+{
+	width:300px;
+	
+	font-size:12px;
+	color:#999999;
+	font-style:italic;
+	
+	text-align:center;
+	
+	background-color:#FFFFFF;
+	
+	padding:0px 0px 10px 0px;
+}
+
+.sessionItemsListDetails
+{
+	font-size: 12px;
+	
+	text-align:left;
+}
+
+.sessionItemsListImageContainer
+{
+    padding-bottom:10px;
+}
+
+.sessionItemsListThumbnail
+{
+    width: 75px;
+    text-align: center;
+    vertical-align:top;
+}
+
+.sessionItemsListTitle
+{
+    width: 225px;
+    text-transform: inherit;
+    text-align: left;
+    font-size: 12px;
+    font-weight:bold;
+    color:#990000;
+}
+
+.sessionItemsListCEValues
+{
+    text-align:left;
+    font-size:12px;
+    font-style:italic;
+}
+
+.sessionItemsListPrice
+{
+    width: 225px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.sessionItemsListClientCode
+{
+    width: 225px;
+    text-align: left;
+    font-size: 12px;
+}
+
+/* Session Grid Flyout */
+.sessionItemsGridContainer
+{
+    width: 150px;
+    padding: 0px 0px 20px 0px;
+    float: left;
+}
+
+.sessionItemsGridDetails
+{
+	font-size: 12px;
+}
+
+.sessionItemsGridThumbnail
+{
+    width: 150px;
+    text-align: center;
+    vertical-align:top;
+}
+
+.sessionItemsGridTitle
+{
+    width: 150px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.sessionItemsGridPrice
+{
+    width: 150px;
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.sessionItemsGridCEValue
+{
+    width: 150px;
+    text-align: left;
+    font-size: 8pt;
+}
+.sessionItemsGridClientCode
+{
+    width: 150px;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.AsessionItemsListDetails
+{
+    width: 150px;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.AsessionItemsListThumbnail
+{
+    width: 150px;
+    text-align: center;
+}
+
+.AsessionItemsListTitle
+{
+    width: 150px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.AsessionItemsListPrice
+{
+    width: 150px;
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.AsessionItemsListClientCode
+{
+    width: 150px;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.AsessionItemsListDetails
+{
+    width: 150px;
+    text-align: center;
+    font-size: 8pt;
+}
+/* PANEL - Product Pricing List */
+.ProductPricingSessionItems
+{
+	width: 615px;
+}
+
+.ProductPricingSessionMessage
+{
+	width: 615px;
+	font-size:12px;	
+	
+	color:#666666;
+	text-align:center;
+	
+	padding:5px 20px 10px 20px; 
+}
+
+.ProductPricingListTbl
+{
+ 
+}
+.ProductPricingList
+{
+    
+  
+}
+.ProductPricingThumbnail
+{
+    
+    text-align: center;
+}
+.ProductPricingTitle
+{
+    
+    text-transform: none;
+    text-align:  center;
+    font-size: 12px;
+}
+.ProductPricingPrice
+{
+    
+     text-align:  center;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.ProductPricingListRow
+{
+ 
+}
+.ProductPricingListCell
+{
+    vertical-align:top;
+     width:153px;
+}
+
+/* PANEL - Recommended Session List */
+.RecommendedSessionItems
+{
+ width: 615px;
+   
+}
+.ReCommendedSessionListTbl
+{
+  
+}
+.ReCommendedSessionList
+{
+   
+}
+.ReCommendedItemsThumbnail
+{
+  
+    text-align: center;
+}
+.ReCommendedItemsTitle
+{
+   
+    text-transform: none;
+    text-align: center;
+    font-size: 12px;
+}
+.ReCommendedItemsListPrice
+{
+
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.ReCommendedSessionListRow
+{
+ 
+}
+.ReCommendedSessionListCell
+{
+    width:153px;
+    vertical-align:top;
+}
+/* PANEL - External Content */
+.externalContentViewerContent
+{
+	width:655px;
+}
+
+.externalContentViewerWindow
+{
+	width:655px;
+	height:600px;
+}
+
+/* PANEL - Package List */
+.packageListContent
+{
+    width: 653px;
+    overflow-x: scroll;
+    overflow-y: hidden; 
+}
+
+.packageListScrollContent
+{
+    /*width: 10000px;*/
+}
+
+.packageListContainer
+{
+    width: 150px;
+    padding: 0px 0px 20px 0px;
+    float: left;
+}
+
+.packageListThumbnail
+{
+    width: 150px;
+    text-align: center;
+}
+
+.packageListTitle
+{
+    width: 150px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 8pt;
+}
+.sessionListFrame
+{
+    vertical-align: top;
+}
+.packageListPrice
+{
+    width: 150px;
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.packageListDetails
+{
+    width: 150px;
+    text-align: center;
+    font-size: 8pt;
+}
+
+/* PANEL - Testimonials */
+.testimonialContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.testimonialItemContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+}
+
+.testimonialItemQuote
+{
+    width: 615px;
+    font-size: 8pt;
+    padding: 0px 0px 5px 0px;
+}
+
+.testimonialItemName
+{
+    width: 615px;
+    font-size: 8pt;
+    font-weight: bold;
+}
+
+
+/* PANEL - Sponsors */
+.sponsorBanners
+{
+    padding: 20px 0px 20px 0px;
+}
+
+.sponsorBanner
+{
+    width: 158px;
+    text-align: center;
+    padding: 0px 0px 5px 0px;
+}
+
+/* PANEL - Itinerary Planner (Calendar View) */
+.calendarViewContent
+{
+    width: 615px;
+    padding: 20px 20px 20px 20px;
+}
+
+/* PANEL - Itinerary List */
+.itineraryListContent
+{
+    width: 615px;
+    padding: 20px 20px 20px 20px;
+}
+
+.itineraryListContainer
+{
+    width: 615px;
+}
+
+.itineraryFilters
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+}
+
+.itineraryFilterTable
+{
+    width: 615px;
+}
+
+.itineraryFilterTable tr td
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.itineraryFilterTableLabel
+{
+    width: 100px;
+    padding: 0px 10px 0px 0px !important;
+    text-align: right;
+    font-size: 8pt;
+}
+
+.itineraryFilterTableField
+{
+    width: 515px;
+}
+
+.itineraryFilterTableField select
+{
+    width: 515px;
+}
+
+.itineraryListGridContainer
+{
+    width: 615px;
+    border: 1px solid #000000;
+}
+
+.itineraryListGrid
+{
+    width: 615px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.itineraryListGridRow1 td
+{
+    font-size: 8pt;
+    color: #000000;
+    background-color: #DFDFDD;
+    border: 0;
+}
+
+.itineraryListGridRow2 td
+{
+    font-size: 8pt;
+    color: #000000;
+    background-color: #F1F1F1;
+    border: 0;
+}
+
+.itineraryListGridHeaderRow th
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #92918C;
+    border: 0;
+    padding: 3px 0px 3px 0px;
+    text-align: left;
+}
+
+.itineraryListGridPaging td
+{
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 8pt;
+    text-align: right;
+}
+
+.itineraryListGridPaging td a
+{
+    color: #FFFFFF;
+    font-size: 8pt;
+}
+
+/* CONTROL - Daily Schedule */
+.itineraryField
+{
+    width: 306px; /* border: 1px solid #999999;*/
+    padding: 0px 0px 3px 0px;
+}
+.itineraryListLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 14px;
+}
+/*.itineraryListField
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}*/
+.itineraryCalendarLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+.itineraryRow
+{
+    padding-bottom: 10px;
+}
+.itineraryCalendarField
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+
+.Calendar
+{
+}
+.CalendarAgenda
+{
+    width: 615;
+}
+.DailySchedule
+{
+    background-color: #F1F1F1;
+    border-bottom: 1px solid #000000;
+}
+.ScheduleTopCell
+{
+    height: 19px;
+    background: #ffffff url(../images/buttons/button_topgreybar.png) repeat-x top left;
+    padding: 0px;
+    margin: 0px;
+    padding-left: -3px;
+}
+.ScheduleTopCellAgenda
+{
+    height: 19px;
+    background: #ffffff url(../images/buttons/button_topgreybar.png) repeat-x top left;
+    padding: 0px;
+    margin: 0px;
+    padding-left: -3px;
+    width: 616px;
+}
+.ScheduleBottomCell
+{
+    height: 20px;
+    background: #ffffff url(../images/buttons/button_bottomgreybar.png) repeat-x top left;
+    width: 616px;
+}
+.ScheduleBottomCellAgenda
+{
+    height: 20px;
+    background: #ffffff url(../images/buttons/button_bottomgreybar.png) repeat-x top left;
+    width: 616px;
+}
+.ScheduleHeadingRow
+{
+}
+.ScheduleHeadingRowAgenda
+{
+}
+.ScheduleHeadingRowAgenda
+{
+}
+.ScheduleUpControlButton
+{
+}
+.ScheduleCornerCell
+{
+    width: 100px;
+    height: 27px;
+    font-size: 8pt;
+    color: #595959;
+    font-weight: bold; /* background-color: #D4D4D4;*/
+    text-align: center;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+    background: #FFFFFF url(../images/buttons/button_datebox.png) repeat-y repeat-x bottom left;
+}
+
+.ScheduleCornerCellAgenda
+{
+    width: 108px;
+    height: 40px;
+    font-size: 8pt;
+    color: #595959;
+    font-weight: bold; /* background-color: #D4D4D4;*/
+    text-align: center;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+    background: #FFFFFF url(../images/buttons/button_datebox.png) repeat-y repeat-x bottom left;
+}
+.ScheduleHeadingCell
+{
+    height: 27px;
+    text-align: center;
+    font-size: 8pt;
+    color: #FFFFFF; /* background-color:#454545;*/
+    background: #FFFFFF url(../images/buttons/button_header.png) repeat-y;
+}
+.ScheduleHeadingCellAgenda
+{
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    font-size: 8pt;
+    color: #FFFFFF; /* background-color:#454545;*/
+    background: #FFFFFF url(../images/buttons/button_header.png) repeat-x;
+}
+.ScheduleBlankHeadingCell
+{
+    height: 27px;
+    color: #FFFFFF;
+    background: #FFFFFF url(../images/buttons/button_header.png) repeat-y; /* background-color:#454545;*/
+}
+
+.ScheduleBlankHeadingCellAgenda
+{
+    height: 27px;
+    color: #FFFFFF;
+    background: #FFFFFF url(../images/buttons/button_header.png) repeat-x; /* background-color:#454545;*/
+}
+.ScheduleHourRow td
+{
+    border-top: 1px solid #000000;
+}
+
+.ScheduleRoomRow
+{
+}
+
+.ScheduleTimeCell
+{
+    width: 20px;
+    text-align: center;
+    border-right: 1px solid #000000;
+    padding: 5px 5px 5px 5px;
+    font-weight: bold;
+    color: Black; /*  background-color: #8B8682;*/
+    background: #FFFFFF url(../images/buttons/button_timebox.png) repeat-y;
+    border-bottom: 0;
+}
+
+.ScheduleRoomUpperCell
+{
+    font-size: 11px;
+    vertical-align: top;
+    background-color: #DFDFDD;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #000000;
+}
+
+.ScheduleRoomUpperCellAgenda
+{
+    font-size: 11px;
+    vertical-align: top;
+    background-color: #65909A;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    height: 70px;
+    width: 100px;
+}
+.ScheduleRoomUpperCellAgendaRoom
+{
+    height: 15px;
+    color: White;
+    padding: 0px 2px 2px 2px;
+}
+.ScheduleRoomUpperCellAgendaRoomLabel
+{
+	
+}
+.ScheduleRoomUpperCellAgendaSession
+{
+    padding: 4px 4px 4px 4px;
+    color: White;
+    border-top: 1px solid #000000;
+}
+
+.ScheduleRoomUpperCellAgendaSession a
+{
+    color: White;
+    text-decoration: none;
+}
+
+.ScheduleRoomUpperCellAgendaBlank
+{
+    font-size: 11px;
+    vertical-align: top;
+    background-color: White;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    height: 60px;
+    width: 100px;
+}
+.ScheduleRoomBreakCellAgenda
+{
+    background-color: #B4CDCD;
+    border-right: 1px solid #000000;
+    border-top: 1px solid #000000;
+    text-align: center;
+    color: White;
+    font-weight: bold;
+    width: 500px;
+}
+.ScheduleRoomLowerCell
+{
+    font-size: 11px;
+    vertical-align: top;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #000000;
+}
+
+.ScheduleOccuranceCell
+{
+    font-size: 11px;
+    vertical-align: top;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #000000;
+    padding: 0px 0px 0px 0px; /* background-color: #C6E2FF */
+    background: #FFFFFF url(../images/buttons/button_small.png) repeat-y;
+}
+
+.ScheduleBreakOccuranceCell
+{
+    font-size: 11px;
+    vertical-align: top;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #000000;
+    padding: 0px 0px 0px 0px; /* background-color: #C6E2FF */
+    background: #FFFFFF url(../images/buttons/button_small2.png) repeat-y;
+}
+
+.ScheduleOccuranceCellButton
+{
+    width: 100%;
+    text-align: right;
+}
+
+.ScheduleOccuranceCellTime
+{
+    font-size: 11px;
+    background-color: #36648B;
+    color: White;
+    padding: 0px 0px 0px 2px;
+    vertical-align: top;
+}
+
+.ScheduleBreakOccuranceCellTime
+{
+    font-size: 11px;
+    background-color: #3A9907;
+    color: White;
+    padding: 0px 0px 0px 2px;
+    vertical-align: top;
+}
+
+.ScheduleOccuranceCellTitle,.ScheduleOccuranceCellSaveOutLook
+{
+    padding: 0px 0px 0px 5px;
+    font-size: 11px;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.ScheduleLeftControlCell, .ScheduleRightControlCell
+{
+    width: 18px; /*  background-color: #CDC9C9;*/
+    background: #FFFFFF url(../images/buttons/button_topbar.png) repeat-x top left;
+}
+
+/*
+.ScheduleUpControlCell
+{
+    width: 8px;
+    background-color: #CDC9C9;
+}*/
+.ScheduleUpControlDiv
+{
+    width: 14px; /* background-color: #CDC9C9;*/
+    background: #FFFFFF url(../images/buttons/button_leftbar.png)repeat-x repeat-y;
+}
+.ScheduleDownControlDiv
+{
+    width: 14px;
+}
+.ScheduleLeftControlCell
+{
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+.ScheduleLeftControlCellAgenda
+{
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000000;
+    text-align: center;
+    font-size: 10px;
+    padding: 2px 0px 2px 0px;
+    height: 20px;
+    width: 500px !important;
+    font-weight: bold; /*  background-color: #CDC9C9;*/
+    background: #FFFFFF url(../images/buttons/button_topbar.png) repeat-x top left;
+}
+
+.ScheduleUpControlCell
+{
+    width: 14px;
+    vertical-align: top;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000; /*  background-color  : #CDC9C9;*/
+}
+.TimecellAgenda
+{
+    height: 70px;
+    color: #595959;
+    font-weight: bold; /* background-color: #D4D4D4;*/
+    text-align: center;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+    width: 108px !important;
+    background: #FFFFFF url(../images/buttons/button_datebox.png) repeat-y repeat-x top bottom left;
+}
+.TimecellAgendaStartTime
+{
+    font-size: 12px;
+}
+.TimecellAgendaStartTimeStartAMPM
+{
+    font-size: 8px;
+}
+.TimecellAgendaEndTime
+{
+    font-size: 12px;
+}
+.TimecellAgendaStartTimeEndStartAMPM
+{
+    font-size: 8px;
+}
+.ScheduleDownControlCell
+{
+    vertical-align: bottom;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+}
+
+.ScheduleRightControlCell
+{
+    text-align: right;
+    border-right: 1px solid #000000;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+.ScheduleAMPMDiv
+{
+    font-size: 8pt;
+}
+.ScheduleHourDiv
+{
+    font-size: 16pt;
+}
+
+/* PANEL - Agenda Calendar View */
+.agendaFilters
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+}
+
+.agendaFilterTable
+{
+    width: 615px;
+}
+
+.agendaFilterTable tr td
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.agendaFilterTableLabel
+{
+    width: 100px;
+    padding: 0px 10px 0px 0px !important;
+    text-align: right;
+    font-size: 8pt;
+}
+
+.agendaFilterTableField
+{
+    width: 515px;
+}
+
+.agendaFilterTableField select
+{
+    width: 515px;
+}
+
+/* PANEL - Top Five Purchased */
+.topFivePurchaseList
+{
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.topFivePurchaseListHeaderText
+{
+    margin-bottom: 10px;
+    color: #CC0000;
+    font-size: 11pt;
+    font-weight: bold;
+}
+.topFiveSessionText
+{
+    text-align: left;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.topFiveSessionText > img
+{
+    clear: left;
+    padding-left: 5px;
+}
+
+.topFiveWatchedSessionsList
+{
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.topFiveWatchedSessionsHeaderText
+{
+    margin-bottom: 10px;
+    color: #CC0000;
+    font-size: 11pt;
+    font-weight: bold;
+}
+.topFiveWatchedText
+{
+    text-align: left;
+    font-size: 11px;
+    font-weight: bold;
+}
+.topFiveWatchedText > img
+{
+    clear: left;
+    padding-left: 5px;
+}
+.topFiveWatchedListItem > a
+{
+    text-decoration: none;
+    color: #000000;
+}
+.topFiveWatchedListItem > a:hover
+{
+    color: #FF0000;
+}
+
+/* PANEL - Highly Rated List */
+.topFiveHighlyRatedSessionsList
+{
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+.topFiveHighlyRatedSessionsHeaderText
+{
+    margin-bottom: 10px;
+    color: #CC0000;
+    font-size: 11pt;
+    font-weight: bold;
+}
+.topFiveHighlyRatedText
+{
+    text-align: left;
+    font-size: 11px;
+    font-weight: bold;
+}
+.topFiveHighlyRatedText img
+{
+    clear: left;
+    padding-left: 5px;
+}
+.topFiveHighlyRatedListItem > a
+{
+    text-decoration: none;
+    color: #000000;
+}
+.topFiveHighlyRatedListItem > a:hover
+{
+    color: #FF0000;
+}
+
+.topFivePurchasedListItem > a
+{
+    text-decoration: none;
+    color: #000000;
+}
+.topFivePurchasedListItem > a:hover
+{
+    color: #FF0000;
+}
+.feedbackPaneContent
+{
+    padding-left: 15px;
+}
+.feedbackPaneMessage
+{
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 8pt;
+}
+
+.feedbackPaneResultMessage
+{
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 8pt;
+    color: #CC0000;
+}
+
+.feedbackPaneTextBox textarea
+{
+    overflow: hidden;
+    border: solid 1px;
+}
+.feedbackPaneSubmit
+{
+    height: 25px;
+}
+
+.feedbackPaneSubmit input
+{
+    float: right;
+    padding-right: 20px;
+    padding-top: 5px;
+}
+
+.QuickLogin
+{
+    font-size: 13px;
+    font-weight: normal;
+    height: 105px;
+}
+.QuickLogin > div
+{
+    padding-left: 5px;
+}
+.QuickLogin > div > input
+{
+    padding-left: 5px;
+    width: 125px;
+}
+.QuickLogin > input
+{
+    position: relative;
+    float: right;
+    right: 5px;
+}
+/* PANEL - Session Package */
+
+.PackageSessionItems
+{
+	width: 615px;
+}
+
+.PackageSessionMessage, .RecommendedSessionItemsMessage
+{
+	width: 615px;
+	font-size:12px;	
+	
+	color:#666666;
+	text-align:center;
+	
+	padding:5px 20px 10px 20px;
+}
+
+.PackageSessionListTbl
+{
+ 
+}
+
+.PackageSessionList
+{
+   
+}
+
+.PackageSessionItemsThumbnail
+{ 
+    text-align: center;
+}
+
+.PackageSessionItemsTitle
+{
+   
+    text-transform: none;
+    text-align:  center;
+    font-size: 12px;
+}
+
+.PackageSessionItemsListPrice
+{ 
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.PackageSessionListRow
+{  
+}
+
+.PackageSessionListCell
+{
+    vertical-align:top;
+    width:153px;
+}
+
+.PackageSessionListDetails
+{ 
+    text-align: center;
+    font-size: 12px;
+}
+/* PANEL - Session Offer */
+
+.OfferSessionItems
+{
+  width:616px;
+   
+}
+.OfferSessionListTbl
+{
+	padding-top: 5px;
+}
+
+.OfferSessionListTbl tr td
+{
+    text-align: center; 
+}
+
+.OfferSessionList
+{
+    
+}
+.OfferSessionItemsThumbnail
+{
+    text-align: center;
+}
+.OfferSessionItemsTitle
+{
+    
+    text-transform: none;
+    text-align: center;
+    font-size: 12px;
+}
+.OfferSessionItemsListPrice
+{
+  text-align: center;
+   
+    font-size: 10pt;
+    font-weight: bold;
+}
+.OfferSessionListRow
+{
+  
+}
+.OfferSessionListCell
+{
+     width:154px;
+    vertical-align:top;
+     text-align: center;
+}
+
+/* PANEL - Session Packages */
+.sessionPackagesList
+{
+    text-align: center;
+}
+
+.sessionPackageItemsThumbnail
+{
+    text-align: center;
+}
+
+.sessionPackageItemsTitle
+{
+   
+    text-transform: none;
+    text-align: center;
+    font-size: 12px;
+}
+
+.sessionPackageItemsListPrice
+{
+    
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.sessionPackageListDetails
+{
+   
+    text-align: center;
+    font-size: 12px;
+}
+
+/* PANEL - Forums */
+.ForumMessage
+{
+    padding-left: 5px;
+}
+
+.ForumErrMessage
+{
+    font-size: 8pt;
+    padding-left: 10px;
+}
+
+.ForumPostButton
+{
+    text-align: right;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+.forumPosts
+{
+    width:615px;
+ 
+    font-size: 10pt;
+}
+
+.forumPost
+{
+    width:615px;
+    
+    border-bottom:1px solid #666666;  
+    
+    margin:0px 20px 0px 20px; 
+    padding:20px 0px 0px 0px;
+}
+
+.forumPostedTable
+{
+    width: 615px;
+}
+
+.forumPostText
+{
+    width:380px;
+    vertical-align: top;
+    
+    padding:0px 0px 0px 10px;
+}
+
+.forumPostPicture
+{
+    font-size: 8pt;
+    width: 100px;
+    vertical-align:top;
+}
+
+.forumPostPicture img
+{
+    width:100px;
+    border:1px solid #000000!important;   
+}
+
+.forumPostData
+{
+    padding:10px 0px 0px 0px;
+}
+
+.forumPostProfile
+{
+    font-size: 8pt;
+    width: 105px;
+    padding:0px 0px 0px 5px;
+    vertical-align:top;
+}
+
+.forumAgreements
+{
+    position: relative;
+    float: left;
+    height: 100%;
+    vertical-align: bottom;
+    font-size: 8pt;
+}
+
+.forumAgreeDisagreeTable
+{
+    text-align: left;
+    width: 130px;
+}
+
+.forumAgreeCell
+{
+    width:15px;
+    
+    font-size:14px;
+    
+    font-weight:bold;
+}
+
+.forumDisagreeCell
+{
+    width:15px;
+        
+    font-size:14px;
+    
+    font-weight:bold;
+    
+    text-align:right;
+}
+
+.forumAgreeDisagreeLinks
+{
+    width:100px;
+    
+    font-size:10px;
+    
+    text-align:center;
+}
+
+.forumPolicy
+{
+    font-size:10px;
+    
+    text-align:right;
+}
+
+.forumAgreeDisagreeCell
+{
+    width: 210px;
+    
+    padding:10px 0px 10px 0px;
+    
+    vertical-align:middle;
+}
+
+.forumPostListHeader
+{
+    padding:20px 0px 20px 20px;
+    font-size: 8pt;
+}
+
+.ForumAgreeDisagreeTopCell
+{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+/* PANEL - Profiles */
+.profilePanel
+{
+    height: 600px;
+}
+.profilePic
+{
+    width: 150px;
+    float: left;
+    padding-left: 25px;
+}
+.profilePic img
+{
+    clear: right;
+}
+.profilePic input
+{
+    padding-top: 5px;
+}
+
+.profileDetails > h4
+{
+    width: 350px;
+    color: #E1850E;
+    margin-left: -25px;
+}
+
+.profileDetails p
+{
+    color: #E1850E;
+}
+.profileDetails
+{
+    float: right;
+    padding-left: 25px;
+    line-height: 15px;
+}
+.profileDetails td, p
+{
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+/* PANEL - User Profile */
+.userProfilePanel
+{
+	width:615px;
+	
+	padding:0px 20px 20px 20px;
+}
+
+.userProfileCard
+{
+	width:615px;
+	
+	padding:20px 0px 0px 0px;	
+}
+
+.userProfilePicture
+{
+    width: 150px;
+    
+    float: left;
+}
+
+.userProfilePicture img
+{
+    width: 150px;
+    
+    border: 1px solid #000000!important;
+}
+
+.userProfileDetails
+{
+	width: 445px;
+	
+	float:left;
+	
+	padding:0px 0px 0px 20px;
+}
+
+.userProfileDetailsName
+{
+	font-size:18px;
+}
+
+.userProfileDetailsTitle
+{
+	font-size:10px;
+	font-style:italic;
+}
+
+.userProfileDetailsOrganization
+{
+	font-size:10px;
+	font-style:italic;
+}
+
+.userProfileDetailsEmail
+{
+	font-size:10px;
+	padding:10px 0px 0px 0px;	
+}
+
+.userProfileBiography
+{
+	width:615px;
+	
+	padding: 20px 0px 0px 0px;
+}
+
+/* PANEL - Message List */
+.listMessagesContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.listMessagesMessage
+{
+    width: 615px;
+    font-size: 8pt;
+    
+    padding:20px 0px 10px 0px;
+}
+
+.listMessagesTableContainer
+{
+    width: 615px;
+    border: 2px solid #000000;
+    margin-top: 5px;
+}
+
+.listMessagesTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+}
+.listMessagesTable > tbody > tr > th > a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.listMessagesTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: center;
+    padding: 5px 0px 5px 5px;
+}
+
+.listMessagesTableContentRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+}
+
+.listMessagesTableContentCO1, .listMessagesTableContentCO2, .listMessagesTableContentFR1, .listMessagesTableContentFR2, .listMessagesTableContentSU1, .listMessagesTableContentSU2, .listMessagesTableContentDR1, .listMessagesTableContentDR2
+{
+    border-left: 1px solid #000000;
+}
+
+.listMessagesTableContentCO1, .listMessagesTableContentFR1, .listMessagesTableContentSU1, .listMessagesTableContentDR1
+{
+    background-color: #DFDFDD;
+}
+
+.listMessagesTableContentCO2, .listMessagesTableContentFR2, .listMessagesTableContentSU2, .listMessagesTableContentDR2
+{
+    background-color: #F1F1F1;
+}
+
+.listMessagesTableContentCO1, .listMessagesTableContentCO2
+{
+	width:30px;	
+}
+
+.listMessagesTableContentFR1, .listMessagesTableContentFR2
+{
+	width:120px;
+}
+
+.listMessagesTableContentSU1, .listMessagesTableContentSU2
+{
+	width:315px;
+}
+
+.listMessagesTableContentDR1, .listMessagesTableContentDR2
+{
+	width:150px;
+}
+
+.listMessagesButton
+{
+	padding:20px 0px 0px 0px;
+}
+/* PANEL - Forum List */
+.forumListTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+    margin-bottom: 20px;
+}
+.forumListTableHeaderRow
+{
+    width: 615px;
+    border: 2px solid #000000;
+    margin-bottom: 20px;   
+}
+.forumListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+.forumListMessage
+{
+    width: 615px;
+    font-size: 8pt;
+    
+    padding:20px 0px 10px 0px;
+}
+.forumListTableTitle
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+}
+.forumListTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #999999;
+    text-align: left;
+    padding: 2px 0px 2px 5px;
+}
+.forumListTableContentPO1, .forumListTableContentTO1, .forumListTableContentLP1
+{
+    border-left: 1px solid #000000;
+}
+.forumListTableContentRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+}
+.forumListTableColumnHeaderRow
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+}
+
+/* PANEL - Forum Thread List */
+.threadListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.threadListMessage
+{
+    width: 615px;
+    font-size: 8pt;
+    
+    padding:20px 0px 10px 0px;
+}
+
+.threadListTableContainer
+{
+    width: 615px;
+    border: 2px solid #000000;
+    margin-top: 5px;
+}
+
+.threadListTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+}
+.threadListTable > tbody > tr > th > a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.threadListTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: center;
+    padding: 5px 0px 5px 5px;
+}
+
+.threadListTableContentRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+}
+
+.threadListTableContentNA1, .threadListTableContentNA2, .threadListTableContentPO1, .threadListTableContentPO2, .threadListTableContentLP1, .threadListTableContentLP2
+{
+    border-left: 1px solid #000000;
+}
+
+.threadListTableContentNA1, .threadListTableContentPO1, .threadListTableContentLP1
+{
+    background-color: #DFDFDD;
+}
+
+.threadListTableContentNA2, .threadListTableContentPO2, .threadListTableContentLP2
+{
+    background-color: #F1F1F1;
+}
+
+.threadListTableContentNA1, .threadListTableContentNA2
+{
+	width:315px;	
+}
+
+.threadListTableContentPO1, .threadListTableContentPO2
+{
+	width:100px;
+}
+
+.threadListTableContentLP1, .threadListTableContentLP2
+{
+	width:200px;
+}
+
+/* PANEL - Post Thread */
+.postThreadFields
+{
+	width:615px;		
+	padding:10px 0px 0px 0px;
+}
+.postThreadLabel
+{
+	width:40px;
+	float:left;
+	padding: 0px 0px 0px 10px;
+	text-align:left;	
+}
+.postThreadField
+{
+	width:505px;
+	float:left;	
+}
+.postThreadFieldContainer
+{
+	width:615px;
+	padding:0px 0px 5px 0px;	
+}
+
+/* PANEL - Write Message */
+.writeMessageContent
+{
+	width:615px;
+	
+	padding:0px 20px 20px 20px;
+}
+
+.writeMessageMessage
+{
+	width:615px;
+	
+	color:#FF0000;
+	
+	padding:10px 0px 0px 0px;
+}
+
+.writeMessageFields
+{
+	width:615px;	
+	
+	padding:10px 0px 0px 0px;
+}
+
+.writeMessageFieldContainer
+{
+	width:615px;
+	
+	padding:0px 0px 5px 0px;	
+}
+
+.writeMessageLabel
+{
+	width:100px;
+		
+	float:left;
+	
+	padding:0px 10px 0px 0px;
+	
+	text-align:right;	
+}
+
+.writeMessageField
+{
+	width:505px;
+	
+	float:left;	
+}
+
+.writeMessageField select
+{
+	width:505px;
+}
+
+.writeMessageField input
+{
+	width:500px;
+}
+
+.writeMessageField textarea
+{
+	width:500px;
+	height:250px;
+}
+
+/* PANEL - View Message */
+.viewMessageContent
+{
+	width:615px;
+	
+	padding:0px 20px 20px 20px;
+}
+
+.viewMessageMessage
+{
+	width:615px;
+	
+	color:#FF0000;
+	
+	padding:10px 0px 0px 0px;
+}
+
+.viewMessageFields
+{
+	width:615px;	
+	
+	padding:10px 0px 0px 0px;
+	
+	font-size:12px;
+}
+
+.viewMessageFieldContainer
+{
+	width:615px;
+	
+	padding:0px 0px 5px 0px;	
+}
+
+.viewMessageLabel
+{
+	width:100px;
+		
+	float:left;
+	
+	padding:0px 10px 0px 0px;
+	
+	text-align:right;	
+}
+
+.viewMessageField
+{
+	width:505px;
+	
+	float:left;	
+}
+
+.viewMessageBodyField
+{
+	width:615px;
+	
+	padding:20px 0px 0px 115px;
+}
+
+/* PANEL - Curriculum List */
+.paneControl > .CurriculumListContainer
+{
+    width: 655px;
+    min-height: 350px;
+    overflow:auto;
+	overflow: hidden;
+}
+
+.paneControl > .BranchListContainer
+{
+    width: 655px;
+    min-height: 350px;
+}
+
+.paneControl >.curriculumTreeContainer
+{
+	padding:5px 10px 5px 10px;	 
+	max-width:320px;	 
+	clear:both;
+    overflow:auto;   
+}
+.FilterSelector
+{
+    width: 500px;
+    float: left;
+}
+
+.FilterLabel
+{
+    width: 100px;
+    float: left;
+    font-size: 8pt;
+    text-align: right;
+    padding: 2px 5px 0px 0px;
+}
+
+/* PNEMyStatus.ascx */
+.myStatuspanel
+{
+    padding:5px 10px 5px 10px;
+	max-width:330px;	 
+	clear:both;
+    overflow:auto;
+}
+.myStatusLabels
+{
+    font-size:10pt;
+    font-weight:bold;
+}
+.myStatusLabelsText
+{
+	 font-size:9pt;
+	 color:Blue;
+	
+}
+
+
+.curriculumIconContainer
+{
+    width: 300px;
+}
+
+.curriculumNameContainer
+{
+    width: 300px;
+    color: #990000;
+    font-size: 15pt;
+    padding: 20px 0px 5px 0px;
+}
+.componentListMembers
+{
+    width: 300px;
+    color: #990000;
+    font-size: 15pt;
+    padding: 20px 0px 5px 0px;
+}
+
+/******************************************************************************PNEExamDisplayPane.ascx.cs*/
+.quizNavContainer .quizNavContainerBottom
+{
+    min-height: 30px;
+    padding: 0 0 0 0;
+}
+.quizNavContainer > .LeftButton
+{
+    float: left;
+    margin-top: -5px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+}
+.quizNavContainer > .RightButton
+{
+    float: right;
+    margin-top: -5px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+}
+.ExamQuestionReTakeTest
+{
+    float: right;
+    margin-top: -5px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+}
+.quizNavContainerBottomBack
+{
+    float: left;
+    margin-top: -5px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+}
+.quizNavContainerBottomNext
+{
+    float: right;
+    margin-top: -5px;
+    padding-right: 25px;
+    padding-bottom: 5px;
+}
+.examDisplayArea
+{
+    font-size: 10pt;
+    padding: 25px 0px 10px 25px;
+}
+.examDisplayArea > div > table
+{
+    padding-bottom: 25px;
+}
+.saveAnswerButton
+{
+    padding: 25px 0px 10px 25px;
+}
+.examSubmitButton
+{
+    padding-left: 25px;
+}
+.examQuestionText
+{
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.examResultDisplay
+{
+    padding-top: 15px;
+}
+.examAnswer
+{
+    padding-left: 20px;
+    padding-right: 15px;
+}
+.examAnswerRight
+{
+    color: Green;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 15px;
+}
+
+.CurriculumLearningActivitySelectedNode 
+{
+    color: #666666;
+}
+
+.examAnswerWrong
+{
+    color: Red;
+    padding-left: 20px;
+    padding-right: 15px;
+	font-weight:bold;
+}
+.examAnswerReasonText
+{
+    clear: both;
+    padding-left: 40px;
+    color: Black;
+    font-weight: normal;
+    font-style: italic;
+}
+.examDisplayPagePrepMessage > div
+{
+    margin: 0 auto;
+    width: 250px;
+}
+.quizNavBottomTextBack
+{
+    font-size: 10px;
+    padding-left: 95px;
+    width: 100%;
+}
+.quizNavBottomTextNext
+{
+    font-size: 10px;
+    padding-left: 90px;
+    width: 100%;
+}
+.examQuestionResource
+{
+    background-color: #DFDFDD;
+    font-style: italic;
+    font-size: 12px;
+    border: 1px solid black;
+    padding: 5px 20px 5px 20px;
+    margin: 10px 20px 10px 10px;
+}
+.PNEExamDisplayPane_correctAnswer
+{
+
+}
+/***********************************************************************PNETestTimer.ascx*/
+.timerNumericalDigits
+{
+    font-size: 15pt;
+    font-weight: bold;
+    text-align: center;
+}
+.timerMenu
+{
+    color: #CC0000;
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.required
+{
+    color: #CC0000;
+}
+
+/*Panel PNESpeakerSearch.ascx*/
+.speakerDirectorySearchPane .searchbutton > a
+{
+    font-size: 8pt;
+}
+.speakerDirectorySearchPane
+{
+    font-size: 8pt;
+    min-height: 30px;
+}
+
+
+.speakerDirectorySearchFieldsBasic
+{
+    float: left;
+    width: 150px;
+    padding-right: 5px;
+}
+.speakerSearchContainerBasicRow
+{
+    padding-top: 5px;
+    height: 25px;
+    width: 615px;
+}
+
+.speakerSearchContainerBasicRow > .searchButton
+{
+    width: 175px;
+    position: relative;
+}
+.speakerDirectorySearchFieldsBasic > input
+{
+    width: 255;
+}
+
+
+.speakerDirectorySearchPane > .searchAdvancedContainer > .searchAdvancedFilter > input
+{
+    width: 255px;
+}
+
+.speakerDirectorySearchLabel
+{
+    float: left;
+    font-size: 8pt;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.speakerDirectorySearchFieldsAdvanced
+{
+    padding-top: 5px;
+    margin-left: 25px;
+    float: left;
+    width: 270px;
+}
+.speakerDirectorySearchFieldsAdvancedRight
+{
+    float: left;
+    width: 250px;
+}
+
+.speakerDirectorySearchField
+{
+    width: 200px;
+    height: 25px;
+    float: none;
+}
+
+.speakerDirectorySearchFieldsAdvanced > .speakerDirectorySearchField
+{
+    margin-top: 5px;
+    position: relative;
+    width: 225px;
+    float: none;
+}
+
+.speakerDirectorySearchFieldsAdvancedRight > .speakerDirectorySearchField
+{
+    margin-top: 5px;
+    padding: 0px;
+    position: relative;
+    width: 225px;
+    float: none;
+}
+
+.searchDirectorySelector > select
+{
+    margin-top: 5px;
+    width: 180px;
+    float: right;
+}
+
+.speakerDirectorySearchField > .speakerDirectorySearchLabel
+{
+    margin-top: 8px;
+}
+
+.speakerDirectorySearchField > table
+{
+    bottom: -30px;
+    padding: 0px;
+    width: 150px;
+    height: 15px;
+}
+.searchAdvancedFilter tbody tr
+{
+    margin-left: 5px;
+    display: inline;
+}
+.speakerSearchSubmit > input
+{
+    display: block;
+    position: relative;
+}
+.topicItemTitle
+{
+    font-weight: bold;
+}
+/*******************************************************  PNESpeakerDirectory.ascx.cs ****/
+.speakerDirectoryResultItem
+{
+    padding-top: 30px;
+    padding-bottom: 5px;
+    width: 615px;
+    clear: both;
+}
+.speakerDirectoryResultMssg
+{
+    color: #000000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.speakerDirectoryResultPageLinks
+{
+    height: 20px;
+    float: right;
+}
+.speakerDirectoryResultPageLinks > a
+{
+    padding-left: 2px;
+    padding-right: 2px;
+    position: relative;
+    float: left;
+    font-size: 10pt;
+}
+.speakerDirectorySelectedPageLink > a
+{
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+    float: left;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 10pt;
+}
+.speakerDirectoryResultName
+{
+    font-size: 11pt;
+    font-weight: bold;
+    color: #990000;
+}
+.speakerDirectoryResultEmail
+{
+    font-size: 8pt;
+    font-weight: bold;
+}
+.speakerDirectoryResultTitle, .speakerDirectoryResultBiography, .speakerDirectoryResultSessions
+{
+    font-size: 10pt;
+}
+.speakerDirectoryContactDetailsDiv
+{
+    padding-top: 10px;
+}
+
+.speakerDirectoryContactDetailsTitle
+{
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+
+.speakerDirectoryResultBio, .speakerDirectoryResultTopics, .speakerDirectoryResultBio
+{
+    padding-top: 10px;
+}
+
+.speakerDirectoryResultBio > div, .speakerDirectoryResultSession > div
+{
+    padding-right: 5px;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #990000;
+}
+
+.speakerDirectoryResultBio > span
+{
+    font-size: 8pt;
+}
+
+.speakerDirectoryResultTopics
+{
+    color: #990000;
+    font-size: 10pt;
+}
+.speakerDirectoryResultText
+{
+    color: #000000;
+    font-size: 8pt;
+    font-weight: normal;
+}
+
+.speakerDirectoryResultTopics > div
+{
+    color: #000000;
+    padding-left: 10px;
+    font-size: 10pt;
+}
+.speakerDirectorySearchOptionMssg
+{
+    float: left;
+    font-size: 10pt;
+    font-weight: bold;
+    padding-left: 25px;
+}
+.speakerDirectoryTopicLink > a
+{
+    font-size: 8pt;
+    color: #000000;
+}
+.speakerDirectoryTopicLink > a:hover
+{
+    color: #0000FF;
+}
+.speakerDirectoryResultAvailSection
+{
+    font-size: 10pt;
+    font-weight: bold;
+    color: #000000;
+    padding-top: 10px;
+}
+.speakerDirectoryAvailabilityDate, .speakerDirectoryAvailabilityGeoPref
+{
+    font-size: 8pt;
+    font-weight: normal;
+}
+.speakerTopicRow
+{
+    font-size: 10px;
+    font-weight: normal !important;
+}
+.speakerDirectoryResultBio > div > input
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/******************************************************************************PNEHandoutlist.ascx */
+.handoutList
+{
+    width: 615px;
+    border: 0;
+}
+/******************************************************************************PNEMyDownloads.ascx */
+.myDownloadsContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+.myDownloadTableContentOL1, .myDownloadTableContentOL2
+{
+    width: 103px;
+    border-left: 1px solid #000000;
+    text-align: center;
+}
+
+.myDownloadTableContentOL1
+{
+    background-color: #DFDFDD;
+}
+
+.myDownloadTableContentOL2
+{
+    background-color: #F1F1F1;
+}
+
+/* PANEL - Itinerary Planner (Calendar View) */
+.FormTable
+{
+    text-align: left;
+    clear: both;
+    padding: 0px 0px 0px 0px;
+}
+.FormLabel
+{
+    width: 145px;
+    color: #012C43;
+    text-align: right;
+    vertical-align: top;
+    padding: 0px 5px 2px 0px;
+}
+.FormRow
+{
+    width: 145px;
+}
+.FormMediumField input[type="text"], .FormMediumField input[type="password"], .FormMediumField input[type="file"]
+{
+    width: 295px;
+    border: 1px solid #999999;
+    background: #FFFFFF url(../images/formgrad.png) repeat-x top left;
+    padding: 3px 5px 3px 5px;
+}
+
+.FormMediumField select
+{
+    width: 306px;
+    border: 1px solid #999999;
+    background: #FFFFFF url(../images/formgrad.png) repeat-x top left;
+    padding: 3px 5px 3px 5px;
+}
+.FormMediumField textarea
+{
+    width: 445px;
+    height: 110px;
+    border: 1px solid #999999;
+    background-color: #FFFFFF;
+    padding: 3px 5px 3px 5px;
+}
+.labelList
+{
+    font-family: Sans-Serif;
+    font-size: small;
+    padding: 15px;
+}
+.labelTD
+{
+    width: 150px;
+    font-size: 8pt;
+    text-align: right;
+    padding: 0px 0px 3px 0px;
+}
+.divIteneraryView
+{
+    padding-left: 30px;
+}
+.FieldTD
+{
+    width: 465px;
+    float: left;
+    padding: 0px 10px 10px 10px;
+}
+.iteneraryListContent
+{
+    text-align: left;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+.viewTitle
+{
+    font-size: 16px;
+    color: #A62A2A;
+}
+.viewField
+{
+    font-size: 10px;
+}
+
+.sessionGropList
+{
+    width: 150px;
+    padding: 0px 0px 20px 0px;
+    float: left;
+}
+.sessionGroupHeader
+{
+    background-color: #DFDFDD;
+    color: #000000;
+    padding: 3px 0px 3px 0px;
+    font-weight: bold;
+    font-size: 12px;
+    width: 150px;
+}
+.sessionGroupListTable
+{
+    background-color: #E9E2C6;
+    width: 158px;
+}
+.sessionGroupListLevel1Item1
+{
+    background-color: #DFDFDD;
+}
+.sessionGroupListLevel1Item2
+{
+    background-color: #F1F1F1;
+}
+
+.sessionGroupListLeve2Item1
+{
+    background-color: #DFDFDD;
+}
+.sessionGroupListLevel2Item2
+{
+    background-color: #F1F1F1;
+}
+
+.sessionGroupListLevel3Item1
+{
+    background-color: #DFDFDD;
+}
+.sessionGroupListLevel3Item2
+{
+    background-color: #F1F1F1;
+}
+.sessionGroupListLevel1Item1, .sessionGroupListLevel1Item2
+{
+    width: 158px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+    color: #3333CC;
+}
+.sessionGroupListLevel1Item1 a, .sessionGroupListLevel1Item2 a
+{
+    color: #3333CC;
+    padding: 0px 5px 0px 0px;
+}
+.sessionGroupListLevel2Item1, .sessionGroupListLevel2Item2
+{
+    width: 158px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+    color: #3333CC;
+}
+.sessionGroupListLevel2Item1 a, .sessionGroupListLevel2Item2 a
+{
+    color: #3333CC;
+    padding: 0px 5px 0px 0px;
+}
+.sessionGroupListLevel3Item1, .sessionGroupListLevel3Item2
+{
+    width: 158px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+    color: #3333CC;
+}
+.sessionGroupListLevel3Item1 a, .sessionGroupListLevel3Item2 a
+{
+    color: #3333CC;
+    padding: 0px 5px 0px 0px;
+}
+/* Detailed Group List */
+.sessionDetailGroupListLevel1Item1
+{
+    background-color: #DFDFDD;
+}
+.sessionDetailGroupListLevel1Item2
+{
+    background-color: #F1F1F1;
+}
+
+.sessionDetailGroupListLeve2Item1
+{
+    background-color: #DFDFDD;
+}
+.sessionDetailGroupListLevel2Item2
+{
+    background-color: #F1F1F1;
+}
+
+.sessionDetailGroupListLevel3Item1
+{
+    background-color: #DFDFDD;
+}
+.sessionDetailGroupListLevel3Item2
+{
+    background-color: #F1F1F1;
+}
+.sessionDetailGroupListLevel1Item1, .sessionDetailGroupListLevel1Item2
+{
+    width: 158px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+    color: #3333CC;
+}
+.sessionDetailGroupListLevel1Item1 a, .sessionDetailGroupListLevel1Item2 a
+{
+    color: #3333CC;
+    padding: 0px 5px 0px 0px;
+}
+.sessionDetailGroupListLevel2Item1, .sessionDetailGroupListLevel2Item2
+{
+    width: 158px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+    color: #3333CC;
+}
+.sessionDetailGroupListLevel2Item1 a, .sessionDetailGroupListLevel2Item2 a
+{
+    color: #3333CC;
+    padding: 0px 5px 0px 0px;
+}
+.sessionDetailGroupListLevel3Item1, .sessionDetailGroupListLevel3Item2
+{
+    width: 158px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+    color: #3333CC;
+}
+.sessionDetailGroupListLevel3Item1 a, .sessionDetailGroupListLevel3Item2 a
+{
+    color: #3333CC;
+    padding: 0px 5px 0px 0px;
+}
+
+.sessionGroupListItem1, .sessionGroupListItem2
+{
+    width: 158px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+    color: #3333CC;
+}
+
+.sessionGroupListItem1
+{
+    background-color: #DFDFDD;
+}
+
+.sessionGroupListItem2
+{
+    background-color: #F1F1F1;
+}
+
+.sessionGroupListItem1 a, .sessionGroupListItem2 a
+{
+    color: #3333CC;
+    padding: 0px 5px 0px 0px;
+}
+.sessionGroupDetails
+{
+    font-size: 8pt;
+}
+.sessionGroupDetailLink
+{
+    padding-right: 5px;
+    color: #3333CC;
+}
+.sessionDetailGroupListItem1, .sessionDetailGroupListItem2
+{
+    width: 100%;
+    padding: 5px 5px 10px 5px;
+    font-size: 10pt;
+    color: #3333CC;
+}
+
+.sessionDetailGroupListItem1
+{
+    /* background-color: #DFDFDD;*/
+    background-color: #BEBEBE;
+}
+
+.sessionDetailGroupListItem2
+{
+    /* background-color: #F1F1F1;*/
+    background-color: #BEBEBE;
+}
+
+.sessionDetailGroupListItem1 a, .sessionDetailGroupListItem2 a
+{
+    color: #3333CC;
+    padding: 0px 10px 0px 0px;
+}
+.sessionDetailGroupListTable
+{
+    background-color: #E9E2C6;
+    width: 100%;
+}
+.sessionDetailGroupDescription
+{
+    padding: 5px 5px 5px 50px;
+    font-size: 8pt;
+    background-color: #DBDBDB;
+}
+.SessionDetailGroupListContent
+{
+    padding: 20px 20px 20px 20px;
+}
+.recordSpace
+{
+    padding: 0px 0px 20px 0px;
+    background-color: White;
+}
+.groupTitle
+{
+    font-size: 14pt;
+}
+.groupDescription
+{
+    font-size: 8pt;
+    padding-left: 0px;
+    padding-top: 20px;
+}
+.AttendeeTable
+{
+    background-color: #E9E2C6;
+    width: 100%;
+    border: 1px solid black;
+}
+.TestQuestionAnswerHeader
+{
+    background-color: #004F78;
+    color: #BFDBFF;
+    padding: 3px 0px 3px 0px;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100%;
+}
+
+.attendeeCreditContainer
+{
+    width: 615px;
+    padding: 0px 20px 0px 20px;
+    font-size: 8pt;
+}
+.attendeeCreditLabel
+{
+    width: 80px;
+    float: left;
+    padding: 0px 0px 0px 0px;
+}
+.attendeeCreditDropDown > select
+{
+    width: 385px;
+    float: left;
+    padding: 0px 0px 0px 0px;
+}
+.attendeeCreditGoButton
+{
+    width: 100px;
+    float: left;
+    padding: 0px 0px 0px 10px;
+}
+.attendeeGroupListContent
+{
+    padding: 20px 20px 20px 20px;
+}
+.attendeeDetails
+{
+    font-weight: bold;
+    padding-left: 15px;
+}
+.attendeeName
+{
+    font-weight: bold;
+    padding-left: 15px;
+}
+.attendeeDate
+{
+    font-weight: bold;
+    padding-left: 15px;
+}
+.attendeeCredits
+{
+    font-weight: bold;
+    padding: 3px 3px 3px 15px;
+    text-align: right;
+}
+.AttendeeHeader
+{
+    background-color: Black;
+    color: #FFFFFF;
+    padding: 3px 0px 3px 0px;
+    font-weight: bold;
+    width: 100%;
+    font-size: 12px;
+}
+/*.AttendeeFieldDisplay
+{
+    text-align: Left;
+    width: 250px;
+    padding: 3px 3px 3px 20px;
+    font-size:8pt;
+}*/
+.AttendeeFieldDisplay1, .AttendeeFieldDisplay2
+{
+    /* text-align: Left;*/
+    width: 250px;
+    padding: 3px 3px 3px 15px;
+    font-size: 8pt;
+    color: Black;
+}
+
+.AttendeeFieldDisplay1
+{
+    background-color: #DFDFDD;
+}
+
+.AttendeeFieldDisplay2
+{
+    background-color: #F1F1F1;
+}
+
+
+.AttendeeFieldTitle1, .AttendeeFieldTitle2
+{
+    /* text-align: Left;*/
+    width: 250px;
+    padding: 3px 3px 3px 15px;
+    font-size: 8pt;
+    color: Black;
+}
+
+.AttendeeFieldTitle1
+{
+    background-color: #DFDFDD;
+}
+
+.AttendeeFieldTitle2
+{
+    background-color: #F1F1F1;
+}
+
+.AttendeeFieldDate1, .AttendeeFieldDate2
+{
+    /* text-align: Left;*/
+    width: 250px;
+    padding: 3px 3px 3px 15px;
+    font-size: 8pt;
+    color: Black;
+}
+
+.AttendeeFieldDate1
+{
+    background-color: #DFDFDD;
+}
+
+.AttendeeFieldDate2
+{
+    background-color: #F1F1F1;
+}
+
+.AttendeeFieldValue1, .AttendeeFieldValue2
+{
+    /* text-align: Left;*/
+    width: 250px;
+    padding: 3px 3px 3px 15px;
+    font-size: 8pt;
+    color: Black;
+    text-align: right;
+}
+
+.AttendeeFieldValue1
+{
+    background-color: #DFDFDD;
+}
+
+.AttendeeFieldValue2
+{
+    background-color: #F1F1F1;
+}
+.TotalTable
+{
+    width: 100%;
+}
+.TotalTr
+{
+    width: 100%;
+    background-color: Black;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+.TotalText
+{
+    width: 250px;
+    font-size: 8pt;
+    padding: 3px 3px 3px 15px;
+}
+.TotalValue
+{
+    font-size: 8pt;
+    padding: 3px 200px 3px 15px;
+    text-align: right;
+}
+.creditSubmission
+{
+    width: 615px;
+    text-align: right;
+    padding: 0px 20px 20px 20px;
+}
+.SubmitLabel
+{
+    width: 150px;
+    font-size: 8pt;
+    float: left;
+    padding: 0px 0px 3px 0px;
+}
+.SubmitField
+{
+    width: 465px;
+    float: left;
+    padding: 0px 0px 3px 0px;
+    font-size: 8pt;
+}
+.SubmitRequired
+{
+    font-size: 8pt;
+    color: red;
+    padding: 5px 0px 5px 18px;
+}
+
+.SubmitMessage
+{
+    font-size: 8pt;
+    color: red;
+    padding: 10px 0px 20px 18px;
+}
+.SubmitCalendar
+{
+}
+.FormEvaLabel
+{
+    width: 200px;
+    color: #012C43;
+    text-align: left;
+    vertical-align: top;
+    padding: 0px 5px 15px 30px;
+    font-size: 8pt;
+}
+.btnSaveSubmit
+{
+    padding: 20px 5px 15px 30px;
+}
+.FormEvaRow
+{
+    width: 145px;
+    font-size: 8pt;
+}
+.FormEvaMediumField
+{
+    width: 300px;
+    padding: 0px 0px 2px 0px;
+    font-size: 8pt;
+}
+.FormEvaTable
+{
+    text-align: left;
+    clear: both;
+    padding: 0px 0px 0px 0px;
+}
+.FormSpeakerRow
+{
+    font-size: 8pt;
+}
+.txtAreaStyle
+{
+    width: 350px;
+    height: 150px;
+}
+.FormSpeakerLabel
+{
+    color: #012C43;
+    text-align: Left;
+    vertical-align: top;
+    padding: 0px 5px 2px 10px;
+    font-size: 8pt;
+}
+.FormRequiredField
+{
+    color: Red;
+}
+.ErrorLog
+{
+    font-size: 8pt;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+    width: 100%;
+}
+.SubmitLog
+{
+    font-size: 8pt;
+    font-weight: bold;
+    text-align: left;
+    color: Black;
+    width: 100%;
+    display: block;
+    padding: 20px 5px 100px 20px;
+}
+/* Panel - Twitter */
+.paneControl > .TwitterContent
+{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px 0px;
+}
+
+/* listSites.aspx */
+.siteList
+{
+    width: 995px;
+    font-size: 9pt;
+}
+
+.siteList tr th
+{
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 9pt;
+    padding: 3px 3px 3px 3px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.siteListRow1 td
+{
+    background-color: #DFDFDD;
+    padding: 3px 3px 3px 3px;
+}
+
+.siteListRow2 td
+{
+    background-color: #F1F1F1;
+    padding: 3px 3px 3px 3px;
+}
+
+.siteListDataAC
+{
+    width: 100px;
+}
+
+.siteListDataCN
+{
+    width: 295px;
+}
+
+.siteListDataUR
+{
+    width: 300px;
+}
+
+.facultyDetailsRating
+{
+    font-size: 8pt;
+    text-align: center;
+    width: 100px;
+    padding-top: 5px;
+}
+
+/* Panel - Speaker Profile */
+.speakerProfileBioListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.speakerProfileBioListThumbnail > img
+{
+    height: 120px;
+    width: 100px;
+}
+
+.speakerProfileBioListDetails
+{
+    width: 505px;
+    float: left;
+    padding-left: 10px;
+}
+
+.speakerProfileBioListContainer
+{
+    width: 615px;
+}
+
+.speakerProfileResultRatingBox
+{
+    color: #04409B;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.speakerProfileResultItem
+{
+    padding-top: 0px;
+    padding-bottom: 5px;
+    width: 615px;
+    clear: both;
+}
+
+.speakerProfileResultMssg
+{
+    color: #000000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.speakerProfileResultPageLinks
+{
+    height: 20px;
+    float: right;
+}
+
+.speakerProfileResultPageLinks > a
+{
+    padding-left: 2px;
+    padding-right: 2px;
+    position: relative;
+    float: left;
+    font-size: 10pt;
+}
+
+.speakerProfileSelectedPageLink > a
+{
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+    float: left;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 10pt;
+}
+
+.speakerProfileResultName
+{
+    font-size: 11pt;
+    font-weight: bold;
+    color: #990000;
+}
+
+.speakerProfileResultEmail, .speakerProfileResultPhoneNumber
+{
+    font-size: 8pt;
+    font-weight: bold;
+}
+
+.speakerProfileResultTitle, .speakerProfileResultBiography, .speakerProfileResultOrganization, .speakerProfileResultUnavailableTopic, .speakerProfileResultAdditionalInformation
+{
+    font-size: 10pt;
+}
+
+.speakerProfileContactDetails
+{
+    padding-top: 10px;
+}
+
+.speakerProfileContactDetailsTitle
+{
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.speakerProfileResultBio, .speakerProfileResultTopics, .speakerProfileResultBio, .speakerProfileResultSession, .speakerProfileResultAVRequirements, .speakerProfileResultAInformation
+{
+    padding-top: 10px;
+}
+
+.speakerProfileResultBio > div, .speakerProfileResultSession > div
+{
+    padding-right: 5px;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #990000;
+}
+
+.speakerProfileResultBio > span, .speakerProfileResultSessions > span, .speakerProfileResultSessionList > span
+{
+    font-size: 8pt;
+}
+
+.speakerProfileResultTopics, .speakerProfileResultAInformation
+{
+    color: #990000;
+    font-size: 10pt;
+}
+
+.speakerProfileResultText, .speakerProfileResultAVRequirement
+{
+    color: #000000;
+    font-size: 8pt;
+    font-weight: normal;
+}
+
+.speakerProfileResultTopics > div, .speakerProfileResultAInformation > div
+{
+    color: #000000;
+    padding-left: 10px;
+    font-size: 10pt;
+}
+
+.speakerProfileSearchOptionMssg
+{
+    float: left;
+    font-size: 10pt;
+    font-weight: bold;
+    padding-left: 25px;
+}
+
+.speakerProfileTopicLink > a
+{
+    font-size: 8pt;
+    color: #000000;
+}
+
+.speakerProfileTopicLink > a:hover
+{
+    color: #0000FF;
+}
+
+.speakerProfileResultAvailSection
+{
+    font-size: 10pt;
+    font-weight: bold;
+    color: #000000;
+    padding-top: 10px;
+}
+
+.speakerProfileAvailabilityDate, .speakerProfileAvailabilityGeoPref, .speakerProfileAvailabilityDateAvail
+{
+    font-size: 8pt;
+    font-weight: normal;
+}
+
+.speakerTopicRow, .speakerAdditionalInformationRow
+{
+    font-size: 10px;
+    font-weight: normal !important;
+    
+    padding:5px 0px 0px 0px;
+}
+
+.speakerProfileResultBio > div > input, .speakerProfileResultSession > div > input
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* PNEAdavancedSearch.ascx*/
+.advnacedSearchPane .searchbutton > a
+{
+    font-size: 8pt;
+}
+.advnacedSearchPane
+{
+    font-size: 8pt;
+    min-height: 30px;
+}
+
+
+.advancedSearchFieldsBasic
+{
+    float: left;
+    width: 150px;
+    padding-right: 5px;
+}
+.advancedSearchContainerBasicRow
+{
+    padding-top: 5px;
+    height: 25px;
+    width: 615px;
+}
+
+.advancedSearchContainerBasicRow > .searchButton
+{
+    width: 175px;
+    position: relative;
+}
+.advancedSearchFieldsBasic > input
+{
+    width: 255;
+}
+
+.advancedSearchLabel
+{
+    width: 105px;
+    float: left;
+    font-size: 8pt;
+    text-align: right;
+    padding: 2px 5px 0px 0px;
+}
+.searchAdvancedButton
+{
+    width: 80px;
+    float: left;
+}
+
+.advancedSearchFieldsKeyword > input
+{
+    width: 245px;
+}
+
+.advancedSearchFieldsBasicFormatTopic select
+{
+    width: 255px;
+}
+
+.advancedSearchFieldsBasicConference select
+{
+    width: 500px;
+}
+
+/* PNEConferenceList.ascx */
+.conferenceListContent
+{
+    width: 158px;
+    padding: 0px 5px 0px 0px;
+}
+
+.conferenceListContainer
+{
+    width: 148px;
+}
+
+.conferenceListHolder
+{
+    width: 148px;
+    font-size: 8pt;
+    text-align: left;
+    padding: 0px 0px 5px 0px;
+}
+.conferenceListTable
+{
+    background-color: #E9E2C6;
+    width: 158px;
+}
+.conferenceListItem1, .conferenceListItem2
+{
+    width: 158px;
+    padding: 5px 5px 5px 5px;
+    font-size: 8pt;
+    color: #3333CC;
+}
+
+.conferenceListItem1
+{
+    background-color: #DFDFDD;
+}
+
+.conferenceListItem2
+{
+    background-color: #F1F1F1;
+}
+
+.conferenceListItem1 a, .conferenceListItem2 a
+{
+    color: #3333CC;
+    padding: 0px 5px 0px 0px;
+}
+
+/* PNECertificateRequest.ascx */
+
+.CertificateContainer
+{
+    width: 615px;
+    margin-top: 5px;
+}
+
+.CertificateFilter
+{
+    width: 615px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+}
+
+.CertificateLabel
+{
+    width: 105px;
+    float: left;
+    font-size: 8pt;
+    text-align: right;
+    padding: 2px 5px 0px 0px;
+}
+
+.CertificateSelector 
+{
+    width: 505px;
+    float: left;
+}
+
+.CertificateSelector select
+{
+    width: 500px;
+    height: 21px;
+    font-size: 8pt;
+}
+
+/* PANEL - Learning Objectives */
+.objectivesContent
+{
+    width: 655px;
+    padding: 20px 20px 20px 20px;
+}
+
+.objectiveList
+{
+    font-size: 8pt;
+}
+
+.objectiveList li
+{
+    width: 585px;
+    vertical-align: top;
+    padding: 0px 0px 15px 0px;
+}
+
+/* PANEL - Curriculum Agreement */
+.curriculumAgreementContent
+{
+    width: 655px;
+    padding: 0px 20px 20px 20px;
+}
+
+.curriculumAgreementDetail
+{
+    width: 655px;
+    font-size: 8pt;
+    padding: 5px 5px 5px 5px;
+}
+
+.curriculumAgreementDescription
+{
+    width: 615px;
+    font-size: 8pt;
+    padding: 5px 5px 5px 5px;
+}
+
+.curriculumAgreementError
+{
+    width: 655px;
+    font-size: 8pt;
+    padding: 5px 5px 5px 5px;
+}
+
+.curriculumAgreementButton
+{
+    width: 655px;
+    float: right;
+    padding: 5px 5px 5px 5px;
+}
+
+.curriculumDetailsErrorLabel
+{
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+}
+
+/* PANEL - Item List */
+.itemListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.itemListMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.itemListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.itemListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.itemListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.itemListThumbnail img
+{
+}
+
+.itemListDetails
+{
+    width: 415px;
+    float: left;
+}
+.divOptionTop
+{
+    width: 235px;
+    font-size: 12px;
+    text-align: left !important;
+    float: left;
+}
+
+.itemItemsPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.itemItemsPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.itemItemsPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.itemItemsPageFirst, .itemItemsPagePrevious, .itemItemsPageNext, .itemItemsPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.itemItemsPageFirst a, .itemItemsPagePrevious a, .itemItemsPageNext a, .itemItemsPageLast a
+{
+    color: #666666;
+}
+
+.itemItemsCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.itemListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.itemListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.itemListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+
+.itemListTitle
+{
+    width: 415px;
+    color: #990000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.itemListConference, .itemListDate, .itemListSpeakers, .itemListRating
+{
+    width: 415px;
+    font-size: 8pt;
+}
+.itemListPrice
+{
+ width: 300px;
+ font-size: 8pt;
+ padding: 0px 0px 10px 0px;
+  
+}
+.itemListCurrency
+{
+  padding-left:2px;
+   float:left;
+ 
+}
+.itemListPriceAmount
+{
+float:left;
+}
+.itemListDiscount
+{
+ text-align:left;
+font-size: 8pt;
+float:left;
+width: 300px;
+}
+.itemListDiscountPrice
+{
+ float:left;
+ padding-right:2px;
+}
+.itemListDiscountCurrency
+{
+  padding-left:2px;
+ 
+}
+/* PANEL - Curriculum Item List */
+.curriculumItemListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.curriculumItemListMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.curriculumItemListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.curriculumItemListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.curriculumItemListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.curriculumItemListThumbnail img
+{
+}
+
+.curriculumItemListDetails
+{
+    width: 415px;
+    float: left;
+}
+
+.divOptionTop
+{
+    width: 235px;
+    font-size: 8pt;
+    text-align: left !important;
+    float: left;
+}
+
+.curriculumItemListPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.curriculumItemListPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.curriculumItemListPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.curriculumItemListPageFirst, .curriculumItemListPagePrevious, .curriculumItemListPageNext, .curriculumItemListPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.curriculumItemListPageFirst a, .curriculumItemListPagePrevious a, .curriculumItemListPageNext a, .curriculumItemListPageLast a
+{
+    color: #666666;
+}
+
+.curriculumItemListCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.curriculumItemListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.curriculumItemListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.curriculumItemListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+
+.curriculumItemListTitle
+{
+    width: 415px;
+    color: #990000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.curriculumItemListDiscount, .curriculumItemListDescription, .curriculumItemListBasePrice, .curriculumItemListFormat
+{
+    width: 415px;
+    font-size: 8pt;
+}
+
+/* PANEL - Presentation Curriculum List */
+.presentationCurriculumListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.presentationCurriculumListMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.presentationCurriculumListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.presentationCurriculumListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.presentationCurriculumListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.presentationCurriculumListThumbnail img
+{
+}
+
+.presentationCurriculumListDetails
+{
+    width: 415px;
+    float: left;
+}
+
+.divOptionTop
+{
+    width: 235px;
+    font-size: 8pt;
+    text-align: left !important;
+    float: left;
+}
+
+.presentationCurriculumListPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.presentationCurriculumListPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.presentationCurriculumListPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.presentationCurriculumListPageFirst, .presentationCurriculumListPagePrevious, .presentationCurriculumListPageNext, .presentationCurriculumListPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.presentationCurriculumListPageFirst a, .presentationCurriculumListPagePrevious a, .presentationCurriculumListPageNext a, .presentationCurriculumListPageLast a
+{
+    color: #666666;
+}
+
+.presentationCurriculumListCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.presentationCurriculumListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.presentationCurriculumListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.presentationCurriculumListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+
+.presentationCurriculumListTitle
+{
+    width: 415px;
+    color: #990000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.presentationCurriculumListDiscount, .presentationCurriculumListDescription, .presentationCurriculumListBasePrice, .presentationCurriculumListFormat
+{
+    width: 415px;
+    font-size: 8pt;
+}
+
+/* PANEL - Item List */
+.offerItemListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.offerItemListMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.offerItemListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.offerItemListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.offerItemListIcon
+{
+    width: 100px;
+    float: left;
+}
+
+.offerItemListIcon img
+{
+}
+
+.offerItemListDetails
+{
+    width: 415px;
+    float: left;
+}
+
+.divOptionTop
+{
+    width: 235px;
+    font-size: 8pt;
+    text-align: left !important;
+    float: left;
+}
+
+.offerItemListPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.offerItemListPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.offerItemListPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.offerItemListPageFirst, .offerItemListPagePrevious, .offerItemListPageNext, .offerItemListPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.offerItemListPageFirst a, .offerItemListPagePrevious a, .offerItemListPageNext a, .offerItemListPageLast a
+{
+    color: #666666;
+}
+
+.offerItemListCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.offerItemListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.offerItemListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.offerItemListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+
+.offerItemListTitle
+{
+    width: 415px;
+    color: #990000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.offerItemListText
+{
+    width: 415px;
+    font-size: 8pt;
+}
+
+/* PNE Pager Control */
+.DataTable, .DataTableGrid, .GridTable
+{
+    width: 100%;
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 12px;
+}
+
+.DataTable
+{
+    /* border-left:1px solid #004F78;     border-right:1px solid #004F78; */
+    border: 1px solid #004F78 !important;
+    clear: both;
+}
+
+.DataTableGrid
+{
+    float: left;
+    clear: both;
+}
+
+.DataTableHeader, .DataTableFooter
+{
+    height: 28px;
+    clear: both;
+    background-image: url(../images/header_blue.png);
+    background-repeat: repeat-x;
+}
+.DataTableSmallFooter
+{
+    height: 3px;
+    clear: both;
+    background-image: url(../images/header_blue.png);
+    background-repeat: repeat-x;
+}
+.DataTableTitle
+{
+    height: 28px;
+    float: left;
+    font-size: 12px;
+    color: #BFDBFF;
+    text-transform: uppercase;
+    padding: 6px 0px 0px 10px;
+}
+
+.DataTableTopPagerControl
+{
+    height: 28px;
+    float: right;
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 12px;
+    padding: 0px 5px 0px 5px;
+    text-align: right;
+}
+
+.DataTableBottomPagerControl
+{
+    width: 99%;
+    height: 28px;
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 12px;
+    text-align: right;
+}
+/* Page Control */
+.PageControl
+{
+    width: 470px;
+    height: 28px;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+.PageControlRow
+{
+    width: 460px;
+    height: 24px;
+}
+
+.PageControlRow span
+{
+    display: inline-block;
+}
+
+.PageControlFirst
+{
+    padding: 0px 0px 0px 0px;
+}
+
+.PageControlFirst, .PageControlPrevious, .PageControlNext, .PageControlLast
+{
+    width: 28px;
+    padding: 2px 0px 5px 0px;
+}
+.PageControlFirst input, .PageControlPrevious input, .PageControlNext input, .PageControlLast input
+{
+    width: 24px;
+    height: 24px;
+}
+
+.PageControlPages
+{
+    width: 140px;
+    height: 28px;
+    text-align: center;
+    vertical-align: top;
+    padding: 3px 0px 0px 0px;
+}
+
+.PageControlRowsPerPage
+{
+    width: 180px;
+    height: 28px;
+    vertical-align: top;
+    padding: 3px 0px 0px 0px;
+}
+
+.PageControlRowsPerPage select, .PageControlPages select
+{
+    border: 1px solid #999999;
+    background-color: #FFFFFF;
+}
+
+.EditPageDataTableGrid
+{
+    border: 1px solid #004F78;
+}
+
+div.FormDataTableGrid
+{
+    border: 1px solid #004F78;
+    width: 30%;
+}
+
+.GridTableHeader th
+{
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    padding: 3px 2px 3px 2px;
+    background-color: #92918C;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.GridTableHeader th a
+{
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    color: #FFFFFF;
+}
+
+.GridTableRow td
+{
+    background-color: #DFDFDD;
+    padding: 2px 2px 2px 2px;
+}
+
+.GridTableAlternateRow td
+{
+    background-color: #F1F1F1;
+    padding: 2px 2px 2px 2px;
+}
+
+.GridTableSelectedRow td
+{
+    background-color: #FBC84F;
+    color: #FFFFFF;
+    padding: 2px 2px 2px 2px;
+}
+
+.GridTableCell
+{
+    font-family: Verdana, Arial, Sans-Serif;
+    font-size: 12px;
+    padding: 10px 10px 10px 10px;
+}
+
+.GridTableCell input, .GridTableCell select
+{
+    width: 100%;
+}
+
+.GridControlTable
+{
+    width: 102px;
+}
+
+.GridTableControlCell
+{
+    width: 102px;
+    padding: 0px 0px 0px 0px;
+}
+
+.GridControlTableCell
+{
+    width: 34px;
+    padding: 0px 2px 0px 2px;
+}
+
+.Adding5pxPadding
+{
+    padding: 5px;
+}
+
+/* PANEL - Certificate */
+.certificateContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.certificateDescription
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.certificateHRule
+{
+    width: 80%;
+    height: 3px;
+    color: #000000;
+    background-color: #000000;
+    margin: 20px auto 20px auto;
+}
+
+.certificateSelector
+{
+    width: 615px;
+    padding-top: 5px;
+}
+
+.certificateSelector select
+{
+    width: 300px;
+}
+
+.certificateSelector > span
+{
+    font-size: 10pt;
+    padding-bottom: 5px;
+}
+.CertifiateRequestListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.CertifiateRequestListMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.certificateTableContainer
+{
+    width: 615px;
+    border: 2px solid #000000;
+    margin-top: 5px;
+}
+
+
+.certificateTable
+{
+    width: 615px;
+    border: 2px solid #000000;
+    clear: both;
+}
+.certificateTable > tbody > tr > th > a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.certificateTableHeader
+{
+    font-size: 8pt;
+    color: #FFFFFF;
+    background-color: #000000;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+}
+
+.certificateTableContentRow td
+{
+    font-size: 8pt;
+    vertical-align: top;
+    padding: 5px 0px 5px 5px;
+}
+
+.certificateTableContentDL1, .certificateTableContentDL2, .certificateTableContentHN1, .certificateTableContentHN2, .certificateTableContentOL1, .certificateTableContentOL2, .certificateTableContentDU1, .certificateTableContentDU2
+{
+    width: 80px; /* border-left: 1px solid #000000;*/
+}
+
+.certificateTableContentST1, .certificateTableContentDL1, .certificateTableContentHN1, .certificateTableContentOL1, .certificateTableContentDU1, .certificateTableContentCol1OL1
+{
+    background-color: #DFDFDD;
+}
+
+.certificateTableContentST2, .certificateTableContentDL2, .certificateTableContentHN2, .certificateTableContentOL2, .certificateTableContentDU2, .certificateTableContentCol2OL1
+{
+    background-color: #F1F1F1;
+}
+.certificateTableContentOL1, .certificateTableContentOL2
+{
+    width: 206px; /*border-left: 1px solid #000000;*/
+    text-align: left;
+}
+
+.certificateTableContentOL1
+{
+    background-color: #DFDFDD;
+}
+
+.certificateTableContentOL2
+{
+    background-color: #F1F1F1;
+}
+
+/* PANEL - CurriculumBranchList */
+.CurriculumBranchSelectedNode
+{
+    font-weight:bold;
+}
+
+.CurriculumBranchUnSelectedNode
+{
+}
+
+.CurriculumLearningActivitySelectedNode
+{
+    color: Blue;
+    font-weight:bold;
+	font-size:12px;
+}
+.CurriculumLearningActivityUnSelectedNode
+{
+    color: Gray;
+}
+/* PANEL - Curriculum Status */
+.CurriculumStatusTreeView
+{
+    font-size: 10pt;
+}
+.CurriculumStatusCompleteNode
+{
+    color: Green;
+}
+
+.TotalValueAttendance
+{
+    font-size: 8pt;
+    padding: 3px 205px 3px 15px;
+    text-align: right;
+}
+
+.TotalValueCurriculum
+{
+    width: 250px;
+    font-size: 8pt;
+    padding: 3px 25px 3px 3px;
+    text-align: right;
+}
+
+.TotalValueSubmission
+{
+    font-size: 8pt;
+    padding: 3px 225px 3px 15px;
+    text-align: right;
+}
+.DivHeaderText
+{
+    padding: 10px 3px 30px 30px;
+    font-size: 8pt;
+}
+
+.DivFooterText
+{
+    padding: 30px 3px 30px 30px;
+    font-size: 8pt;
+}
+.DivHandoutHeaderText
+{
+    padding: 30px 3px 30px 20px;
+    font-size: 8pt;
+}
+.DivHandoutFooterText
+{
+    padding: 30px 3px 30px 20px;
+    font-size: 8pt;
+}
+.DivAgreementHeaderText
+{
+    padding: 20px 3px 30px 5px;
+    font-size: 8pt;
+}
+.DivAgreementFooterText
+{
+    padding: 30px 3px 20px 5px;
+    font-size: 8pt;
+}
+/* PANEL - Archived Session List */
+.AsessionListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.AsessionListMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.AsessionListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.AsessionListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.AsessionListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+
+.AsessionListThumbnail img
+{
+    border: 1px solid #000000 !important;
+}
+
+.AsessionListDetails
+{
+    width: 405px;
+    float: left;
+}
+.divOptionTopA
+{
+    width: 235px;
+    font-size: 8pt;
+    text-align: left !important;
+    float: left;
+}
+
+.AsessionItemsPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.AsessionItemsPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.AsessionItemsPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.AsessionItemsPageFirst, .AsessionItemsPagePrevious, .AsessionItemsPageNext, .AsessionItemsPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.AsessionItemsPageFirst a, .AsessionItemsPagePrevious a, .AsessionItemsPageNext a, .AsessionItemsPageLast a
+{
+    color: #666666;
+}
+
+.AsessionItemsCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.AsessionListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.AsessionListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.AsessionListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+
+.AsessionListTitle
+{
+    width: 415px;
+    color: #990000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.AsessionListConference, .AsessionListDate, .AsessionListSpeakers, .AsessionListRating
+{
+    width: 415px;
+    font-size: 8pt;
+}
+
+.AsessionGroupDetails
+{
+    font-size: 8pt;
+}
+.AsessionGroupDetailLink
+{
+    padding-right: 5px;
+    color: #3333CC;
+}
+
+/* SiteForum Links */
+.siteForumMenuItem
+{
+    width: 158px;
+    background-image: url(../images/headers/menu_unselected.png);
+    background-repeat: repeat-x;
+    margin: 0px 0px 1px 0px;
+}
+
+.siteForumMenuItem a:hover
+{
+    cursor: pointer;
+}
+.siteForumMenuItem input:hover
+{
+    cursor: pointer;
+}
+
+.siteForumMenuItem input
+{
+    width: 158px;
+    height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 9px;
+    color: #666666;
+    background-color: Transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.searchAdvancedFilterConf
+{
+    width: 615px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+}
+.searchAdvancedFilterGroup
+{
+    width: 615px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+}
+.searchAdvancedFilterFormat
+{
+    width: 615px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+}
+.searchAdvancedFilterYear
+{
+    width: 615px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+}
+.searchAdvancedFilterLanguage
+{
+    width: 615px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+}
+
+.searchAdvancedFilterConf > input
+{
+    width: 255px;
+}
+.searchAdvancedFilterGroup > input
+{
+    width: 255px;
+}
+.searchAdvancedFilterFormat > input
+{
+    width: 255px;
+}
+.searchAdvancedFilterYear > input
+{
+    width: 255px;
+}
+.searchAdvancedFilterLanguage > input
+{
+    width: 255px;
+}
+/* PANEL - Registration */
+.registrationListDate, .registrationListVenue
+{
+    width: 615px;
+    font-family: arial,helvetica,sans-serif; 
+    font-size: 11px;
+    padding: 0px 20px 0px 0px;
+}
+.registrationListSessionGroup
+{
+    width: 515px;
+    font-family: arial,helvetica,sans-serif; 
+    font-size: 11px; 
+    font-style: italic;
+    padding: 0px 20px 0px 0px;
+}
+.registrationListPrice
+{
+    width: 615px;
+    font-family: arial,helvetica,sans-serif; 
+    font-size: 11px;
+    font-weight:bold;
+    padding: 0px 20px 0px 0px;
+}
+
+.registrationListContent, .conferenceListContent
+{
+    width: 615px;
+    padding: 0px 20px 20px 20px;
+}
+
+.registrationListMessage, .conferenceListMessage
+{
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.registrationListGrid
+{
+    padding: 20px 0px 0px 0px;
+}
+
+.registrationListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.conferenceListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+
+.registrationListIcon
+{
+    width: 100px;
+    float: left;
+}
+
+.conferenceListIcon
+{
+    width: 100px;
+    float: left;
+}
+
+.registrationListIcon img
+{
+}
+
+.registrationListDetails
+{
+    width: 405px;
+    float: left;
+}
+
+.conferenceListDetails
+{
+    width: 405px;
+    float: left;
+}
+
+.registrationListPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.registrationListPageLink, .conferenceListPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.registrationListPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.registrationListPageFirst, .registrationListPagePrevious, .registrationListPageNext, .registrationListPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.registrationListPageFirst a, .registrationListPagePrevious a, .registrationListPageNext a, .registrationListPageLast a
+{
+    color: #666666;
+}
+
+.registrationListCurrentPage, .conferenceListCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+
+.registrationListControls, .conferenceListControls
+{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+
+.registrationListControls img
+{
+    padding: 0px 0px 5px 0px;
+}
+
+.registrationListControlContainer
+{
+    width: 300px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 10px 10px 10px 10px;
+}
+
+.registrationListTitle, .conferenceListTitle
+{
+    width: 415px;
+    color: #990000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.conferenceListDetailsDescription
+{
+    width: 405px;
+    font-size: 12px;
+    padding: 0px 0px 0px 15px;
+}
+.registrationListText
+{
+    width: 405px;
+    font-size: 12pt;
+    padding: 0px 0px 0px 10px;
+}
+.curriculumQuickLinkHolder
+{
+    padding:5px 10px 5px 10px;
+    width: 150px;
+    clear:both;
+}
+.curriculumQuickLink
+{
+    font-size:10pt;
+}
+.curriculumQuickLinkSelected
+{
+    font-size:10pt;
+    font-weight:bold;
+}
+
+
+/**** PNECurriculumCOmpleted ****/
+.curriculumCompleted
+{
+    padding:20px;
+    clear:both;
+}
+.curriculumCompletedText
+{
+    padding-bottom:20px;
+}
+.curriculumCompletedExitCourse
+{
+    float:left;
+    width:200px;
+    text-align:left;
+}
+.curriculumCompletedCertifcate
+{
+    float:left;
+    width:195px;
+    text-align:center;
+}
+.curriculumCompletedReturn
+{
+    float:right;
+    width:200px;
+    text-align:right;
+}
+
+/* PANEL - Curriculum List */
+.curriculumListContent
+{
+    width: 615px;
+    padding: 20px 20px 20px 20px;
+}
+
+.curriculumListContainer
+{
+    width: 615px;
+    height: 150px;
+    border: 1px solid #828282;
+    overflow-x: hidden;
+    overflow-y: auto; 
+}
+
+.curriculumList
+{
+    width: 615px;
+	border:3px solid #666666;
+}
+
+.curriculumListHeader
+{
+    text-align: left;
+	background-color: #666666;
+    padding-left:5px;
+    border: 0;
+	color: #FFFFFF;
+    font-size: 11px;
+    font-weight: inherit;
+    text-transform: uppercase;
+}
+
+.curriculumListHeader a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.curriculumListCell
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 5px 5px 2px;
+	background-color: #FFFFFF;
+    border-bottom-color: #D1D1D1;
+    border-bottom-style: inset;
+    border-bottom-width: 1px;
+}
+
+.curriculumListCellTitle > a
+{
+    text-decoration:none;
+}
+
+.curriculumListCellTitle > a:hover
+{
+    text-decoration:underline;
+}
+
+.curriculumListCellOther 
+{
+    border-left: 1px solid #D1D1D1;
+	text-align:center;
+}
+
+.curriculumListCellTitle
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 5px 5px 2px;
+    width:58%;
+}
+
+.curriculumListCellOther
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 0px 5px 2px;
+    width:16%;
+}
+
+.curriculumListCellCredit
+{
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 0px 5px 2px;
+    width:10%;
+	border-left: 1px solid #D1D1D1;
+}
+
+/* PANEL - Curriculum Agreement */
+.agreementContent
+{
+    width: 655px;
+    padding: 0px 20px 20px 20px;
+}
+
+.agreementContainer
+{
+    width: 615px;
+    font-size: 8pt;
+	padding: 0px 0px 20px 0px;
+}
+
+.agreementError
+{
+    width: 615px;
+    font-size: 8pt;
+    padding: 0px 0px 10px 0px;
+}
+
+.agreementDecline
+{
+    width: 615px;
+    text-align:right;
+}
+
+.agreementAccept
+{
+    width: 615px;
+    text-align:right;
+    padding: 0px 0px 10px 0px;
+}
+
+.agreementAccept input, .agreementDecline input
+{
+	min-width:150px;
+}
+
+/* PANEL - Event Calendar */
+.eventCalendarContent
+{
+    width: 655px;
+    padding: 0px 20px 20px 20px;
+}
+
+/*PANEL - Articles */
+.articleSearchAdvancedFilterGroup
+{
+    width: 615px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+}
+.articleSearchAdvancedFilterGroup > input
+{
+    width: 255px;
+}
+
+.articleSearchButton
+{
+    width: 80px;
+    float: left;
+    padding-left: 110px;
+    padding-top: 10px;
+}
+
+.ArticleListContainer
+{
+    width: 615px;
+    padding: 0px 0px 20px 0px;
+    clear: both;
+    float: right;
+}
+.ArticleListThumbnail
+{
+    width: 100px;
+    float: left;
+}
+.ArticleListDetails
+{
+    width: 405px;
+    float:left;
+}
+.ArticleListDescription
+{
+    font-size:12px;
+    width:390px;
+}
+.ArticleListControls
+{
+    cursor:pointer;
+}
+.ArticleListSpeaker
+{
+	font-weight:bold;
+	padding:0px 0px 5px 0px;
+}
+
+
+.ArticleItemsListThumbnail
+{
+    width: 150px;
+    text-align: center;
+}
+.ArticleListTitle
+{
+    width: 415px;
+    color: #990000;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.ArticleItemsListTitle
+{
+    width: 150px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 8pt;
+}
+.ArticleItemsPageContainer
+{
+    width: 615px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+.ArticleItemsPageLink
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #07519A;
+    border: 1px solid #07519A;
+}
+
+.ArticleItemsPageLink a
+{
+    color: #07519A;
+    text-decoration: none;
+}
+
+.ArticleItemsPageFirst, .ArticleItemsPagePrevious, .ArticleItemsPageNext, .ArticleItemsPageLast
+{
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #666666;
+}
+
+.ArticleItemsPageFirst a, .ArticleItemsPagePrevious a, .ArticleItemsPageNext a, .ArticleItemsPageLast a
+{
+    color: #666666;
+}
+
+.ArticleItemsCurrentPage
+{
+    width: 20px;
+    display: inline-block;
+    margin: 0px 0px 0px 7px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 1px solid #666666;
+    background-color: #666666;
+}
+
+.AgendaListTable
+{
+}
+
+td.AgendaListTableCell1
+{
+	vertical-align: top; 
+	padding: 0px 3px 0px 0px; 
+	width: 20%
+}
+
+td.AgendaListTableCell2
+{
+	vertical-align: top; 
+	padding: 0px 0px 0px 3px; 
+	width: 80%
+}
+
+/* divOptionTop - SesionListEx*/
+
+.sessionItemsExSortContainer
+{
+    width: 615px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+}
+
+
+/* PANEL - SessionListEx */
+.spacer-10px
+{
+	clear:both;
+	height:10px;
+}
+.spacer-15px
+{
+	clear:both;
+	height:15px;
+}
+.spacer-25px
+{
+	clear:both;
+	height:25px;
+}
+.sessionListExPanel
+{
+	width:653px;
+	text-align:left;
+	background-color:#ffffff;
+	margin-left:auto; margin-right:auto; margin-top:20px;
+	padding:0;
+}
+.sessionListExPanel .sessionListExContent
+{
+	width:653px;
+	text-align:left;
+	background-color:#ffffff;
+	padding:0;
+}
+.sessionListExPanel .sessionListExContainer
+{
+	float:none;
+	width:577px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.sessionListExPanel .sessionListExItem
+{
+	position:relative;
+	width: 140px;
+	height: 220px; 
+	float: left;
+	margin: 5px 30px 0 20px;
+}
+
+.sessionListExPanel .sessionListExThumbnail
+{
+	width:140px;
+	text-align:center;
+	position:relative;
+	cursor:pointer;
+
+}
+.sessionListExPanel .sessionListExThumbnail img
+{
+	width:138px;
+	height:102px;
+	border: 1 !important;
+	border-style:solid;
+	border-color:Black;
+	border-width: 2px;
+}
+
+.sessionListExPanel .sessionListExThumbnail .sessionListExTitle
+{
+	width:138px;
+	text-align:left;
+	padding-top:10px;
+	font-size:9pt;
+}
+
+.sessionListExPanel .sessionListExThumbnail .sessionListExDateSmall
+{
+	text-align:left;
+	width:138px;
+	height: 23px;
+	font-size:9pt;
+	color:#959595;
+}
+
+.sessionListExPanel .sessionListExFooter
+{
+	height:35px;
+	clear:both;
+	width:653px;
+	background-color:#dfdfdd;
+	position:relative;
+}
+.sessionListExPanel .sessionListExFooter .sessionListPageBtnLeft
+{
+	position:absolute;
+	top:0;
+	left:0;
+	width:70px;
+	height:35px;
+	text-align:center;
+}
+
+.sessionListExPanel .sessionListExFooter .sessionListPageBtnRight
+{
+	position:absolute;
+	top:0; right:0;
+	width:70px;
+	height:35px;
+	text-align:center;	
+}
+
+.sessionListExPanel .sessionListExFooter .sessionListPageDotsEx
+{
+	width:513px;
+	height:35px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	vertical-align:middle;
+	position:absolute;
+	top:0px;
+	left:70px;
+}
+
+
+ .sessionListPageDotEx
+{
+	width:8px;
+	height:8px;
+	text-align:center;
+	margin: 14px 5px 10px 5px;
+	border: solid 1px #000050;
+}
+
+
+/*Session List Ex popup window*/
+
+.sessionListExPopupWindow{
+	width:230px;
+	padding:0;
+	position:absolute;
+	/*z-index:10500;*/
+	/*left:20px;*/
+	top:0px;
+}
+
+.sessionListExPopupWindow-top{
+	width:230px;
+	height:60px;
+	background-image:url(../images/headers/popup-window-top.png);
+	background-repeat:no-repeat;
+	background-position:top left;
+	text-align:center;	
+}
+
+.sessionListExPopupWindow-middle{
+	width:230px;
+	background-image:url(../images/headers/popup-window-middle.png);
+	background-repeat:repeat-y;
+	background-position:top left;
+	text-align:center;	
+}
+
+.sessionListExPopupWindow-bottom{
+	width:230px;
+	height:43px;
+	background-image:url(../images/headers/popup-window-bottom.png);
+	background-repeat:no-repeat;
+	background-position:top left;
+}
+
+.sessionListExPopupWindow .sessionListExDetails{
+	width:160px;
+	margin-left:auto;
+	margin-right:auto;
+	float:none;
+}
+
+.sessionListExPopupWindow .sessionListExTitle, .sessionListExPopupWindow .sessionListExConference, 
+.sessionListExPopupWindow .sessionListExDate, .sessionListExPopupWindow .sessionListExSpeakers, 
+.sessionListExPopupWindow .sessionListExRating,
+.sessionListExPopupWindow .sessionListExSpeakerName{
+	width:160px;
+	margin-left:auto;
+	margin-right:auto;
+	float:none;
+	text-align:left;
+	font-size:9pt;
+}
+
+.sessionListExPopupWindow .sessionListExTitle a{
+	font-weight:bold;
+}
+.sessionListExPopupWindow .sessionListExLength{
+	font-size:7pt;
+	color:#363636;	
+}
+
+/*sessionItemEx  -- sort block*/
+.sessionListExContent .sessionItemsExSortContainer
+{
+    width: 615px;
+    height: 23px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0px 5px 0px;
+	float:none;
+	margin-left: 20px;
+	vertical-align: middle;
+}
+
+.sessionItemsExSortContainer .ResultForBlock
+{
+	width: 270px;
+	float:left;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 0px 5px 0px 5px;
+}
+
+.ResultForBlock .ResultForBlockLabel
+{
+	width: 70px;
+	float: left;
+	padding: 0px 0px 0px 0px;
+}
+.ResultForBlock .ResultForBlockKeywords 
+{
+	width: 90px;
+	float:left;
+	padding: 0px 0px 0px 0px;
+}
+.ResultForBlock .ResultForBlockPages
+{
+	width:80px;
+	font-weight: normal;
+	float:left;
+	padding: 0px 0px 0px 0px;
+}
+ 
+.sessionItemsExSortContainer .SortOption
+{
+	padding: 0px 5px 0px 5px;
+	width: 280px;
+	float:right;	
+}
+
+.SortOption .SortOptionLabel
+{
+	width:55px;
+	float:left;	
+}
+
+.SortOption .SortOptionList
+{
+	width:220px; 
+	float:right;	
+}
+
+@font-face {
+    font-family: 'GothamUltraRegular';
+    src: url('../font/gotham_ultra-webfont.eot');
+    src: url('../font/gotham_ultra-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/gotham_ultra-webfont.woff') format('woff'),
+         url('../font/gotham_ultra-webfont.ttf') format('truetype'),
+         url('../font/gotham_ultra-webfont.svg#GothamUltraRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'GothamBookRegular';
+    src: url('../font/gotham_book-webfont.eot');
+    src: url('../font/gotham_book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/gotham_book-webfont.woff') format('woff'),
+         url('../font/gotham_book-webfont.ttf') format('truetype'),
+         url('../font/gotham_book-webfont.svg#GothamBookRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

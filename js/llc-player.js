@@ -72,36 +72,57 @@ var llc = {
 			  		// Inject Video Slide Markup
 			  		$(llc.createMarkup(t)).appendTo("#slides");
 					
-					// Video File Types llc.pres.media.items.item.files.file
-					var videoTypes = { files: { poster:t.poster } }
-					for (i in t.files.file) { 
-						videoTypes.supplied = videoTypes.supplied ? videoTypes.supplied+','+t.files.file[i].fileType : t.files.file[i].fileType ;
-						videoTypes.files[t.files.file[i].fileType] = t.files.file[i].text;
-						//console.log(t.file[i]);
-					}
-					//console.log(videoTypes); 
+					// Video File Types & endpoint
+					var videoTypes = llc.fileTypes(t),
+						endPoint = t.endPoint = slides[i+1] ? slides[i+1].startPoint/1000: undefined;
 					
 					// Load Video Jplayer
 					$("#jquery_jplayer_"+t.id).jPlayer({  
+						
 						ready: function () {
 							$(this).jPlayer("setMedia", videoTypes.files);
 						},
-						play: function() { // To avoid both jPlayers playing together
+						play: function (event) { // To avoid both jPlayers playing together
+							
 							$(this).jPlayer("pauseOthers");
+							$("#master_jp_container .jp-play").hide();
+							$("#master_jp_container .jp-pause").show();
+						
+						},
+						pause: function (event) {
+							
+							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime;
+							if (curSec < endPoint && curSec != t.startPoint/1000 ) {
+								$("#master_jp_container .jp-play").show();
+								$("#master_jp_container .jp-pause").hide();
+							}
+						
 						},
 						timeupdate: function (event) { // Set/Show Current time/Slide function
-							var curTime = $("#master_jplayer").data("jPlayer").status.currentTime + .25,
-								percent = (curTime / $("#master_jplayer").data("jPlayer").status.duration) * 100;
 							
-							$("#master_jplayer").jPlayer("playHead",percent);
-							llc.seatTime('update');
+							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime,
+								time = secondsToTime(curSec),
+								percent = (curSec / $("#master_jplayer").data("jPlayer").status.duration) * 100;
+							
+							//$("#master_jplayer").jPlayer("playHead",percent);
+							$("#master_jp_container .jp-play-bar").width(percent+'%');
+							$("#master_jp_container .jp-current-time").text(time.h+':'+time.m+':'+time.s);
+							
+							if (endPoint && curSec >= endPoint) $("#master_jplayer").jPlayer("play",endPoint);
+							
+							llc.seatTime('update');							
 							
 						},
-//						ended: function() { // Trigger master player to start again
-//							console.log('videoslide ended');
-//						    var timeNow = (t.startPoint/1000)+$(this).data("jPlayer").status.duration;
-//						    $("#master_jplayer").jPlayer("play",timeNow-.3); // Slightly pad playhead or Safari goes bonkers?  
-//						},
+						ended: function() { // If short clip, trigger master player to start again
+						
+							//console.log('video slide ended');
+							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
+							else {
+								$("#master_jp_container .jp-play").show();
+								$("#master_jp_container .jp-pause").hide();
+							}
+ 
+						},
 						swfPath: "flash",
 						supplied: videoTypes.supplied, 
 						cssSelectorAncestor: "#"+t.id,
@@ -111,6 +132,7 @@ var llc = {
 							height: "100%",
 							cssClass: "full"
 						}, 
+						//errorAlerts: true,
 						//fullScreen : true,
 						//autohide: {full:false},
 						//solution:"flash, html",
@@ -240,8 +262,6 @@ var llc = {
 				}
 				});
 				
-		 
-		 
 		/* ##########################################
 		  ################# Setup tool tips
 		 ########################################## */
@@ -481,27 +501,6 @@ var llc = {
 			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
 		}
 		
-		// Overide play pause for main timeline on video slide
-		if (llc.pres.curEl && llc.pres.curElisVideo) {
-			
-			var videoData = $("#jquery_jplayer_"+curEl.id).data("jPlayer");
-			
-			if (videoData && videoData.status.paused === false) {
-				
-				console.log("play hide");
-				$("#master_jp_container .jp-play").hide();
-				$("#master_jp_container .jp-pause").show();
-				
-			} else {
-			
-				console.log("play show");
-				$("#master_jp_container .jp-play").show();
-				$("#master_jp_container .jp-pause").hide();
-				
-			}
-			
-		}
-		
 		// Should we do anything with slides?
 		if (llc.pres.curEl != curEl) {
 						
@@ -531,6 +530,9 @@ var llc = {
 					return false;
 				});
 				
+				// Overide play button status;
+				
+
 				llc.pres.curElisVideo = true;
 				
 			} else { 
@@ -543,6 +545,9 @@ var llc = {
 					$("#master_jp_container .jp-pause span, #master_jp_container .jp-play span").unbind('click');
 					
 					$("#master_jplayer").jPlayer("play");
+					
+					$("#master_jp_container .jp-play").hide();
+					$("#master_jp_container .jp-pause").show();
 					
 				}
 				
@@ -587,7 +592,7 @@ var llc = {
 			
 		}
 		
-			
+		// Normal or Preview mode
 		if ((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
 		
 			// Update seatTime
@@ -716,8 +721,7 @@ var llc = {
 		
 	
 	},
-	saveBookmark: function(item) {
-	/* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
+	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
 		if (typeof item === "undefined"){
 				//has been called on init and is attaching to the toc-bookmark links
@@ -807,8 +811,6 @@ var llc = {
 				}
 				});//END TOC CLICK HANDLER
 		}else{
-		if(llc.pres.previewMode || llc.pres.embededMode === 'True'){return false;}
-		
 				//add new bookmark - called by media player onclick
 				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
 				var curEl = llc.pres.curEl || llc.pres.media.items.item;
@@ -824,7 +826,7 @@ var llc = {
 				userID = $('input#user_id').val(), 
 				siteID = $('input#site_id').val();
 				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID=-1';
-				alert(params);
+				
 				$(item).siblings('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
 					}
@@ -931,22 +933,6 @@ var llc = {
 		
 		
 		// postback to server 
-	},
-	previewEmbedSetup: function(){
-	
-		 var embedCheck = llc.pres.embededMode, previewCheck = llc.pres.previewMode;
-				if(previewCheck){
-				$('span#titleIntroText').html('Preview Mode');
-				$('#master_jp_container .llc-next').addClass('llc-next-disabled');
-				$('#master_jp_container .llc-prev').addClass('llc-prev-disabled');
-				$('#master_jp_container .llc-prev, #master_jp_container .llc-next, #master_jp_container .llc-bookmark').unbind('click');
-				$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
-				}
-				
-				$("#master_jp_container .llc-bookmark").addClass('llc-bookmark-disabled');
-				$('div#info_tabs').remove();
-				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
-				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
 	},
 	setCookie: function(name,value) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
 		//console.log('setCookie');
@@ -1082,13 +1068,32 @@ var llc = {
 		}
 		 
 	},
+	fileTypes: function(item) {
+		var f = item,
+			fileTypes = { files: { poster:f.poster } };
+		if (f.files.file.fileType == 'mp3') {
+			fileTypes.supplied = f.files.file.fileType;
+			fileTypes.files[f.files.file.fileType] = f.files.file.text;
+		} else {
+			if (f.files.file.fileType) {
+				fileTypes.supplied = f.files.file.fileType ;
+				fileTypes.files[f.files.file.fileType] = f.files.file.text;
+			} else {	
+				for (i in f.files.file) { 
+					if (f.files.file[i].fileType) fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType , 
+					fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
+				}						
+			}					
+		}
+		return fileTypes
+	},
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 	
 		 
         if (document.domain.indexOf('dropbox') != -1 || document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
 
             // Use test data
-            var url = 'pres.xml';
+            var url = 'sample-3.xml';
 
         } else {
 
@@ -1118,18 +1123,18 @@ var llc = {
 		 
 			llc.pres = $.xml2json(xml); 
 			
-//TOS Agreement verification			
-if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
-var tosHTML = '<div class="lightbox_overlay"></div>\
-				<div class="lightbox_content">\
-				<h1>'+llc.pres.agreements.agreement.name+'</h1>\
-				<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
-				<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
-				</div>';
-				
-$("body").prepend(tosHTML);
-$('div.lightbox_overlay, div.lightbox_content').fadeIn();
-}
+		//TOS Agreement verification			
+		if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
+		var tosHTML = '<div class="lightbox_overlay"></div>\
+						<div class="lightbox_content">\
+						<h1>'+llc.pres.agreements.agreement.name+'</h1>\
+						<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
+						<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
+						</div>';
+						
+		$("body").prepend(tosHTML);
+		$('div.lightbox_overlay, div.lightbox_content').fadeIn();
+		}
 
 
 				/*
@@ -1251,30 +1256,13 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 
 				/* ######## Initialize Master jPlayer */
 				
-				/* File Types */
-				var f = llc.pres.media.master.item,
-					fileTypes = { files: { poster:f.poster } };
-				if (f.files.file.fileType == 'mp3') {
-					fileTypes.supplied = f.files.file.fileType;
-					fileTypes.files[f.files.file.fileType] = f.files.file.text;
-				} else {
-					if (f.files.file.fileType) {
-						fileTypes.supplied = f.files.file.fileType ;
-						fileTypes.files[f.files.file.fileType] = f.files.file.text;
-					} else {	
-						for (i in f.files.file) { 
-							if (f.files.file[i].fileType) fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType , 
-							fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
-						}						
-					}					
-				}
-				//console.log(fileTypes);
+				var f = llc.fileTypes(llc.pres.media.master.item);
 				
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
 				    	$.jPlayer.timeFormat.showHour = true; // set show hours
 	
-				    	$(this).jPlayer("setMedia", fileTypes.files);
+				    	$(this).jPlayer("setMedia", f.files);
 				    	
 				    	/* Set playback if cookied */
 				    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
@@ -1296,6 +1284,9 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				    timeupdate: function (event) { // Set/Show Current time/Slide function
 				    	llc.timeUpdate(event);   	
 				    },
+				    seeking: function (event) {
+				    	llc.pres.curEl = undefined;
+				    },
 				    ended: function() {
 				    	llc.seatTime('save');
 				    },
@@ -1313,7 +1304,7 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				    verticalVolume: true,
 				    preload: "auto",
 				    swfPath: "flash",
-				    supplied: fileTypes.supplied, // Assumes mp3 or native jPlayer video format
+				    supplied: f.supplied, // Assumes mp3 or native jPlayer video format
 				    cssSelectorAncestor: "#master_jp_container",
 				    loop: false,
 				    size: {
@@ -1437,7 +1428,10 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				llc.saveBookmark();
 				llc.setupSlideMagnify();
 				}else{
-				llc.previewEmbedSetup();
+				if(llc.pres.previewMode=='True'){$('span#titleIntroText').html('Preview Mode');}
+				$('div#info_tabs').remove();
+				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
+				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
 				}
 				
 				// Add tool tips if non-mobile or tablet 
@@ -1495,6 +1489,27 @@ function milliConvert(millis) {
   }
   return m + ":" + s;
 }
+
+function secondsToTime(secs) {
+
+    var hours = Math.floor(secs / (60 * 60)),
+    	divisor_for_minutes = secs % (60 * 60),
+    	minutes = Math.floor(divisor_for_minutes / 60),
+    	divisor_for_seconds = divisor_for_minutes % 60,
+    	seconds = Math.ceil(divisor_for_seconds);
+   
+   minutes = minutes > 9 ? minutes : '0'+minutes;
+   seconds = seconds > 9 ? seconds : '0'+seconds;
+   
+    var obj = {
+        "h": hours,
+        "m": minutes,
+        "s": seconds
+    };
+    
+    return obj;
+}
+
 function truncate(text, length, ellipsis) {
 if (typeof length == 'undefined') var length = 100;
 if (typeof ellipsis == 'undefined') var ellipsis = '...';

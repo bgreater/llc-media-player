@@ -1,30 +1,803 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Content Management Corp.</title>
-<meta name="description" content="Media Player">
-<meta name="author" content="B>">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/jplayer.llc.css" rel="stylesheet" type="text/css" />
-<link href="css/default.css" rel="Stylesheet" type="text/css">
-</head>
-<body style="margin-top:50px;">
-<div id="llc_container" class="player"></div>
-<input type="hidden" name="sessionID" id="session_id" value="" />
-<input type="hidden" name="userID" id="user_id" value="" />
-<input type="hidden" name="siteID" id="site_id" value="" />
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
-<script type="text/javascript" src="js/jquery.ratings.js"></script>
-<script type="text/javascript" src="js/llc-player.js"></script>
-<script type="text/javascript" src="js/jquery.tipTip.minified.js"></script>
-<script type='text/javascript' src='//content.multiview.com/adx.js'></script>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	DMA Knowledge Center
+</title><link id="CSS" type="text/css" rel="Stylesheet" href="css/default.css" /><link id="themeCSS" type="text/css" rel="Stylesheet" href="css/themes/blue.css" /><link id="siteCSS" type="text/css" rel="Stylesheet" href="css/sites/154.css" /><link id="browserCSS" type="text/css" rel="Stylesheet" /><link href="http://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet" type="text/css" /><link href="css/jplayer.llc.css" rel="stylesheet" type="text/css" /><meta http-equiv="Expires" content="Sat, 24 Feb 1979 20:00:00 GMT" /><meta http-equiv="cache-control" content="no-store,no-cache,must-revalidate" /><meta http-equiv="cache-control" content="post-check=0,pre-check=0,false" /><meta http-equiv="pragma" content="no-cache" />
+
+    
+
+    <script type="text/javascript" src="js/jquery-1.7.min.js"></script> 
+    <script type="text/javascript" src="js/jquery-1.8.16.ui.min.js"></script> 
+    <script type="text/javascript" language="javascript">
+
+        function ResetScroll() 
+        {
+            window.scrollTo(0, 0);
+        }         
+    </script>  
+<style type="text/css">
+	.panel_16525_LLCPanelPane_236_HMenu_0 { background-color:white;visibility:hidden;display:none;position:absolute;left:0px;top:0px; }
+	.panel_16525_LLCPanelPane_236_HMenu_1 { text-decoration:none; }
+	.panel_16525_LLCPanelPane_236_HMenu_2 {  }
+	.panel_16525_LLCPanelPane_236_HMenu_3 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_HMenu_4 {  }
+	.panel_16525_LLCPanelPane_236_HMenu_5 {  }
+	.panel_16525_LLCPanelPane_236_HMenu_6 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_HMenu_7 {  }
+	.panel_16525_LLCPanelPane_236_HMenu_8 {  }
+	.panel_16525_LLCPanelPane_236_HMenu_9 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_HMenu_10 {  }
+	.panel_16525_LLCPanelPane_236_HMenu_11 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_HMenu_12 {  }
+	.panel_16525_LLCPanelPane_236_HMenu_13 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_HMenu_14 {  }
+	.panel_16525_LLCPanelPane_236_HMenu_15 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_HMenu_16 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_0 { background-color:white;visibility:hidden;display:none;position:absolute;left:0px;top:0px; }
+	.panel_16525_LLCPanelPane_236_SCMenu_1 { text-decoration:none; }
+	.panel_16525_LLCPanelPane_236_SCMenu_2 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_3 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_SCMenu_4 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_5 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_6 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_SCMenu_7 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_8 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_9 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_SCMenu_10 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_11 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_SCMenu_12 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_13 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_SCMenu_14 {  }
+	.panel_16525_LLCPanelPane_236_SCMenu_15 { border-style:none; }
+	.panel_16525_LLCPanelPane_236_SCMenu_16 {  }
+
+</style></head>
+<body onLoad="javascript:window.history.forward(1);">
+    <form name="frmMain" method="post" action="index.aspx" id="frmMain">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUILTI4NjEwNDgPZBYEZg9kFgQCAg8WAh4EaHJlZgUTY3NzL3RoZW1lcy9ibHVlLmNzc2QCAw8WAh8ABRFjc3Mvc2l0ZXMvMTU0LmNzc2QCAQ9kFgwCAw9kFgQCAQ8PFgIeBFRleHRlZGQCBQ9kFgICAQ8PFgIfAWVkZAIFD2QWBmYPZBYCAgMPZBYCZg8PFgIeFUlzVXNlckNvbnRyb2xQb3N0QmFja2dkZAIBD2QWAgIDD2QWAmYPDxYCHwJnZBYCAgEPDxYGHgtOYXZpZ2F0ZVVybAUXfi9vdXRib3VuZC5hc3B4P0xJRD0xMzUeBlRhcmdldAUFX3NlbGYeB1Rvb2xUaXAFBmJhbm5lcmQWAmYPDxYCHghJbWFnZVVybAUcL2ltYWdlcy9iYW5uZXJzL3NpdGUvZG1hLnBuZ2RkAgIPZBYCAgMPZBYCZg8PFgIfAmdkFgQCAQ88KwANAgAPFgQeHlN0YXRpY0VuYWJsZURlZmF1bHRQb3BPdXRJbWFnZWgeFFN0YXRpY1BvcE91dEltYWdlVXJsBScuLi9pbWFnZXMvc2l0ZXMvMTU0L21lbnUvbWVudV9hcnJvdy5wbmdkDBQrAAQFCzA6MCwwOjEsMDoyFCsAAhYGHwEFBiAgSG9tZR4FVmFsdWUFCjE1MDkvMTMvLTEeEVNlcGFyYXRvckltYWdlVXJsZRQrAAMFBzA6MCwwOjEUKwACFgYfAQUXICBLbm93bGVkZ2UgQ2VudGVyIEhvbWUfCQUKMTUwOS8xNC8tMR8KZWQUKwACFgYfAQUKICBETUEgSG9tZR8JBQgtMS8xNS8xMx8KZWQUKwACFgYfAQUMICBNeSBBY2NvdW50HwkFBy0xLzQvLTEfCmUUKwAFBQ8wOjAsMDoxLDA6MiwwOjMUKwACFgYfAQUMICBNeSBQcm9maWxlHwkFCjE0ODQvMTcvLTEfCmVkFCsAAhYGHwEFDCAgTXkgQ29udGVudB8JBQoxNDc1LzEyLy0xHwplZBQrAAIWBh8BBRAgIFJlZGVlbSBWb3VjaGVyHwkFCjE0ODYvMTYvLTEfCmVkFCsAAhYGHwEFCCAgTG9nb3V0HwkFBy0xLzkvLTEfCmVkFCsAAhYGHwEFDCAgQ29udGFjdCBVcx8JBQo1OTcxLzE5Ly0xHwplZGQCAw88KwANAQwUKwACBQMwOjAUKwACFgYfAQUSICBDaGVja291dCA6ICQwLjAwHwkFCGNoZWNrb3V0HwplZGQCBw9kFgYCAQ9kFgJmD2QWAgIHD2QWAmYPZBYCAgEPZBYCAgMPDxYCHwEFCkpvaG4gRGVtbzJkZAICD2QWAmYPZBYCAgcPZBYCZg8PFgIfAmdkFgICAQ8PFgIfAWVkZAIDD2QWAmYPZBYCAgcPZBYCZg8PFgIfAmdkZAIJD2QWBGYPZBYCAgMPZBYCZg8PFgIfAmdkZAIBD2QWAmYPZBYCAgcPZBYCZg8PFgweDFRvdGFsUmVzdWx0cwKUAh4OUmVzdWx0c1BlclBhZ2UCDB4KVG90YWxQYWdlcwIXHgtDdXJyZW50UGFnZQIBHgtQYWdlc1BlclNldAIFHwJnZGQCCw9kFgRmD2QWAgIDD2QWAmYPDxYCHwJnZGQCAQ9kFgJmD2QWAgIHD2QWAmYPDxYCHwJnZGQCDQ9kFgJmD2QWAgIDD2QWAmYPDxYCHwJnZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgwFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI5MjNfNjIyNjQFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI5MDRfNjIyNDIFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI4NjBfNjIxODMFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI4NTJfNjIxNDAFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI5MTVfNjIyNTUFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzU0NTdfNzc1MTcFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI5ODJfNjIzNTAFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzcxNDZfNzc0NjcFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI5MzlfNjIyODQFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI5ODNfNjIzNTIFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI5ODRfNjIzNTMFQHBhbmVsXzM0NDMkdGl0bGVkUGFuZV80MzE2XzEyNiRpbWdTdWdnZXN0aW9uVGh1bWJuYWlsXzI5ODVfNjIzNTQkaj8YI1TyiroRjbA3dW30i8BpFg==" />
+</div>
+
 <script type="text/javascript">
-//<![CDATA[ 
-llc.init();
+//<![CDATA[
+var theForm = document.forms['frmMain'];
+if (!theForm) {
+    theForm = document.frmMain;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
 //]]>
 </script>
+
+
+           
+        <div class="page">
+            
+
+            <div class="body">
+                <div class="bodyFrame">
+                    <div class="ufcolumn">
+                        
+<div class="panelControl">
+    <div id="panel_16264_lblHeader" class="panelControlTransparentHeaderText"></div>
+    
+    <div class="panelControlTransparentPanes">
+        
+
+<div class="adServerLeaderboard">
+    <script language='JavaScript' type='text/javascript' src='http://content.multiview.com/adx.js'></script>
+    <script language='JavaScript' type='text/javascript'>
+        <!--          
+           if (!document.phpAds_used) document.phpAds_used = ',';
+           phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+           
+           var zoneID = 1609;
+           
+           document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+           document.write ("http://content.multiview.com/adjs.php?n=txJE8gjp");
+           document.write ("&amp;what=zone:"+zoneID+"&amp;target=_blank&amp;block=1");
+           document.write ("&amp;exclude=" + document.phpAds_used);
+           if (document.referrer)
+              document.write ("&amp;referer=" + escape(document.referrer));
+           document.write ("'><" + "/script>");
+        //-->
+    </script>
+    <noscript>
+        <a href='http://content.multiview.com/adclick.php?n=txJE8gjp' target='_blank'>
+        <img src='http://content.multiview.com/adview.php?what=zone:1609&amp;n=txJE8gjp' border='0' alt='' /></a>
+    </noscript>
+</div>  
+    </div>
+    
+    <div id="panel_16264_lblFooter" class="panelControlTransparentFooterText"></div>
+</div>
+<div class="panelControl">
+    <div id="panel_10261_lblHeader" class="panelControlTransparentHeaderText"></div>
+    
+    <div class="panelControlTransparentPanes">
+        
+
+<div class="paneControl">
+    <div class="page">
+        <div class="header">
+            <div class="headerBar">    
+            </div>
+            <div class="headerBanner">
+                <a id="panel_10261_LLCPanelPane_223_bannerLink" title="banner" href="outbound.aspx?LID=135" target="_self"><img id="panel_10261_LLCPanelPane_223_imgBanner" src="images/banners/site/dma.png" alt="Live Learning Center Banner" style="border-width:0px;" /></a>
+            </div>
+            <div class="clear">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+</div>  
+    </div>
+    
+    <div id="panel_10261_lblFooter" class="panelControlTransparentFooterText"></div>
+</div>
+<div class="panelControl">
+    <div id="panel_16525_lblHeader" class="panelControlTransparentHeaderText"></div>
+    
+    <div class="panelControlTransparentPanes">
+        
+
+<div>
+    <div class="panelControlMenuBar">
+        <div class="MenuLeftSide"></div>
+        <div class="MenuBackground"> 
+            <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <a href="#panel_16525_LLCPanelPane_236_HMenu_SkipLink"><img alt="Skip Navigation Links"  width="0" height="0" style="border-width:0px;" /></a><table id="panel_16525_LLCPanelPane_236_HMenu" class="Menu StaticMenuStyle panel_16525_LLCPanelPane_236_HMenu_5 panel_16525_LLCPanelPane_236_HMenu_2" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun0"><table class="StaticMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_4" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td style="white-space:nowrap;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 StaticMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_3" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','1509/13/-1')" style="border-style:none;font-size:1em;">  Home</a></td><td style="width:0;"><img src="images/sites/154/menu/menu_arrow.png" alt="Expand   Home" style="border-style:none;vertical-align:middle;" /></td>
+			</tr>
+		</table></td><td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun1"><table class="StaticMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_4" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td style="white-space:nowrap;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 StaticMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_3" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','-1/4/-1')" style="border-style:none;font-size:1em;">  My Account</a></td><td style="width:0;"><img src="images/sites/154/menu/menu_arrow.png" alt="Expand   My Account" style="border-style:none;vertical-align:middle;" /></td>
+			</tr>
+		</table></td><td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun2"><table class="StaticMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_4" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td style="white-space:nowrap;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 StaticMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_3" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','5971/19/-1')" style="border-style:none;font-size:1em;">  Contact Us</a></td>
+			</tr>
+		</table></td>
+	</tr>
+</table><div id="panel_16525_LLCPanelPane_236_HMenun0Items" class="panel_16525_LLCPanelPane_236_HMenu_0 DynamicMenuStyle panel_16525_LLCPanelPane_236_HMenu_8">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr onmouseover="Menu_HoverDynamic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun3">
+			<td><table class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td style="white-space:nowrap;width:100%;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_6" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','1509/13/-1\\1509/14/-1')" style="border-style:none;font-size:1em;">  Knowledge Center Home</a></td>
+				</tr>
+			</table></td>
+		</tr><tr onmouseover="Menu_HoverDynamic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun4">
+			<td><table class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td style="white-space:nowrap;width:100%;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_6" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','1509/13/-1\\-1/15/13')" style="border-style:none;font-size:1em;">  DMA Home</a></td>
+				</tr>
+			</table></td>
+		</tr>
+	</table><div class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7 panel_16525_LLCPanelPane_236_HMenu_0" id="panel_16525_LLCPanelPane_236_HMenun0ItemsUp" onmouseover="PopOut_Up(this)" onmouseout="PopOut_Stop(this)" style="text-align:center;">
+		<img  alt="Scroll up" />
+	</div><div class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7 panel_16525_LLCPanelPane_236_HMenu_0" id="panel_16525_LLCPanelPane_236_HMenun0ItemsDn" onmouseover="PopOut_Down(this)" onmouseout="PopOut_Stop(this)" style="text-align:center;">
+		<img  alt="Scroll down" />
+	</div>
+</div><div id="panel_16525_LLCPanelPane_236_HMenun1Items" class="panel_16525_LLCPanelPane_236_HMenu_0 DynamicMenuStyle panel_16525_LLCPanelPane_236_HMenu_8">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr onmouseover="Menu_HoverDynamic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun5">
+			<td><table class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td style="white-space:nowrap;width:100%;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_6" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','-1/4/-1\\1484/17/-1')" style="border-style:none;font-size:1em;">  My Profile</a></td>
+				</tr>
+			</table></td>
+		</tr><tr onmouseover="Menu_HoverDynamic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun6">
+			<td><table class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td style="white-space:nowrap;width:100%;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_6" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','-1/4/-1\\1475/12/-1')" style="border-style:none;font-size:1em;">  My Content</a></td>
+				</tr>
+			</table></td>
+		</tr><tr onmouseover="Menu_HoverDynamic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun7">
+			<td><table class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td style="white-space:nowrap;width:100%;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_6" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','-1/4/-1\\1486/16/-1')" style="border-style:none;font-size:1em;">  Redeem Voucher</a></td>
+				</tr>
+			</table></td>
+		</tr><tr onmouseover="Menu_HoverDynamic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_HMenun8">
+			<td><table class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7" cellpadding="0" cellspacing="0" border="0" width="100%">
+				<tr>
+					<td style="white-space:nowrap;width:100%;"><a class="panel_16525_LLCPanelPane_236_HMenu_1 DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_6" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$HMenu','-1/4/-1\\-1/9/-1')" style="border-style:none;font-size:1em;">  Logout</a></td>
+				</tr>
+			</table></td>
+		</tr>
+	</table><div class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7 panel_16525_LLCPanelPane_236_HMenu_0" id="panel_16525_LLCPanelPane_236_HMenun1ItemsUp" onmouseover="PopOut_Up(this)" onmouseout="PopOut_Stop(this)" style="text-align:center;">
+		<img alt="Scroll up" />
+	</div><div class="DynamicMenuItemStyle panel_16525_LLCPanelPane_236_HMenu_7 panel_16525_LLCPanelPane_236_HMenu_0" id="panel_16525_LLCPanelPane_236_HMenun1ItemsDn" onmouseover="PopOut_Down(this)" onmouseout="PopOut_Stop(this)" style="text-align:center;">
+		<img alt="Scroll down" />
+	</div>
+</div><a id="panel_16525_LLCPanelPane_236_HMenu_SkipLink"></a>
+                </td>
+                <td>
+                    <a href="#panel_16525_LLCPanelPane_236_SCMenu_SkipLink"><img alt="Skip Navigation Links" width="0" height="0" style="border-width:0px;" /></a><table id="panel_16525_LLCPanelPane_236_SCMenu" class="SCMenu SCStaticMenuStyle panel_16525_LLCPanelPane_236_SCMenu_5 panel_16525_LLCPanelPane_236_SCMenu_2" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td onmouseover="Menu_HoverStatic(this)" onmouseout="Menu_Unhover(this)" onkeyup="Menu_Key(this)" id="panel_16525_LLCPanelPane_236_SCMenun0"><table class="SCStaticMenuItemStyle panel_16525_LLCPanelPane_236_SCMenu_4" cellpadding="0" cellspacing="0" border="0" width="100%">
+			<tr>
+				<td style="white-space:nowrap;"><a class="panel_16525_LLCPanelPane_236_SCMenu_1 SCStaticMenuItemStyle panel_16525_LLCPanelPane_236_SCMenu_3" href="javascript:__doPostBack('panel_16525$LLCPanelPane_236$SCMenu','checkout')" style="border-style:none;font-size:1em;">  Checkout : $0.00</a></td>
+			</tr>
+		</table></td>
+	</tr>
+</table><a id="panel_16525_LLCPanelPane_236_SCMenu_SkipLink"></a>        
+                </td>
+            </tr>
+            </table>
+        </div>
+        <div class="MenuRightSide"></div>    
+    </div>
+    <div class="MenuFooter"></div>
+</div>
+  
+    </div>
+    
+    <div id="panel_16525_lblFooter" class="panelControlTransparentFooterText"></div>
+</div>
+                    </div>
+                    <div class="lcolumn">
+                        <div id="panel_3420_ptlPanel" class="spanelControl">
+    <div class="panelControlHeader">
+        <div id="panel_3420_ptlTitlebar" class="panelControlTitlebar">
+            <div class="panelControlTitlebarLeft"></div>
+            <div class="panelControlTitle">
+                <span id="panel_3420_lblTitle">go back</span>
+            </div>
+            <div class="panelControlTitlebarRight"></div>    
+        </div>
+        
+    </div>
+
+    <div id="panel_3420_lblHeader" class="panelControlHeaderText"></div>
+    
+    <div class="panelControlPanes">
+        
+
+<div class="paneControl">
+    <div class="mainMenuContent">   
+        
+        <div class="mainMenuItem"><input type="submit" name="panel_3420$titledPane_4288_94$btnGoBack" value="Go Back" id="panel_3420_titledPane_4288_94_btnGoBack" /></div>
+    </div>
+</div>  
+
+    </div>
+    
+    <div id="panel_3420_lblFooter" class="panelControlFooterText"></div>
+    
+    <div class="panelControlFooter"></div>
+</div><div id="panel_3416_ptlPanel" class="spanelControl">
+    <div class="panelControlHeader">
+        <div id="panel_3416_ptlTitlebar" class="panelControlTitlebar">
+            <div class="panelControlTitlebarLeft"></div>
+            <div class="panelControlTitle">
+                <span id="panel_3416_lblTitle">my account</span>
+            </div>
+            <div class="panelControlTitlebarRight"></div>    
+        </div>
+        
+    </div>
+
+    <div id="panel_3416_lblHeader" class="panelControlHeaderText"></div>
+    
+    <div class="panelControlPanes">
+        
+
+<div class="paneControl">    
+    <div class="mainMenuContent">   
+        <div id="panel_3416_titledPane_4278_35_divWelcome" class="mainMenuWelcome">
+            <div class="mainMenuWelcomeLogout">
+                <a id="panel_3416_titledPane_4278_35_btnLogout" href="javascript:__doPostBack('panel_3416$titledPane_4278_35$btnLogout','')">Logout</a>
+            </div>
+            <div class="mainMenuWelcomeMessage">
+                Welcome
+            </div>
+            <div class="mainMenuWelcomeName">
+                <span id="panel_3416_titledPane_4278_35_lblUserName">John Demo2</span>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>  
+
+    </div>
+    
+    <div id="panel_3416_lblFooter" class="panelControlFooterText"></div>
+    
+    <div class="panelControlFooter"></div>
+</div><div id="panel_3417_ptlPanel" class="spanelControl">
+    <div class="panelControlHeader">
+        <div id="panel_3417_ptlTitlebar" class="panelControlTitlebar">
+            <div class="panelControlTitlebarLeft"></div>
+            <div class="panelControlTitle">
+                <span id="panel_3417_lblTitle">knowledge channels</span>
+            </div>
+            <div class="panelControlTitlebarRight"></div>    
+        </div>
+        
+    </div>
+
+    <div id="panel_3417_lblHeader" class="panelControlHeaderText"></div>
+    
+    <div class="panelControlPanes">
+        
+
+<div class="paneControl">
+    <span id="panel_3417_titledPane_4279_100_lblMessage" class="ErrorLog"></span>
+    <table class="sessionGroupListTable" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13327" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13327','')">B2B</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13327" class="sessionGroupListItemCount">(66)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13328" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13328','')">B2C</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13328" class="sessionGroupListItemCount">(63)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13329" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13329','')">Catalog</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13329" class="sessionGroupListItemCount">(62)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13320" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13320','')">Data Analytics</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13320" class="sessionGroupListItemCount">(47)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_14570" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_14570','')">Digital Innovation Forum</a><span id="panel_3417_titledPane_4279_100_lblGroupList_14570" class="sessionGroupListItemCount">(2)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13321" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13321','')">DRTV</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13321" class="sessionGroupListItemCount">(24)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13322" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13322','')">Email</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13322" class="sessionGroupListItemCount">(37)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13330" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13330','')">Financial</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13330" class="sessionGroupListItemCount">(63)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_14572" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_14572','')">Future of Digital Integration</a><span id="panel_3417_titledPane_4279_100_lblGroupList_14572" class="sessionGroupListItemCount">(2)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13331" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13331','')">Insurance</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13331" class="sessionGroupListItemCount">(59)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13323" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13323','')">Interactive</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13323" class="sessionGroupListItemCount">(55)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13324" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13324','')">Mobile</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13324" class="sessionGroupListItemCount">(24)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13333" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13333','')">Non-Profit</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13333" class="sessionGroupListItemCount">(60)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13325" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13325','')">Print</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13325" class="sessionGroupListItemCount">(22)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13334" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13334','')">Publishing</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13334" class="sessionGroupListItemCount">(59)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13335" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13335','')">Retail</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13335" class="sessionGroupListItemCount">(60)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13326" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13326','')">Social</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13326" class="sessionGroupListItemCount">(79)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item2"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_14571" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_14571','')">Social Media Spotlight</a><span id="panel_3417_titledPane_4279_100_lblGroupList_14571" class="sessionGroupListItemCount">(2)</span></td>
+	</tr>
+	<tr>
+		<td class="sessionGroupListLevel1Item1"><a id="panel_3417_titledPane_4279_100_lnkbtnGroupList_13336" href="javascript:__doPostBack('panel_3417$titledPane_4279_100$lnkbtnGroupList_13336','')">Travel</a><span id="panel_3417_titledPane_4279_100_lblGroupList_13336" class="sessionGroupListItemCount">(59)</span></td>
+	</tr>
+</table>
+
+</div> 
+  
+
+    </div>
+    
+    <div id="panel_3417_lblFooter" class="panelControlFooterText"></div>
+    
+    <div class="panelControlFooter"></div>
+</div><div id="panel_3413_ptlPanel" class="spanelControl">
+    <div class="panelControlHeader">
+        <div id="panel_3413_ptlTitlebar" class="panelControlTitlebar">
+            <div class="panelControlTitlebarLeft"></div>
+            <div class="panelControlTitle">
+                <span id="panel_3413_lblTitle">social networks</span>
+            </div>
+            <div class="panelControlTitlebarRight"></div>    
+        </div>
+        
+    </div>
+
+    <div id="panel_3413_lblHeader" class="panelControlHeaderText"></div>
+    
+    <div class="panelControlPanes">
+        
+
+<div class="paneControl">   
+    <div class="socialNetworkingQuickListContent">  
+        <div class="socialNetworkingQuickListLinks">
+            <table class="socialNetworkingQuickListTable">
+	<tr class="socialNetworkingQuickListTableRow">
+		<td class="socialNetworkingQuickListTableCell"><a href="http://www.facebook.com/home.php?#/pages/New-York-NY/Direct-Marketing-Association-DMA/60905377232?ref=ts" target="_blank"><img src="images/buttons/sbutton_facebook_small.png" /></a></td>
+		<td class="socialNetworkingQuickListTableCell"><a href="http://www.linkedin.com/groups?gid=1620437" target="_blank"><img src="images/buttons/sbutton_linkedin_small.png" /></a></td>
+		<td class="socialNetworkingQuickListTableCell"><a href="http://twitter.com/dma_usa" target="_blank"><img src="images/buttons/sbutton_twitter_small.png" /></a></td>
+	</tr>
+</table>
+
+        </div>
+    </div>
+</div>
+  
+
+    </div>
+    
+    <div id="panel_3413_lblFooter" class="panelControlFooterText"></div>
+    
+    <div class="panelControlFooter"></div>
+</div>
+<div class="panelControl">
+    <div id="panel_16265_lblHeader" class="panelControlTransparentHeaderText"></div>
+    
+    <div class="panelControlTransparentPanes">
+        
+
+<div class="adServerSkyscraper">
+    <script language='JavaScript' type='text/javascript' src='http://content.multiview.com/adx.js'></script>
+    <script language='JavaScript' type='text/javascript'>
+        <!--
+           if (!document.phpAds_used) document.phpAds_used = ',';
+           phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+           
+           var zoneID = 1612;
+
+           document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+           document.write ("http://content.multiview.com/adjs.php?n=txJE8gjp");
+           document.write ("&amp;what=zone:"+zoneID+"&amp;target=_blank&amp;block=1");
+           document.write ("&amp;exclude=" + document.phpAds_used);
+           if (document.referrer)
+              document.write ("&amp;referer=" + escape(document.referrer));
+           document.write ("'><" + "/script>");
+        //-->
+    </script>
+    <noscript>
+        <a href='http://content.multiview.com/adclick.php?n=txJE8gjp' target='_blank'>
+        <img src='http://content.multiview.com/adview.php?what=zone:1612&amp;n=txJE8gjp' border='0' alt='' /></a>
+    </noscript>
+</div>
+  
+    </div>
+    
+    <div id="panel_16265_lblFooter" class="panelControlTransparentFooterText"></div>
+</div>
+                    </div>
+                    <div class="content">
+                        
+<div class="panelControl">
+    <div id="panel_3441_lblHeader" class="panelControlTransparentHeaderText"></div>
+    
+    <div class="panelControlTransparentPanes">
+        
+
+<div class="paneControl">
+    <div class="playerContentHTML">
+      
+        <div id="llc_container" class="player"></div>
+        <input type="hidden" name="pres_id" id="pres_id" value="2925" />
+        <input type="hidden" name="sessionID" id="session_id" value="llyh5045xmgue131dduklx45" />
+        <input type="hidden" name="curSessionID" id="cur_session_id" value="62267" />
+        <input type="hidden" name="userID" id="user_id" value="10290" />
+        <input type="hidden" name="siteID" id="site_id" value="154" />
+
+        
+        
+        <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ratings.js"></script>
+        <script type="text/javascript" src="js/llc-player.js"></script>
+        <script type="text/javascript" src="js/jquery.tipTip.minified.js"></script>
+        <script type="text/javascript">
+        //<![CDATA[ 
+        llc.init();
+        //]]>
+        </script>
+
+        
+       
+    </div>
+</div>
+  
+    </div>
+    
+    <div id="panel_3441_lblFooter" class="panelControlTransparentFooterText"></div>
+</div><div id="panel_3443_ptlPanel" class="panelControl">
+    <div class="panelControlHeader">
+        <div id="panel_3443_ptlTitlebar" class="panelControlTitlebar">
+            <div class="panelControlTitlebarLeft"></div>
+            <div class="panelControlTitle">
+                <span id="panel_3443_lblTitle">content suggestion grid</span>
+            </div>
+            <div class="panelControlTitlebarRight"></div>    
+        </div>
+        
+    </div>
+
+    <div id="panel_3443_lblHeader" class="panelControlHeaderText"></div>
+    
+    <div class="panelControlPanes">
+        
+
+<div class="paneControl">
+    <div class="contentSuggestionContent"> 
+        
+       
+        <div id="panel_3443_titledPane_4316_126_updGridUpdate">
+	
+                <div class="contentSuggestionPageContainer">RESULTS (1 - 12 of 276) <span class="contentSuggestionPageFirst">|&lt;</span><span class="contentSuggestionPagePrevious">&lt;&lt;</span><span class="contentSuggestionCurrentPage">1</span><span class="contentSuggestionPageLink"><a id="panel_3443_titledPane_4316_126_tLinkButton_2" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$tLinkButton_2','')">2</a></span><span class="contentSuggestionPageLink"><a id="panel_3443_titledPane_4316_126_tLinkButton_3" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$tLinkButton_3','')">3</a></span><span class="contentSuggestionPageLink"><a id="panel_3443_titledPane_4316_126_tLinkButton_4" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$tLinkButton_4','')">4</a></span><span class="contentSuggestionPageLink"><a id="panel_3443_titledPane_4316_126_tLinkButton_5" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$tLinkButton_5','')">5</a></span><span class="contentSuggestionPageNext"><a id="panel_3443_titledPane_4316_126_tNextButton" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$tNextButton','')">>></a></span><span class="contentSuggestionPageLast"><a id="panel_3443_titledPane_4316_126_tLastButton" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$tLastButton','')">>|</a></span></div> 
+
+                <div class="contentSuggestionGrid">
+                    <table class="contentSuggestionTable" border="0" cellspacing="0" cellpadding="0">
+                        <tr class="contentSuggestionTableRow">
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2923_62264" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2923_62264" src="http://www.cmcgc.com/Media/Synch/291018/650/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2923_62264" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2923_62264','')">S11: Beating the Recession: The 11 Strategic Profit Protectors</a></div><div class="contentSuggestionTableDuration">34 min.</div><div class="contentSuggestionTableSpeakers">Speaker: <div class="contentSuggestionTableSpeakerName">Yosi Heber</div></div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_5.png" alt="5.00" title="5.00" /> (1)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2923_62264" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2923_62264','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2904_62242" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2904_62242" src="http://www.cmcgc.com/Media/Synch/291018/690/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2904_62242" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2904_62242','')">S15: Widgets 2.0: Leverage User-Generated Content</a></div><div class="contentSuggestionTableDuration">58 min.</div><div class="contentSuggestionTableSpeakers">Speaker: <div class="contentSuggestionTableSpeakerName">Josh Perlstein</div><div class="contentSuggestionTableSpeakerName">Mitchel Ahern</div><div class="contentSuggestionTableSpeakerName">Eric Lachter</div><div class="contentSuggestionTableSpeakerName">Sharyn Lewis</div><div class="contentSuggestionTableSpeakerName">Scott Spidell</div></div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_5.png" alt="5.00" title="5.00" /> (1)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2904_62242" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2904_62242','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2860_62183" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2860_62183" src="http://www.cmcgc.com/Media/Synch/291018/370/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2860_62183" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2860_62183','')">S11: Internet Law & Privacy</a></div><div class="contentSuggestionTableDuration">72 min.</div><div class="contentSuggestionTableSpeakers">Speaker: <div class="contentSuggestionTableSpeakerName">Stu Ingis</div><div class="contentSuggestionTableSpeakerName">Aaron Kornblum</div><div class="contentSuggestionTableSpeakerName">Rosevelie Marquez Morales Esq.</div></div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_3.png" alt="3.00" title="3.00" /> (1)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2860_62183" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2860_62183','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2852_62140" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2852_62140" src="http://www.cmcgc.com/Media/Synch/291018/160/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2852_62140" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2852_62140','')">S15: Wired Grandmas Revisited</a></div><div class="contentSuggestionTableDuration">56 min.</div><div class="contentSuggestionTableSpeakers">Speaker: </div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_3.png" alt="3.00" title="3.00" /> (1)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2852_62140" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2852_62140','')">More Details...</a></div></div></td>
+	</tr>
+	<tr class="contentSuggestionTableRow">
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2915_62255" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2915_62255" src="http://www.cmcgc.com/Media/Synch/291018/1080/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2915_62255" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2915_62255','')">S7: Applying the Midas Touch to CRM</a></div><div class="contentSuggestionTableDuration">61 min.</div><div class="contentSuggestionTableSpeakers">Speaker: <div class="contentSuggestionTableSpeakerName">Todd Thompson</div><div class="contentSuggestionTableSpeakerName">Jim Sherman</div></div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_3.png" alt="3.00" title="3.00" /> (1)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2915_62255" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2915_62255','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_5457_77517" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_5457_77517" src="http://www.cmcgc.com/Media/Synch/291214/890/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_5457_77517" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_5457_77517','')">Get Inside the Mind of Your Customer and Get Lifetime Results</a></div><div class="contentSuggestionTableDuration">48 min.</div><div class="contentSuggestionTableSpeakers">Speaker: <div class="contentSuggestionTableSpeakerName">Jeanette McMurtry</div></div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_5.png" alt="5.00" title="5.00" /> (1)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_5457_77517" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_5457_77517','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2982_62350" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2982_62350" src="http://www.cmcgc.com/Media/Synch/291018/14/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2982_62350" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2982_62350','')">Pre-Conference Intensives: Acquisition and Retention</a></div><div class="contentSuggestionTableDuration">277 min.</div><div class="contentSuggestionTableSpeakers">Speaker: </div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_2.png" alt="2.00" title="2.00" /> (1)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2982_62350" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2982_62350','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_7146_77467" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_7146_77467" src="http://www.cmcgc.com/Media/Synch/291214/730/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_7146_77467" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_7146_77467','')">13 Tactics to Super-Charge Your Social Media Marketing Efforts</a></div><div class="contentSuggestionTableDuration">47 min.</div><div class="contentSuggestionTableSpeakers">Speaker: <div class="contentSuggestionTableSpeakerName">Heidi Cohen</div><div class="contentSuggestionTableSpeakerName">Kevin Barenblat</div><div class="contentSuggestionTableSpeakerName">Heidi Cohen</div><div class="contentSuggestionTableSpeakerName">Greg Jarboe</div></div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_4.png" alt="4.00" title="4.00" /> (1)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_7146_77467" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_7146_77467','')">More Details...</a></div></div></td>
+	</tr>
+	<tr class="contentSuggestionTableRow">
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2939_62284" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2939_62284" src="http://www.cmcgc.com/Media/Synch/291018/1160/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2939_62284" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2939_62284','')">Foxwoods Plays a Strong Hand in Developing Profitable Relationships"</a></div><div class="contentSuggestionTableDuration">64 min.</div><div class="contentSuggestionTableSpeakers">Speaker: <div class="contentSuggestionTableSpeakerName">Angela Lipscomb</div><div class="contentSuggestionTableSpeakerName">Michael Kutia</div><div class="contentSuggestionTableSpeakerName">Jeff Levitan</div><div class="contentSuggestionTableSpeakerName">Brad Terrell</div></div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_0.png" alt="0.00" title="0.00" /> (0)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2939_62284" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2939_62284','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2983_62352" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2983_62352" src="http://www.cmcgc.com/Media/Synch/291018/1380/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2983_62352" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2983_62352','')">POST-CONFERENCE INTENSIVES: Creative Strategies and Execution</a></div><div class="contentSuggestionTableDuration">121 min.</div><div class="contentSuggestionTableSpeakers">Speaker: </div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_0.png" alt="0.00" title="0.00" /> (0)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2983_62352" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2983_62352','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2984_62353" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2984_62353" src="http://www.cmcgc.com/Media/Synch/291018/1390/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2984_62353" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2984_62353','')">POST-CONFERENCE INTENSIVES: Database Marketing</a></div><div class="contentSuggestionTableDuration">124 min.</div><div class="contentSuggestionTableSpeakers">Speaker: </div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_0.png" alt="0.00" title="0.00" /> (0)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2984_62353" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2984_62353','')">More Details...</a></div></div></td>
+		<td class="contentSuggestionTableData"><div class="contentSuggestionTableThumnbail"><input type="image" name="panel_3443$titledPane_4316_126$imgSuggestionThumbnail_2985_62354" id="panel_3443_titledPane_4316_126_imgSuggestionThumbnail_2985_62354" src="http://www.cmcgc.com/Media/Synch/291018/1400/Slide1.jpg" style="height:60px;width:80px;border-width:0px;" /></div><div class="contentSuggestionTableDetails"><div class="contentSuggestionTableTitle"><a id="panel_3443_titledPane_4316_126_btnSuggestionTitle_2985_62354" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnSuggestionTitle_2985_62354','')">POST-CONFERENCE INTENSIVES: Digital Publishing</a></div><div class="contentSuggestionTableDuration">30 min.</div><div class="contentSuggestionTableSpeakers">Speaker: </div><div class="contentSuggestionTableRating">Rating: <img src="images/ratings/rating_0.png" alt="0.00" title="0.00" /> (0)</div><div class="contentSuggestionTableMoreDetails"><a id="panel_3443_titledPane_4316_126_btnTitle_2985_62354" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$btnTitle_2985_62354','')">More Details...</a></div></div></td>
+	</tr>
+	
+                    </table>
+                </div>
+
+                <div class="contentSuggestionPageContainer">RESULTS (1 - 12 of 276) <span class="contentSuggestionPageFirst">|&lt;</span><span class="contentSuggestionPagePrevious">&lt;&lt;</span><span class="contentSuggestionCurrentPage">1</span><span class="contentSuggestionPageLink"><a id="panel_3443_titledPane_4316_126_bLinkButton_2" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$bLinkButton_2','')">2</a></span><span class="contentSuggestionPageLink"><a id="panel_3443_titledPane_4316_126_bLinkButton_3" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$bLinkButton_3','')">3</a></span><span class="contentSuggestionPageLink"><a id="panel_3443_titledPane_4316_126_bLinkButton_4" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$bLinkButton_4','')">4</a></span><span class="contentSuggestionPageLink"><a id="panel_3443_titledPane_4316_126_bLinkButton_5" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$bLinkButton_5','')">5</a></span><span class="contentSuggestionPageNext"><a id="panel_3443_titledPane_4316_126_bNextButton" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$bNextButton','')">>></a></span><span class="contentSuggestionPageLast"><a id="panel_3443_titledPane_4316_126_bLastButton" href="javascript:__doPostBack('panel_3443$titledPane_4316_126$bLastButton','')">>|</a></span></div> 
+            
+</div>
+    </div>
+</div>  
+
+    </div>
+    
+    <div id="panel_3443_lblFooter" class="panelControlFooterText"></div>
+    
+    <div class="panelControlFooter"></div>
+</div>
+                    </div>
+                    <div class="rcolumn">
+                        
+<div class="panelControl">
+    <div id="panel_3777_lblHeader" class="panelControlTransparentHeaderText"></div>
+    
+    <div class="panelControlTransparentPanes">
+        
+<div class="paneControl">
+    <div class="TwitterContent">
+        <iframe src="http://dma.sclibraries.com/twitter.aspx?SID=154" height="500px" width="160px" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe> 
+    </div>
+</div>
+  
+    </div>
+    
+    <div id="panel_3777_lblFooter" class="panelControlTransparentFooterText"></div>
+</div><div id="panel_3500_ptlPanel" class="spanelControl">
+    <div class="panelControlHeader">
+        <div id="panel_3500_ptlTitlebar" class="panelControlTitlebar">
+            <div class="panelControlTitlebarLeft"></div>
+            <div class="panelControlTitle">
+                <span id="panel_3500_lblTitle">RSS Feeds</span>
+            </div>
+            <div class="panelControlTitlebarRight"></div>    
+        </div>
+        
+    </div>
+
+    <div id="panel_3500_lblHeader" class="panelControlHeaderText"></div>
+    
+    <div class="panelControlPanes">
+        
+
+<div class="paneControl">   
+    <div class="rssFeedsContent">  
+        <div class="rssFeeds">
+            <span class="rssFeed"><div class="rssFeedTitle"><a href="http://www.the-dma.org" target="_blank">Direct Marketing Association: Press Releases</a></div><div class="rssFeedItem1"><a href="http://www.the-dma.org/cgi/disppressrelease?article=1528+++++" target="_blank">DMA Announces Winners of 2011 NCDM Database Excellence   Awards</a></div><div class="rssFeedItem2"><a href="http://www.the-dma.org/cgi/disppressrelease?article=1527+++++" target="_blank">DMA Appoints David Evans Senior Vice President,   Content &amp; Experience</a></div><div class="rssFeedItem1"><a href="http://www.the-dma.org/cgi/disppressrelease?article=1526+++++" target="_blank">  Q3 2011 North America Email Trends Results:  Open Rates Increase Over Previous Quarter And Year  </a></div><div class="rssFeedItem2"><a href="http://www.the-dma.org/cgi/disppressrelease?article=1524+++++" target="_blank">DMA Urges USPS to Withdraw Request for Exigent Postal   Increase</a></div><div class="rssFeedItem1"><a href="http://www.the-dma.org/cgi/disppressrelease?article=1523+++++" target="_blank">DMA Members Speak Out on Capitol Hill for 'DMA Hill   Day'</a></div><div class="rssFeedItem2"><a href="http://www.the-dma.org/cgi/disppressrelease?article=1522+++++" target="_blank">DMA Releases Quarterly Business Review (QBR) for Q3   2011</a></div></span>
+        </div> 
+    </div> 
+</div>  
+
+    </div>
+    
+    <div id="panel_3500_lblFooter" class="panelControlFooterText"></div>
+    
+    <div class="panelControlFooter"></div>
+</div><div id="panel_16514_ptlPanel" class="spanelControl">
+    <div class="panelControlHeader">
+        <div id="panel_16514_ptlTitlebar" class="panelControlTitlebar">
+            <div class="panelControlTitlebarLeft"></div>
+            <div class="panelControlTitle">
+                <span id="panel_16514_lblTitle">Industry Partners</span>
+            </div>
+            <div class="panelControlTitlebarRight"></div>    
+        </div>
+        
+    </div>
+
+    <div id="panel_16514_lblHeader" class="panelControlHeaderText"></div>
+    
+    <div class="panelControlPanes">
+        
+
+<div class="adServerIndustryPartners">
+    <script language='JavaScript' type='text/javascript' src='http://content.multiview.com/adx.js'></script>
+    <script language='JavaScript' type='text/javascript'>
+        <!--
+           if (!document.phpAds_used) document.phpAds_used = ',';
+           phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+           
+           var zoneID = 1610;
+                  
+           document.write ("<" + "script language='JavaScript' id='ind' type='text/javascript' src='");
+           document.write ("http://content.multiview.com/adjs.php?n=iCdvxHFP");
+           document.write ("&amp;what=zone:"+zoneID+"&amp;target=_blank&amp;block=1");
+           document.write ("&amp;exclude=" + document.phpAds_used);
+           if (document.referrer)
+              document.write ("&amp;referer=" + escape(document.referrer));
+           document.write ("'><" + "/script>");
+        //-->
+    </script>
+    <noscript>
+        <a href='http://content.multiview.com/adclick.php?n=iCdvxHFP' target='_blank'>
+        <img src='http://content.multiview.com/adview.php?what=zone:1610&amp;n=iCdvxHFP' border='0' alt='' /></a>
+    </noscript>
+</div>
+
+
+  
+
+    </div>
+    
+    <div id="panel_16514_lblFooter" class="panelControlFooterText"></div>
+    
+    <div class="panelControlFooter"></div>
+</div>
+                    </div>
+                    <div class="clear">
+                        &nbsp;
+                    </div>
+                    <div class="lfcolumn">
+                        
+<div class="panelControl">
+    <div id="panel_16517_lblHeader" class="panelControlTransparentHeaderText"></div>
+    
+    <div class="panelControlTransparentPanes">
+        
+
+<div class="adServerLeaderboard">
+    <script language='JavaScript' type='text/javascript' src='http://content.multiview.com/adx.js'></script>
+    <script language='JavaScript' type='text/javascript'>
+        <!--          
+           if (!document.phpAds_used) document.phpAds_used = ',';
+           phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+           
+           var zoneID = 1613;
+           
+           document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+           document.write ("http://content.multiview.com/adjs.php?n=iCdvxHFP");
+           document.write ("&amp;what=zone:"+zoneID+"&amp;target=_blank&amp;block=1");
+           document.write ("&amp;exclude=" + document.phpAds_used);
+           if (document.referrer)
+              document.write ("&amp;referer=" + escape(document.referrer));
+           document.write ("'><" + "/script>");
+        //-->
+    </script>
+    <noscript>
+        <a href='http://content.multiview.com/adclick.php?n=iCdvxHFP' target='_blank'>
+        <img src='http://content.multiview.com/adview.php?what=zone:1613&amp;n=iCdvxHFP' border='0' alt='' /></a>
+    </noscript>
+</div>  
+    </div>
+    
+    <div id="panel_16517_lblFooter" class="panelControlTransparentFooterText"></div>
+</div>
+                    </div>                    
+                    <div class="clear">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footerLeft">
+                     <a href="http://www.multiview.com" target=_blank><img src="images/headers/footer_logo.png" id="imgFooterLogoL" alt="MultiView Inc. Logo" /></a>
+                </div>
+                <div class="footerContent">
+                    <div id="txtCopyright" class="footerContentCopyright">Copyright &copy; 2011 by MultiView, Inc. All website graphics, text, design, software, and other works are the copyrighted works of MultiView, Inc. All audio, video, presentation materials, logos and text are the copyrighted works of their respective owners. All Rights Reserved.<br> Any redistribution or reproduction of any materials herein is strictly prohibited.</div>
+                </div>
+                <div class="footerRight">
+                    <img src="images/logo_white.png" id="imgFooterLogoR" alt="MultiView Media Logo" />
+                </div>
+            </div>
+        </div>
+    
+
+<!--<script type="text/javascript">
+//<![CDATA[
+var panel_16525_LLCPanelPane_236_HMenu_Data = new Object();
+panel_16525_LLCPanelPane_236_HMenu_Data.disappearAfter = 500;
+panel_16525_LLCPanelPane_236_HMenu_Data.horizontalOffset = 2;
+panel_16525_LLCPanelPane_236_HMenu_Data.verticalOffset = 0;
+panel_16525_LLCPanelPane_236_HMenu_Data.hoverClass = 'panel_16525_LLCPanelPane_236_HMenu_16 DynamicHoverStyle';
+panel_16525_LLCPanelPane_236_HMenu_Data.hoverHyperLinkClass = 'panel_16525_LLCPanelPane_236_HMenu_15 DynamicHoverStyle';
+panel_16525_LLCPanelPane_236_HMenu_Data.staticHoverClass = 'panel_16525_LLCPanelPane_236_HMenu_14 StaticHooverStyle';
+panel_16525_LLCPanelPane_236_HMenu_Data.staticHoverHyperLinkClass = 'panel_16525_LLCPanelPane_236_HMenu_13 StaticHooverStyle';
+var panel_16525_LLCPanelPane_236_SCMenu_Data = new Object();
+panel_16525_LLCPanelPane_236_SCMenu_Data.disappearAfter = 500;
+panel_16525_LLCPanelPane_236_SCMenu_Data.horizontalOffset = 2;
+panel_16525_LLCPanelPane_236_SCMenu_Data.verticalOffset = 0;
+panel_16525_LLCPanelPane_236_SCMenu_Data.hoverClass = 'panel_16525_LLCPanelPane_236_SCMenu_16 SCDynamicHoverStyle';
+panel_16525_LLCPanelPane_236_SCMenu_Data.hoverHyperLinkClass = 'panel_16525_LLCPanelPane_236_SCMenu_15 SCDynamicHoverStyle';
+panel_16525_LLCPanelPane_236_SCMenu_Data.staticHoverClass = 'panel_16525_LLCPanelPane_236_SCMenu_14 SCStaticHooverStyle';
+panel_16525_LLCPanelPane_236_SCMenu_Data.staticHoverHyperLinkClass = 'panel_16525_LLCPanelPane_236_SCMenu_13 SCStaticHooverStyle';
+Sys.Application.initialize();
+//]]>
+</script>-->
+</form>
+    
+    <div class="computerName" style="display:none;">
+        Computer Name: SERVER8558 (10.200.102.1 - Beta)
+        
+        
+    </div>
+    
+    
 </body>
+
+<!-- SiteCatalyst code version: H.22.1.
+Copyright 1996-2011 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="javascript" type="text/javascript" src="js/s_code.js"></script>
+<script language="javascript" type="text/javascript"><!--
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+s.pageName="Content Player"
+s.server='SERVER8558 (10.200.102.1 - Beta)'
+s.channel="dma"
+s.pageType = "Content Player"
+s.prop1="DMA Knowledge Center"
+s.prop2=""
+s.prop5=""
+s.events=""
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="javascript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><img src="http://multiview.122.2o7.net/b/ss/mviewmediallcdev/1/H.22.1--NS/0"
+height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.22.1. -->
+                            
+<script type="text/javascript" language="Javascript">
+    function flashPostback(page, genericID)
+    {
+         __doPostBack('frmMain', 'FP|' + page + '|' + genericID);
+    }
+</script>
+
 </html>

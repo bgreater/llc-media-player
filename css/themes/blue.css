@@ -1,0 +1,300 @@
+﻿/* HTML Tags */
+body
+{
+	background-image:url(../../images/themes/blue/background.png);
+	background-position:top left;
+	background-repeat:repeat-x;
+	background-color:#D7DDE5;	
+}
+
+/* Panel */
+.panelControlTitlebarLeft
+{
+	background-image:url(../../images/themes/blue/bar_left.png);
+	background-position:top left;
+	background-repeat:no-repeat;	
+}
+
+.panelControlTitlebarRight
+{
+	background-image:url(../../images/themes/blue/bar_right.png);
+	background-position:top left;
+	background-repeat:no-repeat;	
+}
+
+.panelControlTitle, .panelControlTitlebarIcon, .panelControlTitlebarText, .panelControlTitlebarIconText
+{
+	background-image:url(../../images/themes/blue/bar_center.png);
+	background-position:top left;
+	background-repeat:repeat-x;		
+}
+
+/* Pane Header */
+.paneTabHeader .paneTabHeaderTitle
+{
+	background-image:url(../../images/themes/blue/bar_center.png);
+	background-position:top left;
+	background-repeat:repeat-x;	
+}
+
+.paneInactiveTabHeader .paneTabHeaderTitle
+{
+	background-image:url(../../images/themes/blue/bar_center_inactive.png);
+	background-position:top left;
+	background-repeat:repeat-x;	
+}
+
+.paneTabHeader .paneTabHeaderLeft
+{
+	background-image:url(../../images/themes/blue/bar_left.png);
+	background-position:top left;
+	background-repeat:no-repeat;	
+}
+
+.paneInactiveTabHeader .paneTabHeaderLeft
+{
+	background-image:url(../../images/themes/blue/bar_left_inactive.png);
+	background-position:top left;
+	background-repeat:no-repeat;	
+}
+
+.paneTabHeader .paneTabHeaderRight
+{
+	background-image:url(../../images/themes/blue/bar_right.png);
+	background-position:top left;
+	background-repeat:no-repeat;	
+}
+
+.paneInactiveTabHeader .paneTabHeaderRight
+{
+	background-image:url(../../images/themes/blue/bar_right_inactive.png);
+	background-position:top left;
+	background-repeat:no-repeat;	
+}
+
+
+/*Blue*/
+/*	Horizontal Menu classes used in PNEHorizontalMenu.ascx*/
+.Menu
+{
+	color: #FFFFFF !important;
+	background-color: Transparent;
+	height: 40px;
+	width: 175px;
+	font-size: 9px;
+	font-family: Verdana;
+	vertical-align:top;
+}
+.StaticMenuStyle
+{
+	color: #FFFFFF !important;
+	width:175px;
+	font-size: 9px;	
+	text-align:left;
+	font-family: Verdana;
+	vertical-align:top;
+}
+.DynamicMenuStyle
+{
+	color: #FFFFFF !important;
+	width:175px;
+	font-size: 9px;	
+	text-align:left;
+	font-family: Verdana;
+	vertical-align:top;
+}
+.StaticMenuItemStyle
+{
+	color: #FFFFFF !important;
+	width:175px;
+	height: 40px;	
+	font-size: 9px;	
+	text-align:left;
+/*	padding: 9px 0px 5px 2px;*/
+	vertical-align:top;
+}
+.DynamicMenuItemStyle
+{
+	color: #000000 !important;
+	width: 175px;
+	height: 40px;	
+	font-size: 9px;
+	text-align: left;
+/*	padding: 9px 0px 5px 2px; */
+	vertical-align:top;
+}
+.StaticSelectedStyle
+{
+	color: #FFFFFF !important;
+	background-image: url(../../images/menu/Menu_bg_over.png);
+	background-repeat: repeat-x;
+	background-color: Transparent;
+	width:175px;
+	height: 40px;	
+	font-size: 9px;	
+	text-align:left;
+/*	padding: 9px 0px 5px 2px; */
+	vertical-align:top;
+}
+.DynamicSelectedStyle
+{
+	color: #FFFFFF !important;
+	background-image: url(../../images/menu/Menu_bg_over.png);
+	background-repeat: repeat-x;
+	background-color: Transparent;
+	width: 175px;
+	height: 40px;	
+	font-size: 9px;
+	text-align: left;
+/*	padding: 9px 0px 5px 2px; */
+	vertical-align:top;
+}
+.StaticHooverStyle
+{
+	color: #FFFFFF !important;
+	background-image: url(../../images/menu/Menu_bg_over.png);
+	background-repeat: repeat-x;
+	background-color: Transparent;
+	width: 175px;
+	height: 40px;	
+	font-size: 9px;
+	text-align:left;
+/*	padding: 9px 0px 5px 2px; */
+	vertical-align:top;
+}
+.DynamicHoverStyle
+{
+	color: #FFFFFF !important;
+	background-image: url(../../images/menu/menu_bg_over.png);
+	background-repeat: repeat-x;
+	background-color: Transparent;
+	width: 175px;
+	height: 40px;	
+	font-size: 9px;
+	text-align:left;
+/*	padding: 9px 0px 5px 2px; */
+	vertical-align:top;
+}
+
+
+/*	Horizontal menu for shopping cart*/
+
+.SCMenu
+{
+	color: #FFFFFF !important;
+	font-family: Verdana;	
+/*	float:left; */
+	text-align:left;
+
+
+
+}
+.SCStaticMenuStyle
+{
+
+
+
+
+
+
+}
+.SCDynamicMenuStyle
+{
+
+
+
+
+
+
+}
+.SCStaticMenuItemStyle
+{
+	color: #FFFFFF !important;
+	font-family: Verdana;	
+/*	float:left; */
+
+
+
+	text-align:left;
+
+}
+.SCDynamicMenuItemStyle
+{
+	color: #000000 !important;
+	font-family: Verdana;	
+/*	float:left; */
+
+
+
+	text-align:left;
+	height:70px;
+	width:400px;
+
+}
+
+.SCStaticHooverStyle
+{
+	color: #FFFFFF !important;
+	background-image: url(../../images/themes/blue/menu/Menu_bg_over.png);
+	background-repeat: repeat;
+	background-color: Transparent;
+/*	background-position:top left; */
+
+
+
+}
+.SCDynamicHoverStyle
+{
+	color: #FFFFFF !important;
+	background-image: url(../../images/themes/blue/menu/menu_bg_over.png);
+	background-repeat: repeat;
+	background-color: Transparent;
+/*	background-position:top left;*/
+
+
+
+}
+
+
+/*	Horizontal Menu classes used in PNEHorizontalMenu.ascx*/
+.panelControlMenuBar
+{
+	width:995px;
+	height: 40px;
+	overflow: hidden;	
+}
+
+.MenuLeftSide
+{
+	background-image:url(../../images/menu/menu_left.png);
+	background-position:top left;
+	background-repeat:no-repeat;	
+	width: 10px;
+	height: 40px;	
+	float:left;
+}
+
+.MenuRightSide
+{
+	background-image:url(../../images/menu/menu_right.png);
+	background-position:top left;
+	background-repeat:no-repeat;	
+	width: 10px;
+	height: 40px;	
+	float:left;
+}
+
+.MenuBackground
+{
+	background-image:url(../../images/menu/menu_bg.png);
+	background-position:top left;
+	background-repeat:repeat-x;
+	width: 975px;
+	height: 40px;	
+	float:left;
+
+}
+.MenuFooter
+{
+	height:0px;
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<presentation id="7711">
+  <title><![CDATA[Future of Digital Integration - Chris Marriott � Acxiom]]></title>
+  <date><![CDATA[]]></date>
+  <defaultInterface id="2">Full Window</defaultInterface>
+  <defaultWindow id="1">Left Window</defaultWindow>
+  <demoStartPoint>0</demoStartPoint>
+  <demoLength>300</demoLength>
+  <allowNavigation>True</allowNavigation>
+  <duration>2586000</duration>
+  <forwardLink type="-1"><![CDATA[]]></forwardLink>
+  <ratingAverage><![CDATA[]]></ratingAverage>
+  <totalRatings><![CDATA[0]]></totalRatings>
+  <viewer id="549518">
+    <firstName><![CDATA[Alexander]]></firstName>
+    <middleName><![CDATA[]]></middleName>
+    <lastName><![CDATA[Yakimov]]></lastName>
+    <title><![CDATA[]]></title>
+    <organization><![CDATA[]]></organization>
+    <email><![CDATA[ayakimov@multiview.com]]></email>
+    <userName><![CDATA[ayakimov@multiview.com]]></userName>
+    <notes><![CDATA[]]></notes>
+    <rating><![CDATA[-1]]></rating>
+  </viewer>
+  <media>
+    <master>
+      <item id="253514">
+        <files>
+          <file id="104347" fileType="flv" quality="low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/760/060.flv]]></file>
+          <file id="101584" fileType="m4v" quality="low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/760/060.m4v]]></file>
+          <file id="101584" fileType="webm" quality="low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/760/060.webm]]></file>
+        </files>
+        <window id="1"><![CDATA[Left Window]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </master>
+    <items>
+      <item id="253513" inTOC="True">
+        <title><![CDATA[Future of Digital Integration]]></title>
+        <files>
+          <file id="104347" fileType="png" quality="high"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/060/PNG/Slide1.png]]></file>
+          <file id="101584" fileType="jpg" quality="medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/060/JPG/Slide1.jpg]]></file>
+          <file id="101584" fileType="jpg" quality="low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/060/Slide1.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </items>
+  </media>
+  <transcript />
+  <speakers />
+  <agreements />
+  <bookmarks />
+</presentation>
