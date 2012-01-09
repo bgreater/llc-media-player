@@ -310,7 +310,7 @@ var llc = {
 										</div>\
 									</div>\
 								</li>\
-								<li><div style="right:2px; bottom:41px; color:#ffffff;" class="response_box">Bookmark Saved!</div><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
+								<li><div style="right:2px; bottom:41px;" class="response_box">Bookmark Saved!</div><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
 								<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>\
 							</ul>\
 							<div class="jp-title"><span id="titleIntroText">Viewing</span>: '+llc.pres.title+'</div>\
@@ -829,7 +829,7 @@ var llc = {
 				siteID = $('input#site_id').val();
 				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID=-1';
 				//alert(params);
-				$(item).siblings('div.response_box').animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
+				$(item).siblings('div.response_box').animate({top: '-=11px', opacity: '1'}, {duration:500, complete:function(){
 					$(this).delay(1200).animate({opacity:0});
 					}
 				});
