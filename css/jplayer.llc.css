@@ -112,16 +112,22 @@ a.llc-prev {
 a.llc-prev:hover {
  background: url(../images/player/jplayer.llc.png) -40px -90px no-repeat
 }
+a.llc-prev-disabled {
+ background: url(../images/player/jplayer.llc.png) -40px -90px no-repeat
+}
 a.llc-next {
  background: url(../images/player/jplayer.llc.png) 0 -120px no-repeat
 }
 a.llc-next:hover {
  background: url(../images/player/jplayer.llc.png) -40px -120px no-repeat
 }
+a.llc-next-disabled {
+ background: url(../images/player/jplayer.llc.png) -40px -120px no-repeat
+}
 a.llc-bookmark {
  background: url(../images/player/jplayer.llc.png) 0 -60px no-repeat
 }
-a.llc-bookmark:hover {
+a.llc-bookmark-disabled {
  background: url(../images/player/jplayer.llc.png) -40px -60px no-repeat
 }
 a.llc-bookmark-set {
@@ -896,7 +902,10 @@ padding:7px 6px 5px 6px;
 	text-align:center;
 	padding: 4px 8px;
 	border: 0;
-	background-color: transparent;
+	background-color: #ffffff;
+	border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
 	opacity:0;
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /* IE 8 */
     filter:alpha(opacity=0);
