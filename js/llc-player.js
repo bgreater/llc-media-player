@@ -1258,12 +1258,12 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 						adjs = "//content.multiview.com/adjs.php?n=" + phpAds_random;
 						adjs += "&what=zone:"+llc.pres.sponsorZoneId+"&target=_blank&block=1";
 						adjs += "&exclude=" + document.phpAds_used;
-						
+						/*
 						$.getScript(adjs, function(){
 							var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
 						   $("#ad_sponsored_box").html(phpadsbanner || defaultAd);
 						});
-						
+						*/
 						llc.loaded = true;
 					}
 					
