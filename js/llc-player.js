@@ -1299,6 +1299,11 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 						adjs += "&exclude=" + document.phpAds_used;
 						
 					if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile) {
+						var randomString = Math.round(Math.random() * 555955);
+						var manualUrl = "<a href='http://content.multiview.com/adclick.php?n="+randomString+"' target='_blank'>";
+						manualUrl = manualUrl + "<img src='http://content.multiview.com/adview.php?what=zone:"+llc.pres.sponsorZoneId+"&n="+randomString+"' border='0' alt='' /></a>";
+						var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
+						   $("#ad_sponsored_box").html(manualUrl || defaultAd);
 						
 					}else{
 								
