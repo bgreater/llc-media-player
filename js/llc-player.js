@@ -34,6 +34,7 @@ $('head').append('<meta name="viewport" content="width=device-width; initial-sca
 
 // Main Object
 var llc = {
+	status: [],
 	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
 		//console.log('setSlides');
 
@@ -80,27 +81,31 @@ var llc = {
 					$("#jquery_jplayer_"+t.id).jPlayer({  
 						
 						ready: function () {
+							var files = JSON ? JSON.stringify(videoTypes.files) : 'N/A';
+							llc.status.push('video slide ready, files: '+files);
 							$(this).jPlayer("setMedia", videoTypes.files);
 						},
 						play: function (event) { // To avoid both jPlayers playing together
-							
+							llc.status.push('video slide play');
 							$(this).jPlayer("pauseOthers");
 							$("#master_jp_container .jp-play").hide();
 							$("#master_jp_container .jp-pause").show();
 						
 						},
 						pause: function (event) {
-							
+							llc.status.push('video slide paused');
 							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime;
+								//percent = (curSec / $("#master_jplayer").data("jPlayer").status.duration) * 100;
 							
 							if (curSec < endPoint && curSec != t.startPoint/1000 ) {
-								
+								console.log('normal pause');
 								// Normal pause
 								$("#master_jp_container .jp-play").show();
 								$("#master_jp_container .jp-pause").hide();
+								llc.pres.curEl = llc.pres.curEl || undefined;
 							
 							} else {
-								
+								console.log('resume master play pause');
 								// Resume master play 
 								var quePercent = ((t.endPoint+.3) / $("#master_jplayer").data("jPlayer").status.duration) * 100;
 								
@@ -155,7 +160,7 @@ var llc = {
 							
 						},
 						ended: function() { // If short clip, trigger master player to start again
-							
+							llc.status.push('video slide ended');
 							//console.log('video slide ended');
 //							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
 //							else {
@@ -681,7 +686,7 @@ var llc = {
 			curMode = llc.switchView.curMode = llc.switchView.curMode ? llc.switchView.curMode : llc.pres.defaultInterface.text;
 				
 		if ((event && curMode == "Full Window") || mode == "Dual Screen") { // Do Dual Screen
-			
+			llc.status.push('dual screen view');
 			//console.log('dual view fired');
 			m.addClass("dual").removeClass("single");
 			s.addClass("dual").removeClass("single");
@@ -694,6 +699,7 @@ var llc = {
 			}
 			llc.switchView.curMode = "Dual Screen"; // End with	
 		} else if ((event && curMode == "Dual Screen") || mode == "Full Window") { // Do Single Screen
+			llc.status.push('single screen view');
 			//console.log('single view fired');
 			if (event) { // Was clicked
 				var p = $(event.target).parents('div.dual');
@@ -739,7 +745,7 @@ var llc = {
 			if (llc.seatTime.time != 0 && llc.seatTime.time % 60000 == 0) llc.seatTime('save');   
 			
 		} else if (method=='save') {
-			
+			llc.status.push('saved seat time');
 			var netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(),
@@ -1058,7 +1064,7 @@ var llc = {
 		var val = val; 
 		
 		if (val==true) { 
-		
+			llc.status.push('full screen');
 		/* ##########################################
 		  ################# Go Full
 		 ########################################## */
@@ -1105,6 +1111,7 @@ var llc = {
 		
 		} else if (val==false) {
 		
+			llc.status.push('normal screen');
 		/* ##########################################
 		  ################# Back to Normal
 		 ########################################## */
@@ -1180,18 +1187,18 @@ var llc = {
 		 
 			llc.pres = $.xml2json(xml); 
 			
-//TOS Agreement verification			
-if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
-var tosHTML = '<div class="lightbox_overlay"></div>\
-				<div class="lightbox_content">\
-				<h1>'+llc.pres.agreements.agreement.name+'</h1>\
-				<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
-				<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
-				</div>';
-				
-$("body").prepend(tosHTML);
-$('div.lightbox_overlay, div.lightbox_content').fadeIn();
-}
+			//TOS Agreement verification			
+			if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
+			var tosHTML = '<div class="lightbox_overlay"></div>\
+							<div class="lightbox_content">\
+							<h1>'+llc.pres.agreements.agreement.name+'</h1>\
+							<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
+							<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
+							</div>';
+							
+			$("body").prepend(tosHTML);
+			$('div.lightbox_overlay, div.lightbox_content').fadeIn();
+			}
 
 
 				/*
@@ -1323,6 +1330,8 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
+						var files = JSON ? JSON.stringify(f.files) : 'N/A';
+						llc.status.push('master ready, files: '+files);
 				    	$.jPlayer.timeFormat.showHour = true; // set show hours
 	
 				    	$(this).jPlayer("setMedia", f.files);
@@ -1336,25 +1345,33 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				    	//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
 				    	//$(this).jPlayer("volume", llc.perVolume);
 				    	
-				    	/* Disable volume button if noVolume object hides volume bar */
+				    	/* Disable volume button if noVolume object hides volume bar (iPad) */
 				    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
 				    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
 				    	}
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
-				    	$(this).jPlayer("pauseOthers");
+				    	llc.status.push('master playing');
+				    	//$(this).jPlayer("pauseOthers");
+				    },
+				    pause: function() { 
+				    	llc.status.push('master paused');
 				    },
 				    timeupdate: function (event) { // Set/Show Current time/Slide function
 				    	llc.timeUpdate(event);   	
 				    },
 				    seeking: function (event) {
+				    	llc.status.push('master seeking');
 				    	$(this).jPlayer("pauseOthers");
 				    	llc.pres.curEl = undefined;
+				    	console.log(event.jPlayer.status.currentTime);
 				    },
 				    ended: function() {
+				    	llc.status.push('master ended');
 				    	llc.seatTime('save');
 				    },
 				    volumechange: function(event) { // make sure volume dragable moves on click
+				    	llc.status.push('volume changed');
 				    	var t = $("#master_jp_container div.jp-volume-bar-value"),
 				    		bottom = t.height(),
 				    		height = t.parent().height(),
@@ -1596,6 +1613,7 @@ return i;
 }
 return ctr;
 };
+
 function htmlEntities(str) {
 
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&quot;');
