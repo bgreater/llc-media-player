@@ -154,7 +154,7 @@ var llc = {
 							if ((masterTime<t.startPoint/1000 || masterTime>t.endPoint)) {
 								// Seeking beyond video slide
 								$("#master_jplayer").jPlayer("play");
-								console.log('pause and play master');
+																
 							}
 							else if (curSec < endPoint && curSec != t.startPoint/1000 ) {
 								//console.log('normal pause');
