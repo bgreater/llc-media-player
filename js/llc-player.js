@@ -853,7 +853,7 @@ var llc = {
 				}
 				});//END TOC CLICK HANDLER
 		}else{
-		if(llc.pres.previewMode || llc.pres.embededMode === 'True'){return false;}
+		if(llc.pres.previewMode === 'True' || llc.pres.embededMode === 'True'){return false;}
 		
 				//add new bookmark - called by media player onclick
 				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
