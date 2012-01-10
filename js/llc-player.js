@@ -896,19 +896,16 @@ var llc = {
    
 
 	},
-	saveRating: function(num) { /* Set bookmark in TOC and postback to server */
+	saveRating: function(num) { /* Postback rating to server */
 		//console.log('saveRating');
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
         var curSessionID = $('input#cur_session_id').val();
-        var hasRated = llc.getCookie('llc|' + curSessionID + '|rated');
-        if (hasRated != llc.pres.ratingAverage) {
-            llc.setCookie('llc|' + curSessionID + '|rated', llc.pres.ratingAverage);
-            hasRated = llc.pres.ratingAverage;
-        }
+        var hasRated = llc.getCookie('llc-' + curSessionID + '|rated');
+		var curRating = (llc.pres.ratingAverage) ? llc.pres.ratingAverage : 0;
         if (!hasRated) {
-            $('#ratings_box').ratings(5, 0).bind('ratingchanged', function(event, data) {
+            $('#ratings_box').ratings(5, curRating).bind('ratingchanged', function(event, data) {
                 var newRating = data.rating,
                       netSessionID = $('input#session_id').val(),
                       userID = $('input#user_id').val(),
@@ -922,7 +919,7 @@ var llc = {
                         if (debugCheck == 'y') {
                             alert(data);
                         }
-                        llc.setCookie('llc|' + curSessionID + '|rated', newRating);
+                        llc.setCookie('llc-' + curSessionID + '|rated', newRating);
                     }
                 });
 
@@ -936,7 +933,7 @@ var llc = {
 		
 			
 		 }else{
-		$('#ratings_box').ratings(5, hasRated);
+		$('#ratings_box').ratings(5, curRating);
 		$('div.jquery-ratings-star').unbind('click');
 		$('div.jquery-ratings-star').unbind('mouseenter');
 		$('div.jquery-ratings-star').unbind('mouseleave');
