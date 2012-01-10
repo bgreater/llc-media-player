@@ -94,18 +94,25 @@ var llc = {
 						},
 						pause: function (event) {
 							llc.status.unshift('video slide paused');
-							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime;
+							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime,
+								masterTime = $('#master_jplayer').data('jPlayer').status.currentTime;
+								//prevEvent = llc.status[1];
 								//percent = (curSec / $("#master_jplayer").data("jPlayer").status.duration) * 100;
 							
-							if (curSec < endPoint && curSec != t.startPoint/1000 ) {
-								console.log('normal pause');
+							if ((masterTime<t.startPoint/1000 || masterTime>t.endPoint)) {
+								// Seeking beyond video slide
+								$("#master_jplayer").jPlayer("play");
+								console.log('pause and play master');
+							}
+							else if (curSec < endPoint && curSec != t.startPoint/1000 ) {
+								//console.log('normal pause');
 								// Normal pause
 								$("#master_jp_container .jp-play").show();
 								$("#master_jp_container .jp-pause").hide();
 								llc.pres.curEl = llc.pres.curEl || undefined;
 							
 							} else {
-								console.log('resume master play pause');
+								//console.log('resume master play pause');
 								// Resume master play 
 								var quePercent = ((t.endPoint+.3) / $("#master_jplayer").data("jPlayer").status.duration) * 100;
 								
@@ -536,7 +543,11 @@ var llc = {
 			llc.pres.curEl = llc.pres.curEl || undefined;
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
 					
-				
+		// Pause Video slide when seeking 
+		if ((llc.status[0]=='video slide play' || llc.status[0]=='video slide paused') && event.jPlayer.status.paused) {
+			$("#master_jplayer").jPlayer("play");
+		}
+		
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
 			var startPoint = llc.pres.media.items.item[i].startPoint/1000;
@@ -1354,10 +1365,11 @@ var llc = {
 				    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
 				    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
 				    	}
+				    	$(this).jPlayer("pause",0);
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
 				    	llc.status.unshift('master playing');
-				    	//$(this).jPlayer("pauseOthers");
+				    	$(this).jPlayer("pauseOthers");
 				    },
 				    pause: function() { 
 				    	llc.status.unshift('master paused');
@@ -1366,10 +1378,10 @@ var llc = {
 				    	llc.timeUpdate(event);   	
 				    },
 				    seeking: function (event) {
-				    	llc.status.unshift('master seeking');
+				    	//llc.status.unshift('master seeking');
 				    	$(this).jPlayer("pauseOthers");
 				    	llc.pres.curEl = undefined;
-				    	console.log(event.jPlayer.status.currentTime);
+				    	//console.log(event.jPlayer.status.currentTime);
 				    },
 				    ended: function() {
 				    	llc.status.unshift('master ended');
@@ -1401,7 +1413,7 @@ var llc = {
 				    fullScreen : true,
 				    autohide: {full:false},
 				    //errorAlerts: true,
-				    //solution:"flash, html",
+				    solution:"flash, html",
 				    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
 				}); // end jPlayer initialize
 				
