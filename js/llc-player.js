@@ -82,18 +82,18 @@ var llc = {
 						
 						ready: function () {
 							var files = JSON ? JSON.stringify(videoTypes.files) : 'N/A';
-							llc.status.push('video slide ready, files: '+files);
+							llc.status.unshift('video slide ready, files: '+files);
 							$(this).jPlayer("setMedia", videoTypes.files);
 						},
 						play: function (event) { // To avoid both jPlayers playing together
-							llc.status.push('video slide play');
+							llc.status.unshift('video slide play');
 							$(this).jPlayer("pauseOthers");
 							$("#master_jp_container .jp-play").hide();
 							$("#master_jp_container .jp-pause").show();
 						
 						},
 						pause: function (event) {
-							llc.status.push('video slide paused');
+							llc.status.unshift('video slide paused');
 							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime;
 								//percent = (curSec / $("#master_jplayer").data("jPlayer").status.duration) * 100;
 							
@@ -160,7 +160,7 @@ var llc = {
 							
 						},
 						ended: function() { // If short clip, trigger master player to start again
-							llc.status.push('video slide ended');
+							llc.status.unshift('video slide ended');
 							//console.log('video slide ended');
 //							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
 //							else {
@@ -686,7 +686,7 @@ var llc = {
 			curMode = llc.switchView.curMode = llc.switchView.curMode ? llc.switchView.curMode : llc.pres.defaultInterface.text;
 				
 		if ((event && curMode == "Full Window") || mode == "Dual Screen") { // Do Dual Screen
-			llc.status.push('dual screen view');
+			llc.status.unshift('dual screen view');
 			//console.log('dual view fired');
 			m.addClass("dual").removeClass("single");
 			s.addClass("dual").removeClass("single");
@@ -699,7 +699,7 @@ var llc = {
 			}
 			llc.switchView.curMode = "Dual Screen"; // End with	
 		} else if ((event && curMode == "Dual Screen") || mode == "Full Window") { // Do Single Screen
-			llc.status.push('single screen view');
+			llc.status.unshift('single screen view');
 			//console.log('single view fired');
 			if (event) { // Was clicked
 				var p = $(event.target).parents('div.dual');
@@ -745,7 +745,7 @@ var llc = {
 			if (llc.seatTime.time != 0 && llc.seatTime.time % 60000 == 0) llc.seatTime('save');   
 			
 		} else if (method=='save') {
-			llc.status.push('saved seat time');
+			llc.status.unshift('saved seat time');
 			var netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(),
@@ -1064,7 +1064,7 @@ var llc = {
 		var val = val; 
 		
 		if (val==true) { 
-			llc.status.push('full screen');
+			llc.status.unshift('full screen');
 		/* ##########################################
 		  ################# Go Full
 		 ########################################## */
@@ -1111,7 +1111,7 @@ var llc = {
 		
 		} else if (val==false) {
 		
-			llc.status.push('normal screen');
+			llc.status.unshift('normal screen');
 		/* ##########################################
 		  ################# Back to Normal
 		 ########################################## */
@@ -1333,7 +1333,7 @@ var llc = {
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
 						var files = JSON ? JSON.stringify(f.files) : 'N/A';
-						llc.status.push('master ready, files: '+files);
+						llc.status.unshift('master ready, files: '+files);
 				    	$.jPlayer.timeFormat.showHour = true; // set show hours
 	
 				    	$(this).jPlayer("setMedia", f.files);
@@ -1353,27 +1353,27 @@ var llc = {
 				    	}
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
-				    	llc.status.push('master playing');
+				    	llc.status.unshift('master playing');
 				    	//$(this).jPlayer("pauseOthers");
 				    },
 				    pause: function() { 
-				    	llc.status.push('master paused');
+				    	llc.status.unshift('master paused');
 				    },
 				    timeupdate: function (event) { // Set/Show Current time/Slide function
 				    	llc.timeUpdate(event);   	
 				    },
 				    seeking: function (event) {
-				    	llc.status.push('master seeking');
+				    	llc.status.unshift('master seeking');
 				    	$(this).jPlayer("pauseOthers");
 				    	llc.pres.curEl = undefined;
 				    	console.log(event.jPlayer.status.currentTime);
 				    },
 				    ended: function() {
-				    	llc.status.push('master ended');
+				    	llc.status.unshift('master ended');
 				    	llc.seatTime('save');
 				    },
 				    volumechange: function(event) { // make sure volume dragable moves on click
-				    	llc.status.push('volume changed');
+				    	llc.status.unshift('volume changed');
 				    	var t = $("#master_jp_container div.jp-volume-bar-value"),
 				    		bottom = t.height(),
 				    		height = t.parent().height(),
