@@ -92,9 +92,38 @@ var llc = {
 						pause: function (event) {
 							
 							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime;
+							
 							if (curSec < endPoint && curSec != t.startPoint/1000 ) {
+								
+								// Normal pause
 								$("#master_jp_container .jp-play").show();
 								$("#master_jp_container .jp-pause").hide();
+							
+							} else {
+								
+								// Resume master play 
+								var quePercent = ((t.endPoint+.3) / $("#master_jplayer").data("jPlayer").status.duration) * 100;
+								
+								if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile) {
+									
+									//console.log('tablet resumePlay ',endPoint+.3);
+									
+									llc.pres.curEl = llc.pres.curEl || undefined;
+									
+									//$("#master_jplayer").data('jPlayer').status.currentTime = endPoint+.3;
+									$("#master_jplayer").jPlayer("playHead", quePercent);
+																		
+									clearTimeout('resumePlay');
+									var resumePlay = setTimeout(function(){
+										$("#master_jplayer").jPlayer("play",t.endPoint+.3)
+										$("#master_jp_container .jp-pause span, #master_jp_container .jp-play span").unbind('click');
+									},700);
+									
+								} else {
+									//console.log('normal resumePlay');
+									$("#master_jplayer").jPlayer("play",t.endPoint+.3);
+								}
+								
 							}
 						
 						},
@@ -105,22 +134,34 @@ var llc = {
 								percent = (curSec / $("#master_jplayer").data("jPlayer").status.duration) * 100;
 							
 							//$("#master_jplayer").jPlayer("playHead",percent);
-							$("#master_jp_container .jp-play-bar").width(percent+'%');
-							$("#master_jp_container .jp-current-time").text(time.h+':'+time.m+':'+time.s);
+							if (!event.jPlayer.status.paused) {
+								$("#master_jp_container .jp-play-bar").width(percent+'%');
+								$("#master_jp_container .jp-current-time").text(time.h+':'+time.m+':'+time.s);
+								llc.seatTime('update');
+							}
 							
-							if (endPoint && curSec >= endPoint) $("#master_jplayer").jPlayer("play",endPoint);
-							
-							llc.seatTime('update');							
+							if (endPoint && curSec >= endPoint && !event.jPlayer.status.paused) {
+								
+								$(this).jPlayer("pause");
+								
+								//$("#master_jplayer").jPlayer("play",endPoint-.3);
+								//alert(endPoint+.3);
+								
+								//$("#master_jplayer").jPlayer("play");
+																
+								//alert(t.endPoint,event.jPlayer.status.paused);
+								
+							}							
 							
 						},
 						ended: function() { // If short clip, trigger master player to start again
-						
+							
 							//console.log('video slide ended');
-							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
-							else {
-								$("#master_jp_container .jp-play").show();
-								$("#master_jp_container .jp-pause").hide();
-							}
+//							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
+//							else {
+//								$("#master_jp_container .jp-play").show();
+//								$("#master_jp_container .jp-pause").hide();
+//							}
 
 						},
 						swfPath: "flash",
@@ -135,7 +176,7 @@ var llc = {
 						//errorAlerts: true,
 						//fullScreen : true,
 						//autohide: {full:false},
-						//solution:"flash, html",
+						solution:"html, flash",
 						wmode:'transparent'
 					});
 			  	}
@@ -539,18 +580,19 @@ var llc = {
 				// Restart master player 
 				if (llc.pres.curElisVideo) {
 					
+					//console.log('restart master player',timeNow);
+					llc.pres.curElisVideo = false;
+					
 					// Stop active video
-					$("#slides .jp-jplayer").jPlayer("stop");
+					//$("#slides .jp-jplayer").jPlayer("pause");
 					$("#master_jp_container .jp-pause span, #master_jp_container .jp-play span").unbind('click');
 					
-					$("#master_jplayer").jPlayer("play");
 					
 					$("#master_jp_container .jp-play").hide();
 					$("#master_jp_container .jp-pause").show();
 					
 				}
 				
-				llc.pres.curElisVideo = false;
 				
 			}
 						
@@ -1303,6 +1345,7 @@ $('div.lightbox_overlay, div.lightbox_content').fadeIn();
 				    	llc.timeUpdate(event);   	
 				    },
 				    seeking: function (event) {
+				    	$(this).jPlayer("pauseOthers");
 				    	llc.pres.curEl = undefined;
 				    },
 				    ended: function() {
