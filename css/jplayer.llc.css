@@ -5,6 +5,23 @@
  *
  */
  
+div#llc-log {
+ position: fixed; top: 0; left: 0; width: 400px; background: #fff; border: 1px solid #333; font-size: 10px; text-align: left; padding: 10px; z-index: 99999;
+}
+div#llc-log a { float: right; color: blue; }
+div#llc-log #status{
+ width: 350px; height: 12px; overflow: hidden; text-overflow: ellipsis; 
+}
+div#llc-log #status span {
+ color: red;
+}
+div#llc-log #log {
+ margin: 1em 0; padding: 0;
+}
+div#llc-log #log li { 
+ overflow: hidden;  border-bottom: 1px solid #ddd; padding: 3px; word-wrap:break-word ;
+}
+ 
 /* @group jplayer skin */
 div.jp-audio,
 div.jp-video { 

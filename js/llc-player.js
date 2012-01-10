@@ -34,8 +34,60 @@ $('head').append('<meta name="viewport" content="width=device-width; initial-sca
 
 // Main Object
 var llc = {
-	status: [],
-	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
+	log: [],
+	status: function (obj) {
+		/* Status updates */
+		
+		if (llc.status.verbose == undefined) {
+			llc.status.verbose =  urlParse('verbose')=='y' ? 'y' : 'n' ; 
+		}
+		
+		if (obj.media) {
+		
+			llc.status.media = obj.media;
+			llc.log.unshift(obj.media);
+		
+		} else if (obj.data) {
+		
+			llc.status.data = obj.data;
+			llc.log.unshift(obj.data);
+			
+		} else {
+		
+			llc.log.unshift(obj);
+			
+		}
+		
+		if (llc.status.verbose == 'y') {
+		
+			if (!$("#llc-log").is('div')) {
+				
+				$("body").append('<div id="llc-log">\
+									<a href="#" class="show">show log</a>\
+									<a href="#" class="hide" style="display:none">hide log</a>\
+									<div id="status"></div>\
+									<ol id="log" style="display:none"></ol>\
+								  </div>');
+								  
+				$("#llc-log a.hide").click(function(){
+					$("#llc-log #log").hide();
+					$(this).hide();
+					$("#llc-log a.show").show();
+				});
+				
+				$("#llc-log a.show").click(function(){
+					$("#llc-log #log").show();
+					$(this).hide();
+					$("#llc-log a.hide").show();
+				});
+			}
+			
+			$("#llc-log #status").html('status: <span>'+llc.log[0]+'</span>');
+			$("#llc-log #log").prepend("<li>"+llc.log[0]+"</li>")
+			
+		}
+	},
+	setupItems: function (slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
 		//console.log('setSlides');
 
 		/* ##########################################
@@ -82,18 +134,18 @@ var llc = {
 						
 						ready: function () {
 							var files = JSON ? JSON.stringify(videoTypes.files) : 'N/A';
-							llc.status.unshift('video slide ready, files: '+files);
+							llc.status('video slide ready, files: '+files);
 							$(this).jPlayer("setMedia", videoTypes.files);
 						},
 						play: function (event) { // To avoid both jPlayers playing together
-							llc.status.unshift('video slide play');
+							llc.status({media:'video slide play'});
 							$(this).jPlayer("pauseOthers");
 							$("#master_jp_container .jp-play").hide();
 							$("#master_jp_container .jp-pause").show();
 						
 						},
 						pause: function (event) {
-							llc.status.unshift('video slide paused');
+							llc.status({media:'video slide paused'});
 							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime,
 								masterTime = $('#master_jplayer').data('jPlayer').status.currentTime;
 								//prevEvent = llc.status[1];
@@ -167,7 +219,7 @@ var llc = {
 							
 						},
 						ended: function() { // If short clip, trigger master player to start again
-							llc.status.unshift('video slide ended');
+							llc.status('video slide ended');
 							//console.log('video slide ended');
 //							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
 //							else {
@@ -531,7 +583,7 @@ var llc = {
 		
 	},
 	timeUpdate: function(event) { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
-		//console.log('timeUpdate');
+		//llc.status('timeUpdate');
 		
 		/* ##########################################
 		  ################# Time Update Functions
@@ -542,11 +594,6 @@ var llc = {
 			curBlurb = llc.pres.transcript.blurb == undefined ? undefined : llc.pres.curBlurb || llc.pres.transcript.blurb[0];
 			llc.pres.curEl = llc.pres.curEl || undefined;
 			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
-					
-		// Pause Video slide when seeking 
-		if ((llc.status[0]=='video slide play' || llc.status[0]=='video slide paused') && event.jPlayer.status.paused) {
-			$("#master_jplayer").jPlayer("play");
-		}
 		
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
@@ -560,6 +607,19 @@ var llc = {
 			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
 		}
 		
+		// Is there a Video slide when seeking 
+		if ((llc.status.media=='video slide play' || llc.status.media=='video slide paused') && event.jPlayer.status.paused) {
+
+			if ($("#"+curEl.id).is('.active')) {
+				// scrubbing within video script
+				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+			} else {
+				// que master player
+				$("#master_jplayer").jPlayer("play");
+			}
+			
+		}
+		
 		// Should we do anything with slides?
 		if (llc.pres.curEl != curEl) {
 						
@@ -569,10 +629,10 @@ var llc = {
 			llc.pres.curEl = curEl;
 			
 			// Show/Hide slides
-			$("#"+curEl.id).show();
+			$("#"+curEl.id).show().removeClass('active').addClass('active');
 			$("#"+curEl.id+".jp-video").width('100%').height('100%')
-			$("#slides .jp-video").not("#"+curEl.id).width(0).height(0); // 0 out the jPlayer as hiding disables the flash instance
-			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide();
+			$("#slides .jp-video").not("#"+curEl.id).width(0).height(0).removeClass('active'); // 0 out the jPlayer as hiding disables the flash instance
+			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide().removeClass('active');
 						
 			// Play/Pause video slide
 			if (curEl.files.file[1].fileType!="jpg" && curEl.files.file.fileType!="jpg") {
@@ -697,7 +757,7 @@ var llc = {
 			curMode = llc.switchView.curMode = llc.switchView.curMode ? llc.switchView.curMode : llc.pres.defaultInterface.text;
 				
 		if ((event && curMode == "Full Window") || mode == "Dual Screen") { // Do Dual Screen
-			llc.status.unshift('dual screen view');
+			llc.status('dual screen view');
 			//console.log('dual view fired');
 			m.addClass("dual").removeClass("single");
 			s.addClass("dual").removeClass("single");
@@ -710,7 +770,7 @@ var llc = {
 			}
 			llc.switchView.curMode = "Dual Screen"; // End with	
 		} else if ((event && curMode == "Dual Screen") || mode == "Full Window") { // Do Single Screen
-			llc.status.unshift('single screen view');
+			llc.status('single screen view');
 			//console.log('single view fired');
 			if (event) { // Was clicked
 				var p = $(event.target).parents('div.dual');
@@ -756,7 +816,7 @@ var llc = {
 			if (llc.seatTime.time != 0 && llc.seatTime.time % 60000 == 0) llc.seatTime('save');   
 			
 		} else if (method=='save') {
-			llc.status.unshift('saved seat time');
+			llc.status('saved seat time');
 			var netSessionID = $('input#session_id').val(), 
 				presentationID = llc.pres.id, 
 				userID = $('input#user_id').val(),
@@ -1075,7 +1135,7 @@ var llc = {
 		var val = val; 
 		
 		if (val==true) { 
-			llc.status.unshift('full screen');
+			llc.status('full screen');
 		/* ##########################################
 		  ################# Go Full
 		 ########################################## */
@@ -1122,7 +1182,7 @@ var llc = {
 		
 		} else if (val==false) {
 		
-			llc.status.unshift('normal screen');
+			llc.status('normal screen');
 		/* ##########################################
 		  ################# Back to Normal
 		 ########################################## */
@@ -1344,7 +1404,7 @@ var llc = {
 				$("#master_jplayer").jPlayer({
 					ready: function (event) {
 						var files = JSON ? JSON.stringify(f.files) : 'N/A';
-						llc.status.unshift('master ready, files: '+files);
+						llc.status('master ready, files: '+files);
 				    	$.jPlayer.timeFormat.showHour = true; // set show hours
 	
 				    	$(this).jPlayer("setMedia", f.files);
@@ -1365,27 +1425,27 @@ var llc = {
 				    	$(this).jPlayer("pause",0);
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
-				    	llc.status.unshift('master playing');
+				    	llc.status({media:'master playing'});
 				    	$(this).jPlayer("pauseOthers");
 				    },
 				    pause: function() { 
-				    	llc.status.unshift('master paused');
+				    	llc.status({media:'master paused'});
 				    },
 				    timeupdate: function (event) { // Set/Show Current time/Slide function
 				    	llc.timeUpdate(event);   	
 				    },
 				    seeking: function (event) {
-				    	//llc.status.unshift('master seeking');
-				    	$(this).jPlayer("pauseOthers");
+				    	llc.status('master seeking');
+				    	//$(this).jPlayer("pauseOthers");
 				    	llc.pres.curEl = undefined;
 				    	//console.log(event.jPlayer.status.currentTime);
 				    },
 				    ended: function() {
-				    	llc.status.unshift('master ended');
+				    	llc.status('master ended');
 				    	llc.seatTime('save');
 				    },
 				    volumechange: function(event) { // make sure volume dragable moves on click
-				    	llc.status.unshift('volume changed');
+				    	llc.status('volume changed');
 				    	var t = $("#master_jp_container div.jp-volume-bar-value"),
 				    		bottom = t.height(),
 				    		height = t.parent().height(),
