@@ -367,7 +367,7 @@ var llc = {
 					<p style="display:block" id="pres_title"><strong>Title:</strong> <span></span></p>\
 					<p style="display:block" id="pres_presenter"><strong>Presenter(s):</strong> <span></span></p>\
 					<p style="display:block" id="pres_date"><strong>Date:</strong> <span>There is no date in xml</span></p>\
-					<div style="left:349px; top:35px;" class="response_box">Rating Saved!</div><div id="ratings_box" class="ratingsBox"></div>\
+					<div style="left:349px; top:35px; background-color:transparent;" class="response_box">Rating Saved!</div><div id="ratings_box" class="ratingsBox"></div>\
 				</div>\
 				<div id="info_tabs">\
 					<div id="tabs">\
@@ -381,7 +381,7 @@ var llc = {
 						<div id="tabs_bookmarks" class="info"><div id="noBookmarks"><p>Your bookmarks folder is currently empty.</p></div></div>\
 						<div id="tabs_notes" class="info" style="border:1px solid #777777">\
 							<TEXTAREA id="note_pad" name="notePad" class="notesInput"></TEXTAREA>\
-							<div class="notesSubmitBox" style="position:relative;"><div style="right:8px; top:-5px; color:#000000;" class="response_box">Notes Saved!</div>\
+							<div class="notesSubmitBox" style="position:relative;"><div style="right:8px; top:-15px; color:#000000; background-color:transparent;" class="response_box">Notes Saved!</div>\
 							<table style="width:100%;"><tr><td><p class="">Keep track of the presentation\'s key points here.</p></td>\
 							<td><button class="llc-button-s" id="save_note_btn">SAVE</button></td></tr></table>\
 							</div>\
