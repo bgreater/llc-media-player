@@ -240,7 +240,7 @@ var llc = {
 						//errorAlerts: true,
 						//fullScreen : true,
 						//autohide: {full:false},
-						solution:"html, flash",
+						solution:"flash, html",
 						wmode:'transparent'
 					});
 			  	}
@@ -1428,7 +1428,7 @@ var llc = {
 				    	$(this).jPlayer("pause",0);
 				    	
 				    	// Grey screen fix?
-				    	setTimeout(function(){$("#slides .slide img").eq(0).hide().show()}, 300);
+				    	setTimeout(function(){$("#slides .slide img").eq(0).fadeIn(50)}, 300);
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
 				    	llc.status({media:'master playing'});
