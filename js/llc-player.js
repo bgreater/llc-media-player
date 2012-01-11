@@ -168,7 +168,7 @@ var llc = {
 								// Resume master play 
 								var quePercent = ((t.endPoint+.3) / $("#master_jplayer").data("jPlayer").status.duration) * 100;
 								
-								if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile) {
+								if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile ) {
 									
 									//console.log('tablet resumePlay ',endPoint+.3);
 									
@@ -1422,7 +1422,12 @@ var llc = {
 				    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
 				    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
 				    	}
+				    	
+				    	// Auto load
 				    	$(this).jPlayer("pause",0);
+				    	
+				    	// Grey screen fix?
+				    	setTimeout(function(){$("#slides .slide img").eq(0).hide().show()}, 300);
 				    },
 				    play: function() { // To avoid both jPlayers playing together.
 				    	llc.status({media:'master playing'});
@@ -1443,6 +1448,8 @@ var llc = {
 				    ended: function() {
 				    	llc.status('master ended');
 				    	llc.seatTime('save');
+				    	// reset presentation
+				    	$(this).jPlayer("pause",0);
 				    },
 				    volumechange: function(event) { // make sure volume dragable moves on click
 				    	llc.status('volume changed');
