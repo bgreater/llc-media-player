@@ -843,6 +843,7 @@ var llc = {
 	saveBookmark: function(item) {
 	/* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
+		llc.status('save bookmark');
 		if (typeof item === "undefined"){
 				//has been called on init and is attaching to the toc-bookmark links
 				$('a.toc-bookmark').live('click', function(){
@@ -1392,19 +1393,20 @@ var llc = {
 						adjs = "//content.multiview.com/adjs.php?n=" + phpAds_random;
 						adjs += "&what=zone:"+llc.pres.sponsorZoneId+"&target=_blank&block=1";
 						adjs += "&exclude=" + document.phpAds_used;
-					if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile) {
-						var randomString = Math.round(Math.random() * 555955);
-						var manualUrl = "<a href='http://content.multiview.com/adclick.php?n="+randomString+"' target='_blank'>";
-						manualUrl = manualUrl + "<img src='http://content.multiview.com/adview.php?what=zone:"+llc.pres.sponsorZoneId+"&n="+randomString+"' border='0' alt='' /></a>";
-						var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
-						   $("#ad_sponsored_box").html(manualUrl || defaultAd);
-					}else{	
-						$.getScript(adjs, function(){
+						
+						//if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile) {
+							var randomString = Math.round(Math.random() * 555955);
+							var manualUrl = "<a href='http://content.multiview.com/adclick.php?n="+randomString+"' target='_blank'>";
+							manualUrl = manualUrl + "<img src='http://content.multiview.com/adview.php?what=zone:"+llc.pres.sponsorZoneId+"&n="+randomString+"' border='0' alt='' /></a>";
 							var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
-						   $("#ad_sponsored_box").html(phpadsbanner || defaultAd);
-						});
-								
-								}
+							   $("#ad_sponsored_box").html(manualUrl || defaultAd);
+//						}else{	
+//							$.getScript(adjs, function(){
+//								var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
+//							   $("#ad_sponsored_box").html(phpadsbanner || defaultAd);
+//							});
+//									
+//						}
 						
 						llc.loaded = true;
 					}
@@ -1536,11 +1538,13 @@ var llc = {
 				
 				// Assign next click handlers
 				$("#master_jp_container .llc-next").click(function() {
+					llc.status('next slide');
 					$("#toc .active_toc_thumb").next().find("div.playIcon").click();
 				});
 				
 				// Assign prev click handlers
 				$("#master_jp_container .llc-prev").click(function() {
+					llc.status('prev slide');
 					$("#toc .active_toc_thumb").prev().find("div.playIcon").click();
 				});
 				
