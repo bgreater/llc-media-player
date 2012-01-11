@@ -294,8 +294,8 @@ var llc = {
 		/* ##########################################
 		  ################# Create Notes
 		 ########################################## */
-		 
-		$("#note_pad").prepend(notes.replace('<br />', '\n'));
+		 var brfix = notes.replace(/<br>/g, '\r\n').replace(/<br \/>/g, '\r\n');
+		$("#note_pad").prepend(brfix);
 		
 		/* ##########################################
 		  ################# Setup overview toggle display
