@@ -761,8 +761,8 @@ display:none;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    width: 607px;
-	padding:0 12px 0px 12px;
+    width: 625px;
+	padding-left:7px;
 	
 	}
 #info_tabs #tabs_notes{}
@@ -927,6 +927,7 @@ padding:7px 6px 5px 6px;
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; /* IE 8 */
     filter:alpha(opacity=0);
     zoom:1;
+	display:none;
 }
 /*******************************/
 /* @end */
