@@ -268,7 +268,8 @@ var llc = {
 			var slideStart = llc.pres.media.items.item[i].startPoint;
 			i = i+1;
 			}
-			i = (i<1) ? 1 : i-1;
+			i = (i<2) ? 1 : i-1;
+			x = i - 1;
 			var filename = (xml[i-1].files.file.constructor.toString().indexOf('Array') != -1) ? xml[i-1].files.file[0] : xml[i-1].files.file;
 			var title = xml[i-1].title;
 			}
