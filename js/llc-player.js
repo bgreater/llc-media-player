@@ -118,7 +118,7 @@ var llc = {
 			  		});	llc.pres.imgsCount++;
 			  	
 			  			  
-			  	} else if ((t.files.file.fileType || t.files.file[1].fileType) == "flv") { // Need standard video flag in xml?
+			  	} else /*if ((t.files.file.fileType || t.files.file[1].fileType) == "flv")*/ { // assume non-jpg file type is video
 			  		
 			  		/* ######## VIDEO SLIDE ################## */
 			  		
