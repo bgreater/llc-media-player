@@ -756,8 +756,9 @@ var llc = {
 			w = $("#llc_playerFrame").width(),
 			h = $("#llc_playerFrame").height(),
 			curMode = llc.switchView.curMode = llc.switchView.curMode ? llc.switchView.curMode : llc.pres.defaultInterface.text;
-				
-		if ((event && curMode == "Full Window") || mode == "Dual Screen") { // Do Dual Screen
+		
+		// Do Dual Screen		
+		if ((event && curMode == "Full Window") || mode == "Dual Screen") { 
 			llc.status('dual screen view');
 			//console.log('dual view fired');
 			m.addClass("dual").removeClass("single");
@@ -766,18 +767,22 @@ var llc = {
 			if ($("#llc_playerFrame").is(".Full")) {
 				// Do for full screen for above 8x3 (2 wide 4x3) ratio, probably not any screens that are longer than 8x3 ratio 
 				var mar = ((h-50)-((w*0.49)*0.75))/2;
-				s.css({marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0, height:'auto'}); 
-				m.css({marginTop:mar, marginBottom:mar, marginLeft:0, marginRight:0, height:s.height()});
+				s.css({marginTop:mar, marginBottom:mar, marginLeft:0, width:'', height:'auto'}); 
+				m.css({marginTop:mar, marginBottom:mar, marginLeft:0, height:s.height()});
 			}
 			llc.switchView.curMode = "Dual Screen"; // End with	
-		} else if ((event && curMode == "Dual Screen") || mode == "Full Window") { // Do Single Screen
+		} 
+		
+		// Do Single Screen
+		else if ((event && curMode == "Dual Screen") || mode == "Full Window") { 
+		
 			llc.status('single screen view');
 			//console.log('single view fired');
 			if (event) { // Was clicked
 				var p = $(event.target).parents('div.dual');
 				p.removeClass("single").addClass("single");	
 			} else {
-				if (llc.pres.defaultWindow.id == 1 && !s.is(".single")) {
+				if (!s.is(".single")) {
 					// Show screen 1
 					m.removeClass("single").addClass("single");
 				} else {
@@ -795,8 +800,10 @@ var llc = {
 				
 				// wide aspect ratio
 				if (h-50 <= w*0.75) {
-					var mar = (w-((h-50)/0.75))/2; 
-					$("#llc_playerFrame").find(".single").css({marginLeft:mar, marginRight:mar});
+					var mar = (w-((h-50)/0.75))/2,
+						wid = w-(mar*2); 
+					s.filter(".single").css({marginLeft:mar, width:wid});
+					//m.filter(".single").css({marginLeft:mar});
 				}
 				if (s.is(".single")) m.height(0), s.height("auto");
 				else s.height(0), m.height("auto");
@@ -1217,7 +1224,8 @@ var llc = {
 				$("#master_jp_container a.llc-full").tipTip({content: "full", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
 			}
 			
-			// ("#master_jplayer").jPlayer("option", {"fullScreen": false});
+			llc.position();
+
 		}
 		 
 	},
