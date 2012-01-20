@@ -10,39 +10,43 @@
   <defaultWindow id="2">RightWindow</defaultWindow>
   <demoStartPoint>0</demoStartPoint>
   <demoLength>600</demoLength>
+  <previewMode>False</previewMode>
+  <embededMode>False</embededMode>
   <allowNavigation>True</allowNavigation>
   <duration>2144067</duration>
   <forwardLink type="-1">
     <![CDATA[]]>
   </forwardLink>
   <ratingAverage>
-    <![CDATA[]]>
+    <![CDATA[3.00]]>
   </ratingAverage>
   <totalRatings>
-    <![CDATA[0]]>
+    <![CDATA[1]]>
   </totalRatings>
-  <sponsorZoneId>1610</sponsorZoneId>
-  <viewer id="549518">
+  <sponsorZoneId>
+    <![CDATA[-1]]>
+  </sponsorZoneId>
+  <viewer id="10290">
     <firstName>
-      <![CDATA[Alexander]]>
+      <![CDATA[John]]>
     </firstName>
     <middleName>
-      <![CDATA[]]>
+      <![CDATA[p]]>
     </middleName>
     <lastName>
-      <![CDATA[Yakimov]]>
+      <![CDATA[Demo2]]>
     </lastName>
     <title>
-      <![CDATA[]]>
+      <![CDATA[CMC Tester]]>
     </title>
     <organization>
-      <![CDATA[]]>
+      <![CDATA[CONTENT MC]]>
     </organization>
     <email>
-      <![CDATA[ayakimov@multiview.com]]>
+      <![CDATA[demo@cmcgc.com]]>
     </email>
     <userName>
-      <![CDATA[ayakimov@multiview.com]]>
+      <![CDATA[demo@cmcgc.com]]>
     </userName>
     <notes>
       <![CDATA[]]>
@@ -146,18 +150,18 @@
           <file id="478668" fileType="webm" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Video1.webm]]>
           </file>
-          <file id="478681" fileType="flv" quality="Low">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Video1.flv]]>
-          </file>
           <file id="478687" fileType="m4v" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Video1.m4v]]>
+          </file>
+          <file id="478681" fileType="flv" quality="Low">
+            <![CDATA[http://www.cmcgc.com/Media/Synch/290615/310Test/Video1.flv]]>
           </file>
         </files>
         <window id="2">
           <![CDATA[RightWindow]]>
         </window>
         <startPoint>29000</startPoint>
-        <link type="-1">
+        <link type="1">
           <![CDATA[]]>
         </link>
       </item>
@@ -212,5 +216,18 @@
   <transcript />
   <speakers />
   <agreements />
-  <bookmarks />
+  <bookmarks>
+    <bookmark id="196">
+      <title>
+        <![CDATA[Demo Slide 1]]>
+      </title>
+      <startPoint>4458</startPoint>
+    </bookmark>
+    <bookmark id="197">
+      <title>
+        <![CDATA[Demo Slide 4]]>
+      </title>
+      <startPoint>46390</startPoint>
+    </bookmark>
+  </bookmarks>
 </presentation>
