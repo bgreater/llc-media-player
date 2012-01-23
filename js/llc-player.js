@@ -679,7 +679,6 @@ var llc = {
 				
 			$("#master_jp_container div.jp-title").text(introTxt+":  Slide "+slideNum+" - "+curEl.title);
 			
-			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
 			
 				$("div.toc_thumb").each(function(){
 					$(this).removeClass('active_toc_thumb');
@@ -687,6 +686,7 @@ var llc = {
 				
 				$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
 				
+			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
 				var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
 				
 				if(pos > 800){
@@ -731,7 +731,7 @@ var llc = {
 					$("#master_jplayer").jPlayer("pause", demoStart);
 					$('div#media').prepend(msg);
 					
-					$('div#media').find('div.previewNotification').delay(4000).fadeOut('slow', function(){
+					$('div#media').find('div.previewNotification').delay(10000).fadeOut('slow', function(){
 						$('div#slides').find('div.previewNotification').remove();
 					});
 				}
@@ -1082,14 +1082,14 @@ var llc = {
 		 var embedCheck = llc.pres.embededMode, previewCheck = llc.pres.previewMode;
 				if(previewCheck){
 				$('span#titleIntroText').html('Preview Mode');
-				$('#master_jp_container .llc-next').addClass('llc-next-disabled');
-				$('#master_jp_container .llc-prev').addClass('llc-prev-disabled');
-				$('#master_jp_container .llc-prev, #master_jp_container .llc-next, #master_jp_container .llc-bookmark').unbind('click');
-				$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
+				//$('#master_jp_container .llc-next').addClass('llc-next-disabled');
+				//$('#master_jp_container .llc-prev').addClass('llc-prev-disabled');
+				$('#master_jp_container .llc-bookmark').unbind('click');
+				//$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
 				}
 				
 				$("#master_jp_container .llc-bookmark").addClass('llc-bookmark-disabled');
-				$('div#info_tabs').remove();
+				$('div#info_tabs').hide();
 				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
 				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
 	},
