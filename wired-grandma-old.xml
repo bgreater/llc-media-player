@@ -1,51 +1,63 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<presentation id="17623">
+<?xml version="1.0" encoding="utf-8"?>
+<presentation id="2852">
   <title>
-    <![CDATA[Wired Grandmas Revisited]]>
+    <![CDATA[S15: Wired Grandmas Revisited]]>
   </title>
+  <date>
+    <![CDATA[10/19/2009 11:15:00 AM]]>
+  </date>
   <defaultInterface id="2">Full Window</defaultInterface>
-  <defaultWindow id="2">Right Window</defaultWindow>
+  <defaultWindow id="2">RightWindow</defaultWindow>
   <demoStartPoint>0</demoStartPoint>
   <demoLength>300</demoLength>
-  <previewMode>True</previewMode>
-  <embededMode>True</embededMode>
+  <previewMode>False</previewMode>
+  <embededMode>False</embededMode>
   <allowNavigation>True</allowNavigation>
   <duration>3362000</duration>
   <forwardLink type="-1">
     <![CDATA[]]>
   </forwardLink>
+  <ratingAverage>
+    <![CDATA[3.00]]>
+  </ratingAverage>
+  <totalRatings>
+    <![CDATA[1]]>
+  </totalRatings>
   <sponsorZoneId>
-    <![CDATA[-1]]>
+    <![CDATA[1610]]>
   </sponsorZoneId>
-  <viewer id="-1">
+  <viewer id="10290">
     <firstName>
-      <![CDATA[]]>
+      <![CDATA[John]]>
     </firstName>
     <middleName>
-      <![CDATA[]]>
+      <![CDATA[p]]>
     </middleName>
     <lastName>
-      <![CDATA[]]>
+      <![CDATA[Demo2]]>
     </lastName>
     <title>
-      <![CDATA[]]>
+      <![CDATA[CMC Tester]]>
     </title>
     <organization>
-      <![CDATA[]]>
+      <![CDATA[CONTENT MC]]>
     </organization>
     <email>
-      <![CDATA[]]>
+      <![CDATA[demo@cmcgc.com]]>
     </email>
     <userName>
-      <![CDATA[]]>
+      <![CDATA[demo@cmcgc.com]]>
     </userName>
     <notes>
-      <![CDATA[]]>
+      <![CDATA[Rios like]]>
     </notes>
+    <rating>
+      <![CDATA[-1]]>
+    </rating>
   </viewer>
   <media>
     <master>
-      <item id="630969">
+      <item id="99491">
         <files>
           <file id="101472" fileType="mp3" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160.mp3]]>
@@ -61,17 +73,11 @@
       </item>
     </master>
     <items>
-      <item id="630905" inTOC="True">
+      <item id="99628" inTOC="True">
         <title>
           <![CDATA[DMA]]>
         </title>
         <files>
-          <file id="648130" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide1.png]]>
-          </file>
-          <file id="648129" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide1.jpg]]>
-          </file>
           <file id="101659" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide1.jpg]]>
           </file>
@@ -84,17 +90,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630906" inTOC="True">
+      <item id="99629" inTOC="True">
         <title>
           <![CDATA[Wired Grandmas Presentation]]>
         </title>
         <files>
-          <file id="648132" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide2.png]]>
-          </file>
-          <file id="648131" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide2.jpg]]>
-          </file>
           <file id="101658" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide2.jpg]]>
           </file>
@@ -107,17 +107,28 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630907" inTOC="True">
+      <item id="443697" inTOC="True">
+        <title>
+          <![CDATA[Video 1]]>
+        </title>
+        <files>
+          <file id="11128" fileType="flv" quality="Low">
+            <![CDATA[http://www.cmcgc.com/Media/Synch/290623/030/Video 1.flv]]>
+          </file>
+        </files>
+        <window id="2">
+          <![CDATA[RightWindow]]>
+        </window>
+        <startPoint>50000</startPoint>
+        <link type="-1">
+          <![CDATA[]]>
+        </link>
+      </item>
+      <item id="99630" inTOC="True">
         <title>
           <![CDATA[Grandma and Grandpa Get Wired]]>
         </title>
         <files>
-          <file id="648134" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide3.png]]>
-          </file>
-          <file id="648133" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide3.jpg]]>
-          </file>
           <file id="101657" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide3.jpg]]>
           </file>
@@ -130,17 +141,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630908" inTOC="True">
+      <item id="99631" inTOC="True">
         <title>
           <![CDATA[Previous Grandma Presentations - 2000-2003]]>
         </title>
         <files>
-          <file id="648136" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide4.png]]>
-          </file>
-          <file id="648135" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide4.jpg]]>
-          </file>
           <file id="101656" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide4.jpg]]>
           </file>
@@ -153,17 +158,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630909" inTOC="True">
+      <item id="99632" inTOC="True">
         <title>
           <![CDATA[Previous Grandma Presentations - 2000-2003]]>
         </title>
         <files>
-          <file id="648138" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide5.png]]>
-          </file>
-          <file id="648137" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide5.jpg]]>
-          </file>
           <file id="101655" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide5.jpg]]>
           </file>
@@ -176,17 +175,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630910" inTOC="True">
+      <item id="99633" inTOC="True">
         <title>
           <![CDATA[Wired Grandmas Revisited 2009]]>
         </title>
         <files>
-          <file id="648140" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide6.png]]>
-          </file>
-          <file id="648139" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide6.jpg]]>
-          </file>
           <file id="101654" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide6.jpg]]>
           </file>
@@ -199,17 +192,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630911" inTOC="True">
+      <item id="99634" inTOC="True">
         <title>
           <![CDATA[Wired Grandmas Revisited]]>
         </title>
         <files>
-          <file id="648142" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide7.png]]>
-          </file>
-          <file id="648141" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide7.jpg]]>
-          </file>
           <file id="101653" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide7.jpg]]>
           </file>
@@ -222,17 +209,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630912" inTOC="True">
+      <item id="99635" inTOC="True">
         <title>
           <![CDATA[The Senior Population]]>
         </title>
         <files>
-          <file id="648144" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide8.png]]>
-          </file>
-          <file id="648143" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide8.jpg]]>
-          </file>
           <file id="101652" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide8.jpg]]>
           </file>
@@ -245,17 +226,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630913" inTOC="True">
+      <item id="99636" inTOC="True">
         <title>
           <![CDATA[What are seniors doing online?]]>
         </title>
         <files>
-          <file id="648146" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide9.png]]>
-          </file>
-          <file id="648145" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide9.jpg]]>
-          </file>
           <file id="101651" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide9.jpg]]>
           </file>
@@ -268,17 +243,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630914" inTOC="True">
+      <item id="99637" inTOC="True">
         <title>
           <![CDATA[Back to 2003...]]>
         </title>
         <files>
-          <file id="648148" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide10.png]]>
-          </file>
-          <file id="648147" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide10.jpg]]>
-          </file>
           <file id="101650" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide10.jpg]]>
           </file>
@@ -291,17 +260,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630915" inTOC="True">
+      <item id="99638" inTOC="True">
         <title>
           <![CDATA[Online Penetration by Age]]>
         </title>
         <files>
-          <file id="648150" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide11.png]]>
-          </file>
-          <file id="648149" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide11.jpg]]>
-          </file>
           <file id="101649" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide11.jpg]]>
           </file>
@@ -314,17 +277,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630916" inTOC="True">
+      <item id="99639" inTOC="True">
         <title>
           <![CDATA[Online Penetration by Age]]>
         </title>
         <files>
-          <file id="648152" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide12.png]]>
-          </file>
-          <file id="648151" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide12.jpg]]>
-          </file>
           <file id="101648" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide12.jpg]]>
           </file>
@@ -337,17 +294,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630917" inTOC="True">
+      <item id="99640" inTOC="True">
         <title>
           <![CDATA[Online Penetration by Age]]>
         </title>
         <files>
-          <file id="648154" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide13.png]]>
-          </file>
-          <file id="648153" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide13.jpg]]>
-          </file>
           <file id="101647" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide13.jpg]]>
           </file>
@@ -360,17 +311,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630918" inTOC="True">
+      <item id="99641" inTOC="True">
         <title>
           <![CDATA[Meet the 2009 Grandparents]]>
         </title>
         <files>
-          <file id="648156" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide14.png]]>
-          </file>
-          <file id="648155" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide14.jpg]]>
-          </file>
           <file id="101646" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide14.jpg]]>
           </file>
@@ -383,17 +328,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630919" inTOC="True">
+      <item id="99642" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648158" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide15.png]]>
-          </file>
-          <file id="648157" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide15.jpg]]>
-          </file>
           <file id="101645" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide15.jpg]]>
           </file>
@@ -406,17 +345,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630920" inTOC="True">
+      <item id="99643" inTOC="True">
         <title>
           <![CDATA[Online purchasing]]>
         </title>
         <files>
-          <file id="648160" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide16.png]]>
-          </file>
-          <file id="648159" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide16.jpg]]>
-          </file>
           <file id="101644" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide16.jpg]]>
           </file>
@@ -429,17 +362,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630921" inTOC="True">
+      <item id="99644" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648162" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide17.png]]>
-          </file>
-          <file id="648161" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide17.jpg]]>
-          </file>
           <file id="101643" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide17.jpg]]>
           </file>
@@ -452,17 +379,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630922" inTOC="True">
+      <item id="99645" inTOC="True">
         <title>
           <![CDATA[Online Purchasing May '03 vs. Dec '07]]>
         </title>
         <files>
-          <file id="648164" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide18.png]]>
-          </file>
-          <file id="648163" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide18.jpg]]>
-          </file>
           <file id="101642" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide18.jpg]]>
           </file>
@@ -475,17 +396,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630923" inTOC="True">
+      <item id="99646" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648166" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide19.png]]>
-          </file>
-          <file id="648165" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide19.jpg]]>
-          </file>
           <file id="101641" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide19.jpg]]>
           </file>
@@ -498,17 +413,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630924" inTOC="True">
+      <item id="99647" inTOC="True">
         <title>
           <![CDATA[Managing finances]]>
         </title>
         <files>
-          <file id="648168" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide20.png]]>
-          </file>
-          <file id="648167" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide20.jpg]]>
-          </file>
           <file id="101640" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide20.jpg]]>
           </file>
@@ -521,17 +430,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630925" inTOC="True">
+      <item id="99648" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648170" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide21.png]]>
-          </file>
-          <file id="648169" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide21.jpg]]>
-          </file>
           <file id="101639" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide21.jpg]]>
           </file>
@@ -544,17 +447,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630926" inTOC="True">
+      <item id="99649" inTOC="True">
         <title>
           <![CDATA[Online Banking]]>
         </title>
         <files>
-          <file id="648172" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide22.png]]>
-          </file>
-          <file id="648171" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide22.jpg]]>
-          </file>
           <file id="101638" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide22.jpg]]>
           </file>
@@ -567,17 +464,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630927" inTOC="True">
+      <item id="99650" inTOC="True">
         <title>
           <![CDATA[Online Banking Dec '08 vs. Jun '03]]>
         </title>
         <files>
-          <file id="648174" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide24.png]]>
-          </file>
-          <file id="648173" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide24.jpg]]>
-          </file>
           <file id="101637" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide23.jpg]]>
           </file>
@@ -590,17 +481,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630928" inTOC="True">
+      <item id="99651" inTOC="True">
         <title>
           <![CDATA[Financial Info Trends Are Down]]>
         </title>
         <files>
-          <file id="648176" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide25.png]]>
-          </file>
-          <file id="648175" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide25.jpg]]>
-          </file>
           <file id="101636" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide24.jpg]]>
           </file>
@@ -613,17 +498,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630929" inTOC="True">
+      <item id="99652" inTOC="True">
         <title>
           <![CDATA[Online Trading Is Trending Down]]>
         </title>
         <files>
-          <file id="648178" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide26.png]]>
-          </file>
-          <file id="648177" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide26.jpg]]>
-          </file>
           <file id="101603" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide25.jpg]]>
           </file>
@@ -636,17 +515,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630930" inTOC="True">
+      <item id="99653" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648180" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide27.png]]>
-          </file>
-          <file id="648179" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide27.jpg]]>
-          </file>
           <file id="101604" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide26.jpg]]>
           </file>
@@ -659,17 +532,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630931" inTOC="True">
+      <item id="99654" inTOC="True">
         <title>
           <![CDATA[Booking travel]]>
         </title>
         <files>
-          <file id="648182" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide28.png]]>
-          </file>
-          <file id="648181" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide28.jpg]]>
-          </file>
           <file id="101605" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide27.jpg]]>
           </file>
@@ -682,17 +549,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630932" inTOC="True">
+      <item id="99655" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648184" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide29.png]]>
-          </file>
-          <file id="648183" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide29.jpg]]>
-          </file>
           <file id="101606" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide28.jpg]]>
           </file>
@@ -705,17 +566,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630933" inTOC="True">
+      <item id="99656" inTOC="True">
         <title>
           <![CDATA[Booking travel Aug '08 vs. May '03]]>
         </title>
         <files>
-          <file id="648186" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide30.png]]>
-          </file>
-          <file id="648185" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide30.jpg]]>
-          </file>
           <file id="101607" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide29.jpg]]>
           </file>
@@ -728,17 +583,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630934" inTOC="True">
+      <item id="99657" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648188" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide31.png]]>
-          </file>
-          <file id="648187" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide31.jpg]]>
-          </file>
           <file id="101608" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide30.jpg]]>
           </file>
@@ -751,17 +600,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630935" inTOC="True">
+      <item id="99658" inTOC="True">
         <title>
           <![CDATA[Researching health]]>
         </title>
         <files>
-          <file id="648190" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide32.png]]>
-          </file>
-          <file id="648189" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide32.jpg]]>
-          </file>
           <file id="101609" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide31.jpg]]>
           </file>
@@ -774,17 +617,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630936" inTOC="True">
+      <item id="99659" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648192" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide33.png]]>
-          </file>
-          <file id="648191" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide33.jpg]]>
-          </file>
           <file id="101610" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide32.jpg]]>
           </file>
@@ -797,17 +634,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630937" inTOC="True">
+      <item id="99660" inTOC="True">
         <title>
           <![CDATA[Researching Health Dec '07 vs. Dec '02]]>
         </title>
         <files>
-          <file id="648194" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide34.png]]>
-          </file>
-          <file id="648193" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide34.jpg]]>
-          </file>
           <file id="101611" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide33.jpg]]>
           </file>
@@ -820,17 +651,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630938" inTOC="True">
+      <item id="99661" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648196" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide35.png]]>
-          </file>
-          <file id="648195" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide35.jpg]]>
-          </file>
           <file id="101612" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide34.jpg]]>
           </file>
@@ -843,17 +668,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630939" inTOC="True">
+      <item id="99662" inTOC="True">
         <title>
           <![CDATA[The lure of cheaper prescription drugs]]>
         </title>
         <files>
-          <file id="648198" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide36.png]]>
-          </file>
-          <file id="648197" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide36.jpg]]>
-          </file>
           <file id="101613" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide35.jpg]]>
           </file>
@@ -866,17 +685,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630940" inTOC="True">
+      <item id="99663" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648200" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide37.png]]>
-          </file>
-          <file id="648199" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide37.jpg]]>
-          </file>
           <file id="101614" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide36.jpg]]>
           </file>
@@ -889,17 +702,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630941" inTOC="True">
+      <item id="99664" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648202" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide38.png]]>
-          </file>
-          <file id="648201" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide38.jpg]]>
-          </file>
           <file id="101615" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide37.jpg]]>
           </file>
@@ -912,17 +719,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630942" inTOC="True">
+      <item id="99665" inTOC="True">
         <title>
           <![CDATA[The influence of grandkids]]>
         </title>
         <files>
-          <file id="648204" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide39.png]]>
-          </file>
-          <file id="648203" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide39.jpg]]>
-          </file>
           <file id="101616" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide38.jpg]]>
           </file>
@@ -935,17 +736,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630943" inTOC="True">
+      <item id="99666" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648206" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide40.png]]>
-          </file>
-          <file id="648205" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide40.jpg]]>
-          </file>
           <file id="101617" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide39.jpg]]>
           </file>
@@ -958,17 +753,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630944" inTOC="True">
+      <item id="99667" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648208" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide41.png]]>
-          </file>
-          <file id="648207" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide41.jpg]]>
-          </file>
           <file id="101618" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide40.jpg]]>
           </file>
@@ -981,17 +770,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630945" inTOC="True">
+      <item id="99668" inTOC="True">
         <title>
           <![CDATA[What the 65+ group is not doing]]>
         </title>
         <files>
-          <file id="648210" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide42.png]]>
-          </file>
-          <file id="648209" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide42.jpg]]>
-          </file>
           <file id="101619" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide41.jpg]]>
           </file>
@@ -1004,17 +787,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630946" inTOC="True">
+      <item id="99669" inTOC="True">
         <title>
           <![CDATA[Social Networking]]>
         </title>
         <files>
-          <file id="648212" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide43.png]]>
-          </file>
-          <file id="648211" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide43.jpg]]>
-          </file>
           <file id="101620" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide42.jpg]]>
           </file>
@@ -1027,17 +804,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630947" inTOC="True">
+      <item id="99670" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648214" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide44.png]]>
-          </file>
-          <file id="648213" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide44.jpg]]>
-          </file>
           <file id="101621" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide43.jpg]]>
           </file>
@@ -1050,17 +821,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630948" inTOC="True">
+      <item id="99671" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648216" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide45.png]]>
-          </file>
-          <file id="648215" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide45.jpg]]>
-          </file>
           <file id="101622" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide44.jpg]]>
           </file>
@@ -1073,17 +838,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630949" inTOC="True">
+      <item id="99672" inTOC="True">
         <title>
           <![CDATA[Use Social Networking Dec '08 vs. Sept '05]]>
         </title>
         <files>
-          <file id="648218" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide46.png]]>
-          </file>
-          <file id="648217" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide46.jpg]]>
-          </file>
           <file id="101623" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide45.jpg]]>
           </file>
@@ -1096,17 +855,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630950" inTOC="True">
+      <item id="99673" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648220" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide47.png]]>
-          </file>
-          <file id="648219" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide47.jpg]]>
-          </file>
           <file id="101624" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide46.jpg]]>
           </file>
@@ -1119,17 +872,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630951" inTOC="True">
+      <item id="99674" inTOC="True">
         <title>
           <![CDATA[Texting]]>
         </title>
         <files>
-          <file id="648222" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide48.png]]>
-          </file>
-          <file id="648221" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide48.jpg]]>
-          </file>
           <file id="101625" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide47.jpg]]>
           </file>
@@ -1142,17 +889,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630952" inTOC="True">
+      <item id="99675" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648224" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide49.png]]>
-          </file>
-          <file id="648223" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide49.jpg]]>
-          </file>
           <file id="101626" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide48.jpg]]>
           </file>
@@ -1165,17 +906,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630953" inTOC="True">
+      <item id="99676" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648226" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide50.png]]>
-          </file>
-          <file id="648225" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide50.jpg]]>
-          </file>
           <file id="101627" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide49.jpg]]>
           </file>
@@ -1188,17 +923,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630954" inTOC="True">
+      <item id="99677" inTOC="True">
         <title>
           <![CDATA[Online dating]]>
         </title>
         <files>
-          <file id="648228" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide51.png]]>
-          </file>
-          <file id="648227" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide51.jpg]]>
-          </file>
           <file id="101628" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide50.jpg]]>
           </file>
@@ -1211,17 +940,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630955" inTOC="True">
+      <item id="99678" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648230" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide52.png]]>
-          </file>
-          <file id="648229" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide52.jpg]]>
-          </file>
           <file id="101629" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide51.jpg]]>
           </file>
@@ -1234,17 +957,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630956" inTOC="True">
+      <item id="99679" inTOC="True">
         <title>
           <![CDATA[Online dating Aug '08 vs. June '03]]>
         </title>
         <files>
-          <file id="648232" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide53.png]]>
-          </file>
-          <file id="648231" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide53.jpg]]>
-          </file>
           <file id="101630" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide52.jpg]]>
           </file>
@@ -1257,17 +974,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630957" inTOC="True">
+      <item id="99680" inTOC="True">
         <title>
           <![CDATA[Key Takeaway]]>
         </title>
         <files>
-          <file id="648234" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide54.png]]>
-          </file>
-          <file id="648233" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide54.jpg]]>
-          </file>
           <file id="101631" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide53.jpg]]>
           </file>
@@ -1280,17 +991,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630958" inTOC="True">
+      <item id="99681" inTOC="True">
         <title>
           <![CDATA[Your best opportunity]]>
         </title>
         <files>
-          <file id="648236" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide55.png]]>
-          </file>
-          <file id="648235" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide55.jpg]]>
-          </file>
           <file id="101632" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide54.jpg]]>
           </file>
@@ -1303,17 +1008,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630959" inTOC="True">
+      <item id="99682" inTOC="True">
         <title>
           <![CDATA[Online Penetration by Age]]>
         </title>
         <files>
-          <file id="648238" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide56.png]]>
-          </file>
-          <file id="648237" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide56.jpg]]>
-          </file>
           <file id="101633" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide55.jpg]]>
           </file>
@@ -1326,17 +1025,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630960" inTOC="True">
+      <item id="99683" inTOC="True">
         <title>
           <![CDATA[How to reach them]]>
         </title>
         <files>
-          <file id="648240" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide57.png]]>
-          </file>
-          <file id="648239" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide57.jpg]]>
-          </file>
           <file id="101634" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide56.jpg]]>
           </file>
@@ -1349,17 +1042,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630961" inTOC="True">
+      <item id="99684" inTOC="True">
         <title>
           <![CDATA[Retired Seniors 65-69]]>
         </title>
         <files>
-          <file id="648242" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide58.png]]>
-          </file>
-          <file id="648241" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide58.jpg]]>
-          </file>
           <file id="101635" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide57.jpg]]>
           </file>
@@ -1372,17 +1059,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630962" inTOC="True">
+      <item id="99685" inTOC="True">
         <title>
           <![CDATA[Older Seniors 70-74]]>
         </title>
         <files>
-          <file id="648244" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide59.png]]>
-          </file>
-          <file id="648243" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide59.jpg]]>
-          </file>
           <file id="101660" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide58.jpg]]>
           </file>
@@ -1395,17 +1076,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630963" inTOC="True">
+      <item id="99686" inTOC="True">
         <title>
           <![CDATA[Top 10 Takeaways]]>
         </title>
         <files>
-          <file id="648246" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide60.png]]>
-          </file>
-          <file id="648245" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide60.jpg]]>
-          </file>
           <file id="101661" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide59.jpg]]>
           </file>
@@ -1418,17 +1093,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630964" inTOC="True">
+      <item id="99687" inTOC="True">
         <title>
           <![CDATA[Top 10 Takeaways]]>
         </title>
         <files>
-          <file id="648248" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide61.png]]>
-          </file>
-          <file id="648247" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide61.jpg]]>
-          </file>
           <file id="101662" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide60.jpg]]>
           </file>
@@ -1441,17 +1110,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630965" inTOC="True">
+      <item id="99688" inTOC="True">
         <title>
           <![CDATA[Top 10 Takeaways]]>
         </title>
         <files>
-          <file id="648250" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide62.png]]>
-          </file>
-          <file id="648249" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide62.jpg]]>
-          </file>
           <file id="101663" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide61.jpg]]>
           </file>
@@ -1464,17 +1127,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630966" inTOC="True">
+      <item id="99689" inTOC="True">
         <title>
           <![CDATA[A viable market?]]>
         </title>
         <files>
-          <file id="648252" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide63.png]]>
-          </file>
-          <file id="648251" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide63.jpg]]>
-          </file>
           <file id="101664" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide62.jpg]]>
           </file>
@@ -1487,17 +1144,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630967" inTOC="True">
+      <item id="99690" inTOC="True">
         <title>
           <![CDATA[Video]]>
         </title>
         <files>
-          <file id="648254" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide64.png]]>
-          </file>
-          <file id="648253" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide64.jpg]]>
-          </file>
           <file id="101665" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide63.jpg]]>
           </file>
@@ -1510,17 +1161,11 @@
           <![CDATA[]]>
         </link>
       </item>
-      <item id="630968" inTOC="True">
+      <item id="99691" inTOC="True">
         <title>
           <![CDATA[Thank You]]>
         </title>
         <files>
-          <file id="648256" fileType="jpg" quality="High">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/PNG/Slide65.png]]>
-          </file>
-          <file id="648255" fileType="jpg" quality="Medium">
-            <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/160 S_1/JPG/Slide65.jpg]]>
-          </file>
           <file id="101666" fileType="jpg" quality="Low">
             <![CDATA[http://www.cmcgc.com/Media/Synch/291018/160/Slide64.jpg]]>
           </file>
@@ -1535,9 +1180,69 @@
       </item>
     </items>
   </media>
-  <transcript/>
-  <speakers/>
-  <agreements/>
-  <bookmarks/>
-  <purchaseOptions/>
+  <transcript />
+  <speakers />
+  <agreements />
+  <bookmarks>
+    <bookmark id="166">
+      <title>
+        <![CDATA[DMA]]>
+      </title>
+      <startPoint>0</startPoint>
+    </bookmark>
+    <bookmark id="169">
+      <title>
+        <![CDATA[Previous Grandma Presentations - 2000-2003]]>
+      </title>
+      <startPoint>139211</startPoint>
+    </bookmark>
+    <bookmark id="161">
+      <title>
+        <![CDATA[Previous Grandma Presentations - 2000-2003]]>
+      </title>
+      <startPoint>148033</startPoint>
+    </bookmark>
+    <bookmark id="162">
+      <title>
+        <![CDATA[Previous Grandma Presentations - 2000-2003]]>
+      </title>
+      <startPoint>151075</startPoint>
+    </bookmark>
+    <bookmark id="170">
+      <title>
+        <![CDATA[Wired Grandmas Revisited 2009]]>
+      </title>
+      <startPoint>171999</startPoint>
+    </bookmark>
+    <bookmark id="171">
+      <title>
+        <![CDATA[Wired Grandmas Revisited 2009]]>
+      </title>
+      <startPoint>173508</startPoint>
+    </bookmark>
+    <bookmark id="148">
+      <title>
+        <![CDATA[Online Penetration by Age]]>
+      </title>
+      <startPoint>398240</startPoint>
+    </bookmark>
+    <bookmark id="149">
+      <title>
+        <![CDATA[Video]]>
+      </title>
+      <startPoint>485984</startPoint>
+    </bookmark>
+    <bookmark id="159">
+      <title>
+        <![CDATA[Retired Seniors 65-69]]>
+      </title>
+      <startPoint>2888973</startPoint>
+    </bookmark>
+    <bookmark id="160">
+      <title>
+        <![CDATA[Retired Seniors 65-69]]>
+      </title>
+      <startPoint>2892317</startPoint>
+    </bookmark>
+  </bookmarks>
 </presentation>

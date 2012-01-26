@@ -745,7 +745,7 @@ var llc = {
 		}
 		
 	},
-	switchView: function(event,mode) { /* Change view (single, dual) for player presentation (mobile will include [notes, transcript, slides, video]) */
+	switchView: function(event,mode,screen) { /* Change view (single, dual, right/left) for player presentation (mobile will include [notes, transcript, slides, video]) */
 		
 		//console.log('switch view fired');
 		
@@ -782,7 +782,16 @@ var llc = {
 				var p = $(event.target).parents('div.dual');
 				p.removeClass("single").addClass("single");	
 			} else {
-				if (!s.is(".single")) {
+				if (screen) {
+					// override screen selection
+					if (screen.indexOf('Left') != -1) {
+						// Show screen 1
+						m.removeClass("single").addClass("single");
+					} else {
+						// Show Slides (screen 2)
+						s.removeClass("single").addClass("single");
+					}
+				} else if (!s.is(".single")) {
 					// Show screen 1
 					m.removeClass("single").addClass("single");
 				} else {
@@ -1610,7 +1619,7 @@ var llc = {
 				});
 				
 				// Set defualt view
-				llc.switchView(false,llc.pres.defaultInterface.text);
+				llc.switchView(false,llc.pres.defaultInterface.text,llc.pres.defaultWindow.text);
 
 				//check preivew mode - setup helper functions
 				if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
