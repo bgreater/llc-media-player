@@ -11186,3 +11186,97 @@ td.AgendaListTableCell2
     font-style: normal;
 
 }
+/*Shopping cart popup window*/
+
+.shoppingCartOptions
+{
+    position:absolute;
+    z-index: 10000;
+    width: 300px;
+    border: 1px solid /*black*/rgb(126, 127, 126) ;
+    background-color: White;   
+    /*shadow*/
+    -moz-background-clip: padding; 
+    -webkit-background-clip: padding-box; 
+    background-clip: padding-box; 
+    -webkit-box-shadow: 5 5px 10px rgba(0, 0, 0, 0.5); 
+    -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); 
+}
+.shoppingCartOptionsClose
+{
+    height: 22px;
+    z-index: 9999;
+    width: /*300px;*/ 298px;
+    background-color: #3d3b3c;
+    text-align: right;   
+    padding: 2px 2px 2px 0px;
+}
+
+.shoppingCartListItem
+{
+    font-size: 12px;
+    vertical-align:middle;
+    width:100%;
+	list-style-type:none;
+	list-style-position: inside;
+	padding:0;
+	top:0;
+	margin:0;
+	cursor: pointer;
+	width: 282px;
+}
+.shoppingCartNoItems
+{
+    font-size: 12px;
+    padding: 10px;
+    color: #7e7f7e!important;
+}
+.shoppingCartListing
+{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.shoppingCartImageFrame
+{
+    float:left;
+    width: 50px;
+}
+.shoppingCartItemText
+{
+    float:/*right; */ left;
+    width: 220px;
+}
+.shoppingCartListContainer
+{
+    height: /*200px;*/ 190px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.shoppingCartLinkA, .shoppingCartLinkB
+{
+    padding: 5px;
+    width: 290px;
+    height: 50px;
+    text-decoration: none;
+    display: block;
+    color: #7e7f7e;
+}
+.shoppingCartLinkA:visited, .shoppingCartLinkB:visited
+{
+    color: #7e7f7e;
+}
+.shoppingCartLinkA:hover, .shoppingCartLinkB:hover
+{
+    background-color: #4b77a9;
+    color: #fff!important;
+}
+.shoppingCartLinkA
+{
+    background-color:#ccc; 
+}
+.shoppingCartLinkB
+{
+    background-color:#fff; 
+}

@@ -931,6 +931,8 @@ padding:7px 6px 5px 6px;
 }
 /*******************************/
 /* @end */
+
+/* @group TipTip  */
 /* TipTip CSS - Version 1.2 */
 
 #tiptip_holder {
@@ -1048,6 +1050,18 @@ outline:0;
 		border-top-color: rgba(20,20,20,0.92);
 	}
 }
+/*******************************/
+/* @end */
+
+/* @group MISC  */
+
+/* Buy Now styles */
+
+#buyButton { position: absolute; top: 0; right: 0; z-index: 15500; cursor: pointer; }
+
+#player_shoppingCartOp { position: absolute; top: 10px; right: 10px; z-index: 15505; text-align: left; }
+
+
 /* TOS Agreement Lightbox */
 		.lightbox_overlay{
 			display: none;
@@ -1108,3 +1122,4 @@ background-image: url(../images/player/blktrans.png);
 color:#ffffff; font-size:26px; font-family:Arial; vertical-align:middle;
 padding-top:25%;
 }		
+/* @end */

@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<presentation id="17698">
+  <title><![CDATA[A Proactive, Multichannel Approach to Stemming Attrition]]></title>
+  <date><![CDATA[10/20/2009 2:00:00 PM]]></date>
+  <defaultInterface id="2">Full Window</defaultInterface>
+  <defaultWindow id="2">RightWindow</defaultWindow>
+  <demoStartPoint>0</demoStartPoint>
+  <demoLength>300</demoLength>
+  <previewMode>True</previewMode>
+  <embededMode>False</embededMode>
+  <allowNavigation>True</allowNavigation>
+  <duration>3088133</duration>
+  <forwardLink type="-1"><![CDATA[]]></forwardLink>
+  <ratingAverage><![CDATA[3.00]]></ratingAverage>
+  <totalRatings><![CDATA[1]]></totalRatings>
+  <sponsorZoneId><![CDATA[-1]]></sponsorZoneId>
+  <viewer id="10290">
+    <firstName><![CDATA[John]]></firstName>
+    <middleName><![CDATA[p]]></middleName>
+    <lastName><![CDATA[Demo2]]></lastName>
+    <title><![CDATA[CMC Tester]]></title>
+    <organization><![CDATA[CONTENT MC]]></organization>
+    <email><![CDATA[demo@cmcgc.com]]></email>
+    <userName><![CDATA[demo@cmcgc.com]]></userName>
+    <notes><![CDATA[]]></notes>
+    <rating><![CDATA[3]]></rating>
+  </viewer>
+  <media>
+    <master>
+      <item id="632353">
+        <files>
+          <file id="101489" fileType="mp3" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940.mp3]]></file>
+        </files>
+        <window id="0"><![CDATA[No Window]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </master>
+    <items>
+      <item id="632319" inTOC="True">
+        <title><![CDATA[S17: A Proactive, Multichannel Approach to Stemming Attrition]]></title>
+        <files>
+          <file id="650801" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide1.png]]></file>
+          <file id="650800" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide1.jpg]]></file>
+          <file id="103033" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide1.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>0</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632320" inTOC="True">
+        <title><![CDATA[A Proactive, Multi-Channel Approach to Stemming Attrition]]></title>
+        <files>
+          <file id="650803" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide2.png]]></file>
+          <file id="650802" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide2.jpg]]></file>
+          <file id="103034" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide2.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>8000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632321" inTOC="True">
+        <title><![CDATA[Objectives]]></title>
+        <files>
+          <file id="650805" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide3.png]]></file>
+          <file id="650804" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide3.jpg]]></file>
+          <file id="103035" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide3.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>32800</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632322" inTOC="True">
+        <title><![CDATA[Takeaways]]></title>
+        <files>
+          <file id="650807" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide4.png]]></file>
+          <file id="650806" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide4.jpg]]></file>
+          <file id="103036" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide4.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>59133</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632323" inTOC="True">
+        <title><![CDATA[Overview]]></title>
+        <files>
+          <file id="650809" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide5.png]]></file>
+          <file id="650808" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide5.jpg]]></file>
+          <file id="103037" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide5.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>197867</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632324" inTOC="True">
+        <title><![CDATA[Agenda]]></title>
+        <files>
+          <file id="650811" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide6.png]]></file>
+          <file id="650810" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide6.jpg]]></file>
+          <file id="103038" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide6.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>275600</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632325" inTOC="True">
+        <title><![CDATA[Introductions]]></title>
+        <files>
+          <file id="650813" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide7.png]]></file>
+          <file id="650812" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide7.jpg]]></file>
+          <file id="103039" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide7.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>309467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632326" inTOC="True">
+        <title><![CDATA[Scotts Lawn Service]]></title>
+        <files>
+          <file id="650815" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide8.png]]></file>
+          <file id="650814" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide8.jpg]]></file>
+          <file id="103040" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide8.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>343200</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632327" inTOC="True">
+        <title><![CDATA[Context]]></title>
+        <files>
+          <file id="650817" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide10.png]]></file>
+          <file id="650816" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide10.jpg]]></file>
+          <file id="103041" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide9.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>519467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632328" inTOC="True">
+        <title><![CDATA[Economic Environment]]></title>
+        <files>
+          <file id="650819" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide11.png]]></file>
+          <file id="650818" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide11.jpg]]></file>
+          <file id="103042" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide10.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>528200</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632329" inTOC="True">
+        <title><![CDATA[Lawn Service]]></title>
+        <files>
+          <file id="650821" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide12.png]]></file>
+          <file id="650820" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide12.jpg]]></file>
+          <file id="103043" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide11.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>578467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632330" inTOC="True">
+        <title><![CDATA[SLS Background]]></title>
+        <files>
+          <file id="650823" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide13.png]]></file>
+          <file id="650822" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide13.jpg]]></file>
+          <file id="103044" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide12.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>706800</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632331" inTOC="True">
+        <title><![CDATA[SLS Operations]]></title>
+        <files>
+          <file id="650825" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide14.png]]></file>
+          <file id="650824" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide14.jpg]]></file>
+          <file id="103045" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide13.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>806933</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632332" inTOC="True">
+        <title><![CDATA[Lawn Service Considerations]]></title>
+        <files>
+          <file id="650827" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide15.png]]></file>
+          <file id="650826" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide15.jpg]]></file>
+          <file id="103046" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide14.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>900667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632333" inTOC="True">
+        <title><![CDATA[SLS Retention Approach (Pre-2009)]]></title>
+        <files>
+          <file id="650829" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide16.png]]></file>
+          <file id="650828" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide16.jpg]]></file>
+          <file id="103047" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide15.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1034467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632334" inTOC="True">
+        <title><![CDATA[SLS Retention (Pre-2009)]]></title>
+        <files>
+          <file id="650831" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide17.png]]></file>
+          <file id="650830" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide17.jpg]]></file>
+          <file id="103048" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide16.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1038733</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632335" inTOC="True">
+        <title><![CDATA[SLS Management Imperatives]]></title>
+        <files>
+          <file id="650833" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide18.png]]></file>
+          <file id="650832" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide18.jpg]]></file>
+          <file id="103049" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide17.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1174467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632336" inTOC="True">
+        <title><![CDATA[Approach]]></title>
+        <files>
+          <file id="650835" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide19.png]]></file>
+          <file id="650834" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide19.jpg]]></file>
+          <file id="103050" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide18.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1257933</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632337" inTOC="True">
+        <title><![CDATA[Customer Journey]]></title>
+        <files>
+          <file id="650837" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide20.png]]></file>
+          <file id="650836" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide20.jpg]]></file>
+          <file id="103051" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide19.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1269933</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632338" inTOC="True">
+        <title><![CDATA[Overview]]></title>
+        <files>
+          <file id="650839" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide21.png]]></file>
+          <file id="650838" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide21.jpg]]></file>
+          <file id="103052" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide20.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1461667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632339" inTOC="True">
+        <title><![CDATA[Define Objectives]]></title>
+        <files>
+          <file id="650841" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide22.png]]></file>
+          <file id="650840" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide22.jpg]]></file>
+          <file id="103053" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide21.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1550467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632340" inTOC="True">
+        <title><![CDATA[Build Knowledge Foundation]]></title>
+        <files>
+          <file id="650843" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide23.png]]></file>
+          <file id="650842" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide23.jpg]]></file>
+          <file id="103054" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide22.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1608667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632341" inTOC="True">
+        <title><![CDATA[Identify Weaknesses In Existing Process]]></title>
+        <files>
+          <file id="650845" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide24.png]]></file>
+          <file id="650844" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide24.jpg]]></file>
+          <file id="103055" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide23.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1717867</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632342" inTOC="True">
+        <title><![CDATA[Proactive Expansion Into Other Channels]]></title>
+        <files>
+          <file id="650847" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide25.png]]></file>
+          <file id="650846" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide25.jpg]]></file>
+          <file id="103056" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide24.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1829200</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632343" inTOC="True">
+        <title><![CDATA[Action Plan]]></title>
+        <files>
+          <file id="650849" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide26.png]]></file>
+          <file id="650848" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide26.jpg]]></file>
+          <file id="103057" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide25.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>1951200</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632344" inTOC="True">
+        <title><![CDATA[Action Plan (cont'd)]]></title>
+        <files>
+          <file id="650851" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide27.png]]></file>
+          <file id="650850" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide27.jpg]]></file>
+          <file id="103058" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide26.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2027867</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632345" inTOC="True">
+        <title><![CDATA[Action Plan (cont'd)]]></title>
+        <files>
+          <file id="650853" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide28.png]]></file>
+          <file id="650852" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide28.jpg]]></file>
+          <file id="103059" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide27.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2140667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632346" inTOC="True">
+        <title><![CDATA[Results]]></title>
+        <files>
+          <file id="650855" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide29.png]]></file>
+          <file id="650854" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide29.jpg]]></file>
+          <file id="103060" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide28.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2193333</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632347" inTOC="True">
+        <title><![CDATA[2009 Retention]]></title>
+        <files>
+          <file id="650857" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide30.png]]></file>
+          <file id="650856" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide30.jpg]]></file>
+          <file id="103061" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide29.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2196667</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632348" inTOC="True">
+        <title><![CDATA[2009 Retention (cont'd)]]></title>
+        <files>
+          <file id="650859" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide31.png]]></file>
+          <file id="650858" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide31.jpg]]></file>
+          <file id="103062" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide30.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2273467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632349" inTOC="True">
+        <title><![CDATA[What's Next?]]></title>
+        <files>
+          <file id="650861" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide32.png]]></file>
+          <file id="650860" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide32.jpg]]></file>
+          <file id="103063" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide31.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2451467</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632350" inTOC="True">
+        <title><![CDATA[Questions?]]></title>
+        <files>
+          <file id="650863" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide33.png]]></file>
+          <file id="650862" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide33.jpg]]></file>
+          <file id="103064" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide32.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2742800</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632351" inTOC="True">
+        <title><![CDATA[Thank You!]]></title>
+        <files>
+          <file id="650865" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide34.png]]></file>
+          <file id="650864" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide34.jpg]]></file>
+          <file id="103065" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide33.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>2985333</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+      <item id="632352" inTOC="True">
+        <title><![CDATA[DMA 09]]></title>
+        <files>
+          <file id="650867" fileType="jpg" quality="High"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/PNG/Slide35.png]]></file>
+          <file id="650866" fileType="jpg" quality="Medium"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/940 S/JPG/Slide35.jpg]]></file>
+          <file id="103066" fileType="jpg" quality="Low"><![CDATA[http://www.cmcgc.com/Media/Synch/291018/940/Slide34.jpg]]></file>
+        </files>
+        <window id="2"><![CDATA[RightWindow]]></window>
+        <startPoint>3040000</startPoint>
+        <link type="-1"><![CDATA[]]></link>
+      </item>
+    </items>
+  </media>
+  <transcript />
+  <speakers>
+    <speaker id="11294">
+      <salutation><![CDATA[]]></salutation>
+      <firstName><![CDATA[John]]></firstName>
+      <lastName><![CDATA[Keenan]]></lastName>
+      <startPoint>0</startPoint>
+    </speaker>
+    <speaker id="11295">
+      <salutation><![CDATA[]]></salutation>
+      <firstName><![CDATA[Rod]]></firstName>
+      <lastName><![CDATA[Imbriani]]></lastName>
+      <startPoint>0</startPoint>
+    </speaker>
+    <speaker id="11296">
+      <salutation><![CDATA[]]></salutation>
+      <firstName><![CDATA[Stephanie]]></firstName>
+      <lastName><![CDATA[McAndrew]]></lastName>
+      <startPoint>0</startPoint>
+    </speaker>
+  </speakers>
+  <agreements />
+  <bookmarks />
+  <purchaseOptions>
+    <purchaseItem id="12533">
+      <title><![CDATA[Knowledge channels - Social Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12470">
+      <title><![CDATA[Knowledge channels - B2B Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12528">
+      <title><![CDATA[Knowledge channels - Interactive Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12532">
+      <title><![CDATA[Knowledge channels - Retail Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12474">
+      <title><![CDATA[Knowledge channels - B2C Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12525">
+      <title><![CDATA[Knowledge channels - Financial Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12475">
+      <title><![CDATA[Knowledge channels - Catalog Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12527">
+      <title><![CDATA[Knowledge channels - Insurance Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12529">
+      <title><![CDATA[Knowledge channels - Non-Profit Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12531">
+      <title><![CDATA[Knowledge channels - Publishing Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12534">
+      <title><![CDATA[Knowledge channels - Travel Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12476">
+      <title><![CDATA[Knowledge channels - Data Analytics Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12524">
+      <title><![CDATA[Knowledge channels - Email Online Access Package]]></title>
+      <price><![CDATA[699.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12526">
+      <title><![CDATA[Knowledge channels - Mobile Online Access Package]]></title>
+      <price><![CDATA[599.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12530">
+      <title><![CDATA[Knowledge channels - Print Online Access Package]]></title>
+      <price><![CDATA[599.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="12523">
+      <title><![CDATA[Knowledge channels - DRTV Online Access Package]]></title>
+      <price><![CDATA[599.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Package]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_pkg.png]]></formatImage>
+    </purchaseItem>
+    <purchaseItem id="4681">
+      <title><![CDATA[940-A Proactive, Multichannel Approach to Stemming Attrition]]></title>
+      <price><![CDATA[25.00]]></price>
+      <currency><![CDATA[USD]]></currency>
+      <format><![CDATA[Audio Synched Presentation]]></format>
+      <formatImage><![CDATA[~/images/icons/icon_saudio.png]]></formatImage>
+    </purchaseItem>
+  </purchaseOptions>
+</presentation>

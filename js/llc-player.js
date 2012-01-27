@@ -1088,19 +1088,66 @@ var llc = {
 	},
 	previewEmbedSetup: function(){
 	
-		 var embedCheck = llc.pres.embededMode, previewCheck = llc.pres.previewMode;
-				if(previewCheck){
-				$('span#titleIntroText').html('Preview Mode');
-				//$('#master_jp_container .llc-next').addClass('llc-next-disabled');
-				//$('#master_jp_container .llc-prev').addClass('llc-prev-disabled');
-				$('#master_jp_container .llc-bookmark').unbind('click');
-				//$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
-				}
-				
-				$("#master_jp_container .llc-bookmark").addClass('llc-bookmark-disabled');
-				$('div#info_tabs').hide();
-				$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
-				$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
+		var embedCheck = llc.pres.embededMode, 
+			previewCheck = llc.pres.previewMode;
+			purOptions = llc.pres.purchaseOptions.purchaseItem;
+		
+		if(previewCheck){
+			$('span#titleIntroText').html('Preview Mode');
+			//$('#master_jp_container .llc-next').addClass('llc-next-disabled');
+			//$('#master_jp_container .llc-prev').addClass('llc-prev-disabled');
+			$('#master_jp_container .llc-bookmark').unbind('click');
+			//$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
+		}		
+		
+		$("#master_jp_container .llc-bookmark").addClass('llc-bookmark-disabled');
+		$('div#info_tabs').hide();
+		$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
+		$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
+		
+		// Setup Buy Now button & purchase options
+		if (purOptions && purOptions[0]) {
+			
+			// pop up html
+			var purHTML = '<div id="player_shoppingCartOp" class="shoppingCartOptions" style="display:none">\
+						     <div class="shoppingCartOptionsClose">\
+							   <img src="images/buttons/button_remove.png" onclick="shoppingCartClose()" />\
+							 </div>\
+							 <div id="player_shoppingCartListContainer" class="shoppingCartListContainer">\
+							   <div id="player_shoppingCartList_1" class="shoppingCartList">\
+							     <ul class="shoppingCartListing">'
+			
+			// insert options
+			for (i=0; i < purOptions.length; ++i) {
+				var t = purOptions[i],
+					cartClass = (i+1) % 2 == 0 ? 'shoppingCartLinkB' : 'shoppingCartLinkA' ;
+					purHTML += '   <li class="shoppingCartListItem">\
+								     <a href="javascript:itemClick(\''+t.id+'\')" class="'+cartClass+'">\
+								       <div class="shoppingCartImageFrame">\
+								         <img src="'+t.formatImage.replace('~/','')+'" />\
+								       </div>\
+								       <div class="shoppingCartItemText">'+t.title+' </br>$'+t.price+' '+t.currency+'</div>\
+								     </a>\
+								   </li>';
+			}
+			
+				purHTML += '     </ul>\
+							   </div>\
+							 </div>\
+						   </div>'
+			
+			// Add Button
+			$('#llc_playerFrame').append('<a id="buyButton" style="display:none;"><img src="images/player/buy-button_player.png" width="102" height="98" /></a>');
+			$('#buyButton').click(function(){
+				$('#player_shoppingCartOp').show();
+			});
+			
+			// Add popup
+			$('#llc_playerFrame').append(purHTML);
+			
+		}
+		
+		
 	},
 	setCookie: function(name,value) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
 		//console.log('setCookie');
@@ -1402,6 +1449,7 @@ var llc = {
 						$("#loading").remove();
 						$("#llc_playerFrame").css('height','auto');
 						$("#llc_playerFrame").trigger('resize');
+						$("#buyButton").show();
 						
 						/* Set up ad */
 						if (!document.phpAds_used) document.phpAds_used = ',';
