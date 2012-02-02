@@ -1106,7 +1106,7 @@ var llc = {
 		$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
 		
 		// Setup Buy Now button & purchase options
-		if (purOptions && purOptions[0]) {
+		if (purOptions) {
 			
 			// pop up html
 			var purHTML = '<div id="player_shoppingCartOp" class="shoppingCartOptions" style="display:none">\
@@ -1118,9 +1118,11 @@ var llc = {
 							     <ul class="shoppingCartListing">'
 			
 			// insert options
-			for (i=0; i < purOptions.length; ++i) {
-				var t = purOptions[i],
-					cartClass = (i+1) % 2 == 0 ? 'shoppingCartLinkB' : 'shoppingCartLinkA' ;
+			if (purOptions[0]) { // Loop through multiple options
+				for (i=0; i < purOptions.length; ++i) {
+					var t = purOptions[i],
+						cartClass = (i+1) % 2 == 0 ? 'shoppingCartLinkB' : 'shoppingCartLinkA' ;
+						
 					purHTML += '   <li class="shoppingCartListItem">\
 								     <a href="javascript:itemClick(\''+t.id+'\')" class="'+cartClass+'">\
 								       <div class="shoppingCartImageFrame">\
@@ -1129,13 +1131,23 @@ var llc = {
 								       <div class="shoppingCartItemText">'+t.title+' </br>$'+t.price+' '+t.currency+'</div>\
 								     </a>\
 								   </li>';
+				}
+			} else { // Do single option
+					purHTML += '   <li class="shoppingCartListItem">\
+								     <a href="javascript:itemClick(\''+purOptions.id+'\')" class="shoppingCartLinkA">\
+								       <div class="shoppingCartImageFrame">\
+								         <img src="'+purOptions.formatImage.replace('~/','')+'" />\
+								       </div>\
+								       <div class="shoppingCartItemText">'+purOptions.title+' </br>$'+purOptions.price+' '+purOptions.currency+'</div>\
+								     </a>\
+								   </li>';
 			}
 			
 				purHTML += '     </ul>\
 							   </div>\
 							 </div>\
 						   </div>'
-			
+			 
 			// Add Button
 			$('#llc_playerFrame').append('<a id="buyButton" style="display:none;"><img src="images/player/buy-button_player.png" width="102" height="98" /></a>');
 			$('#buyButton').click(function(){
