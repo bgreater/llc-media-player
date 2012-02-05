@@ -8,7 +8,7 @@
   <demoStartPoint>0</demoStartPoint>
   <demoLength>300</demoLength>
   <previewMode>False</previewMode>
-  <embededMode>True</embededMode>
+  <embededMode>False</embededMode>
   <allowNavigation>True</allowNavigation>
   <duration>3362000</duration>
   <forwardLink type="-1">

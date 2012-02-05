@@ -1267,7 +1267,7 @@ var llc = {
 			$("#master_jp_container a.llc-full").addClass('active')
 			
 			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
-				$("#master_jp_container a.llc-full").tipTip({content: "normal", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+				$("#master_jp_container a.llc-full").tipTip({content: "normal", maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
 			}
 			
 			// $("#master_jplayer").jPlayer("option", {"fullScreen": true}); // not needed with 100% size option
@@ -1289,7 +1289,7 @@ var llc = {
 			$("#master_jp_container a.llc-full").removeClass('active')
 			
 			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
-				$("#master_jp_container a.llc-full").tipTip({content: "full", maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
+				$("#master_jp_container a.llc-full").tipTip({content: "full", maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
 			}
 			
 			llc.position();
@@ -1693,8 +1693,8 @@ var llc = {
 				
 				// Add tool tips if non-mobile or tablet 
 				if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
-					$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'top'});
-					$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 2, defaultPosition:'bottom'});
+					$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
+					$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'bottom'});
 				}
 				
 				llc.disableRightClick();
