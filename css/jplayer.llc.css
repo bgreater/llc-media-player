@@ -744,8 +744,8 @@ vertical-align:top;
 #info_tabs #tabs a table td img{
 margin:1px 3px 0 0;
 }
-#info_tabs .info{overflow:auto;display:none;background:#fff;position:relative;height:520px;}
-#info_tabs .info.active{display:block; opacity:.3}
+#info_tabs .info{overflow:auto;display:none;background:#fff;position:relative;height:400px;}
+#info_tabs .info.a	ctive{display:block; opacity:.3}
 
 /**************************************************************/
 #content_area{
@@ -753,7 +753,7 @@ border:4px solid #f15a29;background-color:#ffffff;
 border-bottom-width:3px;
 overflow:hidden;
 text-align:center;
-height:520px;
+height:400px;
 display:none;
 }
 #info_tabs #tabs_overview{}

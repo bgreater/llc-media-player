@@ -7,7 +7,7 @@
   <defaultWindow id="2">Right Window</defaultWindow>
   <demoStartPoint>0</demoStartPoint>
   <demoLength>300</demoLength>
-  <previewMode>True</previewMode>
+  <previewMode>False</previewMode>
   <embededMode>True</embededMode>
   <allowNavigation>True</allowNavigation>
   <duration>3362000</duration>
