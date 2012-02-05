@@ -1101,7 +1101,7 @@ var llc = {
 		}		
 		
 		$("#master_jp_container .llc-bookmark").addClass('llc-bookmark-disabled');
-		$('div#info_tabs').hide();
+		$('div#info_tabs').addClass('hide');
 		$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
 		$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
 		
