@@ -1627,9 +1627,13 @@ var llc = {
 				
 				// Assign volume show/hide click handlers
 				$("#master_jp_container div.jp-volume").toggle(function() {
-						if(!$(this).is('.hover.active')) $(this).addClass("active");
+						if(!$(this).is('.hover')) $(this).removeClass("active");
+						$("#master_jplayer").jPlayer("volume", 0);
+						llc.perVolume = 0;
 					}, function() {
 						if(!$(this).is('.hover')) $(this).removeClass("active");
+						$("#master_jplayer").jPlayer("volume", 80);
+						llc.perVolume = 80;
 				}).hover(function() {
 						$(this).addClass("hover");
 						$(this).click();
