@@ -1585,20 +1585,7 @@ var llc = {
 				
 				
 				/* ################################# ATTACH CLICK HANDLERS */
-				
-				/* Assign volume show/hide click handlers */
-				$("#master_jp_container div.jp-volume").toggle(function() {
-						if(!$(this).is('.hover.active')) $(this).addClass("active");
-					}, function() {
-						if(!$(this).is('.hover')) $(this).removeClass("active");
-				}).hover(function() {
-						$(this).addClass("hover");
-						$(this).click();
-					}, function() {
-						$(this).removeClass("hover");
-						$(this).click();
-				});
-				
+					
 				// Assign volume dragable
 				$("#master_jp_container div.jp-volume span.jp-volume-bar-drag").draggable({
 					axis: 'y',
@@ -1633,19 +1620,19 @@ var llc = {
 				
 				// Assign volume show/hide click handlers
 				$("#master_jp_container div.jp-volume").toggle(function() {
-						if(!$(this).is('.hover')) $(this).removeClass("active");
 						$("#master_jplayer").jPlayer("volume", 0);
 						llc.perVolume = 0;
 					}, function() {
-						if(!$(this).is('.hover')) $(this).removeClass("active");
 						$("#master_jplayer").jPlayer("volume", 80);
 						llc.perVolume = 80;
 				}).hover(function() {
 						$(this).addClass("hover");
-						$(this).click();
+						$(this).addClass("active");
+						//$(this).click();
 					}, function() {
 						$(this).removeClass("hover");
-						$(this).click();
+						$(this).removeClass("active");
+						//$(this).click();
 				});
 				
 				// Assign Full screen & normal click handlers
