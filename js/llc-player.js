@@ -1332,6 +1332,10 @@ var llc = {
 			userID = $('input#user_id').val(),
 			siteID = $('input#site_id').val();
             var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + curSessionID + '&UID=' + userID;
+            if (presentationID < 0) {
+            	$('#llc_container').attr('style', 'display:none');
+            	return;
+            }
 			
 		}
 				
