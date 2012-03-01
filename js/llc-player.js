@@ -1660,15 +1660,20 @@ var llc = {
 				$("#pres_title span").text(llc.pres.title);
 				
 				// Set speakers
-				$("#pres_presenter span").text((function(){
-					var spks
-					for (i in llc.pres.speakers.speaker) {
-						var s = llc.pres.speakers.speaker[i];
-						if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', '+ s.firstName + " " + s.lastName :  s.firstName + " " + s.lastName ;
-					} 
-					spks = spks ? spks : 'N/A' ;
-					return spks
-				})());
+	            $("#pres_presenter span").text((function() {
+	                var spks
+	                if (!llc.pres.speakers.speaker.length) {
+	                    var s = llc.pres.speakers.speaker;
+	                    if (s.firstName) spks = s.firstName + " " + s.lastName;
+	                }
+	                else
+	                    for (i in llc.pres.speakers.speaker) {
+	                        var s = llc.pres.speakers.speaker[i];
+	                        if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
+	                    }
+	                spks = spks ? spks : 'N/A';
+	                return spks
+	            })());
 				
 				// Set Date
 				$("#pres_date span").text((llc.pres.date || 'N/A'));
