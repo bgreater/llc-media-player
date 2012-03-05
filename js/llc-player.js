@@ -1319,7 +1319,7 @@ var llc = {
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
 	
 		 
-        if (document.domain.indexOf('dropbox') != -1 || document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
+        if (document.domain.indexOf('dropbox') != -1 ){//|| document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
 
             // Use test data
             var url = 'sample-3.xml';
@@ -1333,8 +1333,8 @@ var llc = {
 			siteID = $('input#site_id').val();
             var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + curSessionID + '&UID=' + userID;
             if (presentationID < 0) {
-            	$('#llc_container').attr('style', 'display:none');
-            	return;
+                $('#llc_container').attr('style', 'display:none');
+                return;
             }
 			
 		}
@@ -1660,20 +1660,21 @@ var llc = {
 				$("#pres_title span").text(llc.pres.title);
 				
 				// Set speakers
-	            $("#pres_presenter span").text((function() {
-	                var spks
-	                if (!llc.pres.speakers.speaker.length) {
-	                    var s = llc.pres.speakers.speaker;
-	                    if (s.firstName) spks = s.firstName + " " + s.lastName;
-	                }
-	                else
-	                    for (i in llc.pres.speakers.speaker) {
-	                        var s = llc.pres.speakers.speaker[i];
-	                        if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
-	                    }
-	                spks = spks ? spks : 'N/A';
-	                return spks
-	            })());
+				$("#pres_presenter span").text((function(){
+					var spks
+					if (llc.pres.speakers)
+		                if (!llc.pres.speakers.speaker.length) {
+    		                var s = llc.pres.speakers.speaker;
+        		            if (s.firstName) spks = s.firstName + " " + s.lastName;
+            		    }
+                		else
+                    		for (i in llc.pres.speakers.speaker) {
+                        		var s = llc.pres.speakers.speaker[i];
+	                        	if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
+	    	                }
+					spks = spks ? spks : 'N/A' ;
+					return spks
+				})());
 				
 				// Set Date
 				$("#pres_date span").text((llc.pres.date || 'N/A'));
@@ -1823,6 +1824,5 @@ function urlParse(parameter) {
       return false;
   }
 }
-
 
 
