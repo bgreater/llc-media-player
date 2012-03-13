@@ -121,35 +121,32 @@ var llc = {
 		/* ##########################################
 		  ################# Create Slides
 		 ########################################## */
-		
-		var slides = slides.length ? slides : [slides];
-		
-		for (var i = 0; i < slides.length; i++) {
+		 
+		$(slides).each(function(i){
 		  	
-		  	var t = slides[i];
-		  	
+		  	var t=this;
+
 		  	if ( typeof(t.files)=='object' ) {
 		  		
 			  	// Add thumbnail to TOC			
 			  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file.text || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc', '');
 			  	
-			  	// 2nd file in files is slide t.files.file[1] (medium quality jpg)
+			  	// 2nd file in files is slide t.files.file[1]
 				if ((t.files.file.fileType || t.files.file[1].fileType) == "jpg"){ 		
 				  		  		
 			  		/* ######## JPG SLIDE #################### */
-			  		 
-			  		// Append Slide
-					var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"',
-						fileSrc = (t.files.file.text || t.files.file[1].text);
-						
-			  		$('<a id="'+t.id+'" class="slide" '+linkAction+' style="display:none"><span class="switchView"></span><img class="slideImg" title="'+fileSrc+'" /></a>').appendTo("#slides");
 			  		
-			  		// Add to image loading array
-			  		llc.pres.imgs = llc.pres.imgs ? llc.pres.imgs : [];
-			  		llc.pres.imgs.push(t.id);
+			  		// Append Slide
+					var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"';
+			  		$('<a id="'+t.id+'" class="slide" '+linkAction+'><span class="switchView"></span><img src="'+(t.files.file.text || t.files.file[1].text)+'" /></a>').appendTo("#slides");
+			  		
+			  		// Set Slide Load Interation
+			  		$("#"+t.id+" img").load(function(){
+			  			llc.pres.imgsLoaded++;
+			  		});	llc.pres.imgsCount++;
 			  	
 			  			  
-			  	} else { // assume non-jpg file type is video
+			  	} else /*if ((t.files.file.fileType || t.files.file[1].fileType) == "flv")*/ { // assume non-jpg file type is video
 			  		
 			  		/* ######## VIDEO SLIDE ################## */
 			  		
@@ -276,57 +273,50 @@ var llc = {
 					});
 			  	}
 			}
-		}
+		});
 		
 		/* ##########################################
 		  ################# Create Bookmarks
 		 ########################################## */
-		if (bookmarks) {
-			var bookmarks = bookmarks.bookmark.length ? bookmarks.bookmark : [bookmarks.bookmark] ;
-			for (var index = 0; index < bookmarks.length; index++) {
-				
-				var t = bookmarks[index],
-					bmStart = parseInt(t.startPoint),
-					slideStart = 0,
-					i = 0,
-					xml = llc.pres.media.items.item;
-					
-				if (xml.length==undefined) {
-					var xmllen = 1;
-				} else {
-					var xmllen = xml.length;
-				}
-				
-				if (xmllen==1) {
-					var filename = (xml.files.file.constructor.toString().indexOf('Array') != -1) ? xml.files.file[0] : xml.files.file;
-					var title = xml.title;
-				} else {
-					var maxloops = xmllen-1;
-					while(slideStart <= bmStart && i <= maxloops){
-						var slideStart = llc.pres.media.items.item[i].startPoint;
-						i = i+1;
-					}
-				
-					i = (i<2) ? 1 : i-1;
-					x = i - 1;
-					var filename = (xml[i-1].files.file.constructor.toString().indexOf('Array') != -1) ? xml[i-1].files.file[0] : xml[i-1].files.file;
-					var title = xml[i-1].title;
-				}
-				llc.createThumbPanel(filename, t.id, bmStart, title, '#tabs_bookmarks', '');
+
+		$(bookmarks.bookmark).each(function(index){
+
+			var t=this;
+			var bmStart = parseInt(t.startPoint);
+			var slideStart = 0;
+			var i = 0;
+			var xml = llc.pres.media.items.item;
+			if(xml.length==undefined){var xmllen = 1;}else{var xmllen = xml.length;}
+			if(xmllen==1){
+			var filename = (xml.files.file.constructor.toString().indexOf('Array') != -1) ? xml.files.file[0] : xml.files.file;
+			var title = xml.title;
+			}else{
+			var maxloops = xmllen-1;
+			while(slideStart <= bmStart && i <= maxloops){
+			var slideStart = llc.pres.media.items.item[i].startPoint;
+			i = i+1;
 			}
-		}		
+			i = (i<2) ? 1 : i-1;
+			x = i - 1;
+			var filename = (xml[i-1].files.file.constructor.toString().indexOf('Array') != -1) ? xml[i-1].files.file[0] : xml[i-1].files.file;
+			var title = xml[i-1].title;
+			}
+			llc.createThumbPanel(filename, t.id, bmStart, title, '#tabs_bookmarks', '');
+		});
+		
+		
 		
 		/* ##########################################
 		  ################# Create Blurbs
 		 ########################################## */
 		 
-		var bct = $(blurbs);
-		if(bct.length > 0){
-			for (var i = 0; i < bct.length; i++) {
-				$('<p class="transcript" id="s'+bct[i].startPoint+'">'+bct[i].text.toString()+'</p>').appendTo("#tabs_transcripts")
-			}
+		var bct = $(blurbs).length;
+		if(bct > 0){
+		$(blurbs).each(function(i){
+			$('<p class="transcript" id="s'+this.startPoint+'">'+this.text.toString()+'</p>').appendTo("#tabs_transcripts")
+		});
 		}else{
-			$('<div id="noTranscript"><p>Transcript is unavailable or does not exist.</p></div>').appendTo("#tabs_transcripts")
+		$('<div id="noTranscript"><p>Transcript is unavailable or does not exist.</p></div>').appendTo("#tabs_transcripts")
 		}
 		
 		/* ##########################################
@@ -370,40 +360,41 @@ var llc = {
 		/* ##########################################
 		  ################# Setup INFO tabs nav
 		 ########################################## */
-		$("#info_tabs #tabs a").each(function() {
-			$(this).click(function() {
-				var ref = this.href.split('#')[1];
-				$("#info_tabs .info").removeClass('active').filter("#tabs_"+ref).addClass('active');
-				$("#info_tabs #tabs a").removeClass('active').filter(this).addClass('active');
-				$("#info_tabs .info").css('opacity', '.3')
-				$("#tabs_"+ref).animate({ opacity: 1 }, 1000);
+				$("#info_tabs #tabs a").each(function() {
+					$(this).click(function() {
+						var ref = this.href.split('#')[1];
+						$("#info_tabs .info").removeClass('active').filter("#tabs_"+ref).addClass('active');
+						$("#info_tabs #tabs a").removeClass('active').filter(this).addClass('active');
+						$("#info_tabs .info").css('opacity', '.3')
+						$("#tabs_"+ref).animate({ opacity: 1 }, 1000);
 				var curdisplay = $("#content_area").css('display');
+				if(curdisplay=='none'){
+				$("#content_area").slideToggle(function(){$("#llc_playerFrame").trigger('resize');});
+				$('#tabs_control_toggle_btn').toggleClass('hide_features');
+				$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
+				}else{
+				}
 				
-				if (curdisplay=='none') {
-					$("#content_area").slideToggle(function(){$("#llc_playerFrame").trigger('resize');});
-					$('#tabs_control_toggle_btn').toggleClass('hide_features');
-					$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
-				} 
-		
-			return false
-			});
-		});
+						return false
+					});
+				});
 		
 		/* ##########################################
 		  ################# Add nifty play hover
 		 ########################################## */
 				
-		$('div.toc_thumb').live({
-			mouseenter:function(){
-				if (!$(this).hasClass('active_toc_thumb')) {
+				$('div.toc_thumb').live({
+				mouseenter:function(){
+				if(!$(this).hasClass('active_toc_thumb')){
 					$(this).find('.playIcon').css('opacity', '.4');
 					$(this).find('.playIcon').fadeIn();
 				}
-			},
-			mouseleave:function(){
-				$(this).find('.playIcon').fadeOut();
-			}
-		});
+
+				},
+				mouseleave:function(){
+					$(this).find('.playIcon').fadeOut();
+				}
+				});
 				
 		 
 		 
@@ -554,47 +545,32 @@ var llc = {
 		//console.log('createThumbPanel');
 		var thumbFileType = img.substring(img.lastIndexOf('.')+1);
 		if(thumbFileType in {'flv':'', 'webm':'','m4v':''}) {
-			var img = '<img class="toc_thumb_img" src="images/player/video-icon.png" />';
-		} else {
-			var img = '<img class="toc_thumb_img" title="'+img+'" />';
+		var img = 'images/player/video-icon.png';
 		}
 		/* ##########################################
 		  ################# Add thumbnail to document
 		 ########################################## */
-		var friendlyStartTime = milliConvert(startPoint),
-			title = htmlEntities(truncate(title, 40)),
-			prefix = pageid.substr(1, pageid.length),
-			bmaction = (prefix=='tabs_bookmarks') ? 'remove' : 'add',
-			bmset = (prefix=='tabs_bookmarks') ? ' bookmark-set' : '',
-			thumbRel = (toc_id.length > 0) ? 'rel="'+toc_id+'"' : 'rel=""';
-			
-		if (prefix=='tabs_bookmarks') {
-			var numBMs = ($('#tabs_bookmarks .toc_thumb').length)+1,
-				bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
-			$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
+		var friendlyStartTime = milliConvert(startPoint);
+		var title = truncate(title, 40);
+		var title = htmlEntities(title);
+		var prefix = pageid.substr(1, pageid.length);
+		var bmaction = (prefix=='tabs_bookmarks') ? 'remove' : 'add';
+		var bmset = (prefix=='tabs_bookmarks') ? ' bookmark-set' : '';
+		var thumbRel = (toc_id.length > 0) ? 'rel="'+toc_id+'"' : 'rel=""';
+		if(prefix=='tabs_bookmarks'){
+		var numBMs = ($('#tabs_bookmarks .toc_thumb').length)+1;
+		var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
+		$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
 		}
-		
 		$('<div '+thumbRel+' class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
-				<a href="javascript:;" class="toc_thumb_link loading" onclick="slideJump('+((startPoint/1000)+.3)+')">\
-			  		'+img+'\
-				</a>\
-				<div class="toc_thumb_info">\
-					<table CELLPADDING=0 CELLSPACING=0 style="width:100%">\
-						<tr>\
-							<td style="width:95px;"><div class="toc_title">'+title+'</div></td>\
-							<td><div class="toc_magnify_img" id=""></div></td>\
-						</tr>\
-						<tr>\
-							<td colspan=2>\
-								<div class="toc_time">'+friendlyStartTime+'</div>\
-								<a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
-									<img src="images/player/toc_'+bmaction+'_bm_icon.png" /> Bookmark\
-								</a>\
-							</td>\
-						</tr>\
-					</table>\
-				</div>\
-		   </div>').appendTo(pageid);
+			<a href="javascript:;" onclick="slideJump('+((startPoint/1000)+.3)+')">\
+			  <img class="toc_thumb_img" src="'+img+'" />\
+			</a>\
+			<div class="toc_thumb_info"><table CELLPADDING=0 CELLSPACING=0 style="width:100%"><tr><td style="width:95px;"><div class="toc_title">'+title+'</div>\
+			</td><td><div class="toc_magnify_img" id=""></div></td></tr><tr><td colspan=2>\
+			<div class="toc_time">'+friendlyStartTime+'</div><a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
+			<img src="images/player/toc_'+bmaction+'_bm_icon.png" /> Bookmark</a></td></tr></table></div>\
+		</div>').appendTo(pageid);
 	},
 	setupSlideMagnify: function() {
 
@@ -603,35 +579,33 @@ var llc = {
 		  ################# adds zoom feature to toc slides
 		 ########################################## */
 		$('div.toc_magnify_img').live('click', function(e){
-			var zoomcheck = $(this).hasClass('zoom_selected');
-	
-			if($('div.zoom_box').length > 0){
-				$('div.zoom_box').remove();
-				$('div.toc_magnify_img').each(function(){
-					$(this).removeClass('zoom_selected');
-				});
-			}
-			
-			if(!zoomcheck){
-				var xpos = e.pageX - 244,
-					ypos = e.pageY - 420,
-					imgSrc = $(this).parents('div.toc_thumb').find('img.toc_thumb_img').attr('src'),
-					zoomTag = '<div style="left:'+xpos+'px; top:'+ypos+'px;" class="zoom_box"><div class="zoom_box_control"><div class="close_button"></div></div><img src="'+imgSrc+'" class="zoom_img" /></div>',
-					zoomTitle = '<div class="zoom_box_title"></div>';
-					
-				$(this).parents('body').prepend(zoomTag);
-				$('div.zoom_box').bind('contextmenu', function(e){
-					return false;
-				});
-			
-				$(this).addClass('zoom_selected');
-			}
+		var zoomcheck = $(this).hasClass('zoom_selected');
+
+		if($('div.zoom_box').length > 0){
+		$('div.zoom_box').remove();
+			$('div.toc_magnify_img').each(function(){
+			$(this).removeClass('zoom_selected');
+			});
+		}
+		if(!zoomcheck){
+		var xpos = e.pageX - 244;
+		var ypos = e.pageY - 420;
+		var imgSrc = $(this).parents('div.toc_thumb').find('img.toc_thumb_img').attr('src');
+		var zoomTag = '<div style="left:'+xpos+'px; top:'+ypos+'px;" class="zoom_box"><div class="zoom_box_control"><div class="close_button"></div></div><img src="'+imgSrc+'" class="zoom_img" /></div>';
+		var zoomTitle = '<div class="zoom_box_title"></div>';
+		$(this).parents('body').prepend(zoomTag);
+		$('div.zoom_box').bind('contextmenu', function(e){
+		return false;
+		});
+		$
+		$(this).addClass('zoom_selected');
+		}
 		});
 		
 		$('div.close_button').live('click', function(e){
 			$('div.zoom_box').remove();
 			$('div.toc_magnify_img').each(function(){
-				$(this).removeClass('zoom_selected'); 
+			$(this).removeClass('zoom_selected'); 
 			});
 		});
 		
@@ -684,13 +658,7 @@ var llc = {
 			llc.pres.curEl = curEl;
 			
 			// Show/Hide slides
-			$("#"+curEl.id).show()
-			.removeClass('active, loading')
-			.addClass('active')
-			.find('img.slideImg')
-			.each(function() {
-				this.src = !this.src || this.src === "" ? this.title : this.src;
-			});
+			$("#"+curEl.id).show().removeClass('active').addClass('active');
 			$("#"+curEl.id+".jp-video").width('100%').height('100%')
 			$("#slides .jp-video").not("#"+curEl.id).width(0).height(0).removeClass('active'); // 0 out the jPlayer as hiding disables the flash instance
 			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide().removeClass('active');
@@ -739,10 +707,10 @@ var llc = {
 				
 			$("#master_jp_container div.jp-title").text(introTxt+":  Slide "+slideNum+" - "+curEl.title);
 			
-				var thumbs = $("div.toc_thumb");
-				for (var i = 0; i < thumbs.length; i++) {
-					$(thumbs[i]).removeClass('active_toc_thumb');
-				}
+			
+				$("div.toc_thumb").each(function(){
+					$(this).removeClass('active_toc_thumb');
+				});
 				
 				$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
 				
@@ -1376,73 +1344,11 @@ var llc = {
 		}
 		return fileTypes
 	},
-	preload: function(imgs) {
-		// Preload necessary UI images/backgrounds
-	    for (var i = 0; i < imgs.length; i++) {
-	    	(new Image()).src = imgs[i];
-	    }
-	},
-	loadSlideImgs: function() {
-		// Slide Loading Status
-		
-		$('<div id="loading">Loading <span id="loadBar"><span id="loadStatus"></span></span></div>').appendTo("#llc_container");
-		
-		llc.pres.imgsLoaded = 0;
-		
-		function loadImg(imgId) {
-			var img = document.getElementById(imgId).getElementsByTagName("IMG")[0],
-				thumb = document.getElementById('toc_thumb_'+imgId),
-				thumbImg = thumb.getElementsByTagName("A")[0].getElementsByTagName("IMG")[0];
-				
-			function revealThumb() {
-				$(thumb).removeClass('loading');
-				thumbImg.src = !thumbImg.src || thumbImg.src === "" ? thumbImg.title : thumbImg.src ;
-			}
-
-			if (!img.src || img.src === "") {
-				$(img).load(function(){
-					llc.pres.imgsLoaded++;
-					progressSlides();
-				}).each(function() {
-					this.src = this.title;
-					revealThumb();
-				});
-				
-			} else {
-				llc.pres.imgsLoaded++;
-				progressSlides();
-				revealThumb();
-			}
-			
-		}
-		
-		function progressSlides() {
-			if (!llc.loaded) {
-				if (llc.pres.imgsLoaded < llc.pres.imgs.length) {
-					loadImg(llc.pres.imgs[llc.pres.imgsLoaded])	
-				} else {
-					// Finished loading
-					llc.status('Loaded Slides');
-					llc.loaded = true;
-				}
-				// update loading bar
-				//$("#loading #loadStatus").width(((llc.pres.imgsLoaded/llc.pres.imgs.length)*100)+'%');
-			}
-		}
-		
-		loadImg(llc.pres.imgs[llc.pres.imgsLoaded]);
-	},
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
-	
+		
 		llc.status({start:'Initializing'});
-		
-		// Preload loading graphic or any other UI image
-		llc.preload([
-		    'images/player/loading-bar.gif'
-		]);
-		
-		/* ######## Set Presentation data source */ 
-        if (document.domain.indexOf('dropbox') != -1 ){
+		 
+        if (document.domain.indexOf('dropbox') != -1 ){//|| document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
 
             // Use test data
             var url = 'wired-grandma.xml';
@@ -1451,11 +1357,10 @@ var llc = {
 
             // Use live data
             var presentationID = $('input#pres_id').val(),
-				curSessionID = $('input#cur_session_id').val(),
-				userID = $('input#user_id').val(),
-				siteID = $('input#site_id').val(), 
-				url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + curSessionID + '&UID=' + userID;
-				
+			curSessionID = $('input#cur_session_id').val(),
+			userID = $('input#user_id').val(),
+			siteID = $('input#site_id').val();
+            var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + curSessionID + '&UID=' + userID;
             if (presentationID < 0) {
                 $('#llc_container').attr('style', 'display:none');
                 return;
@@ -1467,280 +1372,374 @@ var llc = {
 		if(showPathCheck=='y'){
 			alert(url);
 		}
-		
 		var manualSourceCheck = urlParse('source');
 		if(manualSourceCheck.length > 1){
 			var url = manualSourceCheck;
 		}
+		// Set loading
+		$('<div id="loading"></div>').appendTo("#llc_container");
 		
-		/* ########  Serialize XML and set llc.pres object */
+		
+		// Serialize XML and set llc.pres object
 		$.get(url, function(xml){ 
 		 
 			llc.pres = $.xml2json(xml); 
 			
 			//TOS Agreement verification			
 			if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
-				var tosHTML =  '<div class="lightbox_overlay"></div>\
-								<div class="lightbox_content">\
-								<h1>'+llc.pres.agreements.agreement.name+'</h1>\
-								<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
-								<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
-								</div>';
+			var tosHTML = '<div class="lightbox_overlay"></div>\
+							<div class="lightbox_content">\
+							<h1>'+llc.pres.agreements.agreement.name+'</h1>\
+							<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
+							<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
+							</div>';
 							
-				$("body").prepend(tosHTML);
-				$('div.lightbox_overlay, div.lightbox_content').fadeIn();
+			$("body").prepend(tosHTML);
+			$('div.lightbox_overlay, div.lightbox_content').fadeIn();
 			}
+
+
+				/*
+				  CURRENT IMPORTANT VARIABLES:
+				  pres.media.master.item.fileType = "mp3, ?video?" // this will determine if video or audio sync 
+				  pres.defaultInterface // Default screen mode
+				  pres.agreements // should we load the agreement?
+				  
+				  NEEDED VARIABLES IN XML
+				  pres.version // Variable to determine new or old player
+				  pres.media.items.item[i].{poster} // link for default or fallback image of video
+				  
+				*/
 				
-			/* ######## Load Markup and Position */
-			$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
+			/* Set int functions here */
 			
-			// hide for loading & set initial inline container height
-			$("#llc_container").height(0);
-			$("#llc_playerFrame").height(695);
+			/*if (llc.pres.legacy) { // LEGACY
+				
+				$.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
+							
+						var netSessionID = $('input#session_id').val(), 
+						presentationID = llc.pres.id, 
+						userID = $('input#user_id').val(), 
+						siteID = $('input#site_id').val();
+							$('div.player').flash({
+								swf: 'flash/FlashPlayer.swf',
+						        width: 650,
+						        height: 650,
+						        wmode: 'transparent',
+						        allowFullScreen: 'true',
+								flashvars: {
+						        SID: siteID,
+						        PID: presentationID,
+						        UID: userID,
+						        netSessionID: netSessionID,
+						        ISD: 'F',
+						        ISE: 'F'
+								}
+							}
+						);
+				});
+				
+				$("#loading").remove();
+
+				
+			} else {
+			*/ 
 			
-			// Adjust container height & position player
-			$("#llc_playerFrame").resize(function(){
-				llc.position();
-				llc.position.con.height(llc.position.frm.height());
-			}).trigger('resize');
-			
-			// Link playerframe resize on window resize
-			$(window).resize(function(){llc.position()});
-			
-			// Setup slides (slides, bookmarks, blurbs, notes) 
-			llc.setupItems(llc.pres.media.items.item, llc.pres.bookmarks, llc.pres.transcript.blurb, llc.pres.viewer.notes);		
-			
-			// Load slide images
-			if (llc.pres.media.items.item.length > 1) {
-				llc.loadSlideImgs();
-			}
+				/* ##########################################
+				  ################# Load HTML5 Media
+				 ########################################## */	
+				
+				/* ######## Load Markup and Position */
+				
+				$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
+				
+				// hide for loading & set initial inline container height
+				$("#llc_container").height(0);
+				$("#llc_playerFrame").height(695);
+				
+				// Adjust container height & position player
+				$("#llc_playerFrame").resize(function(){
+
+					llc.position();
+
+					llc.position.con.height(llc.position.frm.height());
+					 
+				}).trigger('resize');
+				
+				// Link playerframe resize on window resize
+				$(window).resize(function(){llc.position()});
 					
-			
-			// Set up ad 
-			if (!document.phpAds_used) document.phpAds_used = ',';
-			phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
-			
-			adjs = "//content.multiview.com/adjs.php?n=" + phpAds_random;
-			adjs += "&what=zone:"+llc.pres.sponsorZoneId+"&target=_blank&block=1";
-			adjs += "&exclude=" + document.phpAds_used;
-							
-			var randomString = Math.round(Math.random() * 555955);				
-			var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid="+1469+"&amp;cb="+randomString+"' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid="+1469+"&amp;cb="+randomString+"&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
-			var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
-			
-			$("#ad_sponsored_box").html(manualUrl || defaultAd);
+				// slide loading progress vars
+				llc.pres.imgsLoaded=0;
+				llc.pres.imgsCount=0;
 				
-
-
-			/* ######## Initialize Master jPlayer */
-			var f = llc.fileTypes(llc.pres.media.master.item);		
-			$("#master_jplayer").jPlayer({
-				ready: function (event) { // Player ready to recieve commands
-					var files = JSON ? JSON.stringify(f.files) : 'N/A';
-					llc.status('player ready, files: '+files);
-			    	$.jPlayer.timeFormat.showHour = true; // set show hours
-
-			    	$(this).jPlayer("setMedia", f.files);
-			    	
-			    	/* Set playback if cookied */
-			    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
-			    	//$(this).jPlayer("pause", Math.abs(playhead));
-			    	
-			    	/* Set volume if cookied */
-			    	//var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
-			    	//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
-			    	//$(this).jPlayer("volume", llc.perVolume);
-			    	
-			    	/* Disable volume button if noVolume object hides volume bar (iPad) */
-			    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
-			    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
-			    	}
-			    	
-			    	// Auto load
-			    	$(this).jPlayer("pause",0);
-			    	
-			    	// Grey screen fix?
-			    	setTimeout(function(){$("#slides .slide img").eq(0).fadeIn(50)}, 300);
-			    },
-			    loadstart: function() { // File ready to play
-			    	llc.status({media:'master loaded'});
-			    	$("#llc_playerFrame").css('height','auto');
-			    	$("#llc_playerFrame").trigger('resize');
-			    	$("#buyButton").show();
-			    	$("#loading").delay(300).fadeOut('slow', function() {
-			    	    $(this).remove();
-			    	});
-			    },
-			    play: function() { // To avoid both jPlayers playing together.
-			    	llc.status({media:'master playing'});
-			    	$(this).jPlayer("pauseOthers");
-			    },
-			    pause: function() { 
-			    	llc.status({media:'master paused'});
-			    },
-			    timeupdate: function (event) { // Set/Show Current time/Slide function
-			    	llc.timeUpdate(event);   	
-			    },
-			    seeking: function (event) {
-			    	llc.status('master seeking');
-			    	//$(this).jPlayer("pauseOthers");
-			    	llc.pres.curEl = undefined;
-			    	//console.log(event.jPlayer.status.currentTime);
-			    },
-			    ended: function() {
-			    	llc.status('master ended');
-			    	llc.seatTime('save');
-			    	// reset presentation
-			    	$(this).jPlayer("pause",0);
-			    },
-			    volumechange: function(event) { // make sure volume dragable moves on click
-			    	llc.status('volume changed');
-			    	var t = $("#master_jp_container div.jp-volume-bar-value"),
-			    		bottom = t.height(),
-			    		height = t.parent().height(),
-			    		top = height-bottom;
-			    	t.prev().css("top",top);	
-			    	llc.perVolume = t.attr('style').slice(8,-3) / 100;
-			    	if (llc.perVolume == 0) t.parents('div.jp-volume').addClass('mute');
-			    	else t.parents('div.jp-volume').removeClass('mute');
-			    },
-			    // noVolume: { chrome: /chrome/ },
-			    verticalVolume: true,
-			    preload: "auto",
-			    swfPath: "flash",
-			    supplied: f.supplied, // Assumes mp3 or native jPlayer video format
-			    cssSelectorAncestor: "#master_jp_container",
-			    loop: false,
-			    size: {
-			    	width: "100%",
-			    	height: "100%",
-			    	cssClass: "full"
-			    }, 
-			    fullScreen : true,
-			    autohide: {full:false},
-			    //errorAlerts: true,
-			    solution:"flash, html",
-			    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
-			}); // end jPlayer initialize
-			
-			/* ######## ATTACH CLICK HANDLERS */
-			
-			// Assign volume dragable
-			$("#master_jp_container div.jp-volume span.jp-volume-bar-drag").draggable({
-				axis: 'y',
-				containment: 'parent',
-				drag: function(event, ui) {
-					var t = $(this),
-						top = t.css("top").replace('px',''),
-						height = t.parent().height(),
-						per = height-top > 5 ? (height-top)/height : 0;
-					t.next().height(per*100+'%');
-					llc.perVolume = per;
-				},
-				stop: function(event, ui) {
-					$("#master_jplayer").jPlayer("volume", llc.perVolume);
+				// Setup slides (slides, bookmarks, blurbs, notes)
+				llc.setupItems(llc.pres.media.items.item, llc.pres.bookmarks, llc.pres.transcript.blurb, llc.pres.viewer.notes);
+				
+				// Slide Loading Status
+				function loading() {
+					if (llc.pres.imgsLoaded < llc.pres.imgsCount) {
+						$("#loading").text("loading slide "+llc.pres.imgsLoaded+" / "+llc.pres.imgsCount);
+					} else {
+						clearLoading();
+					}
 				}
-			});
-			
-			// Unbind current time and duration click events so play bar can function
-			$("#master_jp_container .jp-current-time, #master_jp_container .jp-duration").unbind('click');
-			
-			// Assign next click handlers
-			$("#master_jp_container .llc-next").click(function() {
-				llc.status('next slide');
-				$("#toc .active_toc_thumb").next().find("div.playIcon").click();
-			});
-			
-			// Assign prev click handlers
-			$("#master_jp_container .llc-prev").click(function() {
-				llc.status('prev slide');
-				$("#toc .active_toc_thumb").prev().find("div.playIcon").click();
-			});
-			
-			// Assign volume show/hide click handlers
-			$("#master_jp_container div.jp-volume").toggle(function() {
-					$("#master_jplayer").jPlayer("volume", 0);
-					llc.perVolume = 0;
-				}, function() {
-					$("#master_jplayer").jPlayer("volume", 80);
-					llc.perVolume = 80;
-			}).hover(function() {
-					$(this).addClass("hover");
-					$(this).addClass("active");
-					//$(this).click();
-				}, function() {
-					$(this).removeClass("hover");
-					$(this).removeClass("active");
-					//$(this).click();
-			});
-			
-			// Assign Full screen & normal click handlers
-			$("#master_jp_container a.llc-full").toggle(function() {
-					llc.switchFull(true);
-				}, function() {
-					llc.switchFull(false);
-			});
-			
-			
-			// Switch view event handler 
-			$("<span class='switchView'></span>").appendTo("#master_jplayer");
-			$("span.switchView").click(function(event){
-				llc.switchView(event,false);
-			});
-			
-			
-			/* ######## MISC */
-			
-			// Set presentation info
-			$("#pres_title span").text(llc.pres.title);
-			
-			// Set speakers
-			$("#pres_presenter span").text((function(){
-				var spks
-				if (llc.pres.speakers)
-	                if (!llc.pres.speakers.speaker.length) {
-		                var s = llc.pres.speakers.speaker;
-    		            if (s.firstName) spks = s.firstName + " " + s.lastName;
-        		    }
-            		else
-                		for (i in llc.pres.speakers.speaker) {
-                    		var s = llc.pres.speakers.speaker[i];
-                        	if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
-    	                }
-				spks = spks ? spks : 'N/A' ;
-				return spks
-			})());
-			
-			// Set Date
-			$("#pres_date span").text((llc.pres.date || 'N/A'));
-			
-			// Set playback value in Cookie on quit
-			$(window).bind('beforeunload', function() {
-				llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
-				llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume', llc.perVolume);
-			});
-			
-			// Set defualt view
-			llc.switchView(false,llc.pres.defaultInterface.text,llc.pres.defaultWindow.text);
-
-			//check preivew mode - setup helper functions
-			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
-			llc.saveRating();
-			llc.saveNote();
-			llc.saveBookmark();
-			llc.setupSlideMagnify();
-			}else{
-			llc.previewEmbedSetup();
-			}
-			
-			// Add tool tips if non-mobile or tablet 
-			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
-				$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
-				$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'bottom'});
-			}
-			
-			llc.disableRightClick();
 				
+				function clearLoading() {
+					
+					if (!llc.loaded) {
+					
+						llc.status('Loaded Slides');
+						window.clearInterval(window.loader);
+						window.clearTimeout(window.loaderFail);
+						$("#loading").remove();
+						$("#llc_playerFrame").css('height','auto');
+						$("#llc_playerFrame").trigger('resize');
+						$("#buyButton").show();
+						
+						/* ######### Set up ad */
+						if (!document.phpAds_used) document.phpAds_used = ',';
+						phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+						
+						adjs = "//content.multiview.com/adjs.php?n=" + phpAds_random;
+						adjs += "&what=zone:"+llc.pres.sponsorZoneId+"&target=_blank&block=1";
+						adjs += "&exclude=" + document.phpAds_used;
+						
+						//if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile) {
+							
+							var randomString = Math.round(Math.random() * 555955);
+							
+//							var manualUrl = "<a href='http://content.multiview.com/adclick.php?n="+randomString+"' target='_blank'>";
+//							manualUrl += "<img src='http://content.multiview.com/adview.php?what=zone:"+llc.pres.sponsorZoneId+"&n="+randomString+"' border='0' alt='' /></a>";
+							
+							var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid="+1469+"&amp;cb="+randomString+"' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid="+1469+"&amp;cb="+randomString+"&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
+							var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
+							
+							$("#ad_sponsored_box").html(manualUrl || defaultAd);
+							
+//						}else{	
+//							$.getScript(adjs, function(){
+//								var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
+//							   $("#ad_sponsored_box").html(phpadsbanner || defaultAd);
+//							});
+//									
+//						}
+						
+						llc.loaded = true;
+					}
+					
+				}
+				window.loader = window.setInterval(loading, 100);
+				window.loaderFail = window.setTimeout(clearLoading, 20000); // loader fail safe 20 sec
+
+
+				/* ######## Initialize Master jPlayer */
+				
+				var f = llc.fileTypes(llc.pres.media.master.item);
+				
+				$("#master_jplayer").jPlayer({
+					ready: function (event) {
+						var files = JSON ? JSON.stringify(f.files) : 'N/A';
+						llc.status('master ready, files: '+files);
+				    	$.jPlayer.timeFormat.showHour = true; // set show hours
+	
+				    	$(this).jPlayer("setMedia", f.files);
+				    	
+				    	/* Set playback if cookied */
+				    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
+				    	//$(this).jPlayer("pause", Math.abs(playhead));
+				    	
+				    	/* Set volume if cookied */
+				    	//var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
+				    	//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
+				    	//$(this).jPlayer("volume", llc.perVolume);
+				    	
+				    	/* Disable volume button if noVolume object hides volume bar (iPad) */
+				    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
+				    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
+				    	}
+				    	
+				    	// Auto load
+				    	$(this).jPlayer("pause",0);
+				    	
+				    	// Grey screen fix?
+				    	setTimeout(function(){$("#slides .slide img").eq(0).fadeIn(50)}, 300);
+				    },
+				    play: function() { // To avoid both jPlayers playing together.
+				    	llc.status({media:'master playing'});
+				    	$(this).jPlayer("pauseOthers");
+				    },
+				    pause: function() { 
+				    	llc.status({media:'master paused'});
+				    },
+				    timeupdate: function (event) { // Set/Show Current time/Slide function
+				    	llc.timeUpdate(event);   	
+				    },
+				    seeking: function (event) {
+				    	llc.status('master seeking');
+				    	//$(this).jPlayer("pauseOthers");
+				    	llc.pres.curEl = undefined;
+				    	//console.log(event.jPlayer.status.currentTime);
+				    },
+				    ended: function() {
+				    	llc.status('master ended');
+				    	llc.seatTime('save');
+				    	// reset presentation
+				    	$(this).jPlayer("pause",0);
+				    },
+				    volumechange: function(event) { // make sure volume dragable moves on click
+				    	llc.status('volume changed');
+				    	var t = $("#master_jp_container div.jp-volume-bar-value"),
+				    		bottom = t.height(),
+				    		height = t.parent().height(),
+				    		top = height-bottom;
+				    	t.prev().css("top",top);	
+				    	llc.perVolume = t.attr('style').slice(8,-3) / 100;
+				    	if (llc.perVolume == 0) t.parents('div.jp-volume').addClass('mute');
+				    	else t.parents('div.jp-volume').removeClass('mute');
+				    },
+				    // noVolume: { chrome: /chrome/ },
+				    verticalVolume: true,
+				    preload: "auto",
+				    swfPath: "flash",
+				    supplied: f.supplied, // Assumes mp3 or native jPlayer video format
+				    cssSelectorAncestor: "#master_jp_container",
+				    loop: false,
+				    size: {
+				    	width: "100%",
+				    	height: "100%",
+				    	cssClass: "full"
+				    }, 
+				    fullScreen : true,
+				    autohide: {full:false},
+				    //errorAlerts: true,
+				    solution:"flash, html",
+				    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
+				}); // end jPlayer initialize
+				
+				
+				/* ################################# ATTACH CLICK HANDLERS */
+					
+				// Assign volume dragable
+				$("#master_jp_container div.jp-volume span.jp-volume-bar-drag").draggable({
+					axis: 'y',
+					containment: 'parent',
+					drag: function(event, ui) {
+						var t = $(this),
+							top = t.css("top").replace('px',''),
+							height = t.parent().height(),
+							per = height-top > 5 ? (height-top)/height : 0;
+						t.next().height(per*100+'%');
+						llc.perVolume = per;
+					},
+					stop: function(event, ui) {
+						$("#master_jplayer").jPlayer("volume", llc.perVolume);
+					}
+				});
+				
+				// Unbind current time and duration click events so play bar can function
+				$("#master_jp_container .jp-current-time, #master_jp_container .jp-duration").unbind('click');
+				
+				// Assign next click handlers
+				$("#master_jp_container .llc-next").click(function() {
+					llc.status('next slide');
+					$("#toc .active_toc_thumb").next().find("div.playIcon").click();
+				});
+				
+				// Assign prev click handlers
+				$("#master_jp_container .llc-prev").click(function() {
+					llc.status('prev slide');
+					$("#toc .active_toc_thumb").prev().find("div.playIcon").click();
+				});
+				
+				// Assign volume show/hide click handlers
+				$("#master_jp_container div.jp-volume").toggle(function() {
+						$("#master_jplayer").jPlayer("volume", 0);
+						llc.perVolume = 0;
+					}, function() {
+						$("#master_jplayer").jPlayer("volume", 80);
+						llc.perVolume = 80;
+				}).hover(function() {
+						$(this).addClass("hover");
+						$(this).addClass("active");
+						//$(this).click();
+					}, function() {
+						$(this).removeClass("hover");
+						$(this).removeClass("active");
+						//$(this).click();
+				});
+				
+				// Assign Full screen & normal click handlers
+				$("#master_jp_container a.llc-full").toggle(function() {
+						llc.switchFull(true);
+					}, function() {
+						llc.switchFull(false);
+				});
+				
+				
+				// Switch view event handler 
+				$("<span class='switchView'></span>").appendTo("#master_jplayer");
+				$("span.switchView").click(function(event){
+					llc.switchView(event,false);
+				});
+				
+				
+				/* ######## MISC */
+				
+				// Set presentation info
+				$("#pres_title span").text(llc.pres.title);
+				
+				// Set speakers
+				$("#pres_presenter span").text((function(){
+					var spks
+					if (llc.pres.speakers)
+		                if (!llc.pres.speakers.speaker.length) {
+    		                var s = llc.pres.speakers.speaker;
+        		            if (s.firstName) spks = s.firstName + " " + s.lastName;
+            		    }
+                		else
+                    		for (i in llc.pres.speakers.speaker) {
+                        		var s = llc.pres.speakers.speaker[i];
+	                        	if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
+	    	                }
+					spks = spks ? spks : 'N/A' ;
+					return spks
+				})());
+				
+				// Set Date
+				$("#pres_date span").text((llc.pres.date || 'N/A'));
+				
+				// Set playback value in Cookie on quit
+				$(window).bind('beforeunload', function() {
+					llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
+					llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume', llc.perVolume);
+				});
+				
+				// Set defualt view
+				llc.switchView(false,llc.pres.defaultInterface.text,llc.pres.defaultWindow.text);
+
+				//check preivew mode - setup helper functions
+				if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+				llc.saveRating();
+				llc.saveNote();
+				llc.saveBookmark();
+				llc.setupSlideMagnify();
+				}else{
+				llc.previewEmbedSetup();
+				}
+				
+				// Add tool tips if non-mobile or tablet 
+				if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
+					$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
+					$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'bottom'});
+				}
+				
+				llc.disableRightClick();
+				
+				
+			/* commented else on legacy	
+			}
+			*/
 		}); // end ajax XML call
 	}
 } 
