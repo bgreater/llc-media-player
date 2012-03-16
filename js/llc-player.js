@@ -1144,8 +1144,8 @@ var llc = {
 		
 		if(previewCheck){
 			$('span#titleIntroText').html('Preview Mode');
-			//$('#master_jp_container .llc-next').addClass('llc-next-disabled');
-			//$('#master_jp_container .llc-prev').addClass('llc-prev-disabled');
+			$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled');
+			$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled');
 			$('#master_jp_container .llc-bookmark').unbind('click');
 			//$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
 		}		
@@ -1554,9 +1554,7 @@ var llc = {
 				llc.setupItems(llc.pres.media.items.item, llc.pres.bookmarks, llc.pres.transcript.blurb, llc.pres.viewer.notes);
 				
 				// Load slide images
-				if (llc.pres.media.items.item.length > 1) {
-					llc.loadSlideImgs();
-				}
+				llc.loadSlideImgs();
 				
 				// Set up ad 
 				if (!document.phpAds_used) document.phpAds_used = ',';
@@ -1769,12 +1767,17 @@ var llc = {
 
 				//check preivew mode - setup helper functions
 				if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
-				llc.saveRating();
-				llc.saveNote();
-				llc.saveBookmark();
-				llc.setupSlideMagnify();
+					llc.saveRating();
+					llc.saveNote();
+					llc.saveBookmark();
+					llc.setupSlideMagnify();
+					// Disable next/prev for single slide pres
+					if (llc.pres.media.items.item.id) {
+						$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled');
+						$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled');
+					}
 				}else{
-				llc.previewEmbedSetup();
+					llc.previewEmbedSetup();
 				}
 				
 				// Add tool tips if non-mobile or tablet 
