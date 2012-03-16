@@ -1558,6 +1558,19 @@ var llc = {
 					llc.loadSlideImgs();
 				}
 				
+				// Set up ad 
+				if (!document.phpAds_used) document.phpAds_used = ',';
+				phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+				
+				adjs = "//content.multiview.com/adjs.php?n=" + phpAds_random;
+				adjs += "&what=zone:"+llc.pres.sponsorZoneId+"&target=_blank&block=1";
+				adjs += "&exclude=" + document.phpAds_used;
+								
+				var randomString = Math.round(Math.random() * 555955);				
+				var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid="+1469+"&amp;cb="+randomString+"' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid="+1469+"&amp;cb="+randomString+"&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
+				var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
+				
+				$("#ad_sponsored_box").html(manualUrl || defaultAd);
 
 				/* ######## Initialize Master jPlayer */
 				
