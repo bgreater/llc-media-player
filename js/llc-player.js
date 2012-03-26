@@ -554,8 +554,10 @@ var llc = {
 		var thumbFileType = img.substring(img.lastIndexOf('.')+1);
 		if(thumbFileType in {'flv':'', 'webm':'','m4v':''}) {
 			var img = '<img class="toc_thumb_img" src="images/player/video-icon.png" />';
-		} else {
+		} else if (!llc.loaded) {
 			var img = '<img class="toc_thumb_img" title="'+img+'" />';
+		} else {
+			var img = '<img class="toc_thumb_img" src="'+img+'" />';
 		}
 		/* ##########################################
 		  ################# Add thumbnail to document
