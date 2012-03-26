@@ -282,26 +282,33 @@ var llc = {
 
 		$(bookmarks.bookmark).each(function(index){
 
-			var t=this;
-			var bmStart = parseInt(t.startPoint);
-			var slideStart = 0;
-			var i = 0;
-			var xml = llc.pres.media.items.item;
-			if(xml.length==undefined){var xmllen = 1;}else{var xmllen = xml.length;}
+			var t=this,
+				bmStart = parseInt(t.startPoint),
+				slideStart = 0,
+				i = 0,
+				xml = llc.pres.media.items.item;
+				
+			if (xml.length==undefined) {
+				var xmllen = 1;
+			} else {
+				var xmllen = xml.length;
+			}
+			
 			if(xmllen==1){
-			var filename = (xml.files.file.constructor.toString().indexOf('Array') != -1) ? xml.files.file[0] : xml.files.file;
-			var title = xml.title;
+				var filename = (xml.files.file.constructor.toString().indexOf('Array') != -1) ? xml.files.file[1] : xml.files.file;
+				var title = xml.title;
 			}else{
-			var maxloops = xmllen-1;
-			while(slideStart <= bmStart && i <= maxloops){
-			var slideStart = llc.pres.media.items.item[i].startPoint;
-			i = i+1;
+				var maxloops = xmllen-1;
+				while (slideStart <= bmStart && i <= maxloops) {
+					var slideStart = llc.pres.media.items.item[i].startPoint;
+					i = i+1;
+				}
+				i = (i<2) ? 1 : i-1;
+				x = i - 1;
+				var filename = (xml[i-1].files.file.constructor.toString().indexOf('Array') != -1) ? xml[i-1].files.file[1] : xml[i-1].files.file;
+				var title = xml[i-1].title;
 			}
-			i = (i<2) ? 1 : i-1;
-			x = i - 1;
-			var filename = (xml[i-1].files.file.constructor.toString().indexOf('Array') != -1) ? xml[i-1].files.file[0] : xml[i-1].files.file;
-			var title = xml[i-1].title;
-			}
+			
 			llc.createThumbPanel(filename, t.id, bmStart, title, '#tabs_bookmarks', '');
 		});
 		
@@ -1387,6 +1394,7 @@ var llc = {
 			function revealThumb() {
 				$(thumb).removeClass('loading');
 				thumbImg.src = !thumbImg.src || thumbImg.src === "" ? thumbImg.title : thumbImg.src ;
+				$("#tabs_bookmarks img[title='"+thumbImg.title+"']").attr('src', thumbImg.title);
 			}
 
 			if (!img.src || img.src === "") {
