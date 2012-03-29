@@ -1153,8 +1153,8 @@ var llc = {
 		
 		if(previewCheck){
 			$('span#titleIntroText').html('Preview Mode');
-			$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled');
-			$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled');
+			//$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled');
+			//$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled');
 			$('#master_jp_container .llc-bookmark').unbind('click');
 			//$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
 		}		
