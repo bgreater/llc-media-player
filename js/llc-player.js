@@ -1781,13 +1781,14 @@ var llc = {
 					llc.saveNote();
 					llc.saveBookmark();
 					llc.setupSlideMagnify();
-					// Disable next/prev for single slide pres
-					if (llc.pres.media.items.item.id) {
-						$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled');
-						$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled');
-					}
 				}else{
 					llc.previewEmbedSetup();
+				}
+				
+				// Disable next/prev for single slide pres
+				if (llc.pres.media.items.item.id) {
+					$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled').unbind('click');
+					$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled').unbind('click');
 				}
 				
 				// Add tool tips if non-mobile or tablet 
