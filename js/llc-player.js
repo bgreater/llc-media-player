@@ -1472,7 +1472,7 @@ var llc = {
 
                     // Set up ad 											
                     var randomString = Math.round(Math.random() * 555955);				
-                    var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb="+randomString+"' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid="+1469+"&amp;cb="+randomString+"&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
+                    var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb="+randomString+"' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
                     var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
                     var useAd = llc.pres.sponsorZoneId > 0 ? manualUrl : defaultAd ;
                     
