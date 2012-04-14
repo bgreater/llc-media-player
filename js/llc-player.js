@@ -39,7 +39,7 @@ var llc = {
 		/* Status updates */
 		
 		if (llc.status.verbose === undefined) {
-			llc.status.verbose =  window.location.hash.indexOf('verbose') !== -1 ? '1' : 'n' ; 
+			llc.status.verbose =  window.location.search.indexOf('verbose=y') !== -1 ? 1 : 'n' ; 
 		}
 		
 		if (obj.media) {
@@ -66,7 +66,7 @@ var llc = {
 		// add timestamp to log entry
 		llc.log[0] += " - <strong>"+(((new Date()).getTime() - llc.status.start)/1000)+" sec</strong>";
 		
-		if (llc.status.verbose == '1') {
+		if (llc.status.verbose === 1) {
 			// setup log html				
 			$(document).ready(function(){
 			
@@ -104,7 +104,7 @@ var llc = {
 			
 			llc.status.verbose = 'y';
 							
-		} else if (llc.status.verbose == 'y') {
+		} else if (llc.status.verbose === 'y') {
 			// log update
 			$("#llc-log #status").html('<strong>Status:</strong> <span>'+llc.log[0]+'</span>');
 			var logs = '';
