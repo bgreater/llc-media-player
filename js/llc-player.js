@@ -39,7 +39,7 @@ var llc = {
 		/* Status updates */
 		
 		if (llc.status.verbose === undefined) {
-			llc.status.verbose =  window.location.search.indexOf('verbose=y') !== -1 ? 1 : 'n' ; 
+			llc.status.verbose =  urlParse('verbose') ? 1 : 'n' ; 
 		}
 		
 		if (obj.media) {
@@ -57,6 +57,10 @@ var llc = {
 			llc.status.start = (new Date()).getTime();
 			llc.log.unshift(obj.start);
 			
+		} else if (obj.error) {
+		
+			llc.log.unshift("<b>ERROR: "+obj.error+"</b>");
+			
 		} else {
 		
 			llc.log.unshift(obj);
@@ -72,9 +76,10 @@ var llc = {
 			
 				$("body").append('<div id="llc-log">\
 									<div id="status"><strong>Status:</strong> <span>'+llc.log[0]+'</span></div>\
-									<a href="#verbose" class="logReport">Report Log</a> &nbsp;|&nbsp; \
-									<a href="#verbose" class="logShow">Show log</a>\
-									<a href="#verbose" class="logHide" style="display:none">Hide log</a>\
+									<a href="#" class="logReport">Report Log</a> &nbsp;|&nbsp; \
+									<a href="#" class="logXML" target="_blank">View XML</a> &nbsp;|&nbsp;\
+									<a href="#" class="logShow">Show log</a>\
+									<a href="#" class="logHide" style="display:none">Hide log</a>\
 									<ol id="log" style="display:none"><li>'+llc.log[0]+'</li></ol>\
 								  </div>');
 								  
@@ -108,7 +113,7 @@ var llc = {
 			// log update
 			$("#llc-log #status").html('<strong>Status:</strong> <span>'+llc.log[0]+'</span>');
 			var logs = '';
-			for (var i = 0; i < llc.log.length; i++) {
+			for (var i = 0; i < llc.log.length; i++) {				
 				logs += "<li>"+llc.log[i]+"</li>"
 			}
 			$("#llc-log #log").html(logs)
@@ -311,7 +316,6 @@ var llc = {
 			
 			llc.createThumbPanel(filename, t.id, bmStart, title, '#tabs_bookmarks', '');
 		});
-		
 		
 		
 		/* ##########################################
@@ -1460,14 +1464,15 @@ var llc = {
             }
 			
 		}
-				
-		var showPathCheck = urlParse('showpath');
-		if(showPathCheck=='y'){
-			alert(url);
-		}
+		
 		var manualSourceCheck = urlParse('source');
 		if(manualSourceCheck.length > 1){
 			var url = manualSourceCheck;
+		}
+		
+		// Set show XML link
+		if(llc.status.verbose === 'y'){
+			$(document).ready(function(){$('#llc-log a.logXML').attr('href',url);});
 		}
 		
 		
@@ -1476,327 +1481,287 @@ var llc = {
 		 
 			llc.pres = $.xml2json(xml); 
 			
+			// XML Error Checking
+			if (llc.pres.media) {
+				if (!llc.pres.media.master) {
+					llc.status({error:'Required Node(s) not found'});
+				}
+			} else {
+				llc.status({error:'Required Node(s) not found'});
+			}
+			
 			//TOS Agreement verification			
 			if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
-			var tosHTML = '<div class="lightbox_overlay"></div>\
-							<div class="lightbox_content">\
-							<h1>'+llc.pres.agreements.agreement.name+'</h1>\
-							<div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
-							<div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
-							</div>';
+				var tosHTML = '<div class="lightbox_overlay"></div>\
+							   <div class="lightbox_content">\
+							   <h1>'+llc.pres.agreements.agreement.name+'</h1>\
+							   <div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
+							   <div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
+							   </div>';
 							
-			$("body").prepend(tosHTML);
-			$('div.lightbox_overlay, div.lightbox_content').fadeIn();
+				$("body").prepend(tosHTML);
+				$('div.lightbox_overlay, div.lightbox_content').fadeIn();
 			}
 
-
-				/*
-				  CURRENT IMPORTANT VARIABLES:
-				  pres.media.master.item.fileType = "mp3, ?video?" // this will determine if video or audio sync 
-				  pres.defaultInterface // Default screen mode
-				  pres.agreements // should we load the agreement?
-				  
-				  NEEDED VARIABLES IN XML
-				  pres.version // Variable to determine new or old player
-				  pres.media.items.item[i].{poster} // link for default or fallback image of video
-				  
-				*/
-				
-			/* Set int functions here */
+			/* ##########################################
+			  ################# Load HTML5 Media
+			 ########################################## */	
 			
-			/*if (llc.pres.legacy) { // LEGACY
-				
-				$.getScript('js/jquery.swfobject.1-1-1.min.js', function(data, textStatus){
-							
-						var netSessionID = $('input#session_id').val(), 
-						presentationID = llc.pres.id, 
-						userID = $('input#user_id').val(), 
-						siteID = $('input#site_id').val();
-							$('div.player').flash({
-								swf: 'flash/FlashPlayer.swf',
-						        width: 650,
-						        height: 650,
-						        wmode: 'transparent',
-						        allowFullScreen: 'true',
-								flashvars: {
-						        SID: siteID,
-						        PID: presentationID,
-						        UID: userID,
-						        netSessionID: netSessionID,
-						        ISD: 'F',
-						        ISE: 'F'
-								}
-							}
-						);
-				});
-				
-				$("#loading").remove();
-
-				
-			} else {
-			*/ 
+			/* ######## Load Markup and Position */
 			
-				/* ##########################################
-				  ################# Load HTML5 Media
-				 ########################################## */	
-				
-				/* ######## Load Markup and Position */
-				
-				$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
-				
-				// hide for loading & set initial inline container height
-				$("#llc_container").height(0);
-				$("#llc_playerFrame").height(695);
-				
-				// Adjust container height & position player
-				$("#llc_playerFrame").resize(function(){
+			$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
+			
+			// hide for loading & set initial inline container height
+			$("#llc_container").height(0);
+			$("#llc_playerFrame").height(695);
+			
+			// Adjust container height & position player
+			$("#llc_playerFrame").resize(function(){
 
-					llc.position();
+				llc.position();
 
-					llc.position.con.height(llc.position.frm.height());
-					 
-				}).trigger('resize');
-				
-				// Link playerframe resize on window resize
-				$(window).resize(function(){llc.position()});
-				
-				// Setup slides (slides, bookmarks, blurbs, notes)
-				llc.setupItems(llc.pres.media.items.item, llc.pres.bookmarks, llc.pres.transcript.blurb, llc.pres.viewer.notes);
-				
-				// Load slide images
-				llc.loadSlideImgs();
-				
-				// Set up ad 											
-				var randomString = Math.round(Math.random() * 555955);				
-				var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb="+randomString+"' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
-				var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
-				var useAd = llc.pres.sponsorZoneId > 0 ? manualUrl : defaultAd ;
-				
-				$("#ad_sponsored_box").html(useAd);
+				llc.position.con.height(llc.position.frm.height());
+				 
+			}).trigger('resize');
+			
+			// Link playerframe resize on window resize
+			$(window).resize(function(){llc.position()});
+			
+			// Setup slides (slides, bookmarks, blurbs, notes)
+			llc.setupItems(llc.pres.media.items.item, llc.pres.bookmarks, llc.pres.transcript.blurb, llc.pres.viewer.notes);
+			
+			// Load slide images
+			llc.loadSlideImgs();
+			
+			// Set up ad 											
+			var randomString = Math.round(Math.random() * 555955);				
+			var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb="+randomString+"' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
+			var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
+			var useAd = llc.pres.sponsorZoneId > 0 ? manualUrl : defaultAd ;
+			
+			$("#ad_sponsored_box").html(useAd);
 
-				/* ######## Initialize Master jPlayer */
-				
-				var f = llc.fileTypes(llc.pres.media.master.item);
-				
-				$("#master_jplayer").jPlayer({
-					ready: function (event) {
-						var files = JSON ? JSON.stringify(f.files) : 'N/A';
-						llc.status('master ready, files: '+files);
-				    	$.jPlayer.timeFormat.showHour = true; // set show hours
-	
-				    	$(this).jPlayer("setMedia", f.files);
-				    	
-				    	/* Set playback if cookied */
-				    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
-				    	//$(this).jPlayer("pause", Math.abs(playhead));
-				    	
-				    	/* Set volume if cookied */
-				    	//var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
-				    	//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
-				    	//$(this).jPlayer("volume", llc.perVolume);
-				    	
-				    	/* Disable volume button if noVolume object hides volume bar (iPad) */
-				    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
-				    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
-				    	}
-				    	
-				    	// Auto load
-				    	$(this).jPlayer("pause",0);
-				    	
-				    	// Grey screen fix?
-				    	setTimeout(function(){$("#slides .slide img").eq(0).fadeIn(50)}, 300);
-				    },
-				    loadstart: function() { // File ready to play
-				    	llc.status({media:'master loaded'});
-				    	$("#llc_playerFrame").css('height','auto');
-				    	$("#llc_playerFrame").trigger('resize');
-				    	$("#buyButton").show();
-				    	$("#loading").delay(300).fadeOut('slow', function() {
-				    	    $(this).remove();
-				    	});
-				    },
-				    play: function() { // To avoid both jPlayers playing together.
-				    	llc.status({media:'master playing'});
-				    	$(this).jPlayer("pauseOthers");
-				    },
-				    pause: function() { 
-				    	llc.status({media:'master paused'});
-				    },
-				    timeupdate: function (event) { // Set/Show Current time/Slide function
-				    	llc.timeUpdate(event);   	
-				    },
-				    seeking: function (event) {
-				    	llc.status('master seeking');
-				    	//$(this).jPlayer("pauseOthers");
-				    	llc.pres.curEl = undefined;
-				    	//console.log(event.jPlayer.status.currentTime);
-				    },
-				    ended: function() {
-				    	llc.status('master ended');
-				    	llc.seatTime('save');
-				    	// reset presentation
-				    	$(this).jPlayer("pause",0);
-				    },
-				    volumechange: function(event) { // make sure volume dragable moves on click
-				    	llc.status('volume changed');
-				    	var t = $("#master_jp_container div.jp-volume-bar-value"),
-				    		bottom = t.height(),
-				    		height = t.parent().height(),
-				    		top = height-bottom;
-				    	t.prev().css("top",top);	
-				    	llc.perVolume = t.attr('style').slice(8,-3) / 100;
-				    	if (llc.perVolume == 0) t.parents('div.jp-volume').addClass('mute');
-				    	else t.parents('div.jp-volume').removeClass('mute');
-				    	$('#slides .jp-jplayer').jPlayer("volume", (llc.perVolume));
-				    },
-				    // noVolume: { chrome: /chrome/ },
-				    verticalVolume: true,
-				    preload: "auto",
-				    swfPath: "flash",
-				    supplied: f.supplied, // Assumes mp3 or native jPlayer video format
-				    cssSelectorAncestor: "#master_jp_container",
-				    loop: false,
-				    size: {
-				    	width: "100%",
-				    	height: "100%",
-				    	cssClass: "full"
-				    }, 
-				    fullScreen : true,
-				    autohide: {full:false},
-				    //errorAlerts: true,
-				    solution:"flash, html",
-				    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
-				}); // end jPlayer initialize
-				
-				
-				/* ################################# ATTACH CLICK HANDLERS */
-					
-				// Assign volume dragable
-				$("#master_jp_container div.jp-volume span.jp-volume-bar-drag").draggable({
-					axis: 'y',
-					containment: 'parent',
-					drag: function(event, ui) {
-						var t = $(this),
-							top = t.css("top").replace('px',''),
-							height = t.parent().height(),
-							per = height-top > 5 ? (height-top)/height : 0;
-						t.next().height(per*100+'%');
-						llc.perVolume = per;
-					},
-					stop: function(event, ui) {
-						$("#master_jplayer").jPlayer("volume", llc.perVolume);
-					}
-				});
-				
-				// Unbind current time and duration click events so play bar can function
-				$("#master_jp_container .jp-current-time, #master_jp_container .jp-duration").unbind('click');
-				
-				// Assign next click handlers
-				$("#master_jp_container .llc-next").click(function() {
-					llc.status('next slide');
-					$("#toc .active_toc_thumb").next().find("div.playIcon").click();
-				});
-				
-				// Assign prev click handlers
-				$("#master_jp_container .llc-prev").click(function() {
-					llc.status('prev slide');
-					$("#toc .active_toc_thumb").prev().find("div.playIcon").click();
-				});
-				
-				// Assign volume show/hide click handlers
-				$("#master_jp_container div.jp-volume").toggle(function() {
-						$("#master_jplayer").jPlayer("volume", 0);
-						llc.perVolume = 0;
-					}, function() {
-						$("#master_jplayer").jPlayer("volume", 80);
-						llc.perVolume = 80;
-				}).hover(function() {
-						$(this).addClass("hover");
-						$(this).addClass("active");
-						//$(this).click();
-					}, function() {
-						$(this).removeClass("hover");
-						$(this).removeClass("active");
-						//$(this).click();
-				});
-				
-				// Assign Full screen & normal click handlers
-				$("#master_jp_container a.llc-full").toggle(function() {
-						llc.switchFull(true);
-					}, function() {
-						llc.switchFull(false);
-				});
-				
-				
-				// Switch view event handler 
-				$("<span class='switchView'></span>").appendTo("#master_jplayer");
-				$("span.switchView").click(function(event){
-					llc.switchView(event,false);
-				});
-				
-				
-				/* ######## MISC */
-				
-				// Set presentation info
-				$("#pres_title span").text(llc.pres.title);
-				
-				// Set speakers
-				$("#pres_presenter span").text((function(){
-					var spks
-					if (llc.pres.speakers)
-		                if (!llc.pres.speakers.speaker.length) {
-    		                var s = llc.pres.speakers.speaker;
-        		            if (s.firstName) spks = s.firstName + " " + s.lastName;
-            		    }
-                		else
-                    		for (i in llc.pres.speakers.speaker) {
-                        		var s = llc.pres.speakers.speaker[i];
-	                        	if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
-	    	                }
-					spks = spks ? spks : 'N/A' ;
-					return spks
-				})());
-				
-				// Set Date
-				$("#pres_date span").text((llc.pres.date || 'N/A'));
-				
-				// Set playback value in Cookie on quit
-				$(window).bind('beforeunload', function() {
-					llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
-					llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume', llc.perVolume);
-				});
-				
-				// Set defualt view
-				llc.switchView(false,llc.pres.defaultInterface.text,llc.pres.defaultWindow.text);
+			/* ######## Initialize Master jPlayer */
+			
+			var f = llc.fileTypes(llc.pres.media.master.item);
+			
+			$("#master_jplayer").jPlayer({
+				ready: function (event) {
+					var files = JSON ? JSON.stringify(f.files) : 'N/A';
+					llc.status('master ready, files: '+files);
+			    	$.jPlayer.timeFormat.showHour = true; // set show hours
 
-				//check preivew mode - setup helper functions
-				if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
-					llc.saveRating();
-					llc.saveNote();
-					llc.saveBookmark();
-					llc.setupSlideMagnify();
-				}else{
-					llc.previewEmbedSetup();
+			    	$(this).jPlayer("setMedia", f.files);
+			    	
+			    	/* Set playback if cookied */
+			    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
+			    	//$(this).jPlayer("pause", Math.abs(playhead));
+			    	
+			    	/* Set volume if cookied */
+			    	//var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
+			    	//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
+			    	//$(this).jPlayer("volume", llc.perVolume);
+			    	
+			    	/* Disable volume button if noVolume object hides volume bar (iPad) */
+			    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
+			    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
+			    	}
+			    	
+			    	// Auto load
+			    	$(this).jPlayer("pause",0);
+			    	
+			    	// Grey screen fix?
+			    	setTimeout(function(){$("#slides .slide img").eq(0).fadeIn(50)}, 300);
+			    },
+			    loadstart: function() { // File ready to play
+			    	llc.status({media:'master loaded'});
+			    	$("#llc_playerFrame").css('height','auto');
+			    	$("#llc_playerFrame").trigger('resize');
+			    	$("#buyButton").show();
+			    	$("#loading").delay(300).fadeOut('slow', function() {
+			    	    $(this).remove();
+			    	});
+			    },
+			    play: function() { // To avoid both jPlayers playing together.
+			    	llc.status({media:'master playing'});
+			    	$(this).jPlayer("pauseOthers");
+			    },
+			    pause: function() { 
+			    	llc.status({media:'master paused'});
+			    },
+			    timeupdate: function (event) { // Set/Show Current time/Slide function
+			    	llc.timeUpdate(event);   	
+			    },
+			    seeking: function (event) {
+			    	llc.status('master seeking');
+			    	//$(this).jPlayer("pauseOthers");
+			    	llc.pres.curEl = undefined;
+			    	//console.log(event.jPlayer.status.currentTime);
+			    },
+			    ended: function() {
+			    	llc.status('master ended');
+			    	llc.seatTime('save');
+			    	// reset presentation
+			    	$(this).jPlayer("pause",0);
+			    },
+			    volumechange: function(event) { // make sure volume dragable moves on click
+			    	llc.status('volume changed');
+			    	var t = $("#master_jp_container div.jp-volume-bar-value"),
+			    		bottom = t.height(),
+			    		height = t.parent().height(),
+			    		top = height-bottom;
+			    	t.prev().css("top",top);	
+			    	llc.perVolume = t.attr('style').slice(8,-3) / 100;
+			    	if (llc.perVolume == 0) t.parents('div.jp-volume').addClass('mute');
+			    	else t.parents('div.jp-volume').removeClass('mute');
+			    	$('#slides .jp-jplayer').jPlayer("volume", (llc.perVolume));
+			    },
+			    // noVolume: { chrome: /chrome/ },
+			    verticalVolume: true,
+			    preload: "auto",
+			    swfPath: "flash",
+			    supplied: f.supplied, // Assumes mp3 or native jPlayer video format
+			    cssSelectorAncestor: "#master_jp_container",
+			    loop: false,
+			    size: {
+			    	width: "100%",
+			    	height: "100%",
+			    	cssClass: "full"
+			    }, 
+			    fullScreen : true,
+			    autohide: {full:false},
+			    //errorAlerts: true,
+			    solution:"flash, html",
+			    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
+			}); // end jPlayer initialize
+			
+			
+			/* ################################# ATTACH CLICK HANDLERS */
+				
+			// Assign volume dragable
+			$("#master_jp_container div.jp-volume span.jp-volume-bar-drag").draggable({
+				axis: 'y',
+				containment: 'parent',
+				drag: function(event, ui) {
+					var t = $(this),
+						top = t.css("top").replace('px',''),
+						height = t.parent().height(),
+						per = height-top > 5 ? (height-top)/height : 0;
+					t.next().height(per*100+'%');
+					llc.perVolume = per;
+				},
+				stop: function(event, ui) {
+					$("#master_jplayer").jPlayer("volume", llc.perVolume);
 				}
-				
-				// Disable next/prev for single slide pres
-				if (llc.pres.media.items.item.id) {
-					$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled').unbind('click');
-					$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled').unbind('click');
-				}
-				
-				// Add tool tips if non-mobile or tablet 
-				if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
-					$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
-					$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'bottom'});
-				}
-				
-				llc.disableRightClick();
-				
-				
-			/* commented else on legacy	
+			});
+			
+			// Unbind current time and duration click events so play bar can function
+			$("#master_jp_container .jp-current-time, #master_jp_container .jp-duration").unbind('click');
+			
+			// Assign next click handlers
+			$("#master_jp_container .llc-next").click(function() {
+				llc.status('next slide');
+				$("#toc .active_toc_thumb").next().find("div.playIcon").click();
+			});
+			
+			// Assign prev click handlers
+			$("#master_jp_container .llc-prev").click(function() {
+				llc.status('prev slide');
+				$("#toc .active_toc_thumb").prev().find("div.playIcon").click();
+			});
+			
+			// Assign volume show/hide click handlers
+			$("#master_jp_container div.jp-volume").toggle(function() {
+					$("#master_jplayer").jPlayer("volume", 0);
+					llc.perVolume = 0;
+				}, function() {
+					$("#master_jplayer").jPlayer("volume", 80);
+					llc.perVolume = 80;
+			}).hover(function() {
+					$(this).addClass("hover");
+					$(this).addClass("active");
+					//$(this).click();
+				}, function() {
+					$(this).removeClass("hover");
+					$(this).removeClass("active");
+					//$(this).click();
+			});
+			
+			// Assign Full screen & normal click handlers
+			$("#master_jp_container a.llc-full").toggle(function() {
+					llc.switchFull(true);
+				}, function() {
+					llc.switchFull(false);
+			});
+			
+			
+			// Switch view event handler 
+			$("<span class='switchView'></span>").appendTo("#master_jplayer");
+			$("span.switchView").click(function(event){
+				llc.switchView(event,false);
+			});
+			
+			
+			/* ######## MISC */
+			
+			// Set presentation info
+			$("#pres_title span").text(llc.pres.title);
+			
+			// Set speakers
+			$("#pres_presenter span").text((function(){
+				var spks
+				if (llc.pres.speakers)
+	                if (!llc.pres.speakers.speaker.length) {
+		                var s = llc.pres.speakers.speaker;
+    		            if (s.firstName) spks = s.firstName + " " + s.lastName;
+        		    }
+            		else
+                		for (i in llc.pres.speakers.speaker) {
+                    		var s = llc.pres.speakers.speaker[i];
+                        	if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
+    	                }
+				spks = spks ? spks : 'N/A' ;
+				return spks
+			})());
+			
+			// Set Date
+			$("#pres_date span").text((llc.pres.date || 'N/A'));
+			
+			// Set playback value in Cookie on quit
+			$(window).bind('beforeunload', function() {
+				llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
+				llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume', llc.perVolume);
+			});
+			
+			// Set defualt view
+			llc.switchView(false,llc.pres.defaultInterface.text,llc.pres.defaultWindow.text);
+
+			//check preivew mode - setup helper functions
+			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+				llc.saveRating();
+				llc.saveNote();
+				llc.saveBookmark();
+				llc.setupSlideMagnify();
+			}else{
+				llc.previewEmbedSetup();
 			}
-			*/
+			
+			// Disable next/prev for single slide pres
+			if (llc.pres.media.items.item.id) {
+				$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled').unbind('click');
+				$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled').unbind('click');
+			}
+			
+			// Add tool tips if non-mobile or tablet 
+			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
+				$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
+				$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'bottom'});
+			}
+			
+			llc.disableRightClick();
+				
+		}).fail(function(){
+		    llc.status({error:'XML failed to load'});
 		}); // end ajax XML call
 	}
 } 

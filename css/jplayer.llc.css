@@ -9,7 +9,7 @@
  */
  
 div#llc-log {
- position: fixed; top: 0; left: 0; width: 400px; background: #666; color: #ccc; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); border-radius: 0px 0px 5px 0px; border: 1px solid #333; font-size: 10px; text-align: right; padding: 10px; z-index: 99999;
+ position: fixed; top: 0; left: 0; width: 450px; background: #666; color: #ccc; -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); border-radius: 0px 0px 5px 0px; border: 1px solid #333; font-size: 10px; text-align: right; padding: 10px; z-index: 99999;
 }
 div#llc-log a { color: #ccce94; display: inline; font-weight: bold; }
 div#llc-log #status{
@@ -24,6 +24,7 @@ div#llc-log #log {
 div#llc-log #log li { 
  overflow: hidden;  border-bottom: 1px solid #777; -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1); box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1); padding: 3px; word-wrap:break-word ;
 }
+div#llc-log b { color: #f99999; font-weight: bold; }
 
 /* @group jplayer skin */
 div.jp-audio,
