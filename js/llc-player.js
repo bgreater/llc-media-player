@@ -7,7 +7,6 @@ window.jQuery&&function(f){f.extend({xml2json:function(a,j){function g(e,a){if(!
 e.attributes.length>0&&(b=b||{},f.each(e.attributes,function(a,e){var c=k(e.name),d=e.value;b[c]?(b[cnn]=i(b[cnn]),b[c][b[c].length]=d,b[c].length=b[c].length):b[c]=d}));if(b){b=f.extend(c!=""?new String(c):{},b||{});if(c=b.text?(typeof b.text=="object"?b.text:[b.text||""]).concat([c]):c)b.text=c;c=""}var h=b||c;if(j){c&&(h={});if(c=h.text||c||"")h.text=c;a||(h=i(h))}return h}if(!a)return{};var k=function(a){return String(a||"").replace(/-/g,"_")},i=function(a){f.isArray(a)||(a=[a]);a.length=a.length;
 return a};typeof a=="string"&&(a=f.text2xml(a));if(a.nodeType){if(a.nodeType==3||a.nodeType==4)return a.nodeValue;var m=a.nodeType==9?a.documentElement:a,n=g(m,true),m=a=null;return n}},text2xml:function(a){var j;try{var g=f.browser.msie?new ActiveXObject("Microsoft.XMLDOM"):new DOMParser;g.async=false}catch(k){throw Error("XML Parser could not be instantiated");}try{j=f.browser.msie?g.loadXML(a)?g:false:g.parseFromString(a,"text/xml")}catch(i){throw Error("Error parsing XML string");}return j}})}(jQuery);
 
-
 /*
  ### LLC Player v1.0
  * Dependancies: jQuery v1.7, jQuery UI 1.8.16, xml2json v1.0(included), jPlayer v2.1.0
@@ -27,7 +26,6 @@ tosAgreed
 tosDecline
 init
 */
-
 // Set viewport for ipad fix
 $('meta[name=viewport]').remove();
 $('head').append('<meta name="viewport" content="width=device-width; initial-scale=1; minimum-scale=1; maximum-scale=1; user-scalable=0;">');
@@ -35,394 +33,395 @@ $('head').append('<meta name="viewport" content="width=device-width; initial-sca
 // Main Object
 var llc = {
 	log: [],
-	status: function (obj) {
-		/* Status updates */
-		
+	status: function(obj) { /* Status updates */
+
 		if (llc.status.verbose === undefined) {
-			llc.status.verbose =  urlParse('verbose') ? 1 : 'n' ; 
+			llc.status.verbose = urlParse('verbose') ? 1 : 'n';
 		}
-		
+
 		if (obj.media) {
-		
+
 			llc.status.media = obj.media;
 			llc.log.unshift(obj.media);
-		
+
 		} else if (obj.data) {
-		
+
 			llc.status.data = obj.data;
 			llc.log.unshift(obj.data);
-			
+
 		} else if (obj.start) {
-		
+
 			llc.status.start = (new Date()).getTime();
 			llc.log.unshift(obj.start);
-			
+
 		} else if (obj.error) {
-		
-			llc.log.unshift("<b>ERROR: "+obj.error+"</b>");
-			
+
+			llc.log.unshift("<b>ERROR: " + obj.error + "</b>");
+
 		} else {
-		
+
 			llc.log.unshift(obj);
-			
+
 		}
-		
+
 		// add timestamp to log entry
-		llc.log[0] += " - <strong>"+(((new Date()).getTime() - llc.status.start)/1000)+" sec</strong>";
-		
+		llc.log[0] += " - <strong>" + (((new Date()).getTime() - llc.status.start) / 1000) + " sec</strong>";
+
 		if (llc.status.verbose === 1) {
 			// setup log html				
-			$(document).ready(function(){
-			
+			$(document).ready(function() {
+
 				$("body").append('<div id="llc-log">\
-									<div id="status"><strong>Status:</strong> <span>'+llc.log[0]+'</span></div>\
-									<a href="#" class="logReport">Report Log</a> &nbsp;|&nbsp; \
-									<a href="#" class="logXML" target="_blank">View XML</a> &nbsp;|&nbsp;\
+									<div id="status"><strong>Status:</strong> <span>' + llc.log[0] + '</span></div>\
+									<a href="#" class="logReport">Report Log</a> &nbsp;&nbsp; \
+									<a href="#" class="logXML" target="_blank">View XML</a> &nbsp;&nbsp;\
 									<a href="#" class="logShow">Show log</a>\
 									<a href="#" class="logHide" style="display:none">Hide log</a>\
-									<ol id="log" style="display:none"><li>'+llc.log[0]+'</li></ol>\
+									<ol id="log" style="display:none"><li>' + llc.log[0] + '</li></ol>\
 								  </div>');
-								  
-				$("#llc-log a.logReport").click(function(){
-					var logs = encodeURIComponent(location.href)+'%0A%0A';
-						logs += encodeURIComponent(navigator.userAgent)+'%0A%0A';
+
+				$("#llc-log a.logReport").click(function() {
+					var logs = encodeURIComponent(location.href) + '%0A%0A';
+					logs += encodeURIComponent(navigator.userAgent) + '%0A%0A';
 					$('#log li').each(function() {
-						logs += encodeURIComponent($(this).text())+'%0A'
+						logs += encodeURIComponent($(this).text()) + '%0A'
 					});
-						logs += '%0AComments: '+'%0A%0A';
-					window.location = 'mailto:bvoran@gmail.com?subject=LLC%20Log&body='+logs;
+					logs += '%0AComments: ' + '%0A%0A';
+					window.location = 'mailto:bvoran@gmail.com,dmcclure@multiview.com?subject=LLC%20Log&body=' + logs;
 				});
-				
-				$("#llc-log a.logHide").click(function(){
+
+				$("#llc-log a.logHide").click(function() {
 					$("#llc-log #log").hide();
 					$(this).hide();
 					$("#llc-log a.logShow").show();
 				});
-				
-				$("#llc-log a.logShow").click(function(){
+
+				$("#llc-log a.logShow").click(function() {
 					$("#llc-log #log").show();
 					$(this).hide();
 					$("#llc-log a.logHide").show();
 				});
-				
+
 			});
-			
+
 			llc.status.verbose = 'y';
-							
+
 		} else if (llc.status.verbose === 'y') {
 			// log update
-			$("#llc-log #status").html('<strong>Status:</strong> <span>'+llc.log[0]+'</span>');
+			$("#llc-log #status").html('<strong>Status:</strong> <span>' + llc.log[0] + '</span>');
 			var logs = '';
-			for (var i = 0; i < llc.log.length; i++) {				
-				logs += "<li>"+llc.log[i]+"</li>"
+			for (var i = 0; i < llc.log.length; i++) {
+				logs += "<li>" + llc.log[i] + "</li>"
 			}
 			$("#llc-log #log").html(logs)
 		}
-		
-	},
-	setupItems: function (slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
-		//console.log('setSlides');
 
+	},
+	setupItems: function(slides, bookmarks, blurbs, notes) { /* Create slides --> set video or audio slides --> set markup & link */
+		//console.log('setSlides');
 		/* ##########################################
 		  ################# Create Slides
 		 ########################################## */
-		 
-		$(slides).each(function(i){
-		  	
-		  	var t=this;
 
-		  	if ( typeof(t.files)=='object' ) {
-		  		
-			  	// Add thumbnail to TOC			
-			  	if (t.inTOC=="True") llc.createThumbPanel((t.poster || t.files.file.text || t.files.file[1].text),t.id,t.startPoint, t.title, '#toc', '');
-			  	
-			  	// 2nd file in files is slide t.files.file[1]
-				if ((t.files.file.fileType || t.files.file[1].fileType) == "jpg"){ 		
-				  		  		
-			  		/* ######## JPG SLIDE #################### */
-			  			 
-			  			// Append Slide
-			  		var linkAction  = (t.link.length > 0) ? 'href="'+t.link+'" target="_blank"' : 'onclick="return false"',
-			  			fileSrc = (t.files.file.text || t.files.file[1].text);
-			  			
-			  		$('<a id="'+t.id+'" class="slide" '+linkAction+' style="display:none"><span class="switchView"></span><img class="slideImg" title="'+fileSrc+'" /></a>').appendTo("#slides");
-			  			
-			  		// Add to image loading array
-			  		llc.pres.imgs = llc.pres.imgs ? llc.pres.imgs : [];
-			  		llc.pres.imgs.push(t.id);
-			  	
-			  			  
-			  	} else /*if ((t.files.file.fileType || t.files.file[1].fileType) == "flv")*/ { // assume non-jpg file type is video
-			  		
-			  		/* ######## VIDEO SLIDE ################## */
-			  		
-			  		// Inject Video Slide Markup
-			  		$(llc.createMarkup(t)).appendTo("#slides");
-					
+		$(slides).each(function(i) {
+
+			var t = this;
+
+			if (typeof(t.files) == 'object') {
+
+				// Add thumbnail to TOC			
+				if (t.inTOC == "True") llc.createThumbPanel((t.poster || t.files.file.text || t.files.file[1].text), t.id, t.startPoint, t.title, '#toc', '');
+
+				// 2nd file in files is slide t.files.file[1]
+				if ((t.files.file.fileType || t.files.file[1].fileType) == "jpg") {
+
+					/* ######## JPG SLIDE #################### */
+
+					// Append Slide
+					var linkAction = (t.link.length > 0) ? 'href="' + t.link + '" target="_blank"' : 'onclick="return false"',
+						fileSrc = (t.files.file.text || t.files.file[1].text);
+
+					$('<a id="' + t.id + '" class="slide" ' + linkAction + ' style="display:none"><span class="switchView"></span><img class="slideImg" title="' + fileSrc + '" /></a>').appendTo("#slides");
+
+					// Add to image loading array
+					llc.pres.imgs = llc.pres.imgs ? llc.pres.imgs : [];
+					llc.pres.imgs.push(t.id);
+
+
+				} else /*if ((t.files.file.fileType || t.files.file[1].fileType) == "flv")*/
+				{ // assume non-jpg file type is video
+					/* ######## VIDEO SLIDE ################## */
+
+					// Inject Video Slide Markup
+					$(llc.createMarkup(t)).appendTo("#slides");
+
 					// Video File Types & endpoint
 					var videoTypes = llc.fileTypes(t),
-						endPoint = t.endPoint = slides[i+1] ? slides[i+1].startPoint/1000: undefined;
-					
+						endPoint = t.endPoint = slides[i + 1] ? slides[i + 1].startPoint / 1000 : undefined;
+
 					// Load Video Jplayer
-					$("#jquery_jplayer_"+t.id).jPlayer({  
-						
-						ready: function () {
+					$("#jquery_jplayer_" + t.id).jPlayer({
+
+						ready: function() {
 							var files = JSON ? JSON.stringify(videoTypes.files) : 'N/A';
-							llc.status('video slide ready, files: '+files);
+							llc.status('video slide ready, files: ' + files);
 							$(this).jPlayer("setMedia", videoTypes.files);
 						},
-						play: function (event) { // To avoid both jPlayers playing together
-							llc.status({media:'video slide play'});
+						play: function(event) { // To avoid both jPlayers playing together
+							llc.status({
+								media: 'video slide play'
+							});
 							$(this).jPlayer("pauseOthers");
 							$("#master_jp_container .jp-play").hide();
 							$("#master_jp_container .jp-pause").show();
-						
+
 						},
-						pause: function (event) {
-							llc.status({media:'video slide paused'});
-							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime,
+						pause: function(event) {
+							llc.status({
+								media: 'video slide paused'
+							});
+							var curSec = t.startPoint / 1000 + event.jPlayer.status.currentTime,
 								masterTime = $('#master_jplayer').data('jPlayer').status.currentTime;
-								//prevEvent = llc.status[1];
-								//percent = (curSec / $("#master_jplayer").data("jPlayer").status.duration) * 100;
-							
-							if ((masterTime<t.startPoint/1000 || masterTime>t.endPoint)) {
+							//prevEvent = llc.status[1];
+							//percent = (curSec / $("#master_jplayer").data("jPlayer").status.duration) * 100;
+							if ((masterTime < t.startPoint / 1000 || masterTime > t.endPoint)) {
 								// Seeking beyond video slide
 								$("#master_jplayer").jPlayer("play");
-																
-							}
-							else if (curSec < endPoint && curSec != t.startPoint/1000 ) {
+
+							} else if (curSec < endPoint && curSec != t.startPoint / 1000) {
 								//console.log('normal pause');
 								// Normal pause
 								$("#master_jp_container .jp-play").show();
 								$("#master_jp_container .jp-pause").hide();
 								llc.pres.curEl = llc.pres.curEl || undefined;
-							
+
 							} else {
 								//console.log('resume master play pause');
 								// Resume master play 
-								var quePercent = ((t.endPoint+.3) / $("#master_jplayer").data("jPlayer").status.duration) * 100;
-								
-								if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile ) {
-									
+								var quePercent = ((t.endPoint + .3) / $("#master_jplayer").data("jPlayer").status.duration) * 100;
+
+								if ($.jPlayer.platform.tablet || $.jPlayer.platform.mobile) {
+
 									//console.log('tablet resumePlay ',endPoint+.3);
-									
 									llc.pres.curEl = llc.pres.curEl || undefined;
-									
+
 									//$("#master_jplayer").data('jPlayer').status.currentTime = endPoint+.3;
 									$("#master_jplayer").jPlayer("playHead", quePercent);
-																		
+
 									clearTimeout('resumePlay');
-									var resumePlay = setTimeout(function(){
-										$("#master_jplayer").jPlayer("play",t.endPoint+.3)
+									var resumePlay = setTimeout(function() {
+										$("#master_jplayer").jPlayer("play", t.endPoint + .3)
 										$("#master_jp_container .jp-pause span, #master_jp_container .jp-play span").unbind('click');
-									},700);
-									
+									}, 700);
+
 								} else {
 									//console.log('normal resumePlay');
-									$("#master_jplayer").jPlayer("play",t.endPoint+.3);
+									$("#master_jplayer").jPlayer("play", t.endPoint + .3);
 								}
-								
+
 							}
-						
+
 						},
-						timeupdate: function (event) { // Set/Show Current time/Slide function
-							
-							var curSec = t.startPoint/1000 + event.jPlayer.status.currentTime,
+						timeupdate: function(event) { // Set/Show Current time/Slide function
+							var curSec = t.startPoint / 1000 + event.jPlayer.status.currentTime,
 								time = secondsToTime(curSec),
 								percent = (curSec / $("#master_jplayer").data("jPlayer").status.duration) * 100;
-							
+
 							//$("#master_jplayer").jPlayer("playHead",percent);
 							if (!event.jPlayer.status.paused) {
-								$("#master_jp_container .jp-play-bar").width(percent+'%');
-								$("#master_jp_container .jp-current-time").text(time.h+':'+time.m+':'+time.s);
+								$("#master_jp_container .jp-play-bar").width(percent + '%');
+								$("#master_jp_container .jp-current-time").text(time.h + ':' + time.m + ':' + time.s);
 								llc.seatTime('update');
 							}
-							
+
 							if (endPoint && curSec >= endPoint && !event.jPlayer.status.paused) {
-								
+
 								$(this).jPlayer("pause");
-								
+
 								//$("#master_jplayer").jPlayer("play",endPoint-.3);
 								//alert(endPoint+.3);
-								
 								//$("#master_jplayer").jPlayer("play");
-																
 								//alert(t.endPoint,event.jPlayer.status.paused);
-								
-							}							
-							
+							}
+
 						},
 						ended: function() { // If short clip, trigger master player to start again
 							llc.status('video slide ended');
 							//console.log('video slide ended');
-//							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
-//							else {
-//								$("#master_jp_container .jp-play").show();
-//								$("#master_jp_container .jp-pause").hide();
-//							}
-
+							//							if (endPoint) $("#master_jplayer").jPlayer("play",endPoint+.3);
+							//							else {
+							//								$("#master_jp_container .jp-play").show();
+							//								$("#master_jp_container .jp-pause").hide();
+							//							}
 						},
 						swfPath: "flash",
-						supplied: videoTypes.supplied, 
-						cssSelectorAncestor: "#"+t.id,
+						supplied: videoTypes.supplied,
+						cssSelectorAncestor: "#" + t.id,
 						loop: false,
 						size: {
 							width: "100%",
 							height: "100%",
 							cssClass: "full"
-						}, 
+						},
 						//errorAlerts: true,
 						//fullScreen : true,
 						//autohide: {full:false},
-						solution:"flash, html",
-						wmode:'transparent'
+						solution: "flash, html",
+						wmode: 'transparent'
 					});
-			  	}
+				}
 			}
 		});
-		
+
 		/* ##########################################
 		  ################# Create Bookmarks
 		 ########################################## */
 
-		$(bookmarks.bookmark).each(function(index){
+		$(bookmarks.bookmark).each(function(index) {
 
-			var t=this,
+			var t = this,
 				bmStart = parseInt(t.startPoint),
 				slideStart = 0,
 				i = 0,
 				xml = llc.pres.media.items.item;
-				
-			if (xml.length==undefined) {
+
+			if (xml.length == undefined) {
 				var xmllen = 1;
 			} else {
 				var xmllen = xml.length;
 			}
-			
-			if(xmllen==1){
+
+			if (xmllen == 1) {
 				var filename = (xml.files.file.constructor.toString().indexOf('Array') != -1) ? xml.files.file[1] : xml.files.file;
 				var title = xml.title;
-			}else{
-				var maxloops = xmllen-1;
+			} else {
+				var maxloops = xmllen - 1;
 				while (slideStart <= bmStart && i <= maxloops) {
 					var slideStart = llc.pres.media.items.item[i].startPoint;
-					i = i+1;
+					i = i + 1;
 				}
-				i = (i<2) ? 1 : i-1;
+				i = (i < 2) ? 1 : i - 1;
 				x = i - 1;
-				var filename = (xml[i-1].files.file.constructor.toString().indexOf('Array') != -1) ? xml[i-1].files.file[1] : xml[i-1].files.file;
-				var title = xml[i-1].title;
+				var filename = (xml[i - 1].files.file.constructor.toString().indexOf('Array') != -1) ? xml[i - 1].files.file[1] : xml[i - 1].files.file;
+				var title = xml[i - 1].title;
 			}
-			
+
 			llc.createThumbPanel(filename, t.id, bmStart, title, '#tabs_bookmarks', '');
 		});
-		
-		
+
+
 		/* ##########################################
 		  ################# Create Blurbs
 		 ########################################## */
-		 
+
 		var bct = $(blurbs).length;
-		if(bct > 0){
-		$(blurbs).each(function(i){
-			$('<p class="transcript" id="s'+this.startPoint+'">'+this.text.toString()+'</p>').appendTo("#tabs_transcripts")
-		});
-		}else{
-		$('<div id="noTranscript"><p>Transcript is unavailable or does not exist.</p></div>').appendTo("#tabs_transcripts")
+		if (bct > 0) {
+			$(blurbs).each(function(i) {
+				$('<p class="transcript" id="s' + this.startPoint + '">' + this.text.toString() + '</p>').appendTo("#tabs_transcripts")
+			});
+		} else {
+			$('<div id="noTranscript"><p>Transcript is unavailable or does not exist.</p></div>').appendTo("#tabs_transcripts")
 		}
-		
+
 		/* ##########################################
 		  ################# Create Notes
 		 ########################################## */
-		 var brfix = notes.replace(/<br>/g, '\r\n').replace(/<br \/>/g, '\r\n');
+		var brfix = notes.replace(/<br>/g, '\r\n').replace(/<br \/>/g, '\r\n');
 		$("#note_pad").prepend(brfix);
-		
+
 		/* ##########################################
 		  ################# Setup overview toggle display
 		 ########################################## */
-		 
-		$('#tabs_control_toggle_btn').click(function(){
-			if(!$('div#content_area').is(':animated')){
-				$("#content_area").slideToggle(function(){$("#llc_playerFrame").trigger('resize');});
+
+		$('#tabs_control_toggle_btn').click(function() {
+			if (!$('div#content_area').is(':animated')) {
+				$("#content_area").slideToggle(function() {
+					$("#llc_playerFrame").trigger('resize');
+				});
 				$(this).toggleClass('hide_features');
 				var classChk = $(this).hasClass('hide_features');
-				if(classChk){
+				if (classChk) {
 					var active = $('#content_area div.active');
-							var lastScreen = $(active).attr('id');
-							var navsel = 'a[rel="'+lastScreen+'"]';
-							$(navsel).toggleClass('active');
-							
-							if(!lastScreen){
-							$('a.firstTab').toggleClass('active');
-							$('div#tabs_overview').toggleClass('active');
-							$('div#tabs_overview').animate({ opacity: 1 }, 1000);
-							}
-							$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
-						
-				}else{
-				   $('#tabs').find('a.active').toggleClass('active');
+					var lastScreen = $(active).attr('id');
+					var navsel = 'a[rel="' + lastScreen + '"]';
+					$(navsel).toggleClass('active');
+
+					if (!lastScreen) {
+						$('a.firstTab').toggleClass('active');
+						$('div#tabs_overview').toggleClass('active');
+						$('div#tabs_overview').animate({
+							opacity: 1
+						}, 1000);
+					}
+					$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
+
+				} else {
+					$('#tabs').find('a.active').toggleClass('active');
 					$('#tabs_control_toggle_btn').html('SHOW PRESENTATION FEATURES');
 				}
-	
+
 			}
-		
-		return false;
+
+			return false;
 		});
-		
+
 		/* ##########################################
 		  ################# Setup INFO tabs nav
 		 ########################################## */
-				$("#info_tabs #tabs a").each(function() {
-					$(this).click(function() {
-						var ref = this.href.split('#')[1];
-						$("#info_tabs .info").removeClass('active').filter("#tabs_"+ref).addClass('active');
-						$("#info_tabs #tabs a").removeClass('active').filter(this).addClass('active');
-						$("#info_tabs .info").css('opacity', '.3')
-						$("#tabs_"+ref).animate({ opacity: 1 }, 1000);
+		$("#info_tabs #tabs a").each(function() {
+			$(this).click(function() {
+				var ref = this.href.split('#')[1];
+				$("#info_tabs .info").removeClass('active').filter("#tabs_" + ref).addClass('active');
+				$("#info_tabs #tabs a").removeClass('active').filter(this).addClass('active');
+				$("#info_tabs .info").css('opacity', '.3')
+				$("#tabs_" + ref).animate({
+					opacity: 1
+				}, 1000);
 				var curdisplay = $("#content_area").css('display');
-				if(curdisplay=='none'){
-				$("#content_area").slideToggle(function(){$("#llc_playerFrame").trigger('resize');});
-				$('#tabs_control_toggle_btn').toggleClass('hide_features');
-				$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
-				}else{
-				}
-				
-						return false
+				if (curdisplay == 'none') {
+					$("#content_area").slideToggle(function() {
+						$("#llc_playerFrame").trigger('resize');
 					});
-				});
-		
+					$('#tabs_control_toggle_btn').toggleClass('hide_features');
+					$('#tabs_control_toggle_btn').html('HIDE PRESENTATION FEATURES');
+				} else {}
+
+				return false
+			});
+		});
+
 		/* ##########################################
 		  ################# Add nifty play hover
 		 ########################################## */
-				
-				$('div.toc_thumb').live({
-				mouseenter:function(){
-				if(!$(this).hasClass('active_toc_thumb')){
+
+		$('div.toc_thumb').live({
+			mouseenter: function() {
+				if (!$(this).hasClass('active_toc_thumb')) {
 					$(this).find('.playIcon').css('opacity', '.4');
 					$(this).find('.playIcon').fadeIn();
 				}
 
-				},
-				mouseleave:function(){
-					$(this).find('.playIcon').fadeOut();
-				}
-				});
-				
-		 
-		 
+			},
+			mouseleave: function() {
+				$(this).find('.playIcon').fadeOut();
+			}
+		});
+
+
+
 		/* ##########################################
 		  ################# Setup tool tips
 		 ########################################## */
-		 
+
 	},
 	createMarkup: function(obj) {
-	
+
 		if (this.pres.media.master.item === obj) {
-			
+
 			/* ##########################################
 			  ################# Master Markup
 			 ########################################## */
-			
+
 			markup = '<div id="llc_playerFrame" class="playerFrame inline">\
 			    <div id="media">\
 			      <div id="slides"></div>\
@@ -459,7 +458,7 @@ var llc = {
 								<li><div style="right:2px; top:-21px;" class="response_box">Bookmark Saved!</div><a href="javascript:;" onclick="llc.saveBookmark(this)" class="llc-bookmark" tabindex="5" style="z-index:3344" title="bookmark">bookmark</a></li>\
 								<li><a href="javascript:;" class="llc-full" tabindex="6" title="full">full</a></li>\
 							</ul>\
-							<div class="jp-title"><span id="titleIntroText">Viewing</span>: '+llc.pres.title+'</div>\
+							<div class="jp-title"><span id="titleIntroText">Viewing</span>: ' + llc.pres.title + '</div>\
 						</div>\
 						<div class="jp-no-solution">\
 							<span>Update Required</span>\
@@ -496,17 +495,17 @@ var llc = {
 					<div id="tabs_control"><div class="show_features" id="tabs_control_toggle_btn">SHOW PRESENTATION FEATURES</div></div>\
 				</div>\
 			</div>';
-			
+
 		} else {
-			
+
 			/* ##########################################
 			  ################# Video Slide Markup
 			 ########################################## */
-			 
-			markup = '<div id="'+obj.id+'" class="jp-video slide">\
+
+			markup = '<div id="' + obj.id + '" class="jp-video slide">\
 				<span class="switchView"></span>\
 				<div class="jp-type-single">\
-					<div id="jquery_jplayer_'+obj.id+'" class="jp-jplayer"></div>\
+					<div id="jquery_jplayer_' + obj.id + '" class="jp-jplayer"></div>\
 					<div class="jp-gui">\
 						<div class="jp-video-play">\
 							<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>\
@@ -539,7 +538,7 @@ var llc = {
 								</ul>\
 							</div>\
 							<div class="jp-title">\
-							  '+obj.title+'\
+							  ' + obj.title + '\
 							</div>\
 						</div>\
 					</div>\
@@ -550,18 +549,22 @@ var llc = {
 				</div>\
 			</div>';
 		}
-		
+
 		return markup;
 	},
-	createThumbPanel: function(img,id,startPoint, title, pageid, toc_id) {
+	createThumbPanel: function(img, id, startPoint, title, pageid, toc_id) {
 		//console.log('createThumbPanel');
-		var thumbFileType = img.substring(img.lastIndexOf('.')+1);
-		if(thumbFileType in {'flv':'', 'webm':'','m4v':''}) {
+		var thumbFileType = img.substring(img.lastIndexOf('.') + 1);
+		if (thumbFileType in {
+			'flv': '',
+			'webm': '',
+			'm4v': ''
+		}) {
 			var img = '<img class="toc_thumb_img" src="images/player/video-icon.png" />';
 		} else if (!llc.loaded) {
-			var img = '<img class="toc_thumb_img" title="'+img+'" />';
+			var img = '<img class="toc_thumb_img" title="' + img + '" />';
 		} else {
-			var img = '<img class="toc_thumb_img" src="'+img+'" />';
+			var img = '<img class="toc_thumb_img" src="' + img + '" />';
 		}
 		/* ##########################################
 		  ################# Add thumbnail to document
@@ -569,31 +572,31 @@ var llc = {
 		var friendlyStartTime = milliConvert(startPoint),
 			title = htmlEntities(truncate(title, 40)),
 			prefix = pageid.substr(1, pageid.length),
-			bmaction = (prefix=='tabs_bookmarks') ? 'remove' : 'add',
-			bmset = (prefix=='tabs_bookmarks') ? ' bookmark-set' : '',
-			thumbRel = (toc_id.length > 0) ? 'rel="'+toc_id+'"' : 'rel=""';
-			
-		if (prefix=='tabs_bookmarks') {
-			var numBMs = ($('#tabs_bookmarks .toc_thumb').length)+1,
+			bmaction = (prefix == 'tabs_bookmarks') ? 'remove' : 'add',
+			bmset = (prefix == 'tabs_bookmarks') ? ' bookmark-set' : '',
+			thumbRel = (toc_id.length > 0) ? 'rel="' + toc_id + '"' : 'rel=""';
+
+		if (prefix == 'tabs_bookmarks') {
+			var numBMs = ($('#tabs_bookmarks .toc_thumb').length) + 1,
 				bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
-			$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
+			$('div#noBookmarks p').html(numBMs + ' ' + bmword + ' saved');
 		}
-		
-		$('<div '+thumbRel+' class="toc_thumb" id="'+prefix+'_thumb_'+id+'"><div onclick="slideJump('+((startPoint/1000)+.3)+')" class="playIcon"></div>\
-				<a href="javascript:;" class="toc_thumb_link loading" onclick="slideJump('+((startPoint/1000)+.3)+')">\
-			  		'+img+'\
+
+		$('<div ' + thumbRel + ' class="toc_thumb" id="' + prefix + '_thumb_' + id + '"><div onclick="slideJump(' + ((startPoint / 1000) + .3) + ')" class="playIcon"></div>\
+				<a href="javascript:;" class="toc_thumb_link loading" onclick="slideJump(' + ((startPoint / 1000) + .3) + ')">\
+			  		' + img + '\
 				</a>\
 				<div class="toc_thumb_info">\
 					<table CELLPADDING=0 CELLSPACING=0 style="width:100%">\
 						<tr>\
-							<td style="width:95px;"><div class="toc_title">'+title+'</div></td>\
+							<td style="width:95px;"><div class="toc_title">' + title + '</div></td>\
 							<td><div class="toc_magnify_img" id=""></div></td>\
 						</tr>\
 						<tr>\
 							<td colspan=2>\
-								<div class="toc_time">'+friendlyStartTime+'</div>\
-								<a onclick="return false" class="toc-bookmark'+bmset+'" title="'+title+'" rel="'+(startPoint)+'">\
-									<img src="images/player/toc_'+bmaction+'_bm_icon.png" /> Bookmark\
+								<div class="toc_time">' + friendlyStartTime + '</div>\
+								<a onclick="return false" class="toc-bookmark' + bmset + '" title="' + title + '" rel="' + (startPoint) + '">\
+									<img src="images/player/toc_' + bmaction + '_bm_icon.png" /> Bookmark\
 								</a>\
 							</td>\
 						</tr>\
@@ -607,221 +610,217 @@ var llc = {
 		/* ##########################################
 		  ################# adds zoom feature to toc slides
 		 ########################################## */
-		$('div.toc_magnify_img').live('click', function(e){
-		var zoomcheck = $(this).hasClass('zoom_selected');
+		$('div.toc_magnify_img').live('click', function(e) {
+			var zoomcheck = $(this).hasClass('zoom_selected');
 
-		if($('div.zoom_box').length > 0){
-		$('div.zoom_box').remove();
-			$('div.toc_magnify_img').each(function(){
-			$(this).removeClass('zoom_selected');
-			});
-		}
-		if(!zoomcheck){
-		var xpos = e.pageX - 244;
-		var ypos = e.pageY - 420;
-		var imgSrc = $(this).parents('div.toc_thumb').find('img.toc_thumb_img').attr('src');
-		var zoomTag = '<div style="left:'+xpos+'px; top:'+ypos+'px;" class="zoom_box"><div class="zoom_box_control"><div class="close_button"></div></div><img src="'+imgSrc+'" class="zoom_img" /></div>';
-		var zoomTitle = '<div class="zoom_box_title"></div>';
-		$(this).parents('body').prepend(zoomTag);
-		$('div.zoom_box').bind('contextmenu', function(e){
-		return false;
+			if ($('div.zoom_box').length > 0) {
+				$('div.zoom_box').remove();
+				$('div.toc_magnify_img').each(function() {
+					$(this).removeClass('zoom_selected');
+				});
+			}
+			if (!zoomcheck) {
+				var xpos = e.pageX - 244;
+				var ypos = e.pageY - 420;
+				var imgSrc = $(this).parents('div.toc_thumb').find('img.toc_thumb_img').attr('src');
+				var zoomTag = '<div style="left:' + xpos + 'px; top:' + ypos + 'px;" class="zoom_box"><div class="zoom_box_control"><div class="close_button"></div></div><img src="' + imgSrc + '" class="zoom_img" /></div>';
+				var zoomTitle = '<div class="zoom_box_title"></div>';
+				$(this).parents('body').prepend(zoomTag);
+				$('div.zoom_box').bind('contextmenu', function(e) {
+					return false;
+				});
+				$
+				$(this).addClass('zoom_selected');
+			}
 		});
-		$
-		$(this).addClass('zoom_selected');
-		}
-		});
-		
-		$('div.close_button').live('click', function(e){
+
+		$('div.close_button').live('click', function(e) {
 			$('div.zoom_box').remove();
-			$('div.toc_magnify_img').each(function(){
-			$(this).removeClass('zoom_selected'); 
+			$('div.toc_magnify_img').each(function() {
+				$(this).removeClass('zoom_selected');
 			});
 		});
-		
-		
+
+
 	},
 	timeUpdate: function(event) { /* Mapped to the Timeupdate function of jPlayer (sets current slide) */
 		//llc.status('timeUpdate');
-		
 		/* ##########################################
 		  ################# Time Update Functions
 		 ########################################## */
-		
+
 		var timeNow = event.jPlayer.status.currentTime,
 			curEl = llc.pres.curEl || llc.pres.media.items.item[0] || llc.pres.media.items.item,
 			curBlurb = llc.pres.transcript.blurb == undefined ? undefined : llc.pres.curBlurb || llc.pres.transcript.blurb[0];
-			llc.pres.curEl = llc.pres.curEl || undefined;
-			llc.pres.curBlurb = llc.pres.curBlurb || undefined;
-		
+		llc.pres.curEl = llc.pres.curEl || undefined;
+		llc.pres.curBlurb = llc.pres.curBlurb || undefined;
+
 		// Determine Slide closest to play head	but not before current Time
 		for (i in llc.pres.media.items.item) {
-			var startPoint = llc.pres.media.items.item[i].startPoint/1000;
-			curEl = startPoint-timeNow <= 0 ? llc.pres.media.items.item[i] : curEl ;
+			var startPoint = llc.pres.media.items.item[i].startPoint / 1000;
+			curEl = startPoint - timeNow <= 0 ? llc.pres.media.items.item[i] : curEl;
 		}
-		
+
 		// Determine Blurb closest to play head	but not before current Time
 		for (i in llc.pres.transcript.blurb) {
-			var startPoint = llc.pres.transcript.blurb[i].startPoint/1000;
-			curBlurb = startPoint-timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb ;
+			var startPoint = llc.pres.transcript.blurb[i].startPoint / 1000;
+			curBlurb = startPoint - timeNow <= 0 && curBlurb != null ? llc.pres.transcript.blurb[i] : curBlurb;
 		}
-		
-		// Is there a Video slide when seeking 
-		if ((llc.status.media=='video slide play' || llc.status.media=='video slide paused') && event.jPlayer.status.paused) {
 
-			if ($("#"+curEl.id).is('.active')) {
+		// Is there a Video slide when seeking 
+		if ((llc.status.media == 'video slide play' || llc.status.media == 'video slide paused') && event.jPlayer.status.paused) {
+
+			if ($("#" + curEl.id).is('.active')) {
 				// scrubbing within video script
-				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+				$("#jquery_jplayer_" + curEl.id).jPlayer("play", timeNow - (curEl.startPoint / 1000));
 			} else {
 				// que master player
 				$("#master_jplayer").jPlayer("play");
 			}
-			
+
 		}
-		
+
 		// Should we do anything with slides?
 		if (llc.pres.curEl != curEl) {
-						
+
 			//console.log('changed slide');
-			
 			// Set global curEl
 			llc.pres.curEl = curEl;
-			
+
 			// Show/Hide slides
-			$("#"+curEl.id).show()
-			.removeClass('active, loading')
-			.addClass('active')
-			.find('img.slideImg')
-			.each(function() {
+			$("#" + curEl.id).show().removeClass('active, loading').addClass('active').find('img.slideImg').each(function() {
 				this.src = !this.src || this.src === "" ? this.title : this.src;
 			});
-			$("#"+curEl.id+".jp-video").width('100%').height('100%')
-			$("#slides .jp-video").not("#"+curEl.id).width(0).height(0).removeClass('active'); // 0 out the jPlayer as hiding disables the flash instance
-			$("#slides .slide").not("#"+curEl.id+", .jp-video").hide().removeClass('active');
-						
+			$("#" + curEl.id + ".jp-video").width('100%').height('100%')
+			$("#slides .jp-video").not("#" + curEl.id).width(0).height(0).removeClass('active'); // 0 out the jPlayer as hiding disables the flash instance
+			$("#slides .slide").not("#" + curEl.id + ", .jp-video").hide().removeClass('active');
+
 			// Play/Pause video slide
-			if (curEl.files.file[1].fileType!="jpg" && curEl.files.file.fileType!="jpg") {
-			
+			if (curEl.files.file[1].fileType != "jpg" && curEl.files.file.fileType != "jpg") {
+
 				// Activate video slide
 				$("#master_jplayer").jPlayer("pause");
-				$("#jquery_jplayer_"+curEl.id).jPlayer("play",timeNow-(curEl.startPoint/1000));
+				$("#jquery_jplayer_" + curEl.id).jPlayer("play", timeNow - (curEl.startPoint / 1000));
 				$("#master_jp_container .jp-pause span").click(function() {
-					$("#jquery_jplayer_"+curEl.id).jPlayer("pause");
+					$("#jquery_jplayer_" + curEl.id).jPlayer("pause");
 					return false;
 				});
 				$("#master_jp_container .jp-play span").click(function() {
-					$("#jquery_jplayer_"+curEl.id).jPlayer("play");
+					$("#jquery_jplayer_" + curEl.id).jPlayer("play");
 					return false;
 				});
-				
+
 				llc.pres.curElisVideo = true;
-				
-			} else { 
-				
+
+			} else {
+
 				// Restart master player 
 				if (llc.pres.curElisVideo) {
-					
+
 					//console.log('restart master player',timeNow);
 					llc.pres.curElisVideo = false;
-					
+
 					// Stop active video
 					//$("#slides .jp-jplayer").jPlayer("pause");
 					$("#master_jp_container .jp-pause span, #master_jp_container .jp-play span").unbind('click');
-					
-					
+
+
 					$("#master_jp_container .jp-play").hide();
 					$("#master_jp_container .jp-pause").show();
-					
+
 				}
-				
-				
+
+
 			}
-						
+
 			// update TOC, Title and scroll to current thumb
-			var introTxt = (llc.pres.previewMode=='False' || llc.pres.previewMode==undefined) ? 'Viewing' : 'Preview Mode',
-				slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl)+1)+"/"+llc.pres.media.items.item.length : '1/1' ;
-				
-			$("#master_jp_container div.jp-title").text(introTxt+":  Slide "+slideNum+" - "+curEl.title);
-			
-			
-				$("div.toc_thumb").each(function(){
-					$(this).removeClass('active_toc_thumb');
-				});
-				
-				$("div#toc_thumb_"+curEl.id).addClass('active_toc_thumb');
-				
-			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
-				var pos = document.getElementById("toc_thumb_"+curEl.id).offsetTop;
-				
-				if(pos > 800){
+			var introTxt = (llc.pres.previewMode == 'False' || llc.pres.previewMode == undefined) ? 'Viewing' : 'Preview Mode',
+				slideNum = llc.pres.media.items.item.length ? (llc.pres.media.items.item.findIndex(curEl) + 1) + "/" + llc.pres.media.items.item.length : '1/1';
+
+			$("#master_jp_container div.jp-title").text(introTxt + ":  Slide " + slideNum + " - " + curEl.title);
+
+
+			$("div.toc_thumb").each(function() {
+				$(this).removeClass('active_toc_thumb');
+			});
+
+			$("div#toc_thumb_" + curEl.id).addClass('active_toc_thumb');
+
+			if ((llc.pres.embededMode == 'False' && llc.pres.previewMode == 'False') || (llc.pres.previewMode == undefined)) {
+				var pos = document.getElementById("toc_thumb_" + curEl.id).offsetTop;
+
+				if (pos > 800) {
 					pos -= 120;
-					$("#tabs_overview").animate({scrollTop: pos}, 900);
+					$("#tabs_overview").animate({
+						scrollTop: pos
+					}, 900);
 				}
 			}
 		}
-		
+
 		// Should we do anything with Blurbs?
-		if (llc.pres.curBlurb != curBlurb && curBlurb != null && !llc.pres.previewMode=='True') {
-			
+		if (llc.pres.curBlurb != curBlurb && curBlurb != null && !llc.pres.previewMode == 'True') {
+
 			// Set global curBlurb
 			llc.pres.curBlurb = curBlurb;
-			
+
 			// update Transcript to current blurb
-			$("#tabs_transcripts p").removeClass('active').filter('#s'+curBlurb.startPoint).addClass('active');
-			var pos = document.getElementById('s'+curBlurb.startPoint).offsetTop;
-				pos -= 140;
-			$("#tabs_transcripts").animate({scrollTop: pos}, 300);
-			
+			$("#tabs_transcripts p").removeClass('active').filter('#s' + curBlurb.startPoint).addClass('active');
+			var pos = document.getElementById('s' + curBlurb.startPoint).offsetTop;
+			pos -= 140;
+			$("#tabs_transcripts").animate({
+				scrollTop: pos
+			}, 300);
+
 		}
-		
+
 		// Normal or Preview mode	
-		if ((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
-		
+		if ((llc.pres.embededMode == 'False' && llc.pres.previewMode == 'False') || (llc.pres.previewMode == undefined)) {
+
 			// Update seatTime
-			if(!event.jPlayer.status.paused) llc.seatTime('update');
-		
+			if (!event.jPlayer.status.paused) llc.seatTime('update');
+
 		} else {
-			
+
 			//is preview or embed mode
-			if(llc.pres.previewMode=='True'){
-				
+			if (llc.pres.previewMode == 'True') {
+
 				//var htmltest = '<div>'+event.jPlayer.status.currentTime+'</div><div>'+llc.pres.demoLength+'</div><div>'+llc.pres.demoStartPoint+'</div>';
 				var timeNow = event.jPlayer.status.currentTime,
 					demoStop = parseInt(llc.pres.demoStartPoint) + parseInt(llc.pres.demoLength),
 					demoStart = parseInt(llc.pres.demoStartPoint),
 					msg = '<div class="previewNotification">YOUR PREVIEW SESSION HAS EXPIRED<BR><BR><TABLE style="width:390px; margin-left:auto; margin-right:auto;"><TR><TD><img src="images/player/previewmode-lock.png" /></TD><td style="width:15px;"></td><TD style="text-align:left;"> Please acquire to unlock<br />remaining content.</TD></TR></TABLE></div>';
-				
-				if(timeNow > demoStop){
+
+				if (timeNow > demoStop) {
 					$("#master_jplayer").jPlayer("pause", demoStart);
 					$('div#media').prepend(msg);
-					
-					$('div#media').find('div.previewNotification').delay(10000).fadeOut('slow', function(){
+
+					$('div#media').find('div.previewNotification').delay(10000).fadeOut('slow', function() {
 						$('div#slides').find('div.previewNotification').remove();
 					});
 				}
-				
-				if(timeNow < demoStart){
-					$("#master_jplayer").jPlayer("play", demoStart);	
-				
+
+				if (timeNow < demoStart) {
+					$("#master_jplayer").jPlayer("play", demoStart);
+
 				}
-				
+
 			}
 		}
-		
+
 	},
-	switchView: function(event,mode,screen) { /* Change view (single, dual, right/left) for player presentation (mobile will include [notes, transcript, slides, video]) */
-		
+	switchView: function(event, mode, screen) { /* Change view (single, dual, right/left) for player presentation (mobile will include [notes, transcript, slides, video]) */
+
 		//console.log('switch view fired');
-		
 		// ASSUMES 4x3 Aspect Ratio for Media~!!!
-		
 		var s = $("#slides"),
 			m = $("#master_jplayer"),
 			w = $("#llc_playerFrame").width(),
 			h = $("#llc_playerFrame").height(),
 			curMode = llc.switchView.curMode = llc.switchView.curMode ? llc.switchView.curMode : llc.pres.defaultInterface.text;
-		
+
 		// Do Dual Screen		
-		if ((event && curMode == "Full Window") || mode == "Dual Screen") { 
+		if ((event && curMode == "Full Window") || mode == "Dual Screen") {
 			llc.status('dual screen view');
 			//console.log('dual view fired');
 			m.addClass("dual").removeClass("single");
@@ -829,21 +828,32 @@ var llc = {
 			// if full screen
 			if ($("#llc_playerFrame").is(".Full")) {
 				// Do for full screen for above 8x3 (2 wide 4x3) ratio, probably not any screens that are longer than 8x3 ratio 
-				var mar = ((h-50)-((w*0.49)*0.75))/2;
-				s.css({marginTop:mar, marginBottom:mar, marginLeft:0, width:'', height:'auto'}); 
-				m.css({marginTop:mar, marginBottom:mar, marginLeft:0, height:s.height()});
+				var mar = ((h - 50) - ((w * 0.49) * 0.75)) / 2;
+				s.css({
+					marginTop: mar,
+					marginBottom: mar,
+					marginLeft: 0,
+					width: '',
+					height: 'auto'
+				});
+				m.css({
+					marginTop: mar,
+					marginBottom: mar,
+					marginLeft: 0,
+					height: s.height()
+				});
 			}
 			llc.switchView.curMode = "Dual Screen"; // End with	
-		} 
-		
+		}
+
 		// Do Single Screen
-		else if ((event && curMode == "Dual Screen") || mode == "Full Window") { 
-		
+		else if ((event && curMode == "Dual Screen") || mode == "Full Window") {
+
 			llc.status('single screen view');
 			//console.log('single view fired');
 			if (event) { // Was clicked
 				var p = $(event.target).parents('div.dual');
-				p.removeClass("single").addClass("single");	
+				p.removeClass("single").addClass("single");
 			} else {
 				if (screen) {
 					// override screen selection
@@ -864,313 +874,341 @@ var llc = {
 			}
 			m.removeClass("dual");
 			s.removeClass("dual");
-			
+
 			// if full screen
 			if ($("#llc_playerFrame").is(".Full")) {
-				m.css({marginTop:0, marginBottom:0});
-				s.css({marginTop:0, marginBottom:0});
-				
+				m.css({
+					marginTop: 0,
+					marginBottom: 0
+				});
+				s.css({
+					marginTop: 0,
+					marginBottom: 0
+				});
+
 				// wide aspect ratio
-				if (h-50 <= w*0.75) {
-					var mar = (w-((h-50)/0.75))/2,
-						wid = w-(mar*2); 
-					s.filter(".single").css({marginLeft:mar, width:wid});
+				if (h - 50 <= w * 0.75) {
+					var mar = (w - ((h - 50) / 0.75)) / 2,
+						wid = w - (mar * 2);
+					s.filter(".single").css({
+						marginLeft: mar,
+						width: wid
+					});
 					//m.filter(".single").css({marginLeft:mar});
 				}
 				if (s.is(".single")) m.height(0), s.height("auto");
 				else s.height(0), m.height("auto");
-			} else {
-			}
-			
+			} else {}
+
 			llc.switchView.curMode = "Full Window"; // End with
-		
 		}
-		
+
 	},
 	seatTime: function(method) { /* Seat time tracking = llc.seatTime('update') and llc.saving seatTime('save') */
 		//console.log('seatTime');
-		if (method=='update'){
-			
-			llc.seatTime.time = llc.seatTime.time != undefined ? llc.seatTime.time + 250 : 0 ;
-			
-			if (llc.seatTime.time != 0 && llc.seatTime.time % 60000 == 0) llc.seatTime('save');   
-			
-		} else if (method=='save') {
+		if (method == 'update') {
+
+			llc.seatTime.time = llc.seatTime.time != undefined ? llc.seatTime.time + 250 : 0;
+
+			if (llc.seatTime.time != 0 && llc.seatTime.time % 60000 == 0) llc.seatTime('save');
+
+		} else if (method == 'save') {
 			llc.status('saved seat time');
-			var netSessionID = $('input#session_id').val(), 
-				presentationID = llc.pres.id, 
+			var netSessionID = $('input#session_id').val(),
+				presentationID = llc.pres.id,
 				userID = $('input#user_id').val(),
 				siteID = $('input#site_id').val(),
 				timeID = llc.seatTime.time,
 				ID = llc.seatTime.ID ? llc.seatTime.ID : -1,
 				params = 'timeID=' + ID + '&netSessionID=' + netSessionID + '&userID=' + userID + '&siteID=' + siteID + '&presentationID=' + presentationID;
-			
+
 			$.ajax({
 				url: 'saveSeatTime.aspx',
 				data: params,
 				success: function(data) {
-					if(!llc.seatTime.ID && data) {
+					if (!llc.seatTime.ID && data) {
 						llc.seatTime.ID = data.split('&')[0].substr(3);
 					}
 				}
-			});	
-			
+			});
+
 		}
-		
-	
+
+
 	},
-	saveBookmark: function(item) {
-	/* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
+	saveBookmark: function(item) { /* Setup bookmarks for TOC and control bar - is either attached to toc-bookmark (no param) or can be called onclick for control bar (param = this) */
 		//console.log('saveBookmark');
 		llc.status('save bookmark');
-		if (typeof item === "undefined"){
-				//has been called on init and is attaching to the toc-bookmark links
-				$('a.toc-bookmark').live('click', function(){
+		if (typeof item === "undefined") {
+			//has been called on init and is attaching to the toc-bookmark links
+			$('a.toc-bookmark').live('click', function() {
 				var timePoint = $(this).attr('rel');
 				var title = $(this).attr('title');
-				var netSessionID = $('input#session_id').val(), 
-				presentationID = llc.pres.id, 
-				userID = $('input#user_id').val(),
-				siteID = $('input#site_id').val();
-				if($(this).hasClass('bookmark-set')){
-						//remove bookmark
-						var thumbtype = $(this).parents('div.toc_thumb').attr('id');
-						if(thumbtype.indexOf('tabs_bookmarks')==0){
+				var netSessionID = $('input#session_id').val(),
+					presentationID = llc.pres.id,
+					userID = $('input#user_id').val(),
+					siteID = $('input#site_id').val();
+				if ($(this).hasClass('bookmark-set')) {
+					//remove bookmark
+					var thumbtype = $(this).parents('div.toc_thumb').attr('id');
+					if (thumbtype.indexOf('tabs_bookmarks') == 0) {
 						//this click came from the bookmarks section
 						var slideID = $(this).parents('div.toc_thumb').attr('rel');
-						}else{
+					} else {
 						//this click came from the overview section
-						var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
-						}
-							if(slideID.length > 0){
-							var slideCellElm = 'div#toc_thumb_'+slideID;
-							var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-							$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function(){
-							$(slideCellElm).find('div.bmThumbFlag').remove();
-							});
-							var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-							$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
-							$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
-							}
-							
-							
-						var elmsel = 'a.toc-bookmark[rel^='+timePoint+']';
-						var elm = $('div#tabs_bookmarks').find('div.toc_thumb').find(elmsel);
-						var parent_id = $(elm).parents('div.toc_thumb').attr('id');
-						bmid = parent_id.substr((parent_id.lastIndexOf('_')+1), parent_id.length);
-						$('div#'+parent_id).remove();
-						var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
-						if(numBMs==0){
-						$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
-						}else{
-						var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
-						$('div#noBookmarks p').html(numBMs + ' '+bmword+' saved');
-						}
-						
-				var params = 'title='+title+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID='+bmid;
-				var script_url = 'delBookmark.aspx';
-				/* start ajax */
-				$.ajax({
-		  		url: script_url,
-				data: params,
-		  		success: function(data) {
-		var debugCheck = urlParse('debug');
-		if(debugCheck=='y'){
-			alert(data);
-		}
-				}
-				});	
-				/* end ajax */
-				}else{
-						//add new bookmark
-						var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_')+1, $(this).parents('div.toc_thumb').attr('id').length);
-						var slideCellElm = 'div#toc_thumb_'+slideID;
-						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-						$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
-						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
-						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
-						$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
-						
-				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID + '&bookmarkID=-1';
-				var script_url = 'addBookmark.aspx';
-				/* start ajax */
-				$.ajax({
-		  		url: script_url,
-				data: params,
-		  		success: function(data) {
-		var debugCheck = urlParse('debug');
-		if(debugCheck=='y'){
-			alert(data);
-		}
-				var responseVals = data.split('&');
-				var newbmid = responseVals[0].substr(3);
-				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', slideID);
-				}
-				});	
-				/* end ajax */
-				}
-				});//END TOC CLICK HANDLER
-		}else{
-		if(llc.pres.previewMode === 'True' || llc.pres.embededMode === 'True'){return false;}
-
-				//add new bookmark - called by media player onclick
-				var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime)*1000;
-				var curEl = llc.pres.curEl || llc.pres.media.items.item;
-				
-				var title = llc.pres.curEl.title;
-				var slideID = llc.pres.curEl.id;
-				var slideCellElm = 'div#toc_thumb_'+slideID;
-				var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
-
-				var script_url = 'addBookmark.aspx', 
-				netSessionID = $('input#session_id').val(), 
-				presentationID = llc.pres.id, 
-				userID = $('input#user_id').val(), 
-				siteID = $('input#site_id').val();
-				var params = 'title='+escape(title)+'&netSessionID='+netSessionID+'&timePoint='+timePoint+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&bookmarkID=-1';
-				//alert(params);
-				$(item).siblings('div.response_box').show().animate({top: '-=11px', opacity: '1'}, {duration:500, complete:function(){
-					$(this).delay(1200).animate({opacity:0}, {duration:400, complete:function(){
-					$(this).remove();
-					$('<div style="right:2px; top:-21px;" class="response_box">Bookmark Saved!</div>').insertBefore('a.llc-bookmark');
-					}});
-					
+						var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_') + 1, $(this).parents('div.toc_thumb').attr('id').length);
 					}
-				});
-			
-				/* start ajax */
-				$.ajax({
-		  		url: script_url,
-				data: params,
-		  		success: function(data) {
-		var debugCheck = urlParse('debug');
-		if(debugCheck=='y'){
-			alert(data);
-		}
-				var responseVals = data.split('&');
-				var newbmid = responseVals[0].substr(3);
-				llc.createThumbPanel(curImgSrc,newbmid,timePoint, title, '#tabs_bookmarks', '');
-				
-				}
-				});	
-				/* end ajax */
-		}//end media player onclick
-   
+					if (slideID.length > 0) {
+						var slideCellElm = 'div#toc_thumb_' + slideID;
+						var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+						$(slideCellElm).find('div.bmThumbFlag').fadeOut('slow', function() {
+							$(slideCellElm).find('div.bmThumbFlag').remove();
+						});
+						var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+						$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_remove', '_add'));
+						$(slideCellElm).find('a.toc-bookmark').removeClass('bookmark-set');
+					}
 
+
+					var elmsel = 'a.toc-bookmark[rel^=' + timePoint + ']';
+					var elm = $('div#tabs_bookmarks').find('div.toc_thumb').find(elmsel);
+					var parent_id = $(elm).parents('div.toc_thumb').attr('id');
+					bmid = parent_id.substr((parent_id.lastIndexOf('_') + 1), parent_id.length);
+					$('div#' + parent_id).remove();
+					var numBMs = ($('#tabs_bookmarks .toc_thumb').length);
+					if (numBMs == 0) {
+						$('div#noBookmarks p').html('Your bookmarks folder is currently empty.');
+					} else {
+						var bmword = (numBMs == 1) ? 'bookmark' : 'bookmarks';
+						$('div#noBookmarks p').html(numBMs + ' ' + bmword + ' saved');
+					}
+
+					var params = 'title=' + title + '&netSessionID=' + netSessionID + '&timePoint=' + timePoint + '&userID=' + userID + '&siteID=' + siteID + '&presentationID=' + presentationID + '&bookmarkID=' + bmid;
+					var script_url = 'delBookmark.aspx'; /* start ajax */
+					$.ajax({
+						url: script_url,
+						data: params,
+						success: function(data) {
+							var debugCheck = urlParse('debug');
+							if (debugCheck == 'y') {
+								alert(data);
+							}
+						}
+					}); /* end ajax */
+				} else {
+					//add new bookmark
+					var slideID = $(this).parents('div.toc_thumb').attr('id').substr($(this).parents('div.toc_thumb').attr('id').lastIndexOf('_') + 1, $(this).parents('div.toc_thumb').attr('id').length);
+					var slideCellElm = 'div#toc_thumb_' + slideID;
+					var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+					$(slideCellElm).prepend('<div class="bmThumbFlag"></div>');
+					var currentIconSrc = $(slideCellElm).find('a.toc-bookmark').find('img').attr('src');
+					$(slideCellElm).find('a.toc-bookmark').find('img').attr('src', currentIconSrc.replace('_add', '_remove'));
+					$(slideCellElm).find('a.toc-bookmark').addClass('bookmark-set');
+
+					var params = 'title=' + escape(title) + '&netSessionID=' + netSessionID + '&timePoint=' + timePoint + '&userID=' + userID + '&siteID=' + siteID + '&presentationID=' + presentationID + '&bookmarkID=-1';
+					var script_url = 'addBookmark.aspx'; /* start ajax */
+					$.ajax({
+						url: script_url,
+						data: params,
+						success: function(data) {
+							var debugCheck = urlParse('debug');
+							if (debugCheck == 'y') {
+								alert(data);
+							}
+							var responseVals = data.split('&');
+							var newbmid = responseVals[0].substr(3);
+							llc.createThumbPanel(curImgSrc, newbmid, timePoint, title, '#tabs_bookmarks', slideID);
+						}
+					}); /* end ajax */
+				}
+			}); //END TOC CLICK HANDLER
+		} else {
+			if (llc.pres.previewMode === 'True' || llc.pres.embededMode === 'True') {
+				return false;
+			}
+
+			//add new bookmark - called by media player onclick
+			var timePoint = ($("#master_jplayer").data("jPlayer").status.currentTime) * 1000;
+			var curEl = llc.pres.curEl || llc.pres.media.items.item;
+
+			var title = llc.pres.curEl.title;
+			var slideID = llc.pres.curEl.id;
+			var slideCellElm = 'div#toc_thumb_' + slideID;
+			var curImgSrc = $(slideCellElm).find('img.toc_thumb_img').attr('src');
+
+			var script_url = 'addBookmark.aspx',
+				netSessionID = $('input#session_id').val(),
+				presentationID = llc.pres.id,
+				userID = $('input#user_id').val(),
+				siteID = $('input#site_id').val();
+			var params = 'title=' + escape(title) + '&netSessionID=' + netSessionID + '&timePoint=' + timePoint + '&userID=' + userID + '&siteID=' + siteID + '&presentationID=' + presentationID + '&bookmarkID=-1';
+			//alert(params);
+			$(item).siblings('div.response_box').show().animate({
+				top: '-=11px',
+				opacity: '1'
+			}, {
+				duration: 500,
+				complete: function() {
+					$(this).delay(1200).animate({
+						opacity: 0
+					}, {
+						duration: 400,
+						complete: function() {
+							$(this).remove();
+							$('<div style="right:2px; top:-21px;" class="response_box">Bookmark Saved!</div>').insertBefore('a.llc-bookmark');
+						}
+					});
+
+				}
+			});
+
+			/* start ajax */
+			$.ajax({
+				url: script_url,
+				data: params,
+				success: function(data) {
+					var debugCheck = urlParse('debug');
+					if (debugCheck == 'y') {
+						alert(data);
+					}
+					var responseVals = data.split('&');
+					var newbmid = responseVals[0].substr(3);
+					llc.createThumbPanel(curImgSrc, newbmid, timePoint, title, '#tabs_bookmarks', '');
+
+				}
+			}); /* end ajax */
+		} //end media player onclick
 	},
 	saveRating: function(num) { /* Postback rating to server */
 		//console.log('saveRating');
 		/* ##########################################
 		  ################# Post rating to server, locks stars, notify user
 		 ########################################## */
-        var curSessionID = $('input#cur_session_id').val();
-        var user_id = $('input#user_id').val();
-        var pres_id = $('input#pres_id').val();
+		var curSessionID = $('input#cur_session_id').val();
+		var user_id = $('input#user_id').val();
+		var pres_id = $('input#pres_id').val();
 		var cookieName = 'llc-' + curSessionID + '|' + user_id + '|' + pres_id + '|rated';
 
-        var hasRated = llc.getCookie(cookieName);
+		var hasRated = llc.getCookie(cookieName);
 		var curRating = (llc.pres.ratingAverage) ? llc.pres.ratingAverage : 0;
-        if (!hasRated) {
-            $('#ratings_box').ratings(5, curRating).bind('ratingchanged', function(event, data) {
-                var newRating = data.rating,
-                      netSessionID = $('input#session_id').val(),
-                      userID = $('input#user_id').val(),
-                      siteID = $('input#site_id').val();
-                var params = 'value=' + newRating + '&netSessionID=' + netSessionID + '&userID=' + userID + '&siteID=' + siteID + '&sessionID=' + curSessionID + '&id=-1';
-                $.ajax({
-                    url: 'saveRating.aspx',
-                    data: params,
-                    success: function(data) {
-                        var debugCheck = urlParse('debug');
-                        if (debugCheck == 'y') {
-                            alert(data);
-                        }
-                        llc.setCookie(cookieName, newRating);
-                   }
-                });
-
-		
-				$('#ratings_box').siblings('div.response_box').show().animate({top: '-=5px', opacity: '1'}, {duration:500, complete:function(){
-					$(this).delay(1200).animate({opacity:0}, {duration:400, complete:function(){
-					$(this).remove();
-					$('<div style="left:349px; top:35px; background-color:transparent;" class="response_box">Rating Saved!</div>').insertBefore('div#ratings_box');
-					}});
+		if (!hasRated) {
+			$('#ratings_box').ratings(5, curRating).bind('ratingchanged', function(event, data) {
+				var newRating = data.rating,
+					netSessionID = $('input#session_id').val(),
+					userID = $('input#user_id').val(),
+					siteID = $('input#site_id').val();
+				var params = 'value=' + newRating + '&netSessionID=' + netSessionID + '&userID=' + userID + '&siteID=' + siteID + '&sessionID=' + curSessionID + '&id=-1';
+				$.ajax({
+					url: 'saveRating.aspx',
+					data: params,
+					success: function(data) {
+						var debugCheck = urlParse('debug');
+						if (debugCheck == 'y') {
+							alert(data);
+						}
+						llc.setCookie(cookieName, newRating);
 					}
 				});
-				
+
+
+				$('#ratings_box').siblings('div.response_box').show().animate({
+					top: '-=5px',
+					opacity: '1'
+				}, {
+					duration: 500,
+					complete: function() {
+						$(this).delay(1200).animate({
+							opacity: 0
+						}, {
+							duration: 400,
+							complete: function() {
+								$(this).remove();
+								$('<div style="left:349px; top:35px; background-color:transparent;" class="response_box">Rating Saved!</div>').insertBefore('div#ratings_box');
+							}
+						});
+					}
+				});
+
 			});
-		
-			
-		 }else{
-		$('#ratings_box').ratings(5, curRating);
-		$('div.jquery-ratings-star').unbind('click');
-		$('div.jquery-ratings-star').unbind('mouseenter');
-		$('div.jquery-ratings-star').unbind('mouseleave');
-		 
-		 }
+
+
+		} else {
+			$('#ratings_box').ratings(5, curRating);
+			$('div.jquery-ratings-star').unbind('click');
+			$('div.jquery-ratings-star').unbind('mouseenter');
+			$('div.jquery-ratings-star').unbind('mouseleave');
+
+		}
 	},
 	saveNote: function() {
 		//console.log('setNote'); 
 		/* ##########################################
 		  ################# Retrieve note - post it to server
 		 ########################################## */
-		$('button#save_note_btn').click(function(){
-		var note = $('textarea#note_pad').val(), 
-		netSessionID = $('input#session_id').val(), 
-		userID = $('input#user_id').val(), 
-		siteID = $('input#site_id').val(), 
-		presentationID = llc.pres.id;
-		var params = 'note='+escape(note)+'&netSessionID='+netSessionID+'&userID='+userID+'&siteID='+siteID+'&presentationID='+presentationID+'&id=-1';
-		/* start ajax */
-		$.ajax({
-  		url: 'saveNotes.aspx',
-		data: params,
-  		success: function(data) {
-		var debugCheck = urlParse('debug');
-		if(debugCheck=='y'){
-			alert(data);
-		}
-		
-		}
-		});	
-		/* end ajax */
-		
-		
-		
-				$(this).parents('div.notesSubmitBox').find('div.response_box').show().animate({top: '-=7px', opacity: '1'}, {duration:500, complete:function(){
-							$(this).delay(1200).animate({opacity:0}, {duration:400, complete:function(){
-					$(this).remove();
-					$('<div style="right:8px; top:-15px; color:#000000; background-color:transparent;" class="response_box">Notes Saved!</div>').prependTo('div.notesSubmitBox');
-					}});
+		$('button#save_note_btn').click(function() {
+			var note = $('textarea#note_pad').val(),
+				netSessionID = $('input#session_id').val(),
+				userID = $('input#user_id').val(),
+				siteID = $('input#site_id').val(),
+				presentationID = llc.pres.id;
+			var params = 'note=' + escape(note) + '&netSessionID=' + netSessionID + '&userID=' + userID + '&siteID=' + siteID + '&presentationID=' + presentationID + '&id=-1';
+
+			/* start ajax */
+			$.ajax({
+				url: 'saveNotes.aspx',
+				data: params,
+				success: function(data) {
+					var debugCheck = urlParse('debug');
+					if (debugCheck == 'y') {
+						alert(data);
 					}
-				});
+				}
+			}); /* end ajax */
+
+			$(this).parents('div.notesSubmitBox').find('div.response_box').show().animate({
+				top: '-=7px',
+				opacity: '1'
+			}, {
+				duration: 500,
+				complete: function() {
+					$(this).delay(1200).animate({
+						opacity: 0
+					}, {
+						duration: 400,
+						complete: function() {
+							$(this).remove();
+							$('<div style="right:8px; top:-15px; color:#000000; background-color:transparent;" class="response_box">Notes Saved!</div>').prependTo('div.notesSubmitBox');
+						}
+					});
+				}
+			});
 		});
-		
-		
+
+
 		// postback to server 
 	},
-	previewEmbedSetup: function(){
-	
-		var embedCheck = llc.pres.embededMode, 
+	previewEmbedSetup: function() {
+
+		var embedCheck = llc.pres.embededMode,
 			previewCheck = llc.pres.previewMode;
-			purOptions = llc.pres.purchaseOptions.purchaseItem;
-		
-		if(previewCheck){
+		purOptions = llc.pres.purchaseOptions.purchaseItem;
+
+		if (previewCheck) {
 			$('span#titleIntroText').html('Preview Mode');
 			//$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled');
 			//$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled');
 			$('#master_jp_container .llc-bookmark').unbind('click');
 			//$('#master_jp_container .llc-prev, #master_jp_container .llc-next').attr('title', 'disabled');
-		}		
-		
+		}
+
 		$("#master_jp_container .llc-bookmark").addClass('llc-bookmark-disabled');
 		$('div#info_tabs').addClass('hide');
 		$('"ul.jp-controls li a.llc-bookmark"').attr('title', 'disabled');
 		$('"ul.jp-controls li a.llc-bookmark"').unbind('click');
-		
+
 		// Setup Buy Now button & purchase options
 		if (purOptions) {
-			
+
 			// pop up html
 			var purHTML = '<div id="player_shoppingCartOp" class="shoppingCartOptions" style="display:none">\
 						     <div class="shoppingCartOptionsClose">\
@@ -1179,251 +1217,260 @@ var llc = {
 							 <div id="player_shoppingCartListContainer" class="shoppingCartListContainer">\
 							   <div id="player_shoppingCartList_1" class="shoppingCartList">\
 							     <ul class="shoppingCartListing">'
-			
+
 			// insert options
 			if (purOptions[0]) { // Loop through multiple options
-				for (i=0; i < purOptions.length; ++i) {
+				for (i = 0; i < purOptions.length; ++i) {
 					var t = purOptions[i],
-						cartClass = (i+1) % 2 == 0 ? 'shoppingCartLinkB' : 'shoppingCartLinkA' ;
-						
+						cartClass = (i + 1) % 2 == 0 ? 'shoppingCartLinkB' : 'shoppingCartLinkA';
+
 					purHTML += '   <li class="shoppingCartListItem">\
-								     <a href="javascript:itemClick(\''+t.id+'\')" class="'+cartClass+'">\
+								     <a href="javascript:itemClick(\'' + t.id + '\')" class="' + cartClass + '">\
 								       <div class="shoppingCartImageFrame">\
-								         <img src="'+t.formatImage.replace('~/','')+'" />\
+								         <img src="' + t.formatImage.replace('~/', '') + '" />\
 								       </div>\
-								       <div class="shoppingCartItemText">'+t.title+' </br>$'+t.price+' '+t.currency+'</div>\
+								       <div class="shoppingCartItemText">' + t.title + ' </br>$' + t.price + ' ' + t.currency + '</div>\
 								     </a>\
 								   </li>';
 				}
 			} else { // Do single option
-					purHTML += '   <li class="shoppingCartListItem">\
-								     <a href="javascript:itemClick(\''+purOptions.id+'\')" class="shoppingCartLinkA">\
+				purHTML += '   <li class="shoppingCartListItem">\
+								     <a href="javascript:itemClick(\'' + purOptions.id + '\')" class="shoppingCartLinkA">\
 								       <div class="shoppingCartImageFrame">\
-								         <img src="'+purOptions.formatImage.replace('~/','')+'" />\
+								         <img src="' + purOptions.formatImage.replace('~/', '') + '" />\
 								       </div>\
-								       <div class="shoppingCartItemText">'+purOptions.title+' </br>$'+purOptions.price+' '+purOptions.currency+'</div>\
+								       <div class="shoppingCartItemText">' + purOptions.title + ' </br>$' + purOptions.price + ' ' + purOptions.currency + '</div>\
 								     </a>\
 								   </li>';
 			}
-			
-				purHTML += '     </ul>\
+
+			purHTML += '     </ul>\
 							   </div>\
 							 </div>\
 						   </div>'
-			 
+
 			// Add Button
 			$('#llc_playerFrame').append('<a id="buyButton" style="display:none;"><img src="images/player/buy-button_player.png" width="102" height="98" /></a>');
-			$('#buyButton').click(function(){
+			$('#buyButton').click(function() {
 				$('#player_shoppingCartOp').show();
 			});
-			
+
 			// Add popup
 			$('#llc_playerFrame').append(purHTML);
-			
+
 		}
-		
-		
+
+
 	},
-	setCookie: function(name,value) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
+	setCookie: function(name, value) { /* Set playback cookie (old player = 1 min interval)  ?Do we need to extend for other info besides playback? */
 		//console.log('setCookie');
-		
 		/* ##########################################
 		  ################# Set a Cookie
 		 ########################################## */
-		 
+
 		if (('localStorage' in window) && window.localStorage !== null) {
 			localStorage[name] = value;
 		} else {
 			var date = new Date();
-			date.setTime(date.getTime()+(365*24*60*60*1000));
+			date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
 			var expires = date.toGMTString();
-			var cookiestr = name+'='+value+';'+' expires='+expires+'; path=/';
+			var cookiestr = name + '=' + value + ';' + ' expires=' + expires + '; path=/';
 			document.cookie = cookiestr;
 		}
 	},
 	getCookie: function(name) { /* Get playback cookie */
 		//console.log('getCookie');
-		
 		/* ##########################################
 		  ################# Retrieve a Cookie
 		 ########################################## */
-		 
+
 		var value;
 		if (('localStorage' in window) && window.localStorage !== null) {
 			value = localStorage[name];
 		} else {
-			value = document.cookie.split(name+'=')[1];
-			value = value == undefined ? value : value.split(';')[0];				
-		} return value
+			value = document.cookie.split(name + '=')[1];
+			value = value == undefined ? value : value.split(';')[0];
+		}
+		return value
 	},
-	disableRightClick: function(){
-		$('div#slides, img.toc_thumb_img').bind('contextmenu', function(e){
-		return false;
+	disableRightClick: function() {
+		$('div#slides, img.toc_thumb_img').bind('contextmenu', function(e) {
+			return false;
 		});
 	},
 	position: function() { /* Position the player */
 		var con = llc.position.con = llc.position.con ? llc.position.con : $("#llc_container"),
-		frm = llc.position.frm = llc.position.frm ? llc.position.frm : $("#llc_playerFrame"),
-		left = con.offset().left, 
-		top = llc.position.top = llc.position.top ? llc.position.top : con.offset().top;  
-		
+			frm = llc.position.frm = llc.position.frm ? llc.position.frm : $("#llc_playerFrame"),
+			left = con.offset().left,
+			top = llc.position.top = llc.position.top ? llc.position.top : con.offset().top;
+
 		frm.css({
-			'top':(top+5+'px'),
-			'left':(left+8+'px')
+			'top': (top + 5 + 'px'),
+			'left': (left + 8 + 'px')
 		});
 	},
 	tosAgreed: function() {
-	$('div.lightbox_overlay').fadeOut();
-	$('div.lightbox_content').fadeOut();
-	var agreeLink = llc.pres.agreements.agreement.acceptLink;
-		if(agreeLink.length > 0){
-		var winame = Math.floor(Math.random()*1001);
-		var newind = window.open(agreeLink,winame);
+		$('div.lightbox_overlay').fadeOut();
+		$('div.lightbox_content').fadeOut();
+		var agreeLink = llc.pres.agreements.agreement.acceptLink;
+		if (agreeLink.length > 0) {
+			var winame = Math.floor(Math.random() * 1001);
+			var newind = window.open(agreeLink, winame);
 		}
 	},
 	tosDecline: function() {
-	var declineLink = llc.pres.agreements.agreement.declineLink;
-	window.location = declineLink;
+		var declineLink = llc.pres.agreements.agreement.declineLink;
+		window.location = declineLink;
 	},
 	switchFull: function(val) { /* Get playback cookie */
 		//console.log('trigger full screen');
-		
-		var val = val; 
-		
-		if (val==true) { 
+		var val = val;
+
+		if (val == true) {
 			llc.status('full screen');
-		/* ##########################################
+			/* ##########################################
 		  ################# Go Full
 		 ########################################## */
-		 		 	
-		 	// Resize Progress bar and disable scrolling
+
+			// Resize Progress bar and disable scrolling
 			$(window).unbind('resize').resize(function() {
-				
+
 				var w = $("#llc_playerFrame").width();
 
-				$("#master_jp_container .jp-progress").width(w-222);
-				
-				llc.switchView(false,llc.switchView.curMode);
-				
-				scroll(0,0);
-				
-				//alert("RESIZED");
-				
-			}).scroll(function (event) { 
+				$("#master_jp_container .jp-progress").width(w - 222);
 
-				if ($(this).scrollTop()>0 || $(this).scrollLeft()>0) {
-					scroll(0,0); // Prevent scrolling in full screen
+				llc.switchView(false, llc.switchView.curMode);
+
+				scroll(0, 0);
+
+				//alert("RESIZED");
+			}).scroll(function(event) {
+
+				if ($(this).scrollTop() > 0 || $(this).scrollLeft() > 0) {
+					scroll(0, 0); // Prevent scrolling in full screen
 				}
 
 			});
-				
-		 	// on orientation change update
-		 	window.onorientationchange = function() {
-		 		$(window).trigger('resize');
-		 	}	
-		 	
-		 	// Update elements
-		 	$("#pres_info, #info_tabs").hide();
-		 	$("body, div.playerFrame").addClass("Full").removeClass("inline");
-		 	$(window).trigger('resize');
-		 		
-			$("#master_jp_container a.llc-full").addClass('active')
-			
-			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
-				$("#master_jp_container a.llc-full").tipTip({content: "normal", maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
+
+			// on orientation change update
+			window.onorientationchange = function() {
+				$(window).trigger('resize');
 			}
-			
+
+			// Update elements
+			$("#pres_info, #info_tabs").hide();
+			$("body, div.playerFrame").addClass("Full").removeClass("inline");
+			$(window).trigger('resize');
+
+			$("#master_jp_container a.llc-full").addClass('active')
+
+			if (!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
+				$("#master_jp_container a.llc-full").tipTip({
+					content: "normal",
+					maxWidth: "auto",
+					edgeOffset: 15,
+					defaultPosition: 'top'
+				});
+			}
+
 			// $("#master_jplayer").jPlayer("option", {"fullScreen": true}); // not needed with 100% size option
-						
-		
-		} else if (val==false) {
-		
+		} else if (val == false) {
+
 			llc.status('normal screen');
-		/* ##########################################
+			/* ##########################################
 		  ################# Back to Normal
 		 ########################################## */
-			
+
 			$("body, div.playerFrame").removeClass("Full").addClass("inline");
-			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style','');
+			$("#master_jp_container div.jp-progress, #master_jplayer, #slides").attr('style', '');
 			$("#pres_info, #info_tabs").show();
-			
-			$(window).unbind('resize').unbind('scroll').resize(function() { llc.position() });
-						
+
+			$(window).unbind('resize').unbind('scroll').resize(function() {
+				llc.position()
+			});
+
 			$("#master_jp_container a.llc-full").removeClass('active')
-			
-			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
-				$("#master_jp_container a.llc-full").tipTip({content: "full", maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
+
+			if (!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
+				$("#master_jp_container a.llc-full").tipTip({
+					content: "full",
+					maxWidth: "auto",
+					edgeOffset: 15,
+					defaultPosition: 'top'
+				});
 			}
-			
+
 			llc.position();
 
 		}
-		 
+
 	},
 	fileTypes: function(item) {
 		var f = item,
-			fileTypes = { files: { poster:f.poster } };
+			fileTypes = {
+				files: {
+					poster: f.poster
+				}
+			};
 		if (f.files.file.fileType == 'mp3') {
 			fileTypes.supplied = f.files.file.fileType;
 			fileTypes.files[f.files.file.fileType] = f.files.file.text;
 		} else {
 			if (f.files.file.fileType) {
-				fileTypes.supplied = f.files.file.fileType ;
+				fileTypes.supplied = f.files.file.fileType;
 				fileTypes.files[f.files.file.fileType] = f.files.file.text;
-			} else {	
-				for (i in f.files.file) { 
-					if (f.files.file[i].fileType) fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied+','+f.files.file[i].fileType : f.files.file[i].fileType , 
-					fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
-				}						
-			}					
+			} else {
+				for (i in f.files.file) {
+					if (f.files.file[i].fileType) fileTypes.supplied = fileTypes.supplied ? fileTypes.supplied + ',' + f.files.file[i].fileType : f.files.file[i].fileType, fileTypes.files[f.files.file[i].fileType] = f.files.file[i].text;
+				}
+			}
 		}
 		return fileTypes
 	},
 	preload: function(imgs) {
 		// Preload necessary UI images/backgrounds
-	    for (var i = 0; i < imgs.length; i++) {
-	    	(new Image()).src = imgs[i];
-	    }
+		for (var i = 0; i < imgs.length; i++) {
+			(new Image()).src = imgs[i];
+		}
 	},
 	loadSlideImgs: function() {
 		// Slide Loading Status
-		
 		$('<div id="loading">Loading <span id="loadBar"><span id="loadStatus"></span></span></div>').appendTo("#llc_container");
-		
+
 		llc.pres.imgsLoaded = 0;
-		
+
 		function loadImg(imgId) {
 			var img = document.getElementById(imgId).getElementsByTagName("IMG")[0],
-				thumb = document.getElementById('toc_thumb_'+imgId),
+				thumb = document.getElementById('toc_thumb_' + imgId),
 				thumbImg = thumb.getElementsByTagName("A")[0].getElementsByTagName("IMG")[0];
-				
+
 			function revealThumb() {
 				$(thumb).removeClass('loading');
-				thumbImg.src = !thumbImg.src || thumbImg.src === "" ? thumbImg.title : thumbImg.src ;
-				$("#tabs_bookmarks img[title='"+thumbImg.title+"']").attr('src', thumbImg.title);
+				thumbImg.src = !thumbImg.src || thumbImg.src === "" ? thumbImg.title : thumbImg.src;
+				$("#tabs_bookmarks img[title='" + thumbImg.title + "']").attr('src', thumbImg.title);
 			}
 
 			if (!img.src || img.src === "") {
-				$(img).load(function(){
+				$(img).load(function() {
 					llc.pres.imgsLoaded++;
 					progressSlides();
 				}).each(function() {
 					this.src = this.title;
 					revealThumb();
 				});
-				
+
 			} else {
 				llc.pres.imgsLoaded++;
 				progressSlides();
 				revealThumb();
 			}
-			
+
 		}
-		
+
 		function progressSlides() {
 			if (!llc.loaded) {
 				if (llc.pres.imgsLoaded < llc.pres.imgs.length) {
-					loadImg(llc.pres.imgs[llc.pres.imgsLoaded])	
+					loadImg(llc.pres.imgs[llc.pres.imgsLoaded])
 				} else {
 					// Finished loading
 					llc.status('Loaded Slides');
@@ -1433,448 +1480,467 @@ var llc = {
 				//$("#loading #loadStatus").width(((llc.pres.imgsLoaded/llc.pres.imgs.length)*100)+'%');
 			}
 		}
-		
+
 		loadImg(llc.pres.imgs[llc.pres.imgsLoaded]);
 	},
 	init: function() { /* serialize xml and call functions, assumes llc-player.js is called after markup */
-		
-		llc.status({start:'Initializing'});
-		
+
+		llc.status({
+			start: 'Initializing'
+		});
+
 		// Preload loading graphic or any other UI image
-		llc.preload([
-		    'images/player/loading-bar.gif'
-		]);
-		 
-        if (document.domain.indexOf('dropbox') != -1 ){//|| document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
+		llc.preload(['images/player/loading-bar.gif']);
 
-            // Use test data
-            var url = 'wired-grandma.xml';
+		if (document.domain.indexOf('dropbox') != -1) { //|| document.domain.indexOf('localhost')!=-1 || document.domain.indexOf('frntnd')!=-1) {
+			// Use test data
+			var url = 'wired-grandma.xml';
 
-        } else {
+		} else {
 
-            // Use live data
-            var presentationID = $('input#pres_id').val(),
-			curSessionID = $('input#cur_session_id').val(),
-			userID = $('input#user_id').val(),
-			siteID = $('input#site_id').val();
-            var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + curSessionID + '&UID=' + userID;
-            if (presentationID < 0) {
-                $('#llc_container').attr('style', 'display:none');
-                return;
-            }
-			
+			// Use live data
+			var presentationID = $('input#pres_id').val(),
+				curSessionID = $('input#cur_session_id').val(),
+				userID = $('input#user_id').val(),
+				siteID = $('input#site_id').val();
+			var url = 'playerPresentationDatasource.aspx?PID=' + presentationID + '&SID=' + curSessionID + '&UID=' + userID;
+			if (presentationID < 0) {
+				$('#llc_container').attr('style', 'display:none');
+				return;
+			}
+
 		}
-		
+
 		var manualSourceCheck = urlParse('source');
-		if(manualSourceCheck.length > 1){
+		if (manualSourceCheck.length > 1) {
 			var url = manualSourceCheck;
 		}
-		
+
 		// Set show XML link
-		if(llc.status.verbose === 'y'){
-			$(document).ready(function(){$('#llc-log a.logXML').attr('href',url);});
+		if (llc.status.verbose === 'y') {
+			$(document).ready(function() {
+				$('#llc-log a.logXML').attr('href', url);
+			});
 		}
-		
-		
+
+
 		// Serialize XML and set llc.pres object
-		$.get(url, function(xml){ 
-		 
-			llc.pres = $.xml2json(xml); 
-			
+		$.get(url, function(xml) {
+
+			llc.pres = $.xml2json(xml);
+
 			// XML Error Checking
 			if (llc.pres.media) {
 				if (!llc.pres.media.master) {
-					llc.status({error:'Required Node(s) not found'});
+					llc.status({
+						error: 'Required Node(s) not found'
+					});
 				}
 			} else {
-				llc.status({error:'Required Node(s) not found'});
+				llc.status({
+					error: 'Required Node(s) not found'
+				});
 			}
-			
+
 			//TOS Agreement verification			
-			if(llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined ){
+			if (llc.pres.agreements != undefined && llc.pres.agreements.agreement != undefined) {
 				var tosHTML = '<div class="lightbox_overlay"></div>\
 							   <div class="lightbox_content">\
-							   <h1>'+llc.pres.agreements.agreement.name+'</h1>\
-							   <div class="inner">'+llc.pres.agreements.agreement.text+'</div>\
-							   <div class="toc_controls"><button onclick="llc.tosAgreed()">'+llc.pres.agreements.agreement.acceptText+'</button><button onclick="llc.tosDecline()">'+llc.pres.agreements.agreement.declineText+'</button></div>\
+							   <h1>' + llc.pres.agreements.agreement.name + '</h1>\
+							   <div class="inner">' + llc.pres.agreements.agreement.text + '</div>\
+							   <div class="toc_controls"><button onclick="llc.tosAgreed()">' + llc.pres.agreements.agreement.acceptText + '</button><button onclick="llc.tosDecline()">' + llc.pres.agreements.agreement.declineText + '</button></div>\
 							   </div>';
-							
+
 				$("body").prepend(tosHTML);
 				$('div.lightbox_overlay, div.lightbox_content').fadeIn();
 			}
 
 			/* ##########################################
 			  ################# Load HTML5 Media
-			 ########################################## */	
-			
+			 ########################################## */
+
 			/* ######## Load Markup and Position */
-			
+
 			$(llc.createMarkup(llc.pres.media.master.item)).appendTo("body");
-			
+
 			// hide for loading & set initial inline container height
 			$("#llc_container").height(0);
 			$("#llc_playerFrame").height(695);
-			
+
 			// Adjust container height & position player
-			$("#llc_playerFrame").resize(function(){
+			$("#llc_playerFrame").resize(function() {
 
 				llc.position();
 
 				llc.position.con.height(llc.position.frm.height());
-				 
+
 			}).trigger('resize');
-			
+
 			// Link playerframe resize on window resize
-			$(window).resize(function(){llc.position()});
-			
+			$(window).resize(function() {
+				llc.position()
+			});
+
 			// Setup slides (slides, bookmarks, blurbs, notes)
 			llc.setupItems(llc.pres.media.items.item, llc.pres.bookmarks, llc.pres.transcript.blurb, llc.pres.viewer.notes);
-			
+
 			// Load slide images
 			llc.loadSlideImgs();
-			
+
 			// Set up ad 											
-			var randomString = Math.round(Math.random() * 555955);				
-			var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb="+randomString+"' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid="+llc.pres.sponsorZoneId+"&amp;cb="+randomString+"&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
+			var randomString = Math.round(Math.random() * 555955);
+			var manualUrl = "<iframe id='a1df8b12' name='a1df8b12' src='http://content2.multiview.com/www/delivery/afr.php?refresh=20&amp;zoneid=" + llc.pres.sponsorZoneId + "&amp;cb=" + randomString + "' frameborder='0' scrolling='no' width='120' height='60'><a href='http://content2.multiview.com/www/delivery/ck.php?n=a7af83b1&amp;cb=" + randomString + "' target='_blank'><img src='http://content2.multiview.com/www/delivery/avw.php?zoneid=" + llc.pres.sponsorZoneId + "&amp;cb=" + randomString + "&amp;n=a7af83b1' border='0' alt='' /></a></iframe>"
 			var defaultAd = '<a href="http://multiview.com/multiview_media.html" target="_blank" style="display:block; height:60px;"></a>';
-			var useAd = llc.pres.sponsorZoneId > 0 ? manualUrl : defaultAd ;
-			
+			var useAd = llc.pres.sponsorZoneId > 0 ? manualUrl : defaultAd;
+
 			$("#ad_sponsored_box").html(useAd);
 
 			/* ######## Initialize Master jPlayer */
-			
-			var f = llc.fileTypes(llc.pres.media.master.item);
-			
-			$("#master_jplayer").jPlayer({
-				ready: function (event) {
-					var files = JSON ? JSON.stringify(f.files) : 'N/A';
-					llc.status('master ready, files: '+files);
-			    	$.jPlayer.timeFormat.showHour = true; // set show hours
 
-			    	$(this).jPlayer("setMedia", f.files);
-			    	
-			    	/* Set playback if cookied */
-			    	//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
-			    	//$(this).jPlayer("pause", Math.abs(playhead));
-			    	
-			    	/* Set volume if cookied */
-			    	//var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
-			    	//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
-			    	//$(this).jPlayer("volume", llc.perVolume);
-			    	
-			    	/* Disable volume button if noVolume object hides volume bar (iPad) */
-			    	if($("#master_jp_container .jp-volume-bar").is(':hidden')) {
-			    		$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
-			    	}
-			    	
-			    	// Auto load
-			    	$(this).jPlayer("pause",0);
-			    	
-			    	// Grey screen fix?
-			    	setTimeout(function(){$("#slides .slide img").eq(0).fadeIn(50)}, 300);
-			    },
-			    loadstart: function() { // File ready to play
-			    	llc.status({media:'master loaded'});
-			    	$("#llc_playerFrame").css('height','auto');
-			    	$("#llc_playerFrame").trigger('resize');
-			    	$("#buyButton").show();
-			    	$("#loading").delay(300).fadeOut('slow', function() {
-			    	    $(this).remove();
-			    	});
-			    },
-			    play: function() { // To avoid both jPlayers playing together.
-			    	llc.status({media:'master playing'});
-			    	$(this).jPlayer("pauseOthers");
-			    },
-			    pause: function() { 
-			    	llc.status({media:'master paused'});
-			    },
-			    timeupdate: function (event) { // Set/Show Current time/Slide function
-			    	llc.timeUpdate(event);   	
-			    },
-			    seeking: function (event) {
-			    	llc.status('master seeking');
-			    	//$(this).jPlayer("pauseOthers");
-			    	llc.pres.curEl = undefined;
-			    	//console.log(event.jPlayer.status.currentTime);
-			    },
-			    ended: function() {
-			    	llc.status('master ended');
-			    	llc.seatTime('save');
-			    	// reset presentation
-			    	$(this).jPlayer("pause",0);
-			    },
-			    volumechange: function(event) { // make sure volume dragable moves on click
-			    	llc.status('volume changed');
-			    	var t = $("#master_jp_container div.jp-volume-bar-value"),
-			    		bottom = t.height(),
-			    		height = t.parent().height(),
-			    		top = height-bottom;
-			    	t.prev().css("top",top);	
-			    	llc.perVolume = t.attr('style').slice(8,-3) / 100;
-			    	if (llc.perVolume == 0) t.parents('div.jp-volume').addClass('mute');
-			    	else t.parents('div.jp-volume').removeClass('mute');
-			    	$('#slides .jp-jplayer').jPlayer("volume", (llc.perVolume));
-			    },
-			    // noVolume: { chrome: /chrome/ },
-			    verticalVolume: true,
-			    preload: "auto",
-			    swfPath: "flash",
-			    supplied: f.supplied, // Assumes mp3 or native jPlayer video format
-			    cssSelectorAncestor: "#master_jp_container",
-			    loop: false,
-			    size: {
-			    	width: "100%",
-			    	height: "100%",
-			    	cssClass: "full"
-			    }, 
-			    fullScreen : true,
-			    autohide: {full:false},
-			    //errorAlerts: true,
-			    solution:"flash, html",
-			    wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
+			var f = llc.fileTypes(llc.pres.media.master.item);
+
+			$("#master_jplayer").jPlayer({
+				ready: function(event) {
+					var files = JSON ? JSON.stringify(f.files) : 'N/A';
+					llc.status('master ready, files: ' + files);
+					$.jPlayer.timeFormat.showHour = true; // set show hours
+					$(this).jPlayer("setMedia", f.files);
+
+					/* Set playback if cookied */
+					//var playhead = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead') ||  0;
+					//$(this).jPlayer("pause", Math.abs(playhead));
+					/* Set volume if cookied */
+					//var volCookie = llc.getCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume');
+					//llc.perVolume =  volCookie ? parseFloat(volCookie) : 0.8;
+					//$(this).jPlayer("volume", llc.perVolume);
+					/* Disable volume button if noVolume object hides volume bar (iPad) */
+					if ($("#master_jp_container .jp-volume-bar").is(':hidden')) {
+						$("#master_jp_container .jp-volume").unbind('click').unbind('hover').addClass('inactive');
+					}
+
+					// Auto load
+					$(this).jPlayer("pause", 0);
+
+					// Grey screen fix?
+					setTimeout(function() {
+						$("#slides .slide img").eq(0).fadeIn(50)
+					}, 300);
+				},
+				loadstart: function() { // File ready to play
+					llc.status({
+						media: 'master loaded'
+					});
+					$("#llc_playerFrame").css('height', 'auto');
+					$("#llc_playerFrame").trigger('resize');
+					$("#buyButton").show();
+					$("#loading").delay(300).fadeOut('slow', function() {
+						$(this).remove();
+					});
+				},
+				play: function() { // To avoid both jPlayers playing together.
+					llc.status({
+						media: 'master playing'
+					});
+					$(this).jPlayer("pauseOthers");
+				},
+				pause: function() {
+					llc.status({
+						media: 'master paused'
+					});
+				},
+				timeupdate: function(event) { // Set/Show Current time/Slide function
+					llc.timeUpdate(event);
+				},
+				seeking: function(event) {
+					llc.status('master seeking');
+					//$(this).jPlayer("pauseOthers");
+					llc.pres.curEl = undefined;
+					//console.log(event.jPlayer.status.currentTime);
+				},
+				ended: function() {
+					llc.status('master ended');
+					llc.seatTime('save');
+					// reset presentation
+					$(this).jPlayer("pause", 0);
+				},
+				volumechange: function(event) { // make sure volume dragable moves on click
+					llc.status('volume changed');
+					var t = $("#master_jp_container div.jp-volume-bar-value"),
+						bottom = t.height(),
+						height = t.parent().height(),
+						top = height - bottom;
+					t.prev().css("top", top);
+					llc.perVolume = t.attr('style').slice(8, -3) / 100;
+					if (llc.perVolume == 0) t.parents('div.jp-volume').addClass('mute');
+					else t.parents('div.jp-volume').removeClass('mute');
+					$('#slides .jp-jplayer').jPlayer("volume", (llc.perVolume));
+				},
+				// noVolume: { chrome: /chrome/ },
+				verticalVolume: true,
+				preload: "auto",
+				swfPath: "flash",
+				supplied: f.supplied,
+				// Assumes mp3 or native jPlayer video format
+				cssSelectorAncestor: "#master_jp_container",
+				loop: false,
+				size: {
+					width: "100%",
+					height: "100%",
+					cssClass: "full"
+				},
+				fullScreen: true,
+				autohide: {
+					full: false
+				},
+				//errorAlerts: true,
+				solution: "flash, html",
+				wmode: (llc.pres.media.master.item.fileType != 'mp3' ? 'transparent' : 'window') // use window for audio and transparent for video
 			}); // end jPlayer initialize
-			
-			
 			/* ################################# ATTACH CLICK HANDLERS */
-				
+
 			// Assign volume dragable
 			$("#master_jp_container div.jp-volume span.jp-volume-bar-drag").draggable({
 				axis: 'y',
 				containment: 'parent',
 				drag: function(event, ui) {
 					var t = $(this),
-						top = t.css("top").replace('px',''),
+						top = t.css("top").replace('px', ''),
 						height = t.parent().height(),
-						per = height-top > 5 ? (height-top)/height : 0;
-					t.next().height(per*100+'%');
+						per = height - top > 5 ? (height - top) / height : 0;
+					t.next().height(per * 100 + '%');
 					llc.perVolume = per;
 				},
 				stop: function(event, ui) {
 					$("#master_jplayer").jPlayer("volume", llc.perVolume);
 				}
 			});
-			
+
 			// Unbind current time and duration click events so play bar can function
 			$("#master_jp_container .jp-current-time, #master_jp_container .jp-duration").unbind('click');
-			
+
 			// Assign next click handlers
 			$("#master_jp_container .llc-next").click(function() {
 				llc.status('next slide');
 				$("#toc .active_toc_thumb").next().find("div.playIcon").click();
 			});
-			
+
 			// Assign prev click handlers
 			$("#master_jp_container .llc-prev").click(function() {
 				llc.status('prev slide');
 				$("#toc .active_toc_thumb").prev().find("div.playIcon").click();
 			});
-			
+
 			// Assign volume show/hide click handlers
 			$("#master_jp_container div.jp-volume").toggle(function() {
-					$("#master_jplayer").jPlayer("volume", 0);
-					llc.perVolume = 0;
-				}, function() {
-					$("#master_jplayer").jPlayer("volume", 80);
-					llc.perVolume = 80;
+				$("#master_jplayer").jPlayer("volume", 0);
+				llc.perVolume = 0;
+			}, function() {
+				$("#master_jplayer").jPlayer("volume", 80);
+				llc.perVolume = 80;
 			}).hover(function() {
-					$(this).addClass("hover");
-					$(this).addClass("active");
-					//$(this).click();
-				}, function() {
-					$(this).removeClass("hover");
-					$(this).removeClass("active");
-					//$(this).click();
+				$(this).addClass("hover");
+				$(this).addClass("active");
+				//$(this).click();
+			}, function() {
+				$(this).removeClass("hover");
+				$(this).removeClass("active");
+				//$(this).click();
 			});
-			
+
 			// Assign Full screen & normal click handlers
 			$("#master_jp_container a.llc-full").toggle(function() {
-					llc.switchFull(true);
-				}, function() {
-					llc.switchFull(false);
+				llc.switchFull(true);
+			}, function() {
+				llc.switchFull(false);
 			});
-			
-			
+
+
 			// Switch view event handler 
 			$("<span class='switchView'></span>").appendTo("#master_jplayer");
-			$("span.switchView").click(function(event){
-				llc.switchView(event,false);
+			$("span.switchView").click(function(event) {
+				llc.switchView(event, false);
 			});
-			
-			
+
+
 			/* ######## MISC */
-			
+
 			// Set presentation info
 			$("#pres_title span").text(llc.pres.title);
-			
+
 			// Set speakers
-			$("#pres_presenter span").text((function(){
+			$("#pres_presenter span").text((function() {
 				var spks
-				if (llc.pres.speakers)
-	                if (!llc.pres.speakers.speaker.length) {
-		                var s = llc.pres.speakers.speaker;
-    		            if (s.firstName) spks = s.firstName + " " + s.lastName;
-        		    }
-            		else
-                		for (i in llc.pres.speakers.speaker) {
-                    		var s = llc.pres.speakers.speaker[i];
-                        	if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
-    	                }
-				spks = spks ? spks : 'N/A' ;
+				if (llc.pres.speakers) if (!llc.pres.speakers.speaker.length) {
+					var s = llc.pres.speakers.speaker;
+					if (s.firstName) spks = s.firstName + " " + s.lastName;
+				} else for (i in llc.pres.speakers.speaker) {
+					var s = llc.pres.speakers.speaker[i];
+					if (s.firstName) spks = llc.pres.speakers.speaker.length > 1 && s != llc.pres.speakers.speaker[0] ? spks + ', ' + s.firstName + " " + s.lastName : s.firstName + " " + s.lastName;
+				}
+				spks = spks ? spks : 'N/A';
 				return spks
 			})());
-			
+
 			// Set Date
 			$("#pres_date span").text((llc.pres.date || 'N/A'));
-			
+
 			// Set playback value in Cookie on quit
 			$(window).bind('beforeunload', function() {
-				llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
-				llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random()*1000))+llc.pres.id+'volume', llc.perVolume);
+				llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random() * 1000)) + llc.pres.id + 'playhead', $("#master_jplayer").data("jPlayer").status.currentTime);
+				llc.setCookie((llc.pres.viewer.id || Math.floor(Math.random() * 1000)) + llc.pres.id + 'volume', llc.perVolume);
 			});
-			
+
 			// Set defualt view
-			llc.switchView(false,llc.pres.defaultInterface.text,llc.pres.defaultWindow.text);
+			llc.switchView(false, llc.pres.defaultInterface.text, llc.pres.defaultWindow.text);
 
 			//check preivew mode - setup helper functions
-			if((llc.pres.embededMode=='False' && llc.pres.previewMode=='False') || (llc.pres.previewMode==undefined)){
+			if ((llc.pres.embededMode == 'False' && llc.pres.previewMode == 'False') || (llc.pres.previewMode == undefined)) {
 				llc.saveRating();
 				llc.saveNote();
 				llc.saveBookmark();
 				llc.setupSlideMagnify();
-			}else{
+			} else {
 				llc.previewEmbedSetup();
 			}
-			
+
 			// Disable next/prev for single slide pres
 			if (llc.pres.media.items.item.id) {
-				$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title','disabled').unbind('click');
-				$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title','disabled').unbind('click');
+				$('#master_jp_container .llc-next').addClass('llc-next-disabled').attr('title', 'disabled').unbind('click');
+				$('#master_jp_container .llc-prev').addClass('llc-prev-disabled').attr('title', 'disabled').unbind('click');
 			}
-			
+
 			// Add tool tips if non-mobile or tablet 
-			if(!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
-				$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'top'});
-				$("ul.jp-controls li a.llc-bookmark").tipTip({maxWidth: "auto", edgeOffset: 15, defaultPosition:'bottom'});
+			if (!$.jPlayer.platform.tablet && !$.jPlayer.platform.mobile) {
+				$("ul.jp-controls li a").not('a.llc-bookmark').tipTip({
+					maxWidth: "auto",
+					edgeOffset: 15,
+					defaultPosition: 'top'
+				});
+				$("ul.jp-controls li a.llc-bookmark").tipTip({
+					maxWidth: "auto",
+					edgeOffset: 15,
+					defaultPosition: 'bottom'
+				});
 			}
-			
+
 			llc.disableRightClick();
-				
-		}).fail(function(){
-		    llc.status({error:'XML failed to load'});
+
+		}).fail(function() {
+			llc.status({
+				error: 'XML failed to load'
+			});
 		}); // end ajax XML call
 	}
-} 
+}
 
 /* MISC FUNCTIONS - MOVE OUT OR DELETE LATER ************/
 
- /******************* PRINT_R IS NEAT ***********/
- // You can access the js object in your browser console so you don't really need this ...
- // Isn't this a PHP function name ? ;) 
- // Yes, and in PHP land print_r is your best buddy...
-function print_r(theObj){
-  if(theObj.constructor == Array ||
-     theObj.constructor == Object){
-    document.write("<ul>")
-    for(var p in theObj){
-      if(theObj[p].constructor == Array||
-         theObj[p].constructor == Object){
-document.write("<li>["+p+"] => "+typeof(theObj)+"</li>");
-        document.write("<ul>")
-        print_r(theObj[p]);
-        document.write("</ul>")
-      } else {
-document.write("<li>["+p+"] => "+theObj[p]+"</li>");
-      }
-    }
-    document.write("</ul>")
-  }
+/******************* PRINT_R IS NEAT ***********/
+// You can access the js object in your browser console so you don't really need this ...
+// Isn't this a PHP function name ? ;) 
+// Yes, and in PHP land print_r is your best buddy...
+
+function print_r(theObj) {
+	if (theObj.constructor == Array || theObj.constructor == Object) {
+		document.write("<ul>")
+		for (var p in theObj) {
+			if (theObj[p].constructor == Array || theObj[p].constructor == Object) {
+				document.write("<li>[" + p + "] => " + typeof(theObj) + "</li>");
+				document.write("<ul>")
+				print_r(theObj[p]);
+				document.write("</ul>")
+			} else {
+				document.write("<li>[" + p + "] => " + theObj[p] + "</li>");
+			}
+		}
+		document.write("</ul>")
+	}
 }
 
 function secondsToTime(secs) {
 
-    var hours = Math.floor(secs / (60 * 60)),
-    	divisor_for_minutes = secs % (60 * 60),
-    	minutes = Math.floor(divisor_for_minutes / 60),
-    	divisor_for_seconds = divisor_for_minutes % 60,
-    	seconds = Math.ceil(divisor_for_seconds);
-   
-   minutes = minutes > 9 ? minutes : '0'+minutes;
-   seconds = seconds > 9 ? seconds : '0'+seconds;
-   
-    var obj = {
-        "h": hours,
-        "m": minutes,
-        "s": seconds
-    };
-    
-    return obj;
+	var hours = Math.floor(secs / (60 * 60)),
+		divisor_for_minutes = secs % (60 * 60),
+		minutes = Math.floor(divisor_for_minutes / 60),
+		divisor_for_seconds = divisor_for_minutes % 60,
+		seconds = Math.ceil(divisor_for_seconds);
+
+	minutes = minutes > 9 ? minutes : '0' + minutes;
+	seconds = seconds > 9 ? seconds : '0' + seconds;
+
+	var obj = {
+		"h": hours,
+		"m": minutes,
+		"s": seconds
+	};
+
+	return obj;
 }
 
 function milliConvert(millis) {
-  var seconds = millis / 1000;
-  var m = Math.floor(seconds/60);
-  var s = Math.round(seconds - (m * 60));
+	var seconds = millis / 1000;
+	var m = Math.floor(seconds / 60);
+	var s = Math.round(seconds - (m * 60));
 
-  // Add leading zeros to one-digit numbers.
-  if (m < 10) {
-    m = "0" + m;
-  }
-  if (s < 10) {
-    s = "0" + s;
-  }
-  return m + ":" + s;
-}
-function truncate(text, length, ellipsis) {
-if (typeof length == 'undefined') var length = 100;
-if (typeof ellipsis == 'undefined') var ellipsis = '...';
-if (text.length < length) return text;
-
-	for (var i = length-1; text.charAt(i) != ' '; i--) {
-	length--;
+	// Add leading zeros to one-digit numbers.
+	if (m < 10) {
+		m = "0" + m;
 	}
-	
-return text.substr(0, length) + ellipsis;
+	if (s < 10) {
+		s = "0" + s;
+	}
+	return m + ":" + s;
 }
-function slideJump(startPoint){
-$('#master_jplayer').jPlayer('pauseOthers').jPlayer('play',startPoint);
-return false;
+
+function truncate(text, length, ellipsis) {
+	if (typeof length == 'undefined') var length = 100;
+	if (typeof ellipsis == 'undefined') var ellipsis = '...';
+	if (text.length < length) return text;
+
+	for (var i = length - 1; text.charAt(i) != ' '; i--) {
+		length--;
+	}
+
+	return text.substr(0, length) + ellipsis;
+}
+
+function slideJump(startPoint) {
+	$('#master_jplayer').jPlayer('pauseOthers').jPlayer('play', startPoint);
+	return false;
 
 }
-Array.prototype.findIndex = function(value){
-var ctr = "";
-for (var i=0; i < this.length; i++) {
-// use === to check for Matches. ie., identical (===), ;
-if (this[i] == value) {
-return i;
-}
-}
-return ctr;
+Array.prototype.findIndex = function(value) {
+	var ctr = "";
+	for (var i = 0; i < this.length; i++) {
+		// use === to check for Matches. ie., identical (===), ;
+		if (this[i] == value) {
+			return i;
+		}
+	}
+	return ctr;
 };
 
 function htmlEntities(str) {
 
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&quot;');
+	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&quot;');
 }
 
- /******************* PARSE URL ***********/
+/******************* PARSE URL ***********/
 
 function urlParse(parameter) {
-  var loc = location.search.substring(1, location.search.length);
-  var param_value = false;
+	var loc = location.search.substring(1, location.search.length);
+	var param_value = false;
 
-  var params = loc.split("&");
-  for (i=0; i<params.length;i++) {
-      param_name = params[i].substring(0,params[i].indexOf('='));
-      if (param_name == parameter) {
-          param_value = params[i].substring(params[i].indexOf('=')+1)
-      }
-  }
-  if (param_value) {
-      return param_value;
-  } else {
-      return false;
-  }
+	var params = loc.split("&");
+	for (i = 0; i < params.length; i++) {
+		param_name = params[i].substring(0, params[i].indexOf('='));
+		if (param_name == parameter) {
+			param_value = params[i].substring(params[i].indexOf('=') + 1)
+		}
+	}
+	if (param_value) {
+		return param_value;
+	} else {
+		return false;
+	}
 }
-
-
